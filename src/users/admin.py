@@ -6,7 +6,7 @@ from .models import User
 # Register your models here.
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
-    list_display = [
+    list_display = (
         'id',
         'username',
         'email',
@@ -17,6 +17,14 @@ class UserAdmin(BaseUserAdmin):
         'is_superuser',
         'date_joined',
         'last_login',
-    ]
+    )
+
+    list_editable = (
+        'username',
+        'email',
+        'first_name',
+        'last_name',
+        'is_active'
+    )
 
     empty_value_display = 'unknown'
