@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from .models import User, Country, Continent
+from .models import User
 
 # Register your models here.
 @admin.register(User)
@@ -36,23 +36,3 @@ class UserAdmin(BaseUserAdmin):
     )
     empty_value_display = 'unknown'
 
-
-@admin.register(Country)
-class CountryAdmin(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'name',
-        'code',
-        'continent'
-        )
-    empty_value_display = 'unknown'
-
-
-@admin.register(Continent)
-class ContinentAdmin(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'name',
-        'code',
-    )
-    empty_value_display = 'unknown'
