@@ -66,7 +66,6 @@ class SurfZone(models.Model):
     solo = models.BooleanField(default=False)
     couple = models.BooleanField(default=False)
     family = models.BooleanField(default=False)
-    traveler_type = ArrayField(models.CharField(max_length=20), blank=True, null=True)
     safety = models.CharField(max_length=100, blank=True)
     health_hazards = ArrayField(models.CharField(max_length=100), blank=True, null=True)
     surf_hazards = ArrayField(models.CharField(max_length=100), blank=True, null=True)

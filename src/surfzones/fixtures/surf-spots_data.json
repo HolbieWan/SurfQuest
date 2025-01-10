@@ -3,7 +3,7 @@
         "model": "surfzones.surfspot",
         "fields": {
             "name": "Snapper Rocks",
-            "surfzone": "c21e5f77-a91c-4658-b448-f7d34d635b99",
+            "surfzone": "1b3652e6-ac36-45e5-afd3-79cc0c104538",
             "latitude": -28.0816,
             "longitude": 153.555,
             "break_type": "Point Break",

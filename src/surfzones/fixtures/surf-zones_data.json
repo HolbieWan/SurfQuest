@@ -595,9 +595,9 @@
     {
         "model": "surfzones.surfzone",
         "fields": {
-            "name": "Nazar\u00e9",
+            "name": "Nazare",
             "country": "838e678d-73ec-4637-8a6e-aa566fff3138",
-            "nearest_city": "Nazar\u00e9",
+            "nearest_city": "Nazare",
             "nearest_airport": "Lisbon Airport",
             "airport_latitude": 38.7742,
             "airport_longitude": -9.1342,
