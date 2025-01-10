@@ -1,0 +1,209 @@
+[
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Australia",
+            "code": "AU",
+            "continent": "6e54f0c1-ee4d-44e9-bafa-d72ed23baf65",
+            "slug": "australia"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Spain",
+            "code": "ES",
+            "continent": "d21cad2b-81b1-4b7a-ad04-d859213a9028",
+            "slug":"spain"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Brazil",
+            "code": "BR",
+            "continent": "a8265740-4ad0-4b38-999b-377add925044",
+            "slug":"brazil"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Chile",
+            "code": "CL",
+            "continent": "a8265740-4ad0-4b38-999b-377add925044",
+            "slug": "chile"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Costa-Rica",
+            "code": "CR",
+            "continent": "4297a458-07da-43cf-8823-572989075dfd",
+            "slug": "costa-rica"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "El Salvador",
+            "code": "SV",
+            "continent": "4297a458-07da-43cf-8823-572989075dfd",
+            "slug": "el-salvador"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Fiji",
+            "code": "FJ",
+            "continent": "6e54f0c1-ee4d-44e9-bafa-d72ed23baf65",
+            "slug": "fiji"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "France",
+            "code": "FR",
+            "continent": "d21cad2b-81b1-4b7a-ad04-d859213a9028",
+            "slug": "france"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "French-Polynesia",
+            "code": "PF",
+            "continent": "6e54f0c1-ee4d-44e9-bafa-d72ed23baf65",
+            "slug": "french-polynesia"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Hawaii",
+            "code": "US",
+            "continent": "4297a458-07da-43cf-8823-572989075dfd",
+            "slug": "hawaii"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Iceland",
+            "code": "IS",
+            "continent": "d21cad2b-81b1-4b7a-ad04-d859213a9028",
+            "slug": "iceland"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Indonesia",
+            "code": "ID",
+            "continent": "a2110b28-2968-44b9-a50d-744f62a1f2f7",
+            "slug": "indonesia"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Irland",
+            "code": "IE",
+            "continent": "d21cad2b-81b1-4b7a-ad04-d859213a9028",
+            "slug": "irland"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Japan",
+            "code": "JP",
+            "continent": "a2110b28-2968-44b9-a50d-744f62a1f2f7",
+            "slug": "japan"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Maldive",
+            "code": "MV",
+            "continent": "a2110b28-2968-44b9-a50d-744f62a1f2f7",
+            "slug": "maldive"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Mexico",
+            "code": "MX",
+            "continent": "4297a458-07da-43cf-8823-572989075dfd",
+            "slug": "mexico"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Morroco",
+            "code": "MA",
+            "continent": "28ff640c-63a7-443d-86d7-926276368a3e",
+            "slug": "morroco"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Namibie",
+            "code": "NA",
+            "continent": "28ff640c-63a7-443d-86d7-926276368a3e",
+            "slug": "namibie"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "New Zealand",
+            "code": "NZ",
+            "continent": "6e54f0c1-ee4d-44e9-bafa-d72ed23baf65",
+            "slug": "new-zealand"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Nicaragua",
+            "code": "NI",
+            "continent": "4297a458-07da-43cf-8823-572989075dfd",
+            "slug": "nicaragua"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Portugal",
+            "code": "PT",
+            "continent": "d21cad2b-81b1-4b7a-ad04-d859213a9028",
+            "slug": "portugal"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "South-Africa",
+            "code": "ZA",
+            "continent": "28ff640c-63a7-443d-86d7-926276368a3e",
+            "slug": "south-africa"
+        }
+    },
+    {
+        "model": "surfzones.country",
+        "fields": {
+            "name": "Sri-Lanka",
+            "code": "LK",
+            "continent": "a2110b28-2968-44b9-a50d-744f62a1f2f7",
+            "slug": "sri-lanka"
+        }
+    }
+]

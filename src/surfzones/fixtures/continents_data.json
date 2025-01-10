@@ -1,0 +1,58 @@
+[
+    {
+        "model": "surfzones.continent",
+        "fields": {
+            "name": "Africa",
+            "code": "AF",
+            "slug": "africa"
+        }
+    },
+    {
+        "model": "surfzones.continent",
+        "fields": {
+            "name": "Antarctica",
+            "code": "AN",
+            "slug": "antarctica"
+        }
+    },
+    {
+        "model": "surfzones.continent",
+        "fields": {
+            "name": "Asia",
+            "code": "AS",
+            "slug": "asia"
+        }
+    },
+    {
+        "model": "surfzones.continent",
+        "fields": {
+            "name": "Europe",
+            "code": "EU",
+            "slug": "europe"
+        }
+    },
+    {
+        "model": "surfzones.continent",
+        "fields": {
+            "name": "North-America",
+            "code": "NA",
+            "slug": "north-america"
+        }
+    },
+    {
+        "model": "surfzones.continent",
+        "fields": {
+            "name": "Oceania",
+            "code": "OC",
+            "slug": "oceania"
+        }
+    },
+    {
+        "model": "surfzones.continent",
+        "fields": {
+            "name": "South-America",
+            "code": "SA",
+            "slug": "south-america"
+        }
+    }
+]

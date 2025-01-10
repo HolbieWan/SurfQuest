@@ -2,23 +2,24 @@ from django.contrib import admin
 from .models import Country, Continent, SurfZone, SurfSpot, SurfSpotImage, SurfZoneImage
 
 # Register your models here.
-@admin.register(Country)
-class CountryAdmin(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'name',
-        'code',
-        'continent'
-        )
-    empty_value_display = 'unknown'
-
-
 @admin.register(Continent)
 class ContinentAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'name',
         'code',
+        'slug'
+    )
+    empty_value_display = 'unknown'
+
+@admin.register(Country)
+class CountryAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name',
+        'code',
+        'continent',
+        'slug'
     )
     empty_value_display = 'unknown'
 
@@ -30,13 +31,15 @@ class SurfZoneAdmin(admin.ModelAdmin):
         'country',
         'nearest_city',
         'nearest_airport',
-        'latitude',
-        'longitude',
+        'airport_latitude',
+        'airport_longitude',
         'solo',
         'couple',
         'family',
         'safety',
-        'health',
+        'health_hazards',
+        'surf_hazards',
+        'best_month',
         'confort',
         'cost',
         'language',
@@ -46,7 +49,8 @@ class SurfZoneAdmin(admin.ModelAdmin):
         'description',
         'lefts',
         'rights',
-        'left_and_rights',
+        'lefts_and_rights',
+        'slug'
     )
     empty_value_display = 'unknown'
 
@@ -62,6 +66,16 @@ class SurfSpotAdmin(admin.ModelAdmin):
         'break_type',
         'left',
         'right',
+        'left_and_right',
+        'best_wind_direction',
+        'best_swell_direction',
+        'best_swell_size',
+        'best_tide',
+        'surf_level',
+        'surf_hazards',
+        'best_months',
+        'description',
+        'slug'
     )
     empty_value_display = 'unknown'
 
@@ -72,6 +86,9 @@ class SurfSpotImageAdmin(admin.ModelAdmin):
         'id',
         'surfspot',
         'image',
+        'description',
+        'slug',
+        'created_at'
     )
     empty_value_display = 'unknown'
 
@@ -82,5 +99,8 @@ class SurfZoneImageAdmin(admin.ModelAdmin):
         'id',
         'surfzone',
         'image',
+        'description',
+        'slug',
+        'created_at'
     )
     empty_value_display = 'unknown'

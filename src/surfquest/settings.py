@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'surfquest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mjx',
+        'USER': 'mjx',  # Your macOS username
+        'PASSWORD': '',  # No password is needed for your local user
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
