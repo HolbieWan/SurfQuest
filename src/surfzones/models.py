@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
-from .choices import CONFORT_CHOICES, COST_CHOICES, SURF_WIND_DIRECTION_CHOICES, SURF_LEVEL_CHOICES, BEST_TIDE_CHOICES, TRAVELER_TYPE_CHOICES, WAVE_DIRECTION_CHOICES, SAFETY_CHOICES, BEST_MONTHS_CHOICES
+from .choices import CONFORT_CHOICES, COST_CHOICES, SURF_WIND_DIRECTION_CHOICES, SURF_LEVEL_CHOICES, BEST_TIDE_CHOICES, TRAVELER_TYPE_CHOICES, WAVE_DIRECTION_CHOICES, SAFETY_CHOICES, MONTHS_CHOICES
 from django.contrib.postgres.fields import ArrayField
 from users.models import User
 
@@ -71,7 +71,7 @@ class SurfZone(models.Model):
     safety = models.CharField(max_length=100,choices=SAFETY_CHOICES.choices ,blank=True)
     health_hazards = ArrayField(models.CharField(max_length=100), blank=True, default=list)
     surf_hazards = ArrayField(models.CharField(max_length=100), blank=True, default=list)
-    best_months = ArrayField(base_field=models.CharField(max_length=100, choices=BEST_MONTHS_CHOICES.choices), blank=True, default=list)
+    best_months = ArrayField(base_field=models.CharField(max_length=100, choices=MONTHS_CHOICES.choices), blank=True, default=list)
     confort = models.CharField(max_length=20, choices=CONFORT_CHOICES.choices, blank=True)
     cost = models.CharField(max_length=10, choices=COST_CHOICES.choices, blank=True)
     language = models.CharField(max_length=100, blank=True)
@@ -114,7 +114,7 @@ class SurfSpot(models.Model):
     best_tide = ArrayField(base_field=models.CharField(max_length=20, choices=BEST_TIDE_CHOICES.choices), blank=True, default=list)
     surf_level = ArrayField(base_field=models.CharField(max_length=20, choices=SURF_LEVEL_CHOICES.choices), blank=True, default=list)
     surf_hazards = ArrayField(base_field=models.CharField(max_length=100), blank=True, default=list)
-    best_months = ArrayField(base_field=models.CharField(max_length=100, choices=BEST_MONTHS_CHOICES.choices), blank=True, default=list)
+    best_months = ArrayField(base_field=models.CharField(max_length=100, choices=MONTHS_CHOICES.choices), blank=True, default=list)
     description = models.TextField(max_length=500, blank=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
 

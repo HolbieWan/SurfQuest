@@ -55,7 +55,7 @@ class WAVE_DIRECTION_CHOICES(models.TextChoices):
     RIGHT = 'Right', 'Right'
     LEFT_AND_RIGHT = 'Left_and_right', 'Left and Right'
 
-class BEST_MONTHS_CHOICES(models.TextChoices):
+class MONTHS_CHOICES(models.TextChoices):
     JANUARY = 'January', 'January'
     FEBRUARY = 'February', 'February'
     MARCH = 'March', 'March'
