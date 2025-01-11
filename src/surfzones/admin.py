@@ -33,13 +33,11 @@ class SurfZoneAdmin(admin.ModelAdmin):
         'nearest_airport',
         'airport_latitude',
         'airport_longitude',
-        'solo',
-        'couple',
-        'family',
+        'traveler_type',
         'safety',
         'health_hazards',
         'surf_hazards',
-        'best_month',
+        'best_months',
         'confort',
         'cost',
         'language',
@@ -47,12 +45,30 @@ class SurfZoneAdmin(admin.ModelAdmin):
         'religion',
         'surroundings',
         'description',
-        'lefts',
-        'rights',
-        'lefts_and_rights',
+        'main_wave_direction',
         'slug'
     )
     empty_value_display = 'unknown'
+
+    list_editable = [
+        'nearest_city',
+        'nearest_airport',
+        'airport_latitude',
+        'airport_longitude',
+        'traveler_type',
+        'safety',
+        'health_hazards',
+        'surf_hazards',
+        'best_months',
+        'confort',
+        'cost',
+        'language',
+        'currency',
+        'religion',
+        'surroundings',
+        'description',
+        'main_wave_direction'
+    ]
 
 
 @admin.register(SurfSpot)
@@ -64,9 +80,7 @@ class SurfSpotAdmin(admin.ModelAdmin):
         'latitude',
         'longitude',
         'break_type',
-        'left',
-        'right',
-        'left_and_right',
+        'wave_direction',
         'best_wind_direction',
         'best_swell_direction',
         'best_swell_size',
@@ -78,6 +92,21 @@ class SurfSpotAdmin(admin.ModelAdmin):
         'slug'
     )
     empty_value_display = 'unknown'
+
+    list_editable = [
+        'latitude',
+        'longitude',
+        'break_type',
+        'wave_direction',
+        'best_wind_direction',
+        'best_swell_direction',
+        'best_swell_size',
+        'best_tide',
+        'surf_level',
+        'surf_hazards',
+        'best_months',
+        'description'
+    ]
 
 
 @admin.register(SurfSpotImage)

@@ -8,8 +8,13 @@ class TRAVELER_TYPE_CHOICES(models.TextChoices):
 
 class CONFORT_CHOICES(models.TextChoices):
     SIMPLE = 'Simple', 'Simple'
-    CONFORTABLE = 'Confortable', 'Confortable'
+    CONFORTABLE = 'Comfortable', 'Comfortable'
     PREMIUM = 'Premium', 'Premium'
+
+class SAFETY_CHOICES(models.TextChoices):
+    LOW = 'Low', 'Low'
+    MODERATE = 'Moderate', 'Moderate'
+    HIGH = 'High', 'High'
 
 class COST_CHOICES(models.TextChoices):
     CHEAP = 'Cheap', 'Cheap'
@@ -35,17 +40,31 @@ class SURF_WIND_DIRECTION_CHOICES(models.TextChoices):
     NNW = 'N-NW', 'North-northwest'
 
 class SURF_LEVEL_CHOICES(models.TextChoices):
-    BEGINNER = 'beginner', 'Beginner'
-    INTERMEDIATE = 'intermediate', 'Intermediate'
-    ADVANCED = 'advanced', 'Advanced'
-    PRO = 'pro', 'Pro'
+    BEGINNER = 'Beginner', 'Beginner'
+    INTERMEDIATE = 'Intermediate', 'Intermediate'
+    ADVANCED = 'Advanced', 'Advanced'
+    PRO = 'Pro', 'Pro'
 
 class BEST_TIDE_CHOICES(models.TextChoices):
-    LOW = 'low', 'Low'
-    MID = 'mid', 'Mid'
-    HIGH = 'high', 'High'
+    LOW = 'Low', 'Low'
+    MID = 'Mid', 'Mid'
+    HIGH = 'High', 'High'
 
-class MAIN_WAVE_DIRECTION_CHOICES(models.TextChoices):
-    LEFT = 'left', 'Left'
-    RIGHT = 'right', 'Right'
-    LEFT_AND_RIGHT = 'left_and_right', 'Left and Right'
+class WAVE_DIRECTION_CHOICES(models.TextChoices):
+    LEFT = 'Left', 'Left'
+    RIGHT = 'Right', 'Right'
+    LEFT_AND_RIGHT = 'Left_and_right', 'Left and Right'
+
+class BEST_MONTHS_CHOICES(models.TextChoices):
+    JANUARY = 'January', 'January'
+    FEBRUARY = 'February', 'February'
+    MARCH = 'March', 'March'
+    APRIL = 'April', 'April'
+    MAY = 'May', 'May'
+    JUNE = 'June', 'June'
+    JULY = 'July', 'July'
+    AUGUST = 'August', 'August'
+    SEPTEMBER = 'September', 'September'
+    OCTOBER = 'October', 'October'
+    NOVEMBER = 'November', 'November'
+    DECEMBER = 'December', 'December'

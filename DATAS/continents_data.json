@@ -1,6 +1,7 @@
 [
     {
         "model": "surfzones.continent",
+        "pk": "28ff640c-63a7-443d-86d7-926276368a3e",
         "fields": {
             "name": "Africa",
             "code": "AF",
@@ -9,6 +10,7 @@
     },
     {
         "model": "surfzones.continent",
+        "pk": "e4632086-7255-43e2-887e-313fb8a6ef15",
         "fields": {
             "name": "Antarctica",
             "code": "AN",
@@ -17,6 +19,7 @@
     },
     {
         "model": "surfzones.continent",
+        "pk": "a2110b28-2968-44b9-a50d-744f62a1f2f7",
         "fields": {
             "name": "Asia",
             "code": "AS",
@@ -25,6 +28,7 @@
     },
     {
         "model": "surfzones.continent",
+        "pk": "d21cad2b-81b1-4b7a-ad04-d859213a9028",
         "fields": {
             "name": "Europe",
             "code": "EU",
@@ -33,6 +37,7 @@
     },
     {
         "model": "surfzones.continent",
+        "pk": "4297a458-07da-43cf-8823-572989075dfd",
         "fields": {
             "name": "North-America",
             "code": "NA",
@@ -41,6 +46,7 @@
     },
     {
         "model": "surfzones.continent",
+        "pk": "6e54f0c1-ee4d-44e9-bafa-d72ed23baf65",
         "fields": {
             "name": "Oceania",
             "code": "OC",
@@ -49,6 +55,7 @@
     },
     {
         "model": "surfzones.continent",
+        "pk": "a8265740-4ad0-4b38-999b-377add925044",
         "fields": {
             "name": "South-America",
             "code": "SA",

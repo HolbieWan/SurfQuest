@@ -8,9 +8,11 @@
             "nearest_airport": "Gold Coast Airport",
             "airport_latitude": -28.1644,
             "airport_longitude": 153.504,
-            "solo": true,
-            "couple": true,
-            "family": true,
+            "traveler_type": [
+                "Solo",
+                "Couple",
+                "Family"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -18,7 +20,7 @@
             "surf_hazards": [
                 "Rips"
             ],
-            "best_month": [
+            "best_months": [
                 "April",
                 "May",
                 "June"
@@ -30,9 +32,7 @@
             "religion": "Christianity",
             "surroundings": "Urban",
             "description": "A popular surf destination with excellent waves and vibrant city life.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "gold-coast"
         }
     },
@@ -45,9 +45,10 @@
             "nearest_airport": "Hercilio Luz International Airport",
             "airport_latitude": -27.6708,
             "airport_longitude": -48.5477,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "Moderate",
             "health_hazards": [
                 "None"
@@ -55,7 +56,7 @@
             "surf_hazards": [
                 "Jellyfish"
             ],
-            "best_month": [
+            "best_months": [
                 "March",
                 "April",
                 "May"
@@ -67,9 +68,7 @@
             "religion": "Christianity",
             "surroundings": "Natural, Beaches",
             "description": "Known for its beautiful beaches and consistent surf spots.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "florianopolis"
         }
     },
@@ -82,9 +81,10 @@
             "nearest_airport": "Santiago International Airport",
             "airport_latitude": -33.393,
             "airport_longitude": -70.7858,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "Moderate",
             "health_hazards": [
                 "None"
@@ -92,7 +92,7 @@
             "surf_hazards": [
                 "Rocks"
             ],
-            "best_month": [
+            "best_months": [
                 "April",
                 "May",
                 "June"
@@ -104,9 +104,7 @@
             "religion": "Christianity",
             "surroundings": "Natural, Cliffs",
             "description": "One of Chile's best surf spots, famous for its left-hand point break.",
-            "lefts": true,
-            "rights": false,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Left",
             "slug": "punta-de-lobos"
         }
     },
@@ -119,9 +117,11 @@
             "nearest_airport": "Daniel Oduber Quiros International Airport",
             "airport_latitude": 10.5933,
             "airport_longitude": -85.5444,
-            "solo": true,
-            "couple": true,
-            "family": true,
+            "traveler_type": [
+                "Solo",
+                "Couple",
+                "Family"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -129,7 +129,7 @@
             "surf_hazards": [
                 "Rips"
             ],
-            "best_month": [
+            "best_months": [
                 "December",
                 "January",
                 "February"
@@ -141,9 +141,7 @@
             "religion": "Christianity",
             "surroundings": "Beaches, Natural",
             "description": "A laid-back beach town with beginner-friendly waves and vibrant nightlife.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "tamarindo"
         }
     },
@@ -156,9 +154,10 @@
             "nearest_airport": "El Salvador International Airport",
             "airport_latitude": 13.4409,
             "airport_longitude": -89.0555,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "Moderate",
             "health_hazards": [
                 "None"
@@ -166,7 +165,7 @@
             "surf_hazards": [
                 "Rocks"
             ],
-            "best_month": [
+            "best_months": [
                 "March",
                 "April",
                 "May"
@@ -178,9 +177,7 @@
             "religion": "Christianity",
             "surroundings": "Beaches, Natural",
             "description": "A small surf village with consistent right-hand point breaks.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "el-tunco"
         }
     },
@@ -193,9 +190,10 @@
             "nearest_airport": "Nadi International Airport",
             "airport_latitude": -17.7554,
             "airport_longitude": 177.443,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -203,7 +201,7 @@
             "surf_hazards": [
                 "Reef"
             ],
-            "best_month": [
+            "best_months": [
                 "May",
                 "June",
                 "July"
@@ -215,9 +213,7 @@
             "religion": "Christianity",
             "surroundings": "Islands, Natural",
             "description": "World-renowned surf break with challenging waves for experienced surfers.",
-            "lefts": true,
-            "rights": false,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Left",
             "slug": "cloudbreak"
         }
     },
@@ -230,9 +226,11 @@
             "nearest_airport": "Biarritz Airport",
             "airport_latitude": 43.4684,
             "airport_longitude": -1.5232,
-            "solo": true,
-            "couple": true,
-            "family": true,
+            "traveler_type": [
+                "Solo",
+                "Couple",
+                "Family"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -240,7 +238,7 @@
             "surf_hazards": [
                 "Strong currents"
             ],
-            "best_month": [
+            "best_months": [
                 "September",
                 "October",
                 "November"
@@ -252,9 +250,7 @@
             "religion": "Christianity",
             "surroundings": "Beaches, Forests",
             "description": "A famous surf town in southwest France with powerful beach breaks.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "hossegor"
         }
     },
@@ -267,9 +263,10 @@
             "nearest_airport": "Honolulu International Airport",
             "airport_latitude": 21.3245,
             "airport_longitude": -157.9251,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -277,7 +274,7 @@
             "surf_hazards": [
                 "Big waves"
             ],
-            "best_month": [
+            "best_months": [
                 "November",
                 "December",
                 "January"
@@ -289,32 +286,33 @@
             "religion": "Christianity",
             "surroundings": "Islands, Beaches",
             "description": "World-class surf destination with massive winter swells.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "oahu-north-shore"
         }
     },
     {
         "model": "surfzones.surfzone",
         "fields": {
-            "name": "Bali Uluwatu",
+            "name": "Bali Bukit Peninsula",
             "country": "04419c5c-aad3-4d58-9177-031723330966",
             "nearest_city": "Uluwatu",
             "nearest_airport": "Ngurah Rai International Airport",
             "airport_latitude": -8.7482,
             "airport_longitude": 115.1675,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
             ],
             "surf_hazards": [
-                "Reef"
+                "Reef",
+                "Heavy waves",
+                "Big waves"
             ],
-            "best_month": [
+            "best_months": [
                 "July",
                 "August",
                 "September"
@@ -326,10 +324,8 @@
             "religion": "Hinduism",
             "surroundings": "Cliffs, Beaches",
             "description": "One of the best surf spots in Bali, known for its iconic left-hand reef break.",
-            "lefts": true,
-            "rights": false,
-            "lefts_and_rights": false,
-            "slug": "bali-uluwatu"
+            "main_wave_direction": "Left",
+            "slug": "bali-bukit-peninsula"
         }
     },
     {
@@ -341,9 +337,10 @@
             "nearest_airport": "Donegal Airport",
             "airport_latitude": 55.0442,
             "airport_longitude": -8.3405,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "Moderate",
             "health_hazards": [
                 "None"
@@ -351,7 +348,7 @@
             "surf_hazards": [
                 "Cold water"
             ],
-            "best_month": [
+            "best_months": [
                 "September",
                 "October",
                 "November"
@@ -363,9 +360,7 @@
             "religion": "Christianity",
             "surroundings": "Coastal, Cliffs",
             "description": "A popular cold-water surf destination in Ireland.",
-            "lefts": true,
-            "rights": false,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Left",
             "slug": "bundoran"
         }
     },
@@ -378,9 +373,10 @@
             "nearest_airport": "Narita International Airport",
             "airport_latitude": 35.7647,
             "airport_longitude": 140.3866,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -388,7 +384,7 @@
             "surf_hazards": [
                 "Rips"
             ],
-            "best_month": [
+            "best_months": [
                 "July",
                 "August",
                 "September"
@@ -400,9 +396,7 @@
             "religion": "Shinto, Buddhism",
             "surroundings": "Urban, Beaches",
             "description": "A well-known surf spot near Tokyo with consistent waves.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "shonan-kamakura"
         }
     },
@@ -415,9 +409,10 @@
             "nearest_airport": "Velana International Airport",
             "airport_latitude": 4.1918,
             "airport_longitude": 73.5294,
-            "solo": false,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -425,7 +420,7 @@
             "surf_hazards": [
                 "Reef"
             ],
-            "best_month": [
+            "best_months": [
                 "May",
                 "June",
                 "July"
@@ -437,9 +432,7 @@
             "religion": "Islam",
             "surroundings": "Islands, Reefs",
             "description": "A stunning tropical surf destination with pristine waves.",
-            "lefts": true,
-            "rights": false,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Left",
             "slug": "north-male-atolls"
         }
     },
@@ -452,9 +445,10 @@
             "nearest_airport": "Puerto Escondido International Airport",
             "airport_latitude": 15.876,
             "airport_longitude": -97.089,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "Moderate",
             "health_hazards": [
                 "None"
@@ -462,7 +456,7 @@
             "surf_hazards": [
                 "Strong currents"
             ],
-            "best_month": [
+            "best_months": [
                 "July",
                 "August",
                 "September"
@@ -474,9 +468,7 @@
             "religion": "Christianity",
             "surroundings": "Beaches, Town",
             "description": "Known for its powerful beach breaks and scenic beauty.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "puerto-escondido"
         }
     },
@@ -489,9 +481,11 @@
             "nearest_airport": "Agadir Al Massira Airport",
             "airport_latitude": 30.325,
             "airport_longitude": -9.413,
-            "solo": true,
-            "couple": true,
-            "family": true,
+            "traveler_type": [
+                "Solo",
+                "Couple",
+                "Family"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -499,7 +493,7 @@
             "surf_hazards": [
                 "Rocks"
             ],
-            "best_month": [
+            "best_months": [
                 "December",
                 "January",
                 "February"
@@ -511,9 +505,7 @@
             "religion": "Islam",
             "surroundings": "Beaches, Villages",
             "description": "A charming surf village in Morocco, known for its consistent right-hand point breaks.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "taghazout"
         }
     },
@@ -526,9 +518,10 @@
             "nearest_airport": "Hamilton Airport",
             "airport_latitude": -37.8667,
             "airport_longitude": 175.3321,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -536,7 +529,7 @@
             "surf_hazards": [
                 "Rocks"
             ],
-            "best_month": [
+            "best_months": [
                 "March",
                 "April",
                 "May"
@@ -548,9 +541,7 @@
             "religion": "Christianity",
             "surroundings": "Beaches, Town",
             "description": "A famous surf destination in New Zealand with long left-hand point breaks.",
-            "lefts": true,
-            "rights": false,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Left",
             "slug": "raglan"
         }
     },
@@ -563,9 +554,10 @@
             "nearest_airport": "Augusto C. Sandino International Airport",
             "airport_latitude": 12.1415,
             "airport_longitude": -86.1682,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "Moderate",
             "health_hazards": [
                 "None"
@@ -574,7 +566,7 @@
                 "Rocks",
                 "Rips"
             ],
-            "best_month": [
+            "best_months": [
                 "April",
                 "May",
                 "June"
@@ -586,24 +578,23 @@
             "religion": "Christianity",
             "surroundings": "Beaches, Rural",
             "description": "A quiet surf destination in Nicaragua, offering consistent surf and relaxed vibes.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "popoyo"
         }
     },
     {
         "model": "surfzones.surfzone",
         "fields": {
-            "name": "Nazar\u00e9",
+            "name": "Nazare",
             "country": "838e678d-73ec-4637-8a6e-aa566fff3138",
-            "nearest_city": "Nazar\u00e9",
+            "nearest_city": "Nazare",
             "nearest_airport": "Lisbon Airport",
             "airport_latitude": 38.7742,
             "airport_longitude": -9.1342,
-            "solo": false,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "Moderate",
             "health_hazards": [
                 "None"
@@ -611,7 +602,7 @@
             "surf_hazards": [
                 "Big waves"
             ],
-            "best_month": [
+            "best_months": [
                 "November",
                 "December",
                 "January"
@@ -623,9 +614,7 @@
             "religion": "Christianity",
             "surroundings": "Beaches, Cliffs",
             "description": "Famous for its record-breaking big waves, attracting the world's best surfers.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "nazare"
         }
     },
@@ -638,9 +627,10 @@
             "nearest_airport": "Port Elizabeth International Airport",
             "airport_latitude": -33.9849,
             "airport_longitude": 25.6173,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -648,7 +638,7 @@
             "surf_hazards": [
                 "Sharks"
             ],
-            "best_month": [
+            "best_months": [
                 "June",
                 "July",
                 "August"
@@ -660,24 +650,24 @@
             "religion": "Christianity",
             "surroundings": "Beaches, Town",
             "description": "One of the world's most famous right-hand point breaks, offering long and perfect waves.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Right",
             "slug": "jeffreys-bay"
         }
     },
     {
         "model": "surfzones.surfzone",
         "fields": {
-            "name": "Basque Country",
+            "name": "Basque Country_Biarritz",
             "country": "2d1bc156-48c1-43fd-aa3c-abca6628bc6f",
             "nearest_city": "Biarritz",
             "nearest_airport": "Biarritz Airport",
             "airport_latitude": 43.4684,
             "airport_longitude": -1.5232,
-            "solo": true,
-            "couple": true,
-            "family": true,
+            "traveler_type": [
+                "Solo",
+                "Couple",
+                "Family"
+            ],
             "safety": "High",
             "health_hazards": [
                 "None"
@@ -685,7 +675,7 @@
             "surf_hazards": [
                 "Strong currents"
             ],
-            "best_month": [
+            "best_months": [
                 "September",
                 "October",
                 "November"
@@ -697,9 +687,7 @@
             "religion": "Christianity",
             "surroundings": "Beaches, Forests",
             "description": "A historic surf region in Europe with a variety of breaks and stunning scenery.",
-            "lefts": false,
-            "rights": true,
-            "lefts_and_rights": false,
+            "main_wave_direction": "Left_and_right",
             "slug": "basque-country"
         }
     },
@@ -712,9 +700,10 @@
             "nearest_airport": "Minangkabau International Airport",
             "airport_latitude": -0.7883,
             "airport_longitude": 100.2807,
-            "solo": true,
-            "couple": true,
-            "family": false,
+            "traveler_type": [
+                "Solo",
+                "Couple"
+            ],
             "safety": "High",
             "health_hazards": [
                 "Malaria"
@@ -722,7 +711,7 @@
             "surf_hazards": [
                 "Reef"
             ],
-            "best_month": [
+            "best_months": [
                 "May",
                 "June",
                 "July"
@@ -734,9 +723,7 @@
             "religion": "Islam",
             "surroundings": "Islands, Reefs",
             "description": "A tropical paradise offering world-class waves on remote islands.",
-            "lefts": true,
-            "rights": true,
-            "lefts_and_rights": true,
+            "main_wave_direction": "Left_and_right",
             "slug": "mentawai"
         }
     }

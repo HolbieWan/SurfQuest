@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
-from .choices import CONFORT_CHOICES, COST_CHOICES, SURF_WIND_DIRECTION_CHOICES, SURF_LEVEL_CHOICES, BEST_TIDE_CHOICES
+from .choices import CONFORT_CHOICES, COST_CHOICES, SURF_WIND_DIRECTION_CHOICES, SURF_LEVEL_CHOICES, BEST_TIDE_CHOICES, TRAVELER_TYPE_CHOICES, WAVE_DIRECTION_CHOICES, SAFETY_CHOICES, BEST_MONTHS_CHOICES
 from django.contrib.postgres.fields import ArrayField
 from users.models import User
 
@@ -63,13 +63,15 @@ class SurfZone(models.Model):
     nearest_airport = models.CharField(max_length=50, blank=True)
     airport_latitude = models.FloatField(null=True, blank=True)
     airport_longitude = models.FloatField(null=True, blank=True)
-    solo = models.BooleanField(default=False)
-    couple = models.BooleanField(default=False)
-    family = models.BooleanField(default=False)
-    safety = models.CharField(max_length=100, blank=True)
-    health_hazards = ArrayField(models.CharField(max_length=100), blank=True, null=True)
-    surf_hazards = ArrayField(models.CharField(max_length=100), blank=True, null=True)
-    best_month = ArrayField(base_field=models.CharField(max_length=100), blank=True, null=True)
+    traveler_type = ArrayField(
+        base_field=models.CharField(max_length=20, choices=TRAVELER_TYPE_CHOICES.choices),
+        blank=True,
+        default=list
+    )
+    safety = models.CharField(max_length=100,choices=SAFETY_CHOICES.choices ,blank=True)
+    health_hazards = ArrayField(models.CharField(max_length=100), blank=True, default=list)
+    surf_hazards = ArrayField(models.CharField(max_length=100), blank=True, default=list)
+    best_months = ArrayField(base_field=models.CharField(max_length=100, choices=BEST_MONTHS_CHOICES.choices), blank=True, default=list)
     confort = models.CharField(max_length=20, choices=CONFORT_CHOICES.choices, blank=True)
     cost = models.CharField(max_length=10, choices=COST_CHOICES.choices, blank=True)
     language = models.CharField(max_length=100, blank=True)
@@ -77,9 +79,7 @@ class SurfZone(models.Model):
     religion = models.CharField(max_length=100, blank=True)
     surroundings = models.CharField(max_length=100, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    lefts = models.BooleanField(default=False)
-    rights = models.BooleanField(default=False)
-    lefts_and_rights = models.BooleanField(default=False)
+    main_wave_direction = models.CharField(max_length=20, choices=WAVE_DIRECTION_CHOICES.choices, blank=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
 
     def save(self, *args, **kwargs):
@@ -107,16 +107,14 @@ class SurfSpot(models.Model):
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
     break_type = models.CharField(max_length=20, blank=True)
-    left = models.BooleanField(default=False)
-    right = models.BooleanField(default=False)
-    left_and_right = models.BooleanField(default=False)
+    wave_direction = models.CharField(max_length=20, choices=WAVE_DIRECTION_CHOICES.choices, blank=True)
     best_wind_direction = models.CharField(max_length=5, choices=SURF_WIND_DIRECTION_CHOICES.choices, blank=True)
     best_swell_direction = models.CharField(max_length=5, choices=SURF_WIND_DIRECTION_CHOICES.choices, blank=True)
     best_swell_size = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(100.0)], blank=True, null=True)
-    best_tide = ArrayField(base_field=models.CharField(max_length=20, choices=BEST_TIDE_CHOICES.choices), blank=True, null=True)
-    surf_level = ArrayField(base_field=models.CharField(max_length=20, choices=SURF_LEVEL_CHOICES.choices), blank=True, null=True)
-    surf_hazards = ArrayField(base_field=models.CharField(max_length=100), blank=True, null=True)
-    best_months = ArrayField(base_field=models.CharField(max_length=100), blank=True, null=True)
+    best_tide = ArrayField(base_field=models.CharField(max_length=20, choices=BEST_TIDE_CHOICES.choices), blank=True, default=list)
+    surf_level = ArrayField(base_field=models.CharField(max_length=20, choices=SURF_LEVEL_CHOICES.choices), blank=True, default=list)
+    surf_hazards = ArrayField(base_field=models.CharField(max_length=100), blank=True, default=list)
+    best_months = ArrayField(base_field=models.CharField(max_length=100, choices=BEST_MONTHS_CHOICES.choices), blank=True, default=list)
     description = models.TextField(max_length=500, blank=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
 

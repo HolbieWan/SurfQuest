@@ -29,4 +29,5 @@ class ConditionAdmin(admin.ModelAdmin):
         'wind_direction',
         'wind_consistency',
     )
+    empty_value_display = 'unknown'
     
