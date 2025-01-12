@@ -2,34 +2,961 @@
     {
         "model": "surfzones.surfspot",
         "fields": {
+            "name": "Uluwatu",
+            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "latitude": -8.8185,
+            "longitude": 115.0875,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "SE",
+            "best_swell_direction": "SW",
+            "best_swell_size": 6.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Sharp Reef", "Strong Currents"],
+            "best_months": ["May", "June", "July", "August"],
+            "description": "Uluwatu is renowned for its consistent and powerful reef breaks, offering long, barreling left-hand waves suitable for advanced surfers.",
+            "slug": "uluwatu"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Padang Padang",
+            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "latitude": -8.8268,
+            "longitude": 115.1037,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "SE",
+            "best_swell_direction": "SW",
+            "best_swell_size": 5.5,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Sharp Reef", "Crowds"],
+            "best_months": ["June", "July", "August", "September"],
+            "description": "Often referred to as the 'Balinese Pipeline,' Padang Padang is famous for its hollow, fast left-hand barrels, ideal for experienced surfers.",
+            "slug": "padang-padang"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Bingin",
+            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "latitude": -8.8154,
+            "longitude": 115.0932,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "SE",
+            "best_swell_direction": "SW",
+            "best_swell_size": 4.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Sharp Reef", "Strong Currents"],
+            "best_months": ["May", "June", "July", "August"],
+            "description": "Bingin is a perfect left-hander known for its short but intense barrels, best at mid to high tide.",
+            "slug": "bingin"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Balangan",
+            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "latitude": -8.7882,
+            "longitude": 115.1038,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "SE",
+            "best_swell_direction": "SW",
+            "best_swell_size": 5.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Rocks", "Strong Currents"],
+            "best_months": ["May", "June", "July", "August"],
+            "description": "Balangan features long, mellow left-hand waves, making it suitable for intermediate to advanced surfers.",
+            "slug": "balangan"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "La Côte des Basques",
+            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "latitude": 43.4784,
+            "longitude": -1.5665,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 3.0,
+            "best_tide": ["Low", "Mid"],
+            "surf_level": ["Beginner", "Intermediate"],
+            "surf_hazards": ["Rocks", "Crowds"],
+            "best_months": ["July", "August", "September"],
+            "description": "La Côte des Basques is the birthplace of surfing in France, offering gentle waves ideal for beginners and longboarders. It’s a scenic spot with a relaxed atmosphere.",
+            "slug": "la-cote-des-basques"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Grand Plage",
+            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "latitude": 43.4848,
+            "longitude": -1.5569,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 4.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Beginner", "Intermediate", "Advanced"],
+            "surf_hazards": ["Rips", "Crowds"],
+            "best_months": ["June", "July", "August", "September"],
+            "description": "Grand Plage is a central beach break in Biarritz, providing consistent waves suitable for all levels, though it can get crowded during peak season.",
+            "slug": "grand-plage"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Guéthary",
+            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "latitude": 43.4207,
+            "longitude": -1.6098,
+            "break_type": "Reef Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "W-NW",
+            "best_swell_size": 6.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Rocks", "Strong Currents"],
+            "best_months": ["October", "November", "December"],
+            "description": "Guéthary is known for its powerful reef breaks and is a spot favored by experienced surfers seeking bigger waves. It offers scenic views and strong swells.",
+            "slug": "guethary"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "The Peak",
+            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "latitude": 54.4802,
+            "longitude": -8.2784,
+            "break_type": "Reef Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 5.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Rocks", "Cold Water", "Strong Currents"],
+            "best_months": ["October", "November", "December"],
+            "description": "The Peak in Bundoran is Ireland's most famous wave, offering a world-class reef break with both left and right-handers. It is ideal for advanced surfers seeking powerful, hollow waves.",
+            "slug": "the-peak"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Tullan Strand",
+            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "latitude": 54.4870,
+            "longitude": -8.2753,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 3.5,
+            "best_tide": ["Low", "Mid"],
+            "surf_level": ["Beginner", "Intermediate"],
+            "surf_hazards": ["Rips", "Cold Water"],
+            "best_months": ["September", "October", "November"],
+            "description": "Tullan Strand is a long beach break that provides waves for all skill levels. It’s a popular spot among beginners and intermediates, with consistent swells throughout autumn.",
+            "slug": "tullan-strand"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Cloudbreak",
+            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "latitude": -17.8767,
+            "longitude": 177.1881,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 6.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Sharp Reef", "Strong Currents", "Shallow Sections"],
+            "best_months": ["May", "June", "July", "August"],
+            "description": "Cloudbreak is one of the most iconic and challenging surf spots in the world, offering long, fast, and powerful left-hand reef breaks. It’s known for its hollow waves and is best suited for experienced surfers.",
+            "slug": "cloudbreak"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Restaurant",
+            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "latitude": -17.8834,
+            "longitude": 177.1898,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 4.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Sharp Reef", "Shallow Sections"],
+            "best_months": ["May", "June", "July", "August"],
+            "description": "Restaurant is a high-performance left-hand reef break located near Cloudbreak. It offers fast, hollow waves over a shallow reef, making it ideal for intermediate to advanced surfers. Works best on a mid to high tide.",
+            "slug": "restaurant"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "La Bocana",
+            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "latitude": 13.4905,
+            "longitude": -89.3779,
+            "break_type": "River Mouth Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "NE",
+            "best_swell_direction": "S",
+            "best_swell_size": 5.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Strong Currents", "Rocks"],
+            "best_months": ["March", "April", "May", "June"],
+            "description": "La Bocana is a powerful left-hand river mouth break with fast and hollow waves. Due to its strong currents and rocky bottom, it’s recommended for advanced and professional surfers.",
+            "slug": "la-bocana"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Sunzal",
+            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "latitude": 13.4878,
+            "longitude": -89.3812,
+            "break_type": "Point Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "NE",
+            "best_swell_direction": "S",
+            "best_swell_size": 3.5,
+            "best_tide": ["Low", "Mid"],
+            "surf_level": ["Beginner", "Intermediate"],
+            "surf_hazards": ["Rips"],
+            "best_months": ["April", "May", "June", "July"],
+            "description": "Sunzal is a long right-hand point break with gentle, rolling waves, making it an excellent spot for beginners and intermediates. It works best on a low to mid tide with a southerly swell.",
+            "slug": "sunzal"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Praia Mole",
+            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "latitude": -27.5969,
+            "longitude": -48.4538,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "W",
+            "best_swell_direction": "E-SE",
+            "best_swell_size": 4.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Strong Currents"],
+            "best_months": ["April", "May", "June", "July"],
+            "description": "Praia Mole is a popular beach break in Florianópolis, offering consistent and powerful waves. It attracts both intermediate and advanced surfers, especially during the autumn and winter months.",
+            "slug": "praia-mole"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Joaquina Beach",
+            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "latitude": -27.6096,
+            "longitude": -48.4364,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "W",
+            "best_swell_direction": "E-SE",
+            "best_swell_size": 3.5,
+            "best_tide": ["Low", "Mid"],
+            "surf_level": ["Beginner", "Intermediate", "Advanced"],
+            "surf_hazards": ["Rips"],
+            "best_months": ["March", "April", "May", "June"],
+            "description": "Joaquina Beach is famous for its strong waves and frequent surf competitions. It offers multiple peaks and consistent surf, making it suitable for various skill levels.",
+            "slug": "joaquina-beach"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
             "name": "Snapper Rocks",
-            "surfzone": "889db3bf-5dc7-4ac2-97b5-c340a2222de2",
+            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
             "latitude": -28.0816,
-            "longitude": 153.555,
+            "longitude": 153.556,
             "break_type": "Point Break",
             "wave_direction": "Right",
             "best_wind_direction": "W",
             "best_swell_direction": "E-SE",
             "best_swell_size": 4.0,
-            "best_tide": [
-                "Low",
-                "Mid"
-            ],
-            "surf_level": [
-                "Intermediate",
-                "Pro"
-            ],
-            "surf_hazards": [
-                "Rocks",
-                "Rips"
-            ],
-            "best_months": [
-                "April",
-                "May",
-                "June"
-            ],
-            "description": "Snapper Rocks is a world famous point break located on the southern end of the Gold Coast. It is a high performance wave that can produce long rides and fast barrels. The wave is best surfed on a medium to large swell and a light to moderate westerly wind. The best time to surf Snapper Rocks is on a low tide. The wave is best suited to intermediate to expert surfers.",
+            "best_tide": ["Low", "Mid"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Rocks", "Crowds"],
+            "best_months": ["March", "April", "May"],
+            "description": "Snapper Rocks is part of the Superbank, renowned for producing long, hollow right-handers. It's a high-performance wave, making it a hotspot for advanced surfers.",
             "slug": "snapper-rocks"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Kirra",
+            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "latitude": -28.082,
+            "longitude": 153.566,
+            "break_type": "Point Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "W",
+            "best_swell_direction": "E-SE",
+            "best_swell_size": 6.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Rocks", "Rips"],
+            "best_months": ["April", "May", "June"],
+            "description": "Kirra is famous worldwide for its fast, barrelling right-hand waves. It’s considered one of the best point breaks globally, ideal for advanced and professional surfers.",
+            "slug": "kirra"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Burleigh Heads",
+            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "latitude": -28.101,
+            "longitude": 153.441,
+            "break_type": "Point Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "W-SW",
+            "best_swell_direction": "E-SE",
+            "best_swell_size": 5.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Rocks", "Crowds"],
+            "best_months": ["February", "March", "April"],
+            "description": "Burleigh Heads is a classic right-hand point break offering long, clean rides. It’s suitable for intermediate to advanced surfers and is a favorite spot for locals.",
+            "slug": "burleigh-heads"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "La Gravière",
+            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "latitude": 43.6738,
+            "longitude": -1.4385,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "W-NW",
+            "best_swell_size": 6.0,
+            "best_tide": ["Low", "Mid"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Strong Currents", "Closeouts"],
+            "best_months": ["September", "October", "November"],
+            "description": "La Gravière is famous for its heavy, hollow barrels that can rival world-class reef breaks. It's best suited for experienced surfers seeking challenging, powerful waves.",
+            "slug": "la-graviere"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Les Culs Nus",
+            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "latitude": 43.6780,
+            "longitude": -1.4412,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E-NE",
+            "best_swell_direction": "NW",
+            "best_swell_size": 4.5,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Beginner", "Intermediate", "Advanced"],
+            "surf_hazards": ["Rips", "Crowds"],
+            "best_months": ["August", "September", "October"],
+            "description": "Les Culs Nus offers consistent beach break waves suitable for surfers of all levels. It's a popular spot due to its reliability and accessibility.",
+            "slug": "les-culs-nus"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "La Nord",
+            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "latitude": 43.6689,
+            "longitude": -1.4394,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 8.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Strong Currents", "Closeouts", "Heavy Waves"],
+            "best_months": ["September", "October", "November"],
+            "description": "La Nord is renowned for its big wave potential, attracting pro surfers from around the world. It works best on large swells and offers powerful, heavy waves.",
+            "slug": "la-nord"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Supertubes",
+            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "latitude": -34.0537,
+            "longitude": 24.9212,
+            "break_type": "Point Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "W",
+            "best_swell_direction": "SE",
+            "best_swell_size": 6.0,
+            "best_tide": ["Mid", "Low"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Rocks", "Strong Currents"],
+            "best_months": ["May", "June", "July", "August"],
+            "description": "Supertubes at Jeffreys Bay is one of the world's most famous right-hand point breaks, offering long, fast, and flawless waves that can provide rides up to 300 meters. It is best suited for advanced surfers due to its speed and power.",
+            "slug": "supertubes"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Boneyards",
+            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "latitude": -34.0519,
+            "longitude": 24.9231,
+            "break_type": "Reef Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "W",
+            "best_swell_direction": "SE",
+            "best_swell_size": 5.5,
+            "best_tide": ["Mid", "Low"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Rocks", "Strong Currents"],
+            "best_months": ["May", "June", "July", "August"],
+            "description": "Boneyards is a powerful and fast reef break that connects into Supertubes. It offers challenging waves for experienced surfers seeking high-performance rides.",
+            "slug": "boneyards"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Macaronis",
+            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "latitude": -2.9674,
+            "longitude": 99.8974,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 4.5,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Rocks", "Reef"],
+            "best_months": ["March", "April", "May", "June"],
+            "description": "Often described as the most fun wave in the world, Macaronis is a perfect left-hand reef break known for its playful, consistent waves. Suitable for various skill levels, it offers long rides and consistent barrels.",
+            "slug": "macaronis"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Rifles",
+            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "latitude": -2.9453,
+            "longitude": 99.8613,
+            "break_type": "Reef Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 6.0,
+            "best_tide": ["Mid", "Low"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Rocks", "Strong Currents"],
+            "best_months": ["May", "June", "July", "August"],
+            "description": "Rifles is a long, fast right-hand reef break known for offering some of the longest and most thrilling rides in the Mentawais. It is best suited for advanced surfers.",
+            "slug": "rifles"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Lance’s Right",
+            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "latitude": -2.9238,
+            "longitude": 99.8837,
+            "break_type": "Reef Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 5.0,
+            "best_tide": ["Mid", "Low"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Reef", "Rocks"],
+            "best_months": ["April", "May", "June", "July"],
+            "description": "Lance’s Right is a world-class right-hand reef break offering long rides with barreling sections. It is ideal for intermediate and advanced surfers.",
+            "slug": "lances-right"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Kandui Lefts",
+            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "latitude": -2.9264,
+            "longitude": 99.8972,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 6.5,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Sharp Reef", "Strong Currents"],
+            "best_months": ["May", "June", "July", "August"],
+            "description": "Kandui Lefts is a challenging and fast left-hand reef break, offering long rides and powerful barrels. It’s recommended for advanced to pro surfers due to its demanding conditions.",
+            "slug": "kandui-lefts"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Nias",
+            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "latitude": 1.0245,
+            "longitude": 97.5296,
+            "break_type": "Reef Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "NE",
+            "best_swell_direction": "SW",
+            "best_swell_size": 6.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Rocks", "Reef"],
+            "best_months": ["June", "July", "August", "September"],
+            "description": "Nias is a legendary surf spot known for its long, powerful right-hand reef break. It provides consistent barrels and is one of the most famous waves in Indonesia.",
+            "slug": "nias"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Praia do Norte",
+            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "latitude": 39.6052,
+            "longitude": -9.0859,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 20.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Pro"],
+            "surf_hazards": ["Gigantic Waves", "Strong Currents", "Rocks"],
+            "best_months": ["October", "November", "December", "January", "February"],
+            "description": "Praia do Norte in Nazaré is renowned for its record-breaking giant waves, attracting the world's best big wave surfers. The unique underwater canyon amplifies the swell, creating massive, powerful waves that require extreme skill and courage to surf.",
+            "slug": "praia-do-norte"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Chickens",
+            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "latitude": 4.3101,
+            "longitude": 73.6002,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "W",
+            "best_swell_direction": "SE",
+            "best_swell_size": 4.5,
+            "best_tide": ["Low", "Mid"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Sharp Reef"],
+            "best_months": ["March", "April", "May", "June", "July", "August"],
+            "description": "Chickens is a fast, long left-hand reef break known for its multiple sections and fun waves. It's a popular surf spot in the Maldives, offering long rides and ideal conditions during the southwest monsoon season.",
+            "slug": "chickens"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Cokes",
+            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "latitude": 4.3170,
+            "longitude": 73.5907,
+            "break_type": "Reef Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "W",
+            "best_swell_direction": "SE",
+            "best_swell_size": 6.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Sharp Reef", "Strong Currents"],
+            "best_months": ["March", "April", "May", "June", "July", "August"],
+            "description": "Cokes, also known as Colas, is famous for its hollow right-hand barrels and powerful waves. It’s a world-class surf spot best suited for experienced surfers looking for thrilling rides.",
+            "slug": "cokes"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Pipeline",
+            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "latitude": 21.6646,
+            "longitude": -158.0516,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 8.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Pro"],
+            "surf_hazards": ["Sharp Reef", "Strong Currents", "Crowds"],
+            "best_months": ["November", "December", "January", "February"],
+            "description": "Pipeline is one of the most famous and dangerous waves in the world, offering powerful left-hand barrels that break over a shallow reef. This wave is best left to expert and professional surfers.",
+            "slug": "pipeline"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Sunset Beach",
+            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "latitude": 21.6761,
+            "longitude": -158.0416,
+            "break_type": "Reef Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 10.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Strong Currents", "Rocks"],
+            "best_months": ["November", "December", "January", "February"],
+            "description": "Sunset Beach is a challenging wave known for its size and power. It’s one of the most iconic surf spots on the North Shore, attracting advanced surfers from around the globe.",
+            "slug": "sunset-beach"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Waimea Bay",
+            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "latitude": 21.6411,
+            "longitude": -158.0651,
+            "break_type": "Point Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 15.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Pro"],
+            "surf_hazards": ["Strong Currents", "Big Waves", "Crowds"],
+            "best_months": ["November", "December", "January", "February"],
+            "description": "Waimea Bay is a legendary big wave spot on Oahu’s North Shore, breaking only during massive swells. It’s reserved for the most skilled big wave surfers.",
+            "slug": "waimea-bay"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Popoyo Main Break",
+            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "latitude": 11.5308,
+            "longitude": -86.1629,
+            "break_type": "Reef Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 4.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Beginner", "Intermediate", "Advanced"],
+            "surf_hazards": ["Rocks"],
+            "best_months": ["March", "April", "May", "June", "July"],
+            "description": "Popoyo Main Break is a consistent reef break offering both left and right-hand waves. It caters to various skill levels, making it one of the most popular surf spots in Nicaragua.",
+            "slug": "popoyo-main-break"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Outer Reef Popoyo",
+            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "latitude": 11.5308,
+            "longitude": -86.1650,
+            "break_type": "Reef Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 8.0,
+            "best_tide": ["High"],
+            "surf_level": ["Pro"],
+            "surf_hazards": ["Sharp Reef", "Strong Currents"],
+            "best_months": ["May", "June", "July", "August"],
+            "description": "Outer Reef Popoyo is a heavy, powerful wave breaking on larger swells. It is recommended for expert surfers seeking big wave thrills. This wave can produce long, hollow barrels when conditions align.",
+            "slug": "outer-reef-popoyo"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Zicatela Beach",
+            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "latitude": 15.8456,
+            "longitude": -97.0677,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "NE",
+            "best_swell_direction": "SW",
+            "best_swell_size": 6.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Advanced", "Pro"],
+            "surf_hazards": ["Strong Currents", "Heavy Shorebreak"],
+            "best_months": ["May", "June", "July", "August", "September"],
+            "description": "Zicatela Beach is one of the most famous and challenging beach breaks in the world. Known as the 'Mexican Pipeline,' it delivers powerful, hollow waves with heavy shorebreaks, making it a favorite for advanced and professional surfers.",
+            "slug": "zicatela-beach"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Punta de Lobos",
+            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "latitude": -34.4186,
+            "longitude": -72.0415,
+            "break_type": "Point Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 8.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Intermediate", "Advanced", "Pro"],
+            "surf_hazards": ["Rocks", "Strong Currents", "Cold Water"],
+            "best_months": ["April", "May", "June", "July", "August"],
+            "description": "Punta de Lobos is a world-class left-hand point break known for its long, powerful waves. It is one of the best big wave spots in South America and attracts advanced surfers from around the world.",
+            "slug": "punta-de-lobos"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Manu Bay",
+            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "latitude": -37.8194,
+            "longitude": 174.7813,
+            "break_type": "Point Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "SE",
+            "best_swell_direction": "SW",
+            "best_swell_size": 6.0,
+            "best_tide": ["Low", "Mid"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Rocks", "Crowds"],
+            "best_months": ["March", "April", "May", "June"],
+            "description": "Manu Bay is one of Raglan’s most famous surf spots, offering long, peeling left-hand waves that can provide rides up to 600 meters. Ideal for intermediate to advanced surfers.",
+            "slug": "manu-bay"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Whale Bay",
+            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "latitude": -37.8205,
+            "longitude": 174.7789,
+            "break_type": "Point Break",
+            "wave_direction": "Left",
+            "best_wind_direction": "SE",
+            "best_swell_direction": "SW",
+            "best_swell_size": 5.5,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Rocks", "Strong Currents"],
+            "best_months": ["April", "May", "June", "July"],
+            "description": "Whale Bay is another iconic surf spot in Raglan, known for its long left-hand point break waves and stunning coastal scenery. It works best on a mid to high tide.",
+            "slug": "whale-bay"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Shichirigahama Beach",
+            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "latitude": 35.3021,
+            "longitude": 139.5198,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "NW",
+            "best_swell_direction": "SE",
+            "best_swell_size": 3.0,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Beginner", "Intermediate"],
+            "surf_hazards": ["Crowds"],
+            "best_months": ["August", "September", "October"],
+            "description": "Shichirigahama Beach is a popular surf spot in Shonan Kamakura, offering consistent beach break waves suitable for beginners and intermediates. It's best during typhoon season.",
+            "slug": "shichirigahama-beach"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Kugenuma Beach",
+            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "latitude": 35.3318,
+            "longitude": 139.4705,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "N",
+            "best_swell_direction": "S",
+            "best_swell_size": 3.5,
+            "best_tide": ["Mid"],
+            "surf_level": ["Beginner", "Intermediate"],
+            "surf_hazards": ["Crowds"],
+            "best_months": ["July", "August", "September"],
+            "description": "Kugenuma Beach is known for its vibrant surfing community and consistent waves, making it ideal for beginners and intermediate surfers. It’s especially good during summer swells.",
+            "slug": "kugenuma-beach"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Anchor Point",
+            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "latitude": 30.5451,
+            "longitude": -9.7124,
+            "break_type": "Point Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 6.0,
+            "best_tide": ["Low", "Mid"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Rocks", "Strong Currents"],
+            "best_months": ["December", "January", "February"],
+            "description": "Anchor Point is one of Morocco's most iconic right-hand point breaks, known for its long, powerful rides and consistent swells during winter. Best surfed on a low to mid tide.",
+            "slug": "anchor-point"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Hash Point",
+            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "latitude": 30.5446,
+            "longitude": -9.7103,
+            "break_type": "Point Break",
+            "wave_direction": "Right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 4.0,
+            "best_tide": ["Mid"],
+            "surf_level": ["Beginner", "Intermediate"],
+            "surf_hazards": ["Rocks"],
+            "best_months": ["November", "December", "January"],
+            "description": "Hash Point is a mellow right-hand point break located in the heart of Taghazout. It's a great wave for beginners and intermediates when the swell is small.",
+            "slug": "hash-point"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Panorama Beach",
+            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "latitude": 30.5462,
+            "longitude": -9.7081,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "NW",
+            "best_swell_size": 3.0,
+            "best_tide": ["Low", "Mid"],
+            "surf_level": ["Beginner"],
+            "surf_hazards": ["Rips"],
+            "best_months": ["November", "December", "January"],
+            "description": "Panorama Beach offers fun beach break waves perfect for beginners. It's a great spot for learning to surf and has a relaxed atmosphere.",
+            "slug": "panorama-beach"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Playa Tamarindo",
+            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "latitude": 10.2997,
+            "longitude": -85.8411,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 3.5,
+            "best_tide": ["Mid", "High"],
+            "surf_level": ["Beginner", "Intermediate"],
+            "surf_hazards": ["Rips"],
+            "best_months": ["December", "January", "February", "March"],
+            "description": "Playa Tamarindo is one of Costa Rica's most popular surf spots, offering consistent beach break waves perfect for beginners and intermediates. The town has a lively atmosphere and plenty of amenities for travelers.",
+            "slug": "playa-tamarindo"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Playa Langosta",
+            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "latitude": 10.2875,
+            "longitude": -85.8526,
+            "break_type": "Beach Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 4.0,
+            "best_tide": ["Mid"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Rips", "Rocks"],
+            "best_months": ["December", "January", "February", "March"],
+            "description": "Playa Langosta is a quieter beach break just south of Tamarindo, offering more powerful and faster waves. It's ideal for intermediate and advanced surfers looking for less crowded conditions.",
+            "slug": "playa-langosta"
+        }
+    },
+    {
+        "model": "surfzones.surfspot",
+        "fields": {
+            "name": "Avellanas",
+            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "latitude": 10.2598,
+            "longitude": -85.8376,
+            "break_type": "Reef Break",
+            "wave_direction": "Left_and_right",
+            "best_wind_direction": "E",
+            "best_swell_direction": "SW",
+            "best_swell_size": 4.0,
+            "best_tide": ["Mid", "Low"],
+            "surf_level": ["Intermediate", "Advanced"],
+            "surf_hazards": ["Rocks"],
+            "best_months": ["December", "January", "February", "March"],
+            "description": "Avellanas offers a variety of reef and beach breaks with great waves for intermediate and advanced surfers. The beautiful setting and lack of crowds make it a favorite among locals.",
+            "slug": "avellanas"
         }
     }
 ]
