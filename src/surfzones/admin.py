@@ -12,6 +12,16 @@ class ContinentAdmin(admin.ModelAdmin):
     )
     empty_value_display = 'unknown'
 
+    list_editable = [
+        'name',
+        'code',
+        'slug'
+    ]
+
+    search_fields = [
+        'name',
+    ]
+
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
     list_display = (
@@ -22,6 +32,17 @@ class CountryAdmin(admin.ModelAdmin):
         'slug'
     )
     empty_value_display = 'unknown'
+
+    list_editable = [
+        'name',
+        'code',
+        'continent',
+        'slug'
+    ]
+
+    search_fields = [
+        'name',
+    ]
 
 @admin.register(SurfZone)
 class SurfZoneAdmin(admin.ModelAdmin):
@@ -70,6 +91,11 @@ class SurfZoneAdmin(admin.ModelAdmin):
         'main_wave_direction'
     ]
 
+    search_fields = [
+        'name',
+        'country__name',
+    ]
+
 
 @admin.register(SurfSpot)
 class SurfSpotAdmin(admin.ModelAdmin):
@@ -108,6 +134,11 @@ class SurfSpotAdmin(admin.ModelAdmin):
         'description'
     ]
 
+    search_fields = [
+        'name',
+        'surfzone__name',
+    ]
+
 
 @admin.register(SurfSpotImage)
 class SurfSpotImageAdmin(admin.ModelAdmin):
@@ -121,6 +152,14 @@ class SurfSpotImageAdmin(admin.ModelAdmin):
     )
     empty_value_display = 'unknown'
 
+    list_editable = [
+        'description',
+        'slug'
+    ]
+
+    search_fields = [
+        'surfspot__name',
+    ]
 
 @admin.register(SurfZoneImage)
 class SurfZoneImageAdmin(admin.ModelAdmin):
@@ -133,3 +172,12 @@ class SurfZoneImageAdmin(admin.ModelAdmin):
         'created_at'
     )
     empty_value_display = 'unknown'
+
+    list_editable = [
+        'description',
+        'slug'
+    ]
+
+    search_fields = [
+        'surfzone__name',
+    ]

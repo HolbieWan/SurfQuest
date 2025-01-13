@@ -56,3 +56,7 @@ class ConditionAdmin(admin.ModelAdmin):
         'wind_consistency',
     )
     
+    search_fields = [
+        'surfzone__name',
+        'month',
+    ]
