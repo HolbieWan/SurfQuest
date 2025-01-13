@@ -95,6 +95,10 @@ class SurfZoneAdmin(admin.ModelAdmin):
         'name',
         'country__name',
     ]
+    # autocomplete_fields = [
+    #     'name',
+    #     'country',
+    # ]
 
 
 @admin.register(SurfSpot)
@@ -139,6 +143,11 @@ class SurfSpotAdmin(admin.ModelAdmin):
         'surfzone__name',
     ]
 
+    # autocomplete_fields = [
+    #     'name',
+    #     'surfzone',
+    # ]
+
 
 @admin.register(SurfSpotImage)
 class SurfSpotImageAdmin(admin.ModelAdmin):
@@ -161,6 +170,10 @@ class SurfSpotImageAdmin(admin.ModelAdmin):
         'surfspot__name',
     ]
 
+    # autocomplete_fields = [
+    #     'surfspot',
+    # ]
+
 @admin.register(SurfZoneImage)
 class SurfZoneImageAdmin(admin.ModelAdmin):
     list_display = (
@@ -181,3 +194,7 @@ class SurfZoneImageAdmin(admin.ModelAdmin):
     search_fields = [
         'surfzone__name',
     ]
+
+    # autocomplete_fields = [
+    #     'surfzone',
+    # ]

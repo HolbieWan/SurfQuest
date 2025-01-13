@@ -60,3 +60,7 @@ class ConditionAdmin(admin.ModelAdmin):
         'surfzone__name',
         'month',
     ]
+
+    # autocomplete_fields = [
+    #     'surfzone',
+    # ]
