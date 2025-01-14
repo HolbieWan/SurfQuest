@@ -1,6 +1,7 @@
 import uuid
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.conf import settings
 
 
 class User(AbstractUser):
@@ -22,3 +23,17 @@ class User(AbstractUser):
     
     class Meta:
         ordering = ['username']
+
+
+class Review(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')
+    surf_zone = models.ForeignKey('surfzones.SurfZone', on_delete=models.CASCADE, related_name='reviews', null=True, blank=True)
+    surf_spot = models.ForeignKey('surfzones.SurfSpot', on_delete=models.CASCADE, related_name='reviews', null=True, blank=True)
+    rating = models.IntegerField(choices=[(i, str(i)) for i in range(1, 6)])
+    comment = models.TextField(max_length=2000, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Review by {self.user.username} - Rating: {self.rating}"
