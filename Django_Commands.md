@@ -13,4 +13,19 @@ python manage.py loaddata ".json"
 ```bash
 /opt/homebrew/bin/psql -U $(whoami) -d postgres # CREATE DATABASE
 /opt/homebrew/bin/psql # connect to postgresSQL DB
+
+# Create a new PostgreSQL database
+/opt/homebrew/bin/psql -U $(whoami) -d postgres -c "CREATE DATABASE db_name;"
+
+# Connect to PostgreSQL
+/opt/homebrew/bin/psql -U $(whoami) -d db_name
+
+# List all databases
+/opt/homebrew/bin/psql -U $(whoami) -d postgres -c "\l"
+
+# List all tables in the current database
+/opt/homebrew/bin/psql -U $(whoami) -d db_name -c "\dt"
+
+# Describe a table
+/opt/homebrew/bin/psql -U $(whoami) -d db_name -c "\d table_name"
 ```
