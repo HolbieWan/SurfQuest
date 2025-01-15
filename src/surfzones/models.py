@@ -134,7 +134,7 @@ class SurfZoneImage(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     surfzone = models.ForeignKey(SurfZone, on_delete=models.PROTECT, related_name='zone_images')
-    image = models.ImageField(upload_to='surfzones/')
+    image = models.ImageField(upload_to='surfzones/surf_zones_images')
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -155,7 +155,7 @@ class SurfSpotImage(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     surfspot = models.ForeignKey(SurfSpot, on_delete=models.PROTECT, related_name='spot_images')
-    image = models.ImageField(upload_to='surfspots/')
+    image = models.ImageField(upload_to='surfspots/surf_spots_images')
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -162,6 +162,7 @@ class SurfSpotImageAdmin(admin.ModelAdmin):
     empty_value_display = 'unknown'
 
     list_editable = [
+        'image',
         'description',
         'slug'
     ]
@@ -187,6 +188,7 @@ class SurfZoneImageAdmin(admin.ModelAdmin):
     empty_value_display = 'unknown'
 
     list_editable = [
+        'image',
         'description',
         'slug'
     ]
