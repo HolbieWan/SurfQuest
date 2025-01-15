@@ -4,6 +4,8 @@ from .serializers import UserSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from django.contrib.auth import authenticate
+from rest_framework.decorators import api_view
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -23,3 +25,14 @@ class ProtectedView(APIView):
 
     def get(self, request):
         return Response({"message": "This is a protected view"})
+
+
+@api_view(['POST'])
+def debug_login(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        return Response({"message": "Authenticated", "user": user.username})
+    else:
+        return Response({"message": "Authentication failed"}, status=400)
