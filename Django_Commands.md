@@ -28,4 +28,18 @@ python manage.py loaddata ".json"
 
 # Describe a table
 /opt/homebrew/bin/psql -U $(whoami) -d db_name -c "\d table_name"
+
+
+
+# -------------------------------------------------------------------------------------------------------------------
+# # in the docker container
+
+# To build and run containers: 
+docker-compose up -d --build
+
+# To run migrations
+docker-compose exec web python manage.py migrate
+
+# create superuser
+docker-compose exec web python manage.py createsuperuser
 ```

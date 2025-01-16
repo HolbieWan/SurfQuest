@@ -2,7 +2,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "January",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -33,7 +33,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "February",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -64,7 +64,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "March",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -95,7 +95,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "April",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -126,7 +126,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "May",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -157,7 +157,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "June",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -189,7 +189,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "July",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -220,7 +220,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "August",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -251,7 +251,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "September",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -282,7 +282,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "October",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -313,7 +313,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "November",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -344,7 +344,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "953b1d26-f57a-490e-9f56-796922b3d39b",
+            "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
             "month": "December",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -375,7 +375,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "January",
             "water_temp_c": 12,
             "water_temp_f": 54,
@@ -406,7 +406,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "February",
             "water_temp_c": 11,
             "water_temp_f": 52,
@@ -437,7 +437,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "March",
             "water_temp_c": 12,
             "water_temp_f": 54,
@@ -468,7 +468,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "April",
             "water_temp_c": 13,
             "water_temp_f": 55,
@@ -499,7 +499,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "May",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -530,7 +530,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "June",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -561,7 +561,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "July",
             "water_temp_c": 20,
             "water_temp_f": 68,
@@ -592,7 +592,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "August",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -623,7 +623,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "September",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -654,7 +654,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "October",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -685,7 +685,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "November",
             "water_temp_c": 14,
             "water_temp_f": 57,
@@ -716,7 +716,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4ffd225f-6255-41c4-97e2-bdc8bcc241f3",
+            "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
             "month": "December",
             "water_temp_c": 12,
             "water_temp_f": 54,
@@ -747,7 +747,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "January",
             "water_temp_c": 9,
             "water_temp_f": 48,
@@ -779,7 +779,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "February",
             "water_temp_c": 9,
             "water_temp_f": 48,
@@ -810,7 +810,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "March",
             "water_temp_c": 10,
             "water_temp_f": 50,
@@ -841,7 +841,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "April",
             "water_temp_c": 11,
             "water_temp_f": 52,
@@ -872,7 +872,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "May",
             "water_temp_c": 12,
             "water_temp_f": 54,
@@ -903,7 +903,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "June",
             "water_temp_c": 13,
             "water_temp_f": 55,
@@ -934,7 +934,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "July",
             "water_temp_c": 14,
             "water_temp_f": 57,
@@ -965,7 +965,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "August",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -996,7 +996,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "September",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -1027,7 +1027,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "October",
             "water_temp_c": 14,
             "water_temp_f": 57,
@@ -1058,7 +1058,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "November",
             "water_temp_c": 12,
             "water_temp_f": 54,
@@ -1089,7 +1089,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "87ab9408-55f6-4701-8eb2-51ce96a8a712",
+            "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
             "month": "December",
             "water_temp_c": 10,
             "water_temp_f": 50,
@@ -1121,7 +1121,7 @@
      {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "January",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -1152,7 +1152,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "February",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -1183,7 +1183,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "March",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1214,7 +1214,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "April",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1246,7 +1246,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "May",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -1278,7 +1278,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "June",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -1309,7 +1309,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "July",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -1340,7 +1340,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "August",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -1371,7 +1371,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "September",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -1402,7 +1402,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "October",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -1433,7 +1433,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "November",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1464,7 +1464,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "287869cb-8f64-41e1-8288-e3898dcff0d8",
+            "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
             "month": "December",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1495,7 +1495,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "January",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1526,7 +1526,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "February",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1557,7 +1557,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "March",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -1588,7 +1588,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "April",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -1619,7 +1619,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "May",
             "water_temp_c": 30,
             "water_temp_f": 86,
@@ -1650,7 +1650,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "June",
             "water_temp_c": 30,
             "water_temp_f": 86,
@@ -1681,7 +1681,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "July",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -1712,7 +1712,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "August",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1743,7 +1743,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "September",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1774,7 +1774,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "October",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1805,7 +1805,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "November",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1836,7 +1836,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "c47f2735-8c82-467f-8735-282b70a4dd25",
+            "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
             "month": "December",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -1867,7 +1867,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "January",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -1898,7 +1898,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "February",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -1929,7 +1929,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "March",
             "water_temp_c": 25,
             "water_temp_f": 77,
@@ -1960,7 +1960,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "April",
             "water_temp_c": 24,
             "water_temp_f": 75,
@@ -1991,7 +1991,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "May",
             "water_temp_c": 23,
             "water_temp_f": 73,
@@ -2022,7 +2022,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "June",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -2053,7 +2053,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "July",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -2084,7 +2084,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "August",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -2115,7 +2115,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "September",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -2146,7 +2146,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "October",
             "water_temp_c": 23,
             "water_temp_f": 73,
@@ -2177,7 +2177,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "November",
             "water_temp_c": 25,
             "water_temp_f": 77,
@@ -2208,7 +2208,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "84072382-389a-4533-9acc-ee99f7a6fc13",
+            "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
             "month": "December",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -2239,7 +2239,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "January",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -2270,7 +2270,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "February",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -2301,7 +2301,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "March",
             "water_temp_c": 25,
             "water_temp_f": 77,
@@ -2332,7 +2332,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "April",
             "water_temp_c": 24,
             "water_temp_f": 75,
@@ -2363,7 +2363,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "May",
             "water_temp_c": 23,
             "water_temp_f": 73,
@@ -2394,7 +2394,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "June",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -2425,7 +2425,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "July",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -2456,7 +2456,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "August",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -2487,7 +2487,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "September",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -2518,7 +2518,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "October",
             "water_temp_c": 23,
             "water_temp_f": 73,
@@ -2549,7 +2549,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "November",
             "water_temp_c": 24,
             "water_temp_f": 75,
@@ -2580,7 +2580,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "7c145471-194d-42cd-ae55-5484e096c98e",
+            "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
             "month": "December",
             "water_temp_c": 25,
             "water_temp_f": 77,
@@ -2611,7 +2611,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "January",
             "water_temp_c": 12,
             "water_temp_f": 54,
@@ -2643,7 +2643,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "February",
             "water_temp_c": 12,
             "water_temp_f": 54,
@@ -2674,7 +2674,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "March",
             "water_temp_c": 13,
             "water_temp_f": 55,
@@ -2705,7 +2705,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "April",
             "water_temp_c": 14,
             "water_temp_f": 57,
@@ -2736,7 +2736,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "May",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -2767,7 +2767,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "June",
             "water_temp_c": 17,
             "water_temp_f": 63,
@@ -2798,7 +2798,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "July",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -2829,7 +2829,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "August",
             "water_temp_c": 19,
             "water_temp_f": 66,
@@ -2860,7 +2860,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "September",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -2891,7 +2891,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "October",
             "water_temp_c": 16,
             "water_temp_f": 61,
@@ -2922,7 +2922,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "November",
             "water_temp_c": 14,
             "water_temp_f": 57,
@@ -2953,7 +2953,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "d04809e1-2db3-43d3-8e56-16ab24215702",
+            "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
             "month": "December",
             "water_temp_c": 12,
             "water_temp_f": 54,
@@ -2985,7 +2985,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "January",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -3016,7 +3016,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "February",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -3047,7 +3047,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "March",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -3078,7 +3078,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "April",
             "water_temp_c": 20,
             "water_temp_f": 68,
@@ -3109,7 +3109,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "May",
             "water_temp_c": 19,
             "water_temp_f": 66,
@@ -3140,7 +3140,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "June",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -3172,7 +3172,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "July",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -3203,7 +3203,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "August",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -3234,7 +3234,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "September",
             "water_temp_c": 19,
             "water_temp_f": 66,
@@ -3265,7 +3265,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "October",
             "water_temp_c": 20,
             "water_temp_f": 68,
@@ -3296,7 +3296,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "November",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -3327,7 +3327,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3c7e828-39b5-4ce9-8936-a728000e076f",
+            "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
             "month": "December",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -3358,7 +3358,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "January",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -3389,7 +3389,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "February",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -3420,7 +3420,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "March",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -3451,7 +3451,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "April",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -3482,7 +3482,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "May",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -3513,7 +3513,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "June",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -3544,7 +3544,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "July",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -3575,7 +3575,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "August",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -3606,7 +3606,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "September",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -3637,7 +3637,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "October",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -3668,7 +3668,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "November",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -3699,7 +3699,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "8e545b20-78b5-4a21-80ac-5732e05eb07a",
+            "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
             "month": "December",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -3730,7 +3730,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "January",
             "water_temp_c": 14,
             "water_temp_f": 57,
@@ -3761,7 +3761,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "February",
             "water_temp_c": 13,
             "water_temp_f": 55,
@@ -3792,7 +3792,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "March",
             "water_temp_c": 14,
             "water_temp_f": 57,
@@ -3823,7 +3823,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "April",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -3854,7 +3854,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "May",
             "water_temp_c": 16,
             "water_temp_f": 61,
@@ -3885,7 +3885,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "June",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -3916,7 +3916,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "July",
             "water_temp_c": 19,
             "water_temp_f": 66,
@@ -3947,7 +3947,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "August",
             "water_temp_c": 20,
             "water_temp_f": 68,
@@ -3978,7 +3978,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "September",
             "water_temp_c": 19,
             "water_temp_f": 66,
@@ -4009,7 +4009,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "October",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -4040,7 +4040,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "November",
             "water_temp_c": 16,
             "water_temp_f": 61,
@@ -4071,7 +4071,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4942fd0e-9eb8-4ded-af82-c0a77c48e353",
+            "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
             "month": "December",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -4102,7 +4102,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "January",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4133,7 +4133,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "February",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4164,7 +4164,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "March",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -4195,7 +4195,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "April",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -4226,7 +4226,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "May",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -4257,7 +4257,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "June",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4288,7 +4288,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "July",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4319,7 +4319,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "August",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4350,7 +4350,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "September",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4381,7 +4381,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "October",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4412,7 +4412,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "November",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4443,7 +4443,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "eb9772be-4697-4f28-b016-f8d318d140e3",
+            "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
             "month": "December",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4474,7 +4474,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "January",
             "water_temp_c": 24,
             "water_temp_f": 75,
@@ -4505,7 +4505,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "February",
             "water_temp_c": 24,
             "water_temp_f": 75,
@@ -4536,7 +4536,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "March",
             "water_temp_c": 24,
             "water_temp_f": 75,
@@ -4567,7 +4567,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "April",
             "water_temp_c": 25,
             "water_temp_f": 77,
@@ -4598,7 +4598,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "May",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -4629,7 +4629,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "June",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -4660,7 +4660,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "July",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -4690,7 +4690,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "August",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -4720,7 +4720,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "September",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -4751,7 +4751,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "October",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -4782,7 +4782,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "November",
             "water_temp_c": 25,
             "water_temp_f": 77,
@@ -4813,7 +4813,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "55376309-e07b-49d5-a64b-4565e21790ec",
+            "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
             "month": "December",
             "water_temp_c": 24,
             "water_temp_f": 75,
@@ -4844,7 +4844,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "January",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -4875,7 +4875,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "February",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -4906,7 +4906,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "March",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -4937,7 +4937,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "April",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4968,7 +4968,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "May",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -4999,7 +4999,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "June",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -5030,7 +5030,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "July",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -5061,7 +5061,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "August",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -5092,7 +5092,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "September",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -5123,7 +5123,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "October",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -5154,7 +5154,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "November",
             "water_temp_c": 26,
             "water_temp_f": 79,
@@ -5185,7 +5185,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "e3b9423d-7938-4044-8019-43053d74f526",
+            "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
             "month": "December",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -5216,7 +5216,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "January",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -5247,7 +5247,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "February",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -5278,7 +5278,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "March",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -5309,7 +5309,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "April",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -5340,7 +5340,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "May",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -5371,7 +5371,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "June",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -5402,7 +5402,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "July",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -5433,7 +5433,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "August",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -5464,7 +5464,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "September",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -5495,7 +5495,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "October",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -5526,7 +5526,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "November",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -5557,7 +5557,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "4cd3fb7d-d19a-41ac-8050-03b8b98b6d36",
+            "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
             "month": "December",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -5588,7 +5588,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "January",
             "water_temp_c": 16,
             "water_temp_f": 61,
@@ -5620,7 +5620,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "February",
             "water_temp_c": 16,
             "water_temp_f": 61,
@@ -5652,7 +5652,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "March",
             "water_temp_c": 16,
             "water_temp_f": 61,
@@ -5684,7 +5684,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "April",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -5716,7 +5716,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "May",
             "water_temp_c": 14,
             "water_temp_f": 57,
@@ -5747,7 +5747,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "June",
             "water_temp_c": 13,
             "water_temp_f": 55,
@@ -5778,7 +5778,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "July",
             "water_temp_c": 12,
             "water_temp_f": 54,
@@ -5809,7 +5809,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "August",
             "water_temp_c": 12,
             "water_temp_f": 54,
@@ -5840,7 +5840,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "September",
             "water_temp_c": 13,
             "water_temp_f": 55,
@@ -5872,7 +5872,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "October",
             "water_temp_c": 14,
             "water_temp_f": 57,
@@ -5904,7 +5904,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "November",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -5935,7 +5935,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "58febfbe-b101-431a-924f-377698db04d2",
+            "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
             "month": "December",
             "water_temp_c": 16,
             "water_temp_f": 61,
@@ -5967,7 +5967,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "January",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -5998,7 +5998,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "February",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -6029,7 +6029,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "March",
             "water_temp_c": 20,
             "water_temp_f": 68,
@@ -6060,7 +6060,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "April",
             "water_temp_c": 19,
             "water_temp_f": 66,
@@ -6091,7 +6091,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "May",
             "water_temp_c": 17,
             "water_temp_f": 63,
@@ -6122,7 +6122,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "June",
             "water_temp_c": 16,
             "water_temp_f": 61,
@@ -6153,7 +6153,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "July",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -6184,7 +6184,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "August",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -6215,7 +6215,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "September",
             "water_temp_c": 16,
             "water_temp_f": 61,
@@ -6246,7 +6246,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "October",
             "water_temp_c": 17,
             "water_temp_f": 63,
@@ -6277,7 +6277,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "November",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -6308,7 +6308,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "6e9488b9-d47e-408e-8093-a6ad79b5d2b6",
+            "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
             "month": "December",
             "water_temp_c": 20,
             "water_temp_f": 68,
@@ -6339,7 +6339,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "January",
             "water_temp_c": 14,
             "water_temp_f": 57,
@@ -6370,7 +6370,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "February",
             "water_temp_c": 13,
             "water_temp_f": 55,
@@ -6401,7 +6401,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "March",
             "water_temp_c": 13,
             "water_temp_f": 55,
@@ -6432,7 +6432,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "April",
             "water_temp_c": 15,
             "water_temp_f": 59,
@@ -6462,7 +6462,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "May",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -6492,7 +6492,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "June",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -6523,7 +6523,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "July",
             "water_temp_c": 23,
             "water_temp_f": 73,
@@ -6554,7 +6554,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "August",
             "water_temp_c": 25,
             "water_temp_f": 77,
@@ -6585,7 +6585,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "September",
             "water_temp_c": 24,
             "water_temp_f": 75,
@@ -6616,7 +6616,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "October",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -6646,7 +6646,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "November",
             "water_temp_c": 19,
             "water_temp_f": 66,
@@ -6677,7 +6677,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "46841e0e-d8cc-44f2-be87-66f73691d684",
+            "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
             "month": "December",
             "water_temp_c": 16,
             "water_temp_f": 61,
@@ -6708,7 +6708,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "January",
             "water_temp_c": 17,
             "water_temp_f": 63,
@@ -6739,7 +6739,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "February",
             "water_temp_c": 17,
             "water_temp_f": 63,
@@ -6770,7 +6770,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "March",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -6801,7 +6801,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "April",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -6832,7 +6832,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "May",
             "water_temp_c": 19,
             "water_temp_f": 66,
@@ -6862,7 +6862,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "June",
             "water_temp_c": 20,
             "water_temp_f": 68,
@@ -6892,7 +6892,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "July",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -6923,7 +6923,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "August",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -6954,7 +6954,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "September",
             "water_temp_c": 22,
             "water_temp_f": 72,
@@ -6985,7 +6985,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "October",
             "water_temp_c": 21,
             "water_temp_f": 70,
@@ -7016,7 +7016,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "November",
             "water_temp_c": 19,
             "water_temp_f": 66,
@@ -7047,7 +7047,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "18975dcf-3c1f-48d1-a149-f918a7b65625",
+            "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
             "month": "December",
             "water_temp_c": 18,
             "water_temp_f": 64,
@@ -7078,7 +7078,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "January",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -7109,7 +7109,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "February",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -7140,7 +7140,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "March",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -7171,7 +7171,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "April",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -7202,7 +7202,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "May",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -7233,7 +7233,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "June",
             "water_temp_c": 29,
             "water_temp_f": 84,
@@ -7264,7 +7264,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "July",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -7295,7 +7295,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "August",
             "water_temp_c": 28,
             "water_temp_f": 82,
@@ -7326,7 +7326,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "September",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -7357,7 +7357,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "October",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -7388,7 +7388,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "November",
             "water_temp_c": 27,
             "water_temp_f": 81,
@@ -7419,7 +7419,7 @@
     {
         "model": "conditions.condition",
         "fields": {
-            "surfzone": "071c8251-d9bf-461c-bd86-e7cfe179a1fb",
+            "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
             "month": "December",
             "water_temp_c": 27,
             "water_temp_f": 81,

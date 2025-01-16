@@ -107,10 +107,10 @@ WSGI_APPLICATION = 'surfquest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mjx',
-        'USER': 'mjx',  # Your macOS username
-        'PASSWORD': '',  # No password is needed for your local user
-        'HOST': 'localhost',
+        'NAME': 'postgres_db', # The name of the database (mjx)
+        'USER': 'Admin44',  # Your macOS username (mjx)
+        'PASSWORD': 'Admin44',  # No password is needed for your local user
+        'HOST': 'db', # The name of the docker service (db)
         'PORT': '5432',
     }
 }
