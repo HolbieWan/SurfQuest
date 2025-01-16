@@ -1,5 +1,7 @@
 from .models import User
 from rest_framework import serializers
+from django.core.exceptions import ValidationError
+from django.contrib.auth.password_validation import validate_password
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -28,17 +30,24 @@ class UserSerializer(serializers.ModelSerializer):
             'password': {'write_only': True}  # Hide password from GET
         }
 
+    def validate(self, attrs):
+        """
+        This is an optional extra step if you want to validate the password
+        before you even call create().
+        """
+        password = attrs.get('password')
+        if password:
+            try:
+                validate_password(password)  # This applies the built-in validators
+            except ValidationError as e:
+                raise serializers.ValidationError({"password": e.messages})
+        return attrs
+
     def create(self, validated_data):
-        # remove password from validated_data
         password = validated_data.pop('password', None)
-
-        # create user with the remaining fields
         user = User(**validated_data)
-
-        # If password was provided, set it securely
-        if password is not None:
-            user.set_password(password)
-
+        if password:
+            user.set_password(password)  # This also handles hashing
         user.save()
         return user
     

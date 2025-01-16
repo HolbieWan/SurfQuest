@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
-from .choices import CONFORT_CHOICES, COST_CHOICES, SURF_WIND_DIRECTION_CHOICES, SURF_LEVEL_CHOICES, BEST_TIDE_CHOICES, TRAVELER_TYPE_CHOICES, WAVE_DIRECTION_CHOICES, SAFETY_CHOICES, MONTHS_CHOICES
+from .choices import CONFORT_CHOICES, COST_CHOICES, SURF_WIND_DIRECTION_CHOICES, SURF_LEVEL_CHOICES, BREAK_TYPE_CHOICES, BEST_TIDE_CHOICES, TRAVELER_TYPE_CHOICES, WAVE_DIRECTION_CHOICES, SAFETY_CHOICES, MONTHS_CHOICES
 from django.contrib.postgres.fields import ArrayField
 from users.models import User
 
@@ -97,7 +97,7 @@ class SurfSpot(models.Model):
     surfzone = models.ForeignKey(SurfZone, on_delete=models.PROTECT, related_name='surf_spots')
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
-    break_type = models.CharField(max_length=20, blank=True)
+    break_type = models.CharField(max_length=20, choices=BREAK_TYPE_CHOICES, blank=True)
     wave_direction = models.CharField(max_length=20, choices=WAVE_DIRECTION_CHOICES.choices, blank=True)
     best_wind_direction = models.CharField(max_length=5, choices=SURF_WIND_DIRECTION_CHOICES.choices, blank=True)
     best_swell_direction = models.CharField(max_length=5, choices=SURF_WIND_DIRECTION_CHOICES.choices, blank=True)

@@ -55,6 +55,13 @@ class WAVE_DIRECTION_CHOICES(models.TextChoices):
     RIGHT = 'Right', 'Right'
     LEFT_AND_RIGHT = 'Left_and_right', 'Left and Right'
 
+class BREAK_TYPE_CHOICES(models.TextChoices):
+    BEACH_BREAK = 'Beach break', 'Beach break' 
+    REEF_BREAK = 'Reef break', 'Reef break' 
+    POINT_BREAK = 'Point break', 'Point break'
+    RIVERMOUTH = 'River-mouth', 'River-mouth'
+    SLAB = 'Slab', 'Slab'
+
 class MONTHS_CHOICES(models.TextChoices):
     JANUARY = 'January', 'January'
     FEBRUARY = 'February', 'February'
