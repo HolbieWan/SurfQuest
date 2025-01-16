@@ -2,10 +2,12 @@ import uuid
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
+from django.utils.text import slugify
 
 
 class User(AbstractUser):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    email = models.EmailField(unique=True, null=True, blank=True)
     country = models.CharField(max_length=100, null=True, blank=True)
     state = models.CharField(max_length=100, null=True, blank=True)
     city = models.CharField(max_length=100, null=True, blank=True)
@@ -17,16 +19,22 @@ class User(AbstractUser):
     bio = models.TextField(max_length=500, blank=True)
     preferences = models.JSONField(null=True, blank=True)
     budget = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    slug = models.SlugField(max_length=150, blank=True, unique=True)
 
     def __str__(self):
         return self.username
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.username)
+        super().save(*args, **kwargs)
     
     class Meta:
         ordering = ['username']
 
 
 class Review(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')
     surf_zone = models.ForeignKey('surfzones.SurfZone', on_delete=models.CASCADE, related_name='reviews', null=True, blank=True)
     surf_spot = models.ForeignKey('surfzones.SurfSpot', on_delete=models.CASCADE, related_name='reviews', null=True, blank=True)
@@ -37,3 +45,8 @@ class Review(models.Model):
 
     def __str__(self):
         return f"Review by {self.user.username} - Rating: {self.rating}"
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.user.name)
+        super().save(*args, **kwargs)

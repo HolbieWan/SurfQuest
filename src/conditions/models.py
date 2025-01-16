@@ -11,7 +11,7 @@ from surfzones.choices import SURF_WIND_DIRECTION_CHOICES, MONTHS_CHOICES, SURF_
 # Create your models here.
 class Condition(models.Model):
     
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     surfzone = models.ForeignKey(SurfZone, on_delete=models.PROTECT, related_name='conditions')
     month = models.CharField(max_length=12, choices=MONTHS_CHOICES.choices)
     water_temp_c = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(30)], null=True, blank=True)
@@ -38,10 +38,7 @@ class Condition(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(f"{self.surfzone.name}-{self.month}")
-            self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
-            while Condition.objects.filter(slug=self.slug).exists():
-                self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
+            self.slug = slugify(self.surfzone.name + self.month)
         super().save(*args, **kwargs)
 
     def __str__(self):

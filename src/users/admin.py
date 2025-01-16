@@ -16,6 +16,9 @@ class UserAdmin(BaseUserAdmin):
         'state',
         'city',
         'zip_code',
+        'latitude',
+        'longitude',
+        'nearest_airport',
         'is_active',
         'is_staff',
         'is_superuser',
@@ -24,7 +27,8 @@ class UserAdmin(BaseUserAdmin):
         'avatar',
         'bio',
         'preferences',
-        'budget'
+        'budget',
+        'slug'
     )
 
     list_editable = (
@@ -36,11 +40,15 @@ class UserAdmin(BaseUserAdmin):
         'state',
         'city',
         'zip_code',
+        'latitude',
+        'longitude',
+        'nearest_airport',
         'is_active',
         'avatar',
         'bio',
         'preferences',
-        'budget'
+        'budget',
+        'slug'
     )
     empty_value_display = 'unknown'
 

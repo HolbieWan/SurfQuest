@@ -8,17 +8,14 @@ from users.models import User
 
 # Create your models here.
 class Continent(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=2, unique=True)  # ISO 3166-1 alpha-2 code
     slug = models.SlugField(max_length=150, unique=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(self.name)
-            self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
-            while Continent.objects.filter(slug=self.slug).exists():
-                self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -31,7 +28,7 @@ class Continent(models.Model):
 
 
 class Country(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=3, unique=True)  # ISO 3166-1 alpha-3 code
     continent = models.ForeignKey(Continent, on_delete=models.PROTECT)
@@ -39,10 +36,7 @@ class Country(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(self.name)
-            self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
-            while Country.objects.filter(slug=self.slug).exists():
-                self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -56,7 +50,7 @@ class Country(models.Model):
 
 class SurfZone(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=100)
     country = models.ForeignKey(Country, on_delete=models.PROTECT)
     nearest_city = models.CharField(max_length=50, blank=True)
@@ -84,10 +78,7 @@ class SurfZone(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(self.name)
-            self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
-            while SurfZone.objects.filter(slug=self.slug).exists():
-                self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -101,7 +92,7 @@ class SurfZone(models.Model):
 
 class SurfSpot(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=100)
     surfzone = models.ForeignKey(SurfZone, on_delete=models.PROTECT, related_name='surf_spots')
     latitude = models.FloatField(null=True, blank=True)
@@ -120,10 +111,7 @@ class SurfSpot(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(self.name)
-            self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
-            while SurfSpot.objects.filter(slug=self.slug).exists():
-                self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -132,7 +120,7 @@ class SurfSpot(models.Model):
 
 class SurfZoneImage(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     surfzone = models.ForeignKey(SurfZone, on_delete=models.PROTECT, related_name='zone_images')
     image = models.ImageField(upload_to='surfzones/surf_zones_images')
     description = models.TextField(blank=True)
@@ -141,10 +129,7 @@ class SurfZoneImage(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(self.description or self.surfzone.name)
-            self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
-            while SurfZoneImage.objects.filter(slug=self.slug).exists():
-                self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
+            self.slug = slugify(self.surfzone.name)
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -153,7 +138,7 @@ class SurfZoneImage(models.Model):
 
 class SurfSpotImage(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     surfspot = models.ForeignKey(SurfSpot, on_delete=models.PROTECT, related_name='spot_images')
     image = models.ImageField(upload_to='surfspots/surf_spots_images')
     description = models.TextField(blank=True)
@@ -162,10 +147,7 @@ class SurfSpotImage(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(self.description or self.surfspot.name)
-            self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
-            while SurfZone.objects.filter(slug=self.slug).exists():
-                self.slug = f"{base_slug}-{uuid.uuid4().hex[:8]}"
+            self.slug = slugify(self.surfspot.name)
         super().save(*args, **kwargs)
 
     def __str__(self):
