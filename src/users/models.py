@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
+from django.urls import reverse
 
 
 class User(AbstractUser):
@@ -31,6 +32,9 @@ class User(AbstractUser):
     
     class Meta:
         ordering = ['username']
+
+    def get_absolute_url(self):
+        return reverse("blog-post", kwargs={"slug": self.slug})
 
 
 class Review(models.Model):

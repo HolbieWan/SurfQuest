@@ -25,6 +25,7 @@ class Continent(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['name', 'code'], name='unique_continent_name_per_code')
         ]
+        ordering = ['name']
 
 
 class Country(models.Model):
@@ -46,6 +47,7 @@ class Country(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['name', 'continent'], name='unique_country_per_continent')
         ]
+        ordering = ['name']
 
 
 class SurfZone(models.Model):
@@ -83,11 +85,12 @@ class SurfZone(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=['name', 'country'], name='unique_surf_zone_for_country')
         ]
+        ordering = ['name']
 
 
 class SurfSpot(models.Model):
@@ -116,6 +119,9 @@ class SurfSpot(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        ordering = ['name']
 
 
 class SurfZoneImage(models.Model):
@@ -135,6 +141,8 @@ class SurfZoneImage(models.Model):
     def __str__(self):
         return f"Image for {self.surfzone.name}"
 
+    class Meta:
+        ordering = ['surfzone']
 
 class SurfSpotImage(models.Model):
 
@@ -152,3 +160,6 @@ class SurfSpotImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.surfspot.name}"
+    
+    class MEta:
+        oredering = ['surfspot']

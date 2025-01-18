@@ -48,3 +48,4 @@ class Condition(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['surfzone', 'month'], name='unique_conditions_surfzone_month')
         ]
+        ordering = ['surfzone', 'month']

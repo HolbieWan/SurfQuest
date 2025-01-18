@@ -35,7 +35,14 @@ python manage.py loaddata ".json"
 # # in the docker container
 
 # To build and run containers: 
+# run in background without logs
 docker-compose up -d --build
+# or
+# run in background with logs
+docker-compose up --build
+
+# to stop container
+docker-compose down
 
 # To run migrations
 docker-compose exec web python manage.py migrate
