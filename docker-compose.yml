@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./SurfQuest_Backend/src
+    container_name: django_app
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - DATABASE_NAME=postgres_db
+      - DATABASE_USER=Admin44
+      - DATABASE_PASSWORD=Admin44
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+    volumes:
+      - ./SurfQuest_Backend/src:/app
+      - ./SurfQuest_Backend/src/media:/app/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - surfquest-network
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: postgres_db
+      POSTGRES_USER: Admin44
+      POSTGRES_PASSWORD: Admin44
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - surfquest-network
+    
+  frontend:
+    build: 
+      context: ./SurfQuest_Frontend/surfquest_nextjs
+      dockerfile: Dockerfile
+    container_name: nextjs_app
+    command: npm run dev 
+    volumes:
+      - ./SurfQuest_Frontend/surfquest_nextjs/src:/app/src
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+      - db
+    networks:
+      - surfquest-network
+
+volumes:
+  pgdata:
+
+networks:
+  surfquest-network:
+    driver: bridge

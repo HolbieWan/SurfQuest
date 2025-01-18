@@ -8,7 +8,7 @@ python3 manage.py runserver
 python3 manage.py startapp "app_name"
 python3 manage.py createsuperuser
 python manage.py loaddata ".json" 
-#python manage.py loaddata surfzones/fixtures/surf-spots_data.json
+# python manage.py loaddata surfzones/fixtures/surf-spots_data.json
 ```
 ```bash
 /opt/homebrew/bin/psql -U $(whoami) -d postgres # CREATE DATABASE
@@ -48,5 +48,7 @@ docker-compose down
 docker-compose exec web python manage.py migrate
 
 # create superuser
-docker-compose exec web python manage.py createsuperuser
+docker-compose exec backend python manage.py createsuperuser
+
+docker-compose exec backend python manage.py migrate
 ```
