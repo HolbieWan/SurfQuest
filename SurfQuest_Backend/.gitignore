@@ -1,0 +1,55 @@
+# Ignore the virtual environment
+.SQvenv/
+.SQvenv/*
+
+# Python cache files
+*.pyc
+*.pyo
+__pycache__/
+__pycache__/*
+
+# Django-specific files
+db.sqlite3  # Ignore the SQLite database (if using SQLite for development)
+*.log       # Ignore log files
+*.pot       # Ignore translation template files
+local_settings.py  # Ignore local settings file (if used)
+
+# Media/Static files
+media/
+staticfiles/
+static/
+
+# Environment variables and secrets
+.env
+*.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store  # macOS Finder files
+Thumbs.db  # Windows Explorer files
+
+# Node.js files (if using Node for asset management)
+node_modules/
+npm-debug.log
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+
+# Docker-related files
+*.dockerfile
+*.env.docker
+docker-compose.override.yml
+
+# Ignore migrations (optional)
+# Uncomment if you want to ignore migration files during development
+#migrations/
+#migrations/*.py
+#migrations/*.pyc

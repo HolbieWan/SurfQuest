@@ -1,0 +1,9 @@
+{
+  "css.validate": false,
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.includeLanguages": {
+    "css": "css",
+    "scss": "css",
+    "postcss": "css"
+  }
+}
