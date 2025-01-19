@@ -8,13 +8,21 @@ export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // Add a loading state
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const environment = process.env.ENVIRONMENT;
+
+  console.log(`API URL: ${apiUrl}`);
+  console.log(`Environment: ${environment}`);
 
   // Function to handle form submission
   const atSubmission = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true while the request is in progress
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/token/', {
+      const response = await fetch(`${apiUrl}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -30,13 +38,15 @@ export default function LoginPage() {
       const data = await response.json();
       console.log('Login succesfull:', data);
 
-      localStorage.setItem('authToken:', data.token);
+      localStorage.setItem('authToken', data.token);
 
       window.location.href = '/';
 
     } catch (err) {
       console.error('An error occured:', err);
       setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false); // Reset loading state
     }
   }
   return (

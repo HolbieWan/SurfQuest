@@ -1,6 +1,6 @@
 // app/page.js
 
-import './globals.css'; // Global CSS MUST be imported her
+import './globals.css';
 import Navbar from "./components/Navbar";
 
 export const metadata = {
@@ -9,6 +9,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const environment = process.env.ENVIRONMENT;
+  console.log(`API URL: ${apiUrl}`);
+  console.log(`Environment: ${environment}`);
+
   return (
     <html lang="en">
       <body className="bg-black text-white">
