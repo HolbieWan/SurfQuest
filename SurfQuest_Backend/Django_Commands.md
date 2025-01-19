@@ -51,4 +51,11 @@ docker-compose exec web python manage.py migrate
 docker-compose exec backend python manage.py createsuperuser
 
 docker-compose exec backend python manage.py migrate
+
+# To populate the DB
+docker-compose exec backend python manage.py loaddata ./surfzones/fixtures/continents_data.json 
+docker-compose exec backend python manage.py loaddata ./surfzones/fixtures/countries_data.json
+docker-compose exec backend python manage.py loaddata ./surfzones/fixtures/surf-zones_data.json
+docker-compose exec backend python manage.py loaddata ./surfzones/fixtures/surf-spots_data.json
+docker-compose exec backend python manage.py loaddata ./conditions/fixtures/conditions_data.json
 ```
