@@ -99,6 +99,7 @@ export default function SignupPage() {
               required
             />
           </div>
+            {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
           <button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md">
