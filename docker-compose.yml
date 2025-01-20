@@ -13,7 +13,7 @@ services:
       - DATABASE_PORT=${DATABASE_PORT}
       - DEBUG=${DEBUG}
       - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS}
-      - ENVIRONMENT=docker 
+      - ENVIRONMENT=docker
     volumes:
       - ./SurfQuest_Backend/src:/app
       - ./SurfQuest_Backend/src/media:/app/media
@@ -54,7 +54,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_API_URL=http://backend:8000/api/token/
+      - NEXT_PUBLIC_USERS_API_URL=http://localhost:8000/api/users/
+      - NEXT_PUBLIC_TOKENS_API_URL=http://localhost:8000/api/token/
       - NODE_ENV=development
       - ENVIRONMENT=docker
     depends_on:

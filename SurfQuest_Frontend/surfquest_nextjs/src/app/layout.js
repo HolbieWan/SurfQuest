@@ -10,9 +10,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const environment = process.env.ENVIRONMENT;
-  console.log(`API URL: ${apiUrl}`);
+  // const apiUrl = process.env.NEXT_PUBLIC_T_API_URL;
+  const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
+  // console.log(`API URL: ${apiUrl}`);
   console.log(`Environment: ${environment}`);
 
   return (

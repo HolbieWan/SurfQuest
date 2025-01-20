@@ -85,13 +85,20 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOWED_ORIGINS = [
-    os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:3000"), # Next.js app
-    # "https://example.com",    (production frontend domain)
-
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://backend:8000",  
+    "http://frontend:3000"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://frontend:3000",
+    "http://backend:8000",
+]
 
 CORS_ALLOW_METHODS = [
     "GET",
