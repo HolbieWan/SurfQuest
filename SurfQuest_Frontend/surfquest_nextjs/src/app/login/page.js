@@ -55,7 +55,7 @@ export default function LoginPage() {
     }
   }
   return (
-    <div className="flex h-screen items-center justify-center bg-black text-white">
+    <div className="flex flex-col items-center justify-start pt-16 bg-black text-white">
       <div className="w-full max-w-sm p-8 bg-gray-800 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">Login to SurfQuest</h2>
         <form className="space-y-4" onSubmit={atSubmission}>
