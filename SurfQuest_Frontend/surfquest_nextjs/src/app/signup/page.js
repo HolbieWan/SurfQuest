@@ -58,15 +58,15 @@ export default function SignupPage() {
       }
 
       const { access, refresh } = await loginResponse.json();
-      console.log('Access token:', access);
-      console.log('Refresh token:', refresh);
+      console.log('access_token:', access);
+      console.log('refresh_token:', refresh);
 
       // Store the access token in the local storage
-      Cookies.set('Access_token', access, { expires: 1, secure: true, sameSite: 'Strict' });
+      Cookies.set('access_token', access, { expires: 1, secure: true, sameSite: 'Strict' });
       Cookies.set('refresh_token', refresh, { expires: 7, secure: true, sameSite: 'Strict' });
-      console.log('Access token stored in cookies')
-      console.log('Access token:', Cookies.get('accessToken'));
-      console.log('Refresh token:', Cookies.get('refreshToken'));
+      console.log('access tokens stored in cookies')
+      console.log('access_token:', Cookies.get('access_Token'));
+      console.log('refresh_token:', Cookies.get('refresh_Token'));
 
       window.location.href = '/';
 

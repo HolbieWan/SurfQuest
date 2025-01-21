@@ -1,12 +1,27 @@
 "use client";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Link from "next/link";
+import Cookies from "js-cookie";
 import { usePathname } from "next/navigation";
 import Head from "next/head";
 
 export default function Navbar() {
   const pathname = usePathname();
   console.log('Current pathname:', pathname);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const accessToken = Cookies.get('access_token');
+    setIsLoggedIn(!!accessToken);
+  }, []);
+
+  const handleLogout = () => {
+    Cookies.remove('access_token');
+    Cookies.remove('refresh_token');
+    localStorage.removeItem('authToken');
+    window.location.href = '/login';
+  };
 
   return (
     <>
@@ -18,7 +33,7 @@ export default function Navbar() {
       <nav className="flex justify-between items-center bg-black text-white px-4 py-2 md:px-8 md::py-4">
         <h1 className="text-sm md:text-md lg:text-lg xl:text-xl font-bold">SurfQuest</h1>
         <div className="flex gap-1">
-          {["/spots", "/zones", "/search", "/login", "/signup"].map((path) => (
+          {["/spots", "/zones", "/search"].map((path) => (
             <Link href={path} key={path}>
               <div
                 className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
@@ -26,16 +41,31 @@ export default function Navbar() {
                     ? "bg-white text-black"
                     : "bg-black text-white hover:bg-white hover:text-black"
                 } w-14 sm:w-28`}
-                // style={{ width: "115px", textAlign: "center" }}
               >
                 {path === "/spots" && "Surf Spots"}
                 {path === "/zones" && "Surf Zones"}
                 {path === "/search" && "Search"}
-                {path === "/login" && "Log in"}
-                {path === "/signup" && "Sign Up"}
               </div>
             </Link>
           ))}
+           {isLoggedIn ? (
+            <button onClick={handleLogout} className="px-1 py-0 md:px-2 md:py-1 rounded-md text-center bg-black text-white hover:bg-white hover:text-black w-14 sm:w-28">
+              Log Out
+            </button>
+          ) : (
+            <>
+              <Link href="/login">
+                <div className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${pathname === "/login" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-black"} w-14 sm:w-28`}>
+                  Log In
+                </div>
+              </Link>
+              <Link href="/signup">
+                <div className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${pathname === "/signup" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-black"} w-14 sm:w-28`}>
+                  Sign Up
+                </div>
+              </Link>
+            </>
+          )}
         </div>
       </nav>
       <div className="relative w-full">
