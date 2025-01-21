@@ -55,7 +55,7 @@ services:
       - "3000:3000"
     environment:
       - NEXT_PUBLIC_USERS_API_URL=http://localhost:8000/api/users/
-      - NEXT_PUBLIC_TOKENS_API_URL=http://localhost:8000/api/token/
+      - NEXT_PUBLIC_TOKENS_API_URL=http://localhost:8000/api/login/
       - NODE_ENV=development
       - ENVIRONMENT=docker
     depends_on:

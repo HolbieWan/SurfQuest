@@ -2,11 +2,11 @@
 'use client';
 
 import { useState } from 'react';
+import Cookies from 'js-cookie';
 
 const usersApiUrl = process.env.NEXT_PUBLIC_USERS_API_URL;
 const tokensApiUrl = process.env.NEXT_PUBLIC_TOKENS_API_URL;
 const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
-// const apiUrl = 'http://backend:8000/api/token/';
 
 console.log('Users API URL:', usersApiUrl);
 console.log('Tokens API URL:', tokensApiUrl);
@@ -41,9 +41,19 @@ export default function LoginPage() {
         return;
       }
       const data = await response.json();
-      console.log('Login succesfull:', data);
+      console.log('Response data:', data);
 
+      // Extract the access and refresh tokens
+      const { access, refresh } = data;
+
+      // Store the access token in local storage
       localStorage.setItem('authToken', data.token);
+
+      // Store tokens in cookies in local storage
+      Cookies.set('access_token', access, { expires: 1, secure: true, sameSite: 'Strict' });
+      Cookies.set('refresh_token', refresh, { expires: 7, secure: true, sameSite: 'Strict' });
+      console.log(`${Cookies.get('access_token')}`);
+      console.log(`${Cookies.get('refresh_token')}`);
 
       window.location.href = '/';
 

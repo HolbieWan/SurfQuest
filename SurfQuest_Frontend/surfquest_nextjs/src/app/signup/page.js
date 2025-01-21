@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Cookies from 'js-cookie';
 
 const usersApiUrl = process.env.NEXT_PUBLIC_USERS_API_URL;
 const tokensApiUrl = process.env.NEXT_PUBLIC_TOKENS_API_URL;
@@ -43,8 +44,32 @@ export default function SignupPage() {
         setError(data.detail || JSON.stringify(data));
         return;
       }
+      // Automatically log in the user after successful signup
+      const loginResponse = await fetch(`${tokensApiUrl}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+      if (!loginResponse.ok) {
+        throw new Error('Failed to log in after registration');
+      }
 
-      window.location.href = '/login';
+      const { access, refresh } = await loginResponse.json();
+      console.log('Access token:', access);
+      console.log('Refresh token:', refresh);
+
+      // Store the access token in the local storage
+      Cookies.set('Access_token', access, { expires: 1, secure: true, sameSite: 'Strict' });
+      Cookies.set('refresh_token', refresh, { expires: 7, secure: true, sameSite: 'Strict' });
+      console.log('Access token stored in cookies')
+      console.log('Access token:', Cookies.get('accessToken'));
+      console.log('Refresh token:', Cookies.get('refreshToken'));
+
+      window.location.href = '/';
+
     } catch (err) {
       console.error('Error details:', err);
       setError(`Error: ${err.message}`);

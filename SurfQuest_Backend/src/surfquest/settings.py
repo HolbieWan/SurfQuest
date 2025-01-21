@@ -116,6 +116,12 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 
+# Handles the security of the cookies
+SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 ROOT_URLCONF = 'surfquest.urls'
 
 MEDIA_URL = '/media/'
