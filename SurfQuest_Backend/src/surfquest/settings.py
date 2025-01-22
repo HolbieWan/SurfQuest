@@ -8,6 +8,8 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
+
+For deployment see https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 """
 
 import os
@@ -18,14 +20,13 @@ from dotenv import load_dotenv
 # Load .env file
 load_dotenv()
 
+print(f"SECRET_KEY: {os.getenv('SECRET_KEY')}")
+print(f"DATABASE_NAME: {os.getenv('DATABASE_NAME')}")
+print(f"DEBUG: {os.getenv('DEBUG')}")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-!*gv8q!qk*-kh0qw6z((th=t3be!#oi(6!r@%&t*5wko+c_wnn'
 SECRET_KEY = os.getenv("SECRET_KEY", "default-secret-key")
 
@@ -34,9 +35,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -86,6 +85,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = False
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
@@ -94,6 +94,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "http://frontend:3000",
@@ -123,7 +124,6 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 ROOT_URLCONF = 'surfquest.urls'
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -154,7 +154,7 @@ if os.getenv('ENVIRONMENT') == 'docker':
             'NAME': os.getenv('DATABASE_NAME', 'default_db'),
             'USER': os.getenv('DATABASE_USER', 'default_user'),
             'PASSWORD': os.getenv('DATABASE_PASSWORD', 'default_password'),
-            'HOST': os.getenv('DATABASE_HOST', 'db'),  # Default to 'db'
+            'HOST': os.getenv('DATABASE_HOST', 'db'),
             'PORT': os.getenv('DATABASE_PORT', '5432'),
         }
     }
@@ -162,11 +162,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('LOCAL_DATABASE_NAME'),
-            'USER': os.getenv('LOCAL_DATABASE_USER'),
-            'PASSWORD': os.getenv('LOCAL_DATABASE_PASSWORD'),
-            'HOST': os.getenv('LOCAL_DATABASE_HOST'),
-            'PORT': os.getenv('LOCAL_DATABASE_PORT'),
+            'NAME': os.getenv('LOCAL_DATABASE_NAME', 'surfquest_psql_db'),
+            'USER': os.getenv('LOCAL_DATABASE_USER', 'Admin44'),
+            'PASSWORD': os.getenv('LOCAL_DATABASE_PASSWORD', 'Admin44'),
+            'HOST': os.getenv('LOCAL_DATABASE_HOST', 'localhost'),
+            'PORT': os.getenv('LOCAL_DATABASE_PORT', '5432'),
         }
     }
 

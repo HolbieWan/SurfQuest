@@ -1,19 +1,25 @@
 ```bash
-# attaching to a container
-docker exec -it django_app bash 
-
+# Local Database
+#--------------------------------------------------------------------------------------------------
 # starting psql db:
 brew services start postgresql
 # connecting to local DB
- psql -U "Admin44" -h 127.0.0.1 -d surfquest_psql_db
+psql -U "Admin44" -h 127.0.0.1 -d surfquest_psql_db
+# List db:
+brew services list
+# Check local env config
+printenv | grep LOCAL_DATABASE
 
- #checking docker env
- docker exec -it django_app env | grep ENVIRONMENT
+# -------------------------------------------------------------------------------------------------
+# attaching to a container
+docker exec -it django_app bash 
+#checking docker env
+docker exec -it django_app env | grep ENVIRONMENT
 
- # Django shell
- docker exec -it django_app python manage.py shell  
+# Django shell
+docker exec -it django_app python manage.py shell  
 # Docker DB shell
- docker exec -it django_app python manage.py dbshell
+docker exec -it django_app python manage.py dbshell
 
 # Force building with .env
 docker-compose --env-file .env build --no-cache
@@ -35,4 +41,9 @@ curl -X POST http://backend:8000/api/users/ \
 -H "Content-Type: application/json" \
 -H "Accept: application/json" \
 -d '{"username": "test2", "password": "testpassword", "email2": "test@example.com"}'
+
+# .env
+#------------------------------------------------------------------------------------------
+source .env
+
 ```
