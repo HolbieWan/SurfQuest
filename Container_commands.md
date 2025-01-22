@@ -2,6 +2,8 @@
 # attaching to a container
 docker exec -it django_app bash 
 
+# starting psql db:
+brew services start postgresql
 # connecting to local DB
  psql -U "Admin44" -h 127.0.0.1 -d surfquest_psql_db
 

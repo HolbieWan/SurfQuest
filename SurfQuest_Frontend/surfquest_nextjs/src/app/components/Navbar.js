@@ -31,7 +31,9 @@ export default function Navbar() {
         <link href="https://fonts.googleapis.com/css2?family=Grechen+Fuemen&family=Montez&family=Ms+Madi&family=Permanent+Marker&display=swap" rel="stylesheet"/>
       </Head>
       <nav className="flex justify-between items-center bg-black text-white px-4 py-2 md:px-8 md::py-4">
-        <h1 className="text-sm md:text-md lg:text-lg xl:text-xl font-bold">SurfQuest</h1>
+        <Link href="/" className="text-sm md:text-md lg:text-lg xl:text-xl font-bold hover:text-gray-300">
+          SurfQuest
+        </Link>
         <div className="flex gap-1">
           {["/spots", "/zones", "/search"].map((path) => (
             <Link href={path} key={path}>
@@ -76,8 +78,8 @@ export default function Navbar() {
           style={{ height: "300px" }} // Adjust the height as needed
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl grechen-fuemen-regular">SurfQuest</h1>
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl permanent-marker-regular">Plan your dream surftrip</p>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl grechen-fuemen-regular text-shadow-lg">SurfQuest</h1>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl permanent-marker-regular text-shadow-md">Plan your dream surftrip</p>
         </div>
       </div>
     </>
