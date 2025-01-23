@@ -10,7 +10,7 @@ const token = Cookies.get('access_token');
 console.log(testApiUrl);
 console.log(token);
 
-export default function TestApiroute() {
+export default function TestApiRoute() {
   // State to track error
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -40,8 +40,10 @@ export default function TestApiroute() {
       const data = await response.json();
       console.log('Response data: ', data);
       setResponseData(data)
+
     } catch (err) {
       setError('Request failed, please try again');
+      
     } finally {
       setLoading(false);
     }
