@@ -9,6 +9,7 @@ from rest_framework.decorators import api_view # type: ignore
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    """Viewset for User model"""
     queryset = User.objects.all()
     serializer_class = UserSerializer
     
@@ -21,18 +22,10 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class ProtectedView(APIView):
+    """View to test authentication"""
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
         return Response({"message": "This is a protected view"})
 
 
-@api_view(['POST'])
-def debug_login(request):
-    username = request.data.get('username')
-    password = request.data.get('password')
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        return Response({"message": "Authenticated", "user": user.username})
-    else:
-        return Response({"message": "Authentication failed"}, status=400)

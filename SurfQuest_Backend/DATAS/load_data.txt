@@ -1,2 +1,0 @@
-python manage.py loaddata initial_data.json
-python manage.py dumpdata auth.user --indent 2 > users.json
