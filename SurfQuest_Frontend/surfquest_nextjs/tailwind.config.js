@@ -31,6 +31,9 @@ module.exports = {
         '.text-shadow-lg': {
           textShadow: '4px 4px 8px rgba(0, 0, 0, 0.5)',
         },
+        '.text-shadow-xl': {
+          textShadow: '5px 5px 10px rgba(0, 0, 0, 0.8)',
+        },
       };
 
       addUtilities(newUtilities, ['responsive', 'hover']);
