@@ -1,0 +1,83 @@
+// // app/page.js
+// "use client";
+
+// import React, { useState, useEffect } from "react";
+// import SurfZones from "../components/SurfZones";
+
+// const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
+
+// export default function SurfZonesPage() {
+//   const [countries, setCountries] = useState([]);
+//   const [selectedCountry, setSelectedCountry] = useState('');
+//   const [surfZones, setSurfZones] = useState([]);
+//   const [error, setError] = useState('');
+//   const [loading, setLoading] = useState(false);
+
+//   useEffect(() => {
+//     // Fetch surf zones data
+//     const fetchDatas = async () => {
+//       setLoading(true);
+//       setError('');
+//       try {
+//         const SurfZonesResponse = await fetch(`${surfZonesApiUrl}`, {
+//           method: 'GET',
+//           headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${token}`,
+//           },
+//           mode: 'cors',
+//           credentials: 'include',
+//         });
+//         if (!SurfZonesResponse.ok) {
+//           const errorData = await SurfZonesResponse.json();
+//           setError(errorData.detail || 'Request failed, please try again');
+//           return;
+//         }
+//         const data = await SurfZonesResponse.json();
+//         console.log('Response data: ', data);
+//         setSurfZones(data);
+
+//         // Extract unique countries from surfZones
+//         const uniqueCountries = [...new Set(data.map(item => item.country.name))];
+//         setCountries(uniqueCountries);
+//       } catch (err) {
+//         setError(`Request failed: ${err.message}`);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchDatas();
+//   }, []);
+
+//   // Filter surf zones by country
+//   const filteredSurfZones = selectedCountry
+//     ? surfZones.filter(zone => zone.country.name === selectedCountry)
+//     : surfZones;
+
+//   return (
+//     <>
+//       <div className="flex flex-col items-center justify-start pt-20 h-screen">
+//         <h1 className="text-4xl font-bold">All best Surf Destinations</h1>
+//         <p className="text-lg mt-4">Select a country</p>
+//         <select
+//           className="mt-4 p-2 border border-gray-300 rounded"
+//           value={selectedCountry}
+//           onChange={(e) => setSelectedCountry(e.target.value)}
+//         >
+//           <option value="">All Countries</option>
+//           {countries.map((country, index) => (
+//             <option key={index} value={country}>
+//               {country}
+//             </option>
+//           ))}
+//         </select>
+//         <div className="flex flex-col items-center justify-start pt-16 bg-black text-white w-full">
+//           {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
+//           {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
+//           <SurfZones surfZones={filteredSurfZones} />
+//         </div>
+//       </div>
+//     </>
+//   );
+// }

@@ -60,6 +60,13 @@ export default function SurfZonesPage() {
   const filteredSurfZones = selectedCountry
     ? surfZones.filter(zone => zone.country.name === selectedCountry)
     : surfZones;
+  
+  // Determine the number of columns based on the number of items
+  const gridColsClass = filteredSurfZones.length === 1
+    ? 'grid-cols-1'
+    : filteredSurfZones.length === 2
+    ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2'
+    : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
   return (
     <div className="flex flex-col items-center justify-start pt-20 h-screen bg-black text-white">
@@ -80,9 +87,9 @@ export default function SurfZonesPage() {
       <div className="flex flex-col items-center justify-start pt-16 w-full">
         {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
         {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 gap-4 rounded-md">
+        <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md`}>
           {filteredSurfZones.map((surfzone, index) => (
-            <div key={index} className="bg-black rounded-md p-4 relative overflow-hidden group">
+            <div key={index} className="bg-black rounded-md p-4 relative overflow-hidden group flex items-center justify-center">
               {surfzone.zone_images && surfzone.zone_images.map((image, imgIndex) => (
                 <img key={imgIndex} src={image.image} alt={surfzone.name} className="inset-0 mt-4 w-full h-64 object-cover rounded-md transform transition-transform duration-500 group-hover:scale-110"/>
               ))}
