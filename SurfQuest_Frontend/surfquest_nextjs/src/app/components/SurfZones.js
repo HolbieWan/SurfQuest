@@ -62,9 +62,9 @@ export default function SurfZonesRoute() {
       {responseData && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 gap-4 rounded-md">
           {responseData.map((surfzone, index) => (
-              <div key={index} className="bg-black rounded-md p-4 relative overflow-hidden">
+              <div key={index} className="bg-black rounded-md p-4 relative overflow-hidden group">
                 {surfzone.zone_images && surfzone.zone_images.map((image, imgIndex) => (
-                <img key={imgIndex} src={image.image} alt={surfzone.name} className="inset-0 mt-4 w-full h-64 object-cover rounded-md"/>
+                <img key={imgIndex} src={image.image} alt={surfzone.name} className="inset-0 mt-4 w-full h-64 object-cover rounded-md transform transition-transform duration-500 group-hover:scale-110"/>
                 ))}
                 <div className="absolute inset-0 bg-black bg-opacity-10 flex flex-col justify-center p-4">
                   <h2 className="text-white text-xl font-bold text-center text-shadow-md" >{surfzone.name}</h2>
