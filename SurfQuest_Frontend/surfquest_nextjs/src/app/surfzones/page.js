@@ -56,23 +56,23 @@ export default function SurfZonesRoute() {
 
   return (
     <div className="flex flex-col items-center justify-start pt-16 bg-black text-white">
-      <div className="w-full max-w-sm p-8 bg-gray-800 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center">Surf Zones</h2>
-        {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
-        {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
-        {responseData && (
-          <div className="mt-4 p-4 bg-gray-700 rounded-lg">
-            <h3 className="text-green-500 text-lg">Response Data:</h3>
-            <ul>
-              {responseData.map((zone, index) => (
-                <li key={index} className="text-white">
-                  {zone.name} - {zone.location}
-                </li>
+      <h2 className="text-2xl font-bold mb-6 text-center">Surf Zones</h2>
+      {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
+      {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
+      {responseData && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 bg-gray-400 gap-4 rounded-md">
+          {responseData.map((surfzone, index) => (
+              <div key={index} className="bg-black rounded-md p-4">
+                <h2 className="text-white text-xl font-bold">{surfzone.name}</h2>
+                <div className="mt-2 text-sm text-gray-400">Country: {surfzone.country.name}</div>
+                <div className="mt-2 text-sm text-gray-400">Description: {surfzone.description}</div>
+                {surfzone.zone_images && surfzone.zone_images.map((image, imgIndex) => (
+                <img key={imgIndex} src={image.image} alt={surfzone.name} className="mt-4 w-full h-64 object-cover rounded-md"/>
               ))}
-            </ul>
-          </div>
-        )}
-      </div>
+              </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
