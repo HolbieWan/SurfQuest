@@ -17,6 +17,8 @@ services:
     volumes:
       - ./SurfQuest_Backend/src:/app
       - ./SurfQuest_Backend/src/media:/app/media
+    env_file:
+      - ./.env
     ports:
       - "8000:8000"
     depends_on:
@@ -66,6 +68,7 @@ services:
 
 volumes:
   pgdata:
+  media:
 
 networks:
   surfquest-network:

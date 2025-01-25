@@ -72,6 +72,7 @@ class SurfZoneAdmin(admin.ModelAdmin):
     empty_value_display = 'unknown'
 
     list_editable = [
+        'name',
         'nearest_city',
         'nearest_airport',
         'airport_latitude',
@@ -124,6 +125,7 @@ class SurfSpotAdmin(admin.ModelAdmin):
     empty_value_display = 'unknown'
 
     list_editable = [
+        'name',
         'latitude',
         'longitude',
         'break_type',

@@ -78,8 +78,8 @@ export default function Navbar() {
           style={{ height: "300px" }} // Adjust the height as needed
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl grechen-fuemen-regular text-shadow-xl">SurfQuest</h1>
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl permanent-marker-regular text-shadow-xl">Plan your dream surftrip</p>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl grechen-fuemen-regular text-shadow-2xl">SurfQuest</h1>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl permanent-marker-regular text-shadow-2xl">Plan your dream surftrip</p>
         </div>
       </div>
     </>

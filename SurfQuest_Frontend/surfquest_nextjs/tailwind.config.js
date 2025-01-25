@@ -34,6 +34,9 @@ module.exports = {
         '.text-shadow-xl': {
           textShadow: '5px 5px 10px rgba(0, 0, 0, 0.8)',
         },
+        '.text-shadow-2xl': {
+          textShadow: '6px 6px 12px rgba(0, 0, 0, 1)',
+        },
       };
 
       addUtilities(newUtilities, ['responsive', 'hover']);
