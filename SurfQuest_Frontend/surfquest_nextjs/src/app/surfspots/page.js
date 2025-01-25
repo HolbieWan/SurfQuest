@@ -9,7 +9,7 @@ const token = Cookies.get('access_token');
 console.log(surfSpotsApiUrl);
 console.log(token);
 
-export default function surfSpotsPage() {
+export default function SurfSpotsPage() {
   const [surfZones, setSurfZones] = useState([]);
   const [selectedSurfZone, setSelectedSurfZone] = useState('');
   const [surfSpots, setSurfSpots] = useState([]);
@@ -60,17 +60,10 @@ export default function surfSpotsPage() {
   const filteredSurfSpots = selectedSurfZone
     ? surfSpots.filter(spot => spot.surfzone.name === selectedSurfZone)
     : surfSpots;
-  
-  // Determine the number of columns based on the number of items
-  const gridColsClass = filteredSurfSpots.length === 1
-    ? 'grid-cols-1'
-    : filteredSurfSpots.length === 2
-    ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2'
-    : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
   return (
     <div className="flex flex-col items-center justify-start pt-20 h-screen bg-black text-white">
-      <h1 className="text-4xl font-bold">All the best surf spots per Surf-Zone</h1>
+      <h1 className="text-4xl font-bold">Surf spots</h1>
       <p className="text-lg mt-4">Select Surf-Zone</p>
       <select
         className="mt-4 p-2 border border-gray-300 rounded bg-white text-black"
@@ -87,15 +80,25 @@ export default function surfSpotsPage() {
       <div className="flex flex-col items-center justify-start pt-16 w-full">
         {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
         {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
-        <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md`}>
+        <div className="grid grid-cols-1 p-4 gap-8 rounded-md">
           {filteredSurfSpots.map((surfspot, index) => (
-            <div key={index} className="bg-black rounded-md p-4 relative overflow-hidden group flex items-center justify-center">
-              {surfspot.spot_images && surfspot.spot_images.map((image, imgIndex) => (
-                <img key={imgIndex} src={image.image} alt={surfspot.name} className="inset-0 mt-4 w-full h-64 object-cover rounded-md transform transition-transform duration-500 group-hover:scale-110"/>
-              ))}
-              <div className="absolute inset-0 bg-black bg-opacity-10 flex flex-col justify-center items-center p-4">
-                <h2 className="text-white text-xl font-bold text-center text-shadow-md">{surfspot.name}</h2>
-                <div className="mt-2 text-sm text-white text-center font-semibold text-shadow-lg">{surfspot.surfzone.name}</div>
+            <div key={index} className="flex flex-col md:flex-row items-start justify-center space-y-4 md:space-y-0 md:space-x-4">
+              <div className="bg-black rounded-md overflow-hidden group flex-shrink-0 w-full md:w-1/2 lg:w-1/3" style={{ height: '400px' }}>
+                {surfspot.spot_images && surfspot.spot_images.map((image, imgIndex) => (
+                  <img key={imgIndex} src={image.image} alt={surfspot.name} className="w-full h-full object-cover rounded-md transform transition-transform duration-500 group-hover:scale-110"/>
+                ))}
+              </div>
+              <div className="bg-black rounded-md p-4 flex flex-col justify-center border border-white overflow-hidden w-full md:w-1/2" style={{ height: '400px' }}>
+                <h2 className="text-white text-xl font-bold text-center md:text-left">{surfspot.name}</h2>
+                <div className="mt-2 text-sm text-white text-center md:text-left font-semibold">{surfspot.surfzone.name}</div>
+                <div className="mt-2 text-sm text-white text-center md:text-left">{surfspot.description}</div>
+                <div className="mt-2 text-sm text-white text-center md:text-left">Best months: {surfspot.best_months.join(', ')}</div>
+                <div className="mt-2 text-sm text-white text-center md:text-left">Best swell direction: {surfspot.best_swell_direction}</div>
+                <div className="mt-2 text-sm text-white text-center md:text-left">Best swell size: {surfspot.best_swell_size} ft</div>
+                <div className="mt-2 text-sm text-white text-center md:text-left">Best tide: {surfspot.best_tide.join(', ')}</div>
+                <div className="mt-2 text-sm text-white text-center md:text-left">Best wind direction: {surfspot.best_wind_direction}</div>
+                <div className="mt-2 text-sm text-white text-center md:text-left">Surf hazards: {surfspot.surf_hazards.join(', ')}</div>
+                <div className="mt-2 text-sm text-white text-center md:text-left">Surf level: {surfspot.surf_level.join(', ')}</div>
               </div>
             </div>
           ))}
