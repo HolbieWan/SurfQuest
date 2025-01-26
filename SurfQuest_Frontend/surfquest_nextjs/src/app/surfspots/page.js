@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import { useSearchParams } from 'next/navigation';
 
 const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';
 const token = Cookies.get('access_token');
@@ -15,6 +16,7 @@ export default function SurfSpotsPage() {
   const [surfSpots, setSurfSpots] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     // Fetch surf zones data
@@ -45,6 +47,12 @@ export default function SurfSpotsPage() {
         const uniqueSurfZones = [...new Set(data.map(item => item.surfzone.name))];
         setSurfZones(uniqueSurfZones);
 
+        // Set slected SurfZone from query parameter (link clicked from SurfZones page)
+        const surfzone = searchParams.get('surfzone');
+        if (surfzone) {
+          setSelectedSurfZone(surfzone);
+        }
+
       } catch (err) {
         setError(`Request failed: ${err.message}`);
 
@@ -54,7 +62,7 @@ export default function SurfSpotsPage() {
     };
 
     fetchData();
-  }, []);
+  }, [searchParams]);
 
   // Filter surf spot by surf zone
   const filteredSurfSpots = selectedSurfZone

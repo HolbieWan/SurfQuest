@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import Link from 'next/link';
 
 const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
 const token = Cookies.get('access_token');
@@ -90,6 +91,9 @@ export default function surfZonesPage() {
         <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md`}>
           {filteredSurfZones.map((surfzone, index) => (
             <div key={index} className="bg-black rounded-md p-4 relative overflow-hidden group flex items-center justify-center">
+              <Link href={`/surfspots?surfzone=${surfzone.name}`} legacyBehavior>
+                <a className="absolute inset-0 z-10"></a>
+              </Link>
               {surfzone.zone_images && surfzone.zone_images.map((image, imgIndex) => (
                 <img key={imgIndex} src={image.image} alt={surfzone.name} className="inset-0 mt-4 w-full h-64 object-cover rounded-md transform transition-transform duration-500 group-hover:scale-110"/>
               ))}
