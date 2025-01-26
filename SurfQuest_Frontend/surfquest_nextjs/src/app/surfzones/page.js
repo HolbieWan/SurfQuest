@@ -72,9 +72,9 @@ export default function surfZonesPage() {
   return (
     <div className="flex flex-col items-center justify-start pt-20 h-screen bg-black text-white">
       <h1 className="text-4xl font-bold">Surf Zones</h1>
-      <p className="text-lg mt-8">Select a country</p>
+      <p className="text-sm mt-8">Select a country</p>
       <select
-        className="mt-4 p-2 border border-gray-300 rounded bg-blue-400 text-black text-center"
+        className="mt-4 p-2 border border-black rounded bg-blue-500 text-white text-center"
         value={selectedCountry}
         onChange={(e) => setSelectedCountry(e.target.value)}
       >

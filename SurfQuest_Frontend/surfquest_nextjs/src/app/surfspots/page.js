@@ -81,7 +81,7 @@ export default function SurfSpotsPage() {
       <p className="text-sm mt-8">Select Surf-Zone</p>
 
       <select
-        className="mt-4 p-2 border border-gray-300 rounded bg-blue-400 text-black text-center"
+        className="mt-4 p-2 border border-black rounded bg-blue-500 text-white text-center"
         value={selectedSurfZone}
         onChange={(e) => setSelectedSurfZone(e.target.value)}
       >
@@ -103,27 +103,29 @@ export default function SurfSpotsPage() {
             {selectedSurfZone && (
               <>
                 {/* <h2 className="text-2xl font-bold mt-10 mb-8 text-left">{selectedSurfZone} infos</h2> */}
-                <div className="bg-white rounded-md p-4 flex flex-col justify-center border border-blue-500 overflow-hidden w-full md:w-1/2 lg:w-1/3" style={{ height: '500px' }}>
-                  <h2 className="text-blue-500 text-2xl font-bold text-center mb-2 w-full">{surfSpot.surfzone.name}</h2>
-                  {surfSpot && (
-                    <>
-                      <div className="mt-2 text-md text-gray-700 text-center mb-2"><span className="">{surfSpot.surfzone.description}</span></div>
-                      <div className="mt-2 text-sm text-gray-800 text-center">Near city: <span className="text-black font-bold">{surfSpot.surfzone.nearest_city}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Near airport: <span className="text-black font-bold">{surfSpot.surfzone.nearest_airport}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Safety: <span className="text-black font-bold">{surfSpot.surfzone.safety}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Health hazards: <span className="text-black font-bold">{surfSpot.surfzone.health_hazards.join(', ')}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Surf hazards: <span className="text-black font-bold">{surfSpot.surfzone.surf_hazards.join(', ')}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Traveler type: <span className="text-black font-bold">{surfSpot.surfzone.traveler_type.join(', ')}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Best months: <span className="text-black font-bold">{surfSpot.surfzone.best_months.join(', ')}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Confort: <span className="text-black font-bold">{surfSpot.surfzone.confort}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Cost of living: <span className="text-black font-bold">{surfSpot.surfzone.cost}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">language: <span className="text-black font-bold">{surfSpot.surfzone.language}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Currency: <span className="text-black font-bold">{surfSpot.surfzone.currency}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Main religion: <span className="text-black font-bold">{surfSpot.surfzone.religion}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Surroundings: <span className="text-black font-bold">{surfSpot.surfzone.surroundings}</span></div>
-                      <div className="mt-2 text-sm text-gray-700 text-center">Main waves direction: <span className="text-black font-bold">{surfSpot.surfzone.main_wave_direction}</span></div>
-                    </>
-                  )}
+                <div className="bg-gray-800 rounded-xl p-10 flex flex-col justify-center borde overflow-hidden w-full md:w-1/2 lg:w-1/3" style={{ height: '700px' }}>
+                  <h2 className="text-white bg-blue-500 rounded-lg text-4xl font-bold text-center mb-6 w-full">{surfSpot.surfzone.name}</h2>
+                  <div className="bg-white rounded-xl p-10 flex flex-col justify-center border border-gray-200 overflow-hidden w-full" style={{ height: '550px'}}>
+                    {surfSpot && (
+                      <>
+                        <div className="mt-2 text-md text-gray-700 text-center mb-2"><span className="">{surfSpot.surfzone.description}</span></div>
+                        <div className="mt-2 text-sm text-gray-800 text-center">Near city: <span className="text-black font-bold">{surfSpot.surfzone.nearest_city}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Near airport: <span className="text-black font-bold">{surfSpot.surfzone.nearest_airport}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Safety: <span className="text-black font-bold">{surfSpot.surfzone.safety}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Health hazards: <span className="text-black font-bold">{surfSpot.surfzone.health_hazards.join(', ')}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Surf hazards: <span className="text-black font-bold">{surfSpot.surfzone.surf_hazards.join(', ')}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Traveler type: <span className="text-black font-bold">{surfSpot.surfzone.traveler_type.join(', ')}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Best months: <span className="text-black font-bold">{surfSpot.surfzone.best_months.join(', ')}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Confort: <span className="text-black font-bold">{surfSpot.surfzone.confort}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Cost of living: <span className="text-black font-bold">{surfSpot.surfzone.cost}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">language: <span className="text-black font-bold">{surfSpot.surfzone.language}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Currency: <span className="text-black font-bold">{surfSpot.surfzone.currency}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Main religion: <span className="text-black font-bold">{surfSpot.surfzone.religion}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Surroundings: <span className="text-black font-bold">{surfSpot.surfzone.surroundings}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center">Main waves direction: <span className="text-black font-bold">{surfSpot.surfzone.main_wave_direction}</span></div>
+                      </>
+                    )}
+                  </div>
                 </div>
               </>
             )}
