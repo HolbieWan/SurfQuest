@@ -74,7 +74,7 @@ export default function surfZonesPage() {
       <h1 className="text-4xl font-bold">Surf Zones</h1>
       <p className="text-lg mt-8">Select a country</p>
       <select
-        className="mt-4 p-2 border border-gray-300 rounded bg-white text-black"
+        className="mt-4 p-2 border border-gray-300 rounded bg-blue-400 text-black text-center"
         value={selectedCountry}
         onChange={(e) => setSelectedCountry(e.target.value)}
       >
