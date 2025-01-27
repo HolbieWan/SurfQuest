@@ -146,24 +146,26 @@ export default function SurfSpotsPage() {
             {selectedSurfZone && (
               <>
                 <div className="bg-gray-800 rounded-lg p-16 flex flex-col justify-center overflow-hidden w-full" style={{ height: '700px' }}>
-                  <h2 className="text-white bg-blue-500 rounded-lg text-2xl font-bold text-center mb-6 p-2 w-full">Surf conditions: {surfSpot.surfzone.name}</h2>
+                  <h2 className="text-white bg-blue-500 rounded-lg text-2xl font-bold text-center mb-6 p-2 w-full">Surf conditions: {surfSpot.surfzone.name}
+                    <select
+                        className=" ml-4 rounded bg-blue-600 border border-white text-white text-center w-1/4"
+                        value={selectedMonth}
+                        onChange={(e) => setSelectedMonth(e.target.value)}
+                      >
+                        <option value="">Select a Month</option>
+                        {months.map((month, index) => (
+                          <option key={index} value={month}>
+                            {month}
+                          </option>
+                        ))}
+                      </select>
+                  </h2>
                   <div className="bg-white rounded-lg p-10 flex flex-col justify-center border border-gray-200 overflow-hidden" style={{ height: '550px' }}>
 
-                    <select
-                      className="p-2 rounded bg-blue-500 text-white text-center w-1/4 mb-4"
-                      value={selectedMonth}
-                      onChange={(e) => setSelectedMonth(e.target.value)}
-                    >
-                      <option value="">Select a Month</option>
-                      {months.map((month, index) => (
-                        <option key={index} value={month}>
-                          {month}
-                        </option>
-                      ))}
-                    </select>
+                    
                     {selectedSurfZone && surfSpot && surfSpot.surfzone && monthCondition && (
                       <>
-                        <div className="bg-pink-400 rounded-lg p-4 flex flex-col justify-center mb-4 border border-gray-700 overflow-hidden" style={{ height: '80px' }}>
+                        <div className="bg-pink-400 rounded-lg p-6 flex flex-col justify-center mb-16 border border-gray-700 overflow-hidden" style={{ height: '100px' }}>
                           <div className="mt-2 text-lg text-gray-700 text-center">Surf rating: <span className="text-white font-bold">{monthCondition.world_surf_rating} *</span></div>
                           <div className="mt-2 text-lg text-gray-700 text-center">Recomended surf level: <span className="text-white font-bold">{monthCondition.surf_level.join(', ')}</span></div>
                         </div>
