@@ -106,14 +106,14 @@ export default function SurfSpotsPage() {
 
           {/* Bloc superieur: card INFOS */}
           {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-4 rounded-lg items-center justify-center mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-4 rounded-md">
 
           <div className="flex flex-col items-center justify-start w-full">
             {selectedSurfZone && (
               <>
-                <div className="bg-gray-800 rounded-lg p-16 flex flex-col justify-center borde overflow-hidden w-full" style={{ height: '700px' }}>
+                <div className="bg-gray-800 rounded-xl p-16 flex flex-col justify-center borde overflow-hidden w-full" style={{ height: '700px' }}>
                   <h2 className="text-white bg-blue-500 rounded-lg text-2xl font-bold text-center mb-6 w-full p-2">Zone infos: {surfSpot.surfzone.name}</h2>
-                  <div className="bg-white rounded-lg p-10 flex flex-col justify-center border border-gray-200 overflow-hidden w-full" style={{ height: '550px'}}>
+                  <div className="bg-white rounded-xl p-10 flex flex-col justify-center border border-gray-200 overflow-hidden w-full" style={{ height: '550px'}}>
                     {surfSpot && (
                       <>
                         <div className="mt-2 text-md text-gray-700 text-center md:text-center font-semibold mb-2"><span className="">{surfSpot.surfzone.description}</span></div>
@@ -145,12 +145,12 @@ export default function SurfSpotsPage() {
             
             {selectedSurfZone && (
               <>
-                <div className="bg-gray-800 rounded-lg p-16 flex flex-col justify-center overflow-hidden w-full" style={{ height: '700px' }}>
+                <div className="bg-gray-800 rounded-xl p-16 flex flex-col justify-center overflow-hidden w-full" style={{ height: '700px' }}>
                   <h2 className="text-white bg-blue-500 rounded-lg text-2xl font-bold text-center mb-6 p-2 w-full">Surf conditions: {surfSpot.surfzone.name}</h2>
-                  <div className="bg-white rounded-lg p-10 flex flex-col justify-center border border-gray-200 overflow-hidden" style={{ height: '550px' }}>
+                  <div className="bg-white rounded-xl p-10 flex flex-col justify-center border border-gray-200 overflow-hidden" style={{ height: '550px' }}>
 
                     <select
-                      className="p-2 rounded bg-blue-500 text-white text-center w-1/4 mb-4"
+                      className="mt-4 p-2 rounded bg-blue-500 text-white text-center w-1/4 mb-4"
                       value={selectedMonth}
                       onChange={(e) => setSelectedMonth(e.target.value)}
                     >
@@ -163,38 +163,19 @@ export default function SurfSpotsPage() {
                     </select>
                     {selectedSurfZone && surfSpot && surfSpot.surfzone && monthCondition && (
                       <>
-                        <div className="bg-pink-400 rounded-lg p-4 flex flex-col justify-center mb-4 border border-gray-700 overflow-hidden" style={{ height: '80px' }}>
-                          <div className="mt-2 text-lg text-gray-700 text-center">Surf rating: <span className="text-white font-bold">{monthCondition.world_surf_rating} *</span></div>
-                          <div className="mt-2 text-lg text-gray-700 text-center">Recomended surf level: <span className="text-white font-bold">{monthCondition.surf_level.join(', ')}</span></div>
-                        </div>
-
-                        <div className="grid grid-cols-3 gap-2 rounded-md">
-
-                          <div className="bg-blue-400 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden" style={{ height: '200px' }}>
-                            <div className="text-md text-white text-center mb-4">Surf conditions</div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Water temp: <span className="text-black font-bold">{monthCondition.water_temp_c} °c</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Average swell size: <span className="text-black font-bold">{monthCondition.swell_size_meter} m</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Swell consistency: <span className="text-black font-bold">{monthCondition.swell_consistency} %</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf crowd: <span className="text-black font-bold">{monthCondition.crowd}</span></div>
-                          </div>
-
-                          <div className="bg-green-500 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden" style={{ height: '200px' }}>
-                            <div className="text-md text-white text-center mb-4">Wheater conditions</div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Min air temp: <span className="text-black font-bold">{monthCondition.min_air_temp_c} °c</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Max air temp: <span className="text-black font-bold">{monthCondition.max_air_temp_c} °c</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Rainy days: <span className="text-black font-bold">{monthCondition.rain_days} / month</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Sunny days: <span className="text-black font-bold">{monthCondition.sunny_days} / month</span></div>
-                          </div>
-
-                          <div className="bg-orange-400 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden" style={{ height: '200px' }}>
-                            <div className="text-md text-white text-center mb-4">Wind conditions</div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wind force: <span className="text-black font-bold">{monthCondition.wind_force}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wind direction: <span className="text-black font-bold">{monthCondition.wind_direction}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wind consistency: <span className="text-black font-bold">{monthCondition.wind_consistency} %</span></div>
-                            <div className="mt-2 text-sm text-orange-400 text-center md:text-left">'</div>
-                          </div>
-
-                        </div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Water temp: <span className="text-black font-bold">{monthCondition.water_temp_c} °c</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Average swell size: <span className="text-black font-bold">{monthCondition.swell_size_meter} m</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Swell consistency: <span className="text-black font-bold">{monthCondition.swell_consistency} %</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Recomended surf level: <span className="text-black font-bold">{monthCondition.surf_level.join(', ')}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Crowds: <span className="text-black font-bold">{monthCondition.crowd}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf rating: <span className="text-black font-bold">{monthCondition.world_surf_rating} *</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Min air temp: <span className="text-black font-bold">{monthCondition.min_air_temp_c} °c</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Max air temp: <span className="text-black font-bold">{monthCondition.max_air_temp_c} °c</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Rainy days: <span className="text-black font-bold">{monthCondition.rain_days} / month</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Sunny days: <span className="text-black font-bold">{monthCondition.sunny_days} / month</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wind force: <span className="text-black font-bold">{monthCondition.wind_force}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wind direction: <span className="text-black font-bold">{monthCondition.wind_direction}</span></div>
+                        <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wind consistency: <span className="text-black font-bold">{monthCondition.wind_consistency} %</span></div>
                       </>
                     )}
                   </div>
