@@ -50,7 +50,7 @@ class Review(models.Model):
     def __str__(self):
         return f"Review by {self.user.username} - Rating: {self.rating}"
     
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.user.name)
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.slug:
+    #         self.slug = slugify(self.user.name)
+    #     super().save(*args, **kwargs)

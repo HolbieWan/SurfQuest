@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Cookies from 'js-cookie';
 import { useSearchParams } from 'next/navigation';
+import Reviews from "../components/Reviews";
 
 const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';
 const token = Cookies.get('access_token');
@@ -10,7 +11,7 @@ const token = Cookies.get('access_token');
 console.log(surfSpotsApiUrl);
 console.log(token);
 
-export default function SurfSpotsPage() {
+function SurfSpotsPage() {
   const [surfZones, setSurfZones] = useState([]);
   const [selectedSurfZone, setSelectedSurfZone] = useState('');
   const [selectedMonth, setSelectedMonth] = useState('January');  /*new Date().toLocaleString("default", { month: "long" }) */
@@ -76,6 +77,10 @@ export default function SurfSpotsPage() {
   const surfSpot = surfSpots.find(spot => spot.surfzone.name === selectedSurfZone);
   console.log(surfSpot);
 
+  // ✅ Extract surfZoneId from the selected surfSpot
+  const surfZoneId = surfSpot?.surfzone?.id || null;
+  console.log("Surf Zone ID:", surfZoneId);
+
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   // Get Condition object from the array of objects: surfSpot.surfzone based on selected SurfZone
@@ -111,9 +116,10 @@ export default function SurfSpotsPage() {
           <div className="flex flex-col items-center justify-start w-full">
             {selectedSurfZone && (
               <>
-                <div className="bg-gray-800 rounded-lg p-16 flex flex-col justify-center borde overflow-hidden w-full" style={{ height: '700px' }}>
-                  <h2 className="text-white bg-blue-500 rounded-lg text-2xl font-bold text-center mb-6 w-full p-2">Zone infos: {surfSpot.surfzone.name}</h2>
-                  <div className="bg-white rounded-lg p-10 flex flex-col justify-center border border-gray-200 overflow-hidden w-full" style={{ height: '550px'}}>
+                <h1 className="text-white text-4xl font-bold text-center mb-6 p-2 w-full">Zone infos</h1>
+                <div className="bg-gray-800 rounded-lg p-10 flex flex-col justify-start borde overflow-hidden w-full" style={{ height: '700px' }}>
+                  <h2 className="text-blue-400 text-2xl font-bold text-center mb-6 w-full p-2">{surfSpot.surfzone.name}</h2>
+                  <div className="bg-white rounded-lg p-10 flex flex-col justify-center border border-gray-200 overflow-hidden w-full" >
                     {surfSpot && (
                       <>
                         <div className="mt-2 text-md text-gray-700 text-center md:text-center font-semibold mb-2"><span className="">{surfSpot.surfzone.description}</span></div>
@@ -145,10 +151,11 @@ export default function SurfSpotsPage() {
             
             {selectedSurfZone && (
               <>
-                <div className="bg-gray-800 rounded-lg p-16 flex flex-col justify-center overflow-hidden w-full" style={{ height: '700px' }}>
-                  <h2 className="text-white bg-blue-500 rounded-lg text-2xl font-bold text-center mb-6 p-2 w-full">Surf conditions: {surfSpot.surfzone.name}
+                <h1 className="text-white text-4xl font-bold text-center mb-6 p-2 w-full">Surf conditions</h1>
+                <div className="bg-gray-800 rounded-lg p-10 flex flex-col justify-center overflow-hidden w-full" style={{ height: '700px' }}>
+                  <h2 className="text-white bg-blue- rounded-lg text-2xl font-bold text-center mb-6 p-2 w-full"><span className="text-blue-400 font-bold">{surfSpot.surfzone.name}</span>
                     <select
-                        className=" ml-4 rounded bg-blue-600 border border-white text-white text-center w-1/4"
+                        className="ml-4 rounded bg-white border border-black text-black text-center w-1/4"
                         value={selectedMonth}
                         onChange={(e) => setSelectedMonth(e.target.value)}
                       >
@@ -166,30 +173,30 @@ export default function SurfSpotsPage() {
                     {selectedSurfZone && surfSpot && surfSpot.surfzone && monthCondition && (
                       <>
                         <div className="bg-pink-400 rounded-lg p-6 flex flex-col justify-center mb-16 border border-gray-700 overflow-hidden" style={{ height: '100px' }}>
-                          <div className="mt-2 text-lg text-gray-700 text-center">Surf rating: <span className="text-white font-bold">{monthCondition.world_surf_rating} *</span></div>
-                          <div className="mt-2 text-lg text-gray-700 text-center">Recomended surf level: <span className="text-white font-bold">{monthCondition.surf_level.join(', ')}</span></div>
+                          <div className="mt-2 text-lg text-white text-center">Surf rating: <span className="text-black font-bold">{monthCondition.world_surf_rating} *</span></div>
+                          <div className="mt-2 text-lg text-white text-center">Recomended surf level: <span className="text-black font-bold">{monthCondition.surf_level.join(', ')}</span></div>
                         </div>
 
                         <div className="grid grid-cols-3 gap-2 rounded-md">
 
-                          <div className="bg-blue-400 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden" style={{ height: '200px' }}>
-                            <div className="text-md text-white text-center mb-4">Surf conditions</div>
+                          <div className="bg-blue-400 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden" style={{ height: '300px' }}>
+                            <div className="text-lg text-white text-center mb-4">Surf conditions</div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Water temp: <span className="text-black font-bold">{monthCondition.water_temp_c} °c</span></div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Average swell size: <span className="text-black font-bold">{monthCondition.swell_size_meter} m</span></div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Swell consistency: <span className="text-black font-bold">{monthCondition.swell_consistency} %</span></div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf crowd: <span className="text-black font-bold">{monthCondition.crowd}</span></div>
                           </div>
 
-                          <div className="bg-green-500 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden" style={{ height: '200px' }}>
-                            <div className="text-md text-white text-center mb-4">Wheater conditions</div>
+                          <div className="bg-green-500 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden" style={{ height: '300px' }}>
+                            <div className="text-lg text-white text-center mb-4">Wheater conditions</div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Min air temp: <span className="text-black font-bold">{monthCondition.min_air_temp_c} °c</span></div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Max air temp: <span className="text-black font-bold">{monthCondition.max_air_temp_c} °c</span></div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Rainy days: <span className="text-black font-bold">{monthCondition.rain_days} / month</span></div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Sunny days: <span className="text-black font-bold">{monthCondition.sunny_days} / month</span></div>
                           </div>
 
-                          <div className="bg-orange-400 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden" style={{ height: '200px' }}>
-                            <div className="text-md text-white text-center mb-4">Wind conditions</div>
+                          <div className="bg-orange-400 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden" style={{ height: '300px' }}>
+                            <div className="text-lg text-white text-center mb-4">Wind conditions</div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wind force: <span className="text-black font-bold">{monthCondition.wind_force}</span></div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wind direction: <span className="text-black font-bold">{monthCondition.wind_direction}</span></div>
                             <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wind consistency: <span className="text-black font-bold">{monthCondition.wind_consistency} %</span></div>
@@ -209,12 +216,12 @@ export default function SurfSpotsPage() {
 
           {/* Bloc inferieur: card: list of surf SPOTS */}
           {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-        <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center w-full">
+        <div className="grid grid-cols-1 p-4 gap-8 mb-10 rounded-md items-center justify-center w-full">
 
           <div className="flex flex-col items-center justify-center w-full">
             {selectedSurfZone && (
               <>
-                <h2 className="text-2xl font-bold mt-10 text-center bg-blue-500 rounded-lg p-2">Popular surf spots in {selectedSurfZone}</h2>
+                <h2 className="text-4xl font-bold mt-10 text-center rounded-lg p-2">Popular surf spots in {selectedSurfZone}</h2>
               </>
             )}
           </div>
@@ -246,7 +253,21 @@ export default function SurfSpotsPage() {
           ))}
         </div>
 
+          {/* Bloc 3 : card: list of REVIEWS */}
+          {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
+        <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
+          {selectedSurfZone && <Reviews selectedSurfZone={selectedSurfZone} surfZoneId={surfZoneId}/>}
+        </div>
+
       </div>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SurfSpotsPage />
+    </Suspense>
   );
 }

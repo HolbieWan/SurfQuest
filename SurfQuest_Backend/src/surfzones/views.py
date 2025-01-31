@@ -1,7 +1,6 @@
 from rest_framework import viewsets
-from .models import Continent, Country, SurfZone, SurfSpot, SurfSpotImage, SurfZoneImage
-from .serializers import ContinentSerializer, CountrySerializer, SurfZoneSerializer, \
-    SurfSpotSerializer, SurfSpotImageSerializer, SurfZoneImageSerializer
+from .models import SurfZone, SurfSpot
+from .serializers import SurfZoneSerializer, SurfSpotSerializer
 from rest_framework.permissions import IsAuthenticated
 
 

@@ -72,13 +72,14 @@ class ReviewAdmin(admin.ModelAdmin):
         'surf_zone',
         'surf_spot',
         'rating',
+        'comment',
         'created_at',
         'updated_at'
     )
 
     list_editable = (
-        'user',
-        'rating'
+        'rating',
+        'comment'
     )
     empty_value_display = 'unknown'
 

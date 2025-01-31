@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import Cookies from 'js-cookie';
+import { jwtDecode } from "jwt-decode";
 
 const usersApiUrl = process.env.NEXT_PUBLIC_USERS_API_URL;
 const tokensApiUrl = process.env.NEXT_PUBLIC_TOKENS_API_URL;
@@ -34,12 +35,14 @@ export default function LoginPage() {
         body: JSON.stringify({ username, password }),
       });
       console.log('Response:', response);
+
       if (!response.ok) {
         // Handle errors 
         const data = await response.json();
         setError(data.detail || 'Login failed, please try again');
         return;
       }
+
       const data = await response.json();
       console.log('Response data:', data);
 
@@ -54,6 +57,12 @@ export default function LoginPage() {
       Cookies.set('refresh_token', refresh, { expires: 7, secure: true, sameSite: 'Strict' });
       console.log(`${Cookies.get('access_token')}`);
       console.log(`${Cookies.get('refresh_token')}`);
+
+      const decodedToken = jwtDecode(access);
+      const userId = decodedToken.user_id;
+      console.log('User ID:', userId);
+
+      localStorage.setItem('userId', userId);
 
       window.location.href = '/';
 
@@ -74,7 +83,7 @@ export default function LoginPage() {
               Username
             </label>
             <input
-              type="username"
+              type="text"
               id="username"
               name="username"
               value={username} // Bind state

@@ -33,7 +33,10 @@ SECRET_KEY = os.getenv("SECRET_KEY", "default-secret-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend', "nginx"]
+
+# Trust X-Forwarded-Proto header from Nginx to properly detect HTTPS requests
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Application definition
 INSTALLED_APPS = [
@@ -128,8 +131,9 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 ROOT_URLCONF = 'surfquest.urls'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "http://localhost:8080/media/"
+MEDIA_ROOT = '/app/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'src', 'media')
 
 TEMPLATES = [
     {

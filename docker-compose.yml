@@ -16,7 +16,7 @@ services:
       - ENVIRONMENT=docker
     volumes:
       - ./SurfQuest_Backend/src:/app
-      - ./SurfQuest_Backend/src/media:/app/media
+      - media_volume:/app/media
     env_file:
       - ./.env
     ports:
@@ -65,10 +65,23 @@ services:
       - db
     networks:
       - surfquest-network
+  
+  nginx:
+    image: nginx:latest
+    container_name: nginx_server
+    volumes:
+      - media_volume:/app/media
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - surfquest-network
 
 volumes:
   pgdata:
-  media:
+  media_volume:
 
 networks:
   surfquest-network:
