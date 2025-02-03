@@ -35,7 +35,7 @@ export default function Navbar() {
           SurfQuest
         </Link>
         <div className="flex gap-1">
-          {["/surfspots", "/surfzones", "/search"].map((path) => (
+          {["/surfspots", "/surfzones", "/search", "/profile"].map((path) => (
             <Link href={path} key={path}>
               <div
                 className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
@@ -47,6 +47,7 @@ export default function Navbar() {
                 {path === "/surfspots" && "Surf Spots"}
                 {path === "/surfzones" && "Surf Zones"}
                 {path === "/search" && "Search"}
+                {path === "/profile" && "Profile"}
               </div>
             </Link>
           ))}

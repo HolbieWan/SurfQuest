@@ -6,3 +6,4 @@ from .serializers import ConditionSerializer
 class ConditionViewSet(viewsets.ModelViewSet):
     queryset = Condition.objects.all()
     serializer_class = ConditionSerializer
+    http_method_names = ['get']

@@ -50,6 +50,10 @@ class Review(models.Model):
     def __str__(self):
         return f"Review by {self.user.username} - Rating: {self.rating}"
     
+    class Meta:
+        unique_together = ('user', 'surf_zone')  # Ensures only 1 review per user per surf zone
+        unique_together = ('user', 'surf_spot')  # Ensures only 1 review per user per surf spot
+    
     # def save(self, *args, **kwargs):
     #     if not self.slug:
     #         self.slug = slugify(self.user.name)

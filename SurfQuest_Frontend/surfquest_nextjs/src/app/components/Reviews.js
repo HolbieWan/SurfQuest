@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation';
 const reviewsApiUrl = 'http://localhost:8000/api/reviews/';
 const token = Cookies.get('access_token');
 
-export default function Reviews({ selectedSurfZone, surfZoneId }) {
+export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
   const [reviews, setReviews] = useState([]);
   const [userReview, setUserReview] = useState(null);
   const [error, setError] = useState('');
@@ -56,7 +56,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId }) {
 
         // get the logged-in user's review 
         if (userId) {
-          const userReview = filteredReviews.find(review => review.user_id === userId);
+          const userReview = filteredReviews.find(review => review.user.id === userId);
           setUserReview(userReview || null);
         }
 
@@ -80,6 +80,14 @@ export default function Reviews({ selectedSurfZone, surfZoneId }) {
     console.log("Received SurfZoneId in Reviews:", surfZoneId);
   }, [surfZoneId]);
 
+  useEffect(() => {
+    console.log("Received SurfSpotId in Reviews:", surfSpotId);
+  }, [surfSpotId]);
+
+  if (!surfSpotId) {
+    surfSpotId = "";
+  }
+
   // Submit a new review
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
@@ -93,7 +101,8 @@ export default function Reviews({ selectedSurfZone, surfZoneId }) {
           'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
-          surf_zone: `${surfZoneId}`,
+          surf_zone: `${surfZoneId}` ,
+          surf_spot: `${surfSpotId}` ,
           rating: newReview.rating,
           comment: newReview.comment,
         }),
@@ -105,7 +114,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId }) {
 
       const newReviewData = await response.json();
       setReviews([...reviews, newReviewData]);
-      setNewReview({ rating: '', comment: '' });
+      setUserReview(newReviewData);
 
     } catch (err) {
       setError(err.message)
@@ -115,11 +124,13 @@ export default function Reviews({ selectedSurfZone, surfZoneId }) {
     }
   };
 
+  const userAlreadyReviewed = userReview !== null;
+
   return (
     <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
       {selectedSurfZone && (
         <>
-          <h2 className="text-4xl font-bold text-left mb-6 text-white p-2 w-full">Reviews for {selectedSurfZone}</h2>
+          <h2 className="text-4xl font-bold text-left text-white p-2 w-full">Reviews for {selectedSurfZone}</h2>
 
           {error && <p className="text-red-500">{error}</p>}
           {loading && <p className="text-blue-400">Loading...</p>}
@@ -127,10 +138,15 @@ export default function Reviews({ selectedSurfZone, surfZoneId }) {
           {/* Display All Reviews */}
           {reviews.length > 0 ? (
             reviews.map((review) => (
-              <div key={review.id} className="bg-gray-800 rounded-lg p-6">
-                <p className="text-Black font-bold">User: {review.user.username}</p>
-                <p className="text-gray-400">Rating: {review.rating} ★</p>
-                <p className="text-gray-300">Comment: {review.comment}</p>
+              <div key={review.id} className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] overflow-hidden">
+                <div className="flex items-center justify-center">  
+                  <img src={review.user.avatar} alt="User Avatar" className="w-12 h-12 rounded-full ml-1 mr-1" />
+                </div>
+                <div className="flex items-left justify-center flex-col p-4">
+                  <p className="text-gray-300 mb-1 break-words w-full">Username: <span className="text-white font-bold">{review.user.username} </span><span className="text-white text-sm">({new Date(review.created_at).toLocaleDateString()})</span></p>
+                  <p className="text-gray-300 mb-1 break-words w-full">Rating: <span className="text-white">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span></p>
+                  <p className="text-gray-300 break-words w-full">Comment: <span className="text-white block mt-2">{review.comment}</span></p>
+                </div>
               </div>
             ))
           ) : (
@@ -138,49 +154,53 @@ export default function Reviews({ selectedSurfZone, surfZoneId }) {
           )}
 
           {/* User Review Form */}
-          <div className="bg-white rounded-lg p-6 mt-6 items-center justify-center">
-            <h3 className="text-lg font-bold text-black mb-4">
-              {userReview ? "Edit Your Review" : "Write a Review"}
-            </h3>
+          {!userAlreadyReviewed && (
+            <>
+              <div className="bg-white rounded-lg p-6 mt-6 items-center justify-center">
+                <h3 className="text-lg font-bold text-black mb-4">
+                  {userReview ? "Edit Your Review" : "Write a Review"}
+                </h3>
 
-            <form onSubmit={handleReviewSubmit}>
-              <div>
-                {/* <label className="block text-sm font-medium text-white">Rating</label> */}
-                <select
-                  name="rating"
-                  value={newReview.rating}
-                  onChange={handleInputChange}
-                  className="justify-center p-2 border rounded text-white bg-blue-500 text-center mb-2"
-                  required
-                >
-                  <option value="">Select Rating</option>
-                  <option value="1">1 ★</option>
-                  <option value="2">2 ★</option>
-                  <option value="3">3 ★</option>
-                  <option value="4">4 ★</option>
-                  <option value="5">5 ★</option>
-                </select>
+                <form onSubmit={handleReviewSubmit}>
+                  <div>
+                    {/* <label className="block text-sm font-medium text-white">Rating</label> */}
+                    <select
+                      name="rating"
+                      value={newReview.rating}
+                      onChange={handleInputChange}
+                      className="justify-center p-2 border rounded text-white bg-blue-500 text-center mb-2"
+                      required
+                    >
+                      <option value="">Select Rating</option>
+                      <option value="1">★</option>
+                      <option value="2">★★</option>
+                      <option value="3">★★★</option>
+                      <option value="4">★★★★</option>
+                      <option value="5">★★★★★</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-md font-medium text-gray-700">Comment</label>
+                    <textarea
+                      name="comment"
+                      value={newReview.comment}
+                      onChange={handleInputChange}
+                      className="w-full p-2 border rounded text-black"
+                      required
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md"
+                  >
+                    Submit Review
+                  </button>
+                </form>
               </div>
-
-              <div>
-                <label className="block text-md font-medium text-gray-700">Comment</label>
-                <textarea
-                  name="comment"
-                  value={newReview.comment}
-                  onChange={handleInputChange}
-                  className="w-full p-2 border rounded text-black"
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md"
-              >
-                Submit Review
-              </button>
-            </form>
-          </div>
+            </>
+          )}
         </>
       )}
     </div>

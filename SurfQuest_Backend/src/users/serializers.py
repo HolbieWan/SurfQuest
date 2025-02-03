@@ -76,10 +76,31 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
         extra_kwargs = {'user': {'read_only': True}} 
 
+    def validate(self, data):
+        """Prevents user from submitting multiple reviews for the same SurfZone or SurfSpot, but allows updates."""
+        request = self.context.get("request")
+        user = request.user if request else None
+        surf_zone = data.get("surf_zone")
+        surf_spot = data.get("surf_spot")
+        
+        # If this is an update, exclude the current review from duplicate check
+        if request and request.method in ['POST', 'PUT', 'PATCH']:
+            existing_review = Review.objects.filter(user=user, surf_zone=surf_zone, surf_spot=surf_spot)
+
+            # Exclude the current review if it's an update
+            if request.method in ['PUT', 'PATCH'] and request.parser_context:
+                review_id = request.parser_context['kwargs'].get('pk')  # Get review ID from URL
+                existing_review = existing_review.exclude(id=review_id)
+
+            if existing_review.exists():
+                raise serializers.ValidationError("You have already reviewed this surf-zone or surf-spot")
+        
+        return data
 
     def create(self, validated_data):
         surf_zone = validated_data.pop('surf_zone', None)
-        review = Review.objects.create(surf_zone=surf_zone, **validated_data)
+        surf_spot = validated_data.pop('surf_spot', None)
+        review = Review.objects.create(surf_zone=surf_zone, surf_spot=surf_spot , **validated_data)
         return review
 
 

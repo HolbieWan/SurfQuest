@@ -9,6 +9,7 @@ class surfZoneViewSet((viewsets.ModelViewSet)):
     queryset = SurfZone.objects.all()
     serializer_class = SurfZoneSerializer
     permission_classes = [IsAuthenticated]
+    http_method_names = ['get']
 
 
 class surfSpotViewSet(viewsets.ModelViewSet):
@@ -16,3 +17,4 @@ class surfSpotViewSet(viewsets.ModelViewSet):
     queryset = SurfSpot.objects.all()
     serializer_class = SurfSpotSerializer
     permission_classes = [IsAuthenticated]
+    http_method_names = ['get']

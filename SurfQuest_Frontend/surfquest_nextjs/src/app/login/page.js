@@ -63,6 +63,7 @@ export default function LoginPage() {
       console.log('User ID:', userId);
 
       localStorage.setItem('userId', userId);
+      localStorage.setItem('username', username);
 
       window.location.href = '/';
 

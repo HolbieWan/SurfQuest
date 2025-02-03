@@ -67,7 +67,11 @@ export default function SurfZonesRoute() {
   return (
     <div className="flex flex-col items-center justify-start pt-16 bg-black text-white">
       {responseData && <h2 className="text-2xl font-bold mb-6 text-center">Best surfing destinations in {currentMonth}</h2>}
-      {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
+      {error &&
+        <div>
+          <p className="text-white text-md text center">Please sign-up or log-in to have access to full pages</p>
+          {/* <p className="text-red-500 text-sm text-center">{error}</p> */}
+        </div>}
       {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
       {responseData && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 gap-4 rounded-md">
