@@ -1,8 +1,0 @@
-{/* : {userAlreadyReviewed && userReview && (
-            <div className="bg-gray-800 rounded-lg p-6">
-              <h3 className="text-white font-bold">{userReview.user.username} review:</h3>
-              <p className="text-gray-400">Rating: {userReview.rating} ★</p>
-              <p className="text-gray-300">Comment: {userReview.comment}</p>
-              <button onClick={handleUpdateReviewSubmit} className="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md">Update Review</button>
-            </div>
-          )} */}
