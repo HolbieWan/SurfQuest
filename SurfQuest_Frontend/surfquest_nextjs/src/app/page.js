@@ -11,8 +11,8 @@ export default function HomePage() {
   return (
     <>
       <div className="flex flex-col items-center justify-start pt-20 h-screen">
-        <h1 className="text-4xl font-bold">Welcome to SurfQuest</h1>
-        <p className="text-2xl mt-8">The place to find and book your dream surf trip!</p>
+        <h1 className="text-4xl font-bold">Welcome to <span className="text-blue-500">Surf</span><span className="text-pink-500">Q</span><span className="text-blue-500">uest</span></h1>
+        <p className="text-2xl mt-8 text-blue-500">The place to find and book your dream surf trip!</p>
         <div className="flex flex-col items-center justify-start pt-16 bg-black text-white">
           <SurfZones />
         </div>

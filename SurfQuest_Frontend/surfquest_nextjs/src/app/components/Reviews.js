@@ -168,7 +168,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
                       name="rating"
                       value={newReview.rating}
                       onChange={handleInputChange}
-                      className="justify-center p-2 border rounded text-blue bg-blue-400 text-center mb-2"
+                      className="justify-center p-2 border rounded text-white bg-blue-500 text-center mb-2"
                       required
                     >
                       <option value="">Select Rating</option>
@@ -193,7 +193,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
 
                   <button
                     type="submit"
-                    className="w-full mt-4 bg-blue-400 hover:bg-blue-500 text-white font-medium py-2 rounded-md"
+                    className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md"
                   >
                     Submit Review
                   </button>
