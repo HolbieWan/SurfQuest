@@ -127,10 +127,10 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
   const userAlreadyReviewed = userReview !== null;
 
   return (
-    <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
+    <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center min-w-[600px]">
       {selectedSurfZone && (
         <>
-          <h2 className="text-4xl font-bold text-left text-white p-2 w-full">Reviews for {selectedSurfZone}</h2>
+          <h2 className="text-4xl font-bold text-center text-white p-2 w-full">Reviews</h2>
 
           {error && <p className="text-red-500">{error}</p>}
           {loading && <p className="text-blue-400">Loading...</p>}
@@ -156,7 +156,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
           {/* User Review Form */}
           {!userAlreadyReviewed && (
             <>
-              <div className="bg-white rounded-lg p-6 mt-6 items-center justify-center">
+              <div className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110">
                 <h3 className="text-lg font-bold text-black mb-4">
                   {userReview ? "Edit Your Review" : "Write a Review"}
                 </h3>
@@ -168,7 +168,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
                       name="rating"
                       value={newReview.rating}
                       onChange={handleInputChange}
-                      className="justify-center p-2 border rounded text-white bg-blue-500 text-center mb-2"
+                      className="justify-center p-2 border rounded text-blue bg-blue-400 text-center mb-2"
                       required
                     >
                       <option value="">Select Rating</option>
@@ -193,7 +193,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
 
                   <button
                     type="submit"
-                    className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md"
+                    className="w-full mt-4 bg-blue-400 hover:bg-blue-500 text-white font-medium py-2 rounded-md"
                   >
                     Submit Review
                   </button>

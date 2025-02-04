@@ -70,9 +70,8 @@ export default function surfZonesPage() {
     : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
   return (
-    <div className="flex flex-col items-center justify-start pt-20 h-screen bg-black text-white">
+    <div className="flex flex-col items-center justify-start pt-20 h-screen bg-black text-white rounded-lg">
       <h1 className="text-4xl font-bold">Surf Zones</h1>
-      <p className="text-sm mt-8">Select a country</p>
       <select
         className="mt-4 p-2 border border-black rounded bg-blue-500 text-white text-center"
         value={selectedCountry}
@@ -90,7 +89,7 @@ export default function surfZonesPage() {
         {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
         <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md`}>
           {filteredSurfZones.map((surfzone, index) => (
-            <div key={index} className="bg-black rounded-md p-4 relative overflow-hidden group flex items-center justify-center">
+            <div key={index} className="bg-black rounded-lg p-4 relative overflow-hidden group flex items-center justify-center">
               <Link href={`/surfspots?surfzone=${surfzone.name}`} legacyBehavior>
                 <a className="absolute inset-0 z-10"></a>
               </Link>
