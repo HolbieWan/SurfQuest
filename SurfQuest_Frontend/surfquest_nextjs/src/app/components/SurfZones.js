@@ -4,6 +4,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 
 const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
@@ -77,7 +78,7 @@ export default function SurfZonesRoute() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 gap-4 rounded-md">
           {responseData.map((surfzone, index) => (
             <div key={index} className="bg-black rounded-md p-4 relative overflow-hidden group">
-              <Link href={`/surfspots?surfzone=${surfzone.name}`} legacyBehavior>
+              <Link href={`/surfzones/${encodeURIComponent(surfzone.name)}`} legacyBehavior>
                 <a className="absolute inset-0 z-10"></a>
               </Link>
               {surfzone.zone_images && surfzone.zone_images.map((image, imgIndex) => (
