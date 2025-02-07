@@ -47,7 +47,7 @@ export default function Navbar() {
           <Link href="/surfspots">
             <div
               className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                pathname === "/surfspots" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-black"
+                pathname === "/surfspots" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
               } w-14 sm:w-28`}
             >
               Surf Spots
@@ -58,7 +58,7 @@ export default function Navbar() {
           <Link href="/surfzones">
             <div
               className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                pathname.startsWith("/surfzones") ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-black"
+                pathname.startsWith("/surfzones") ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
               } w-14 sm:w-28`}
             >
               Surf Zones
@@ -66,10 +66,10 @@ export default function Navbar() {
           </Link>
 
           {/* Search */}
-          <Link href="/search">
+          <Link href="/search_zones">
             <div
               className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                pathname === "/search" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-black"
+                pathname === "/search" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
               } w-14 sm:w-28`}
             >
               Search
@@ -80,7 +80,7 @@ export default function Navbar() {
           <Link href="/profile">
             <div
               className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                pathname === "/profile" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-black"
+                pathname === "/profile" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
               } w-14 sm:w-28`}
             >
               Profile
@@ -91,7 +91,7 @@ export default function Navbar() {
           {isLoggedIn ? (
             <button
               onClick={handleLogout}
-              className="px-1 py-0 md:px-2 md:py-1 rounded-md text-center bg-black text-white hover:bg-white hover:text-black w-14 sm:w-28"
+              className="px-1 py-0 md:px-2 md:py-1 rounded-md text-center bg-black text-white hover:bg-white hover:text-blue-500 w-14 sm:w-28"
             >
               Log Out
             </button>
@@ -100,7 +100,7 @@ export default function Navbar() {
               <Link href="/login">
                 <div
                   className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                    pathname === "/login" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-black"
+                    pathname === "/login" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
                   } w-14 sm:w-28`}
                 >
                   Log In
@@ -110,7 +110,7 @@ export default function Navbar() {
               <Link href="/signup">
                 <div
                   className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                    pathname === "/signup" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-black"
+                    pathname === "/signup" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
                   } w-14 sm:w-28`}
                 >
                   Sign Up
@@ -130,11 +130,11 @@ export default function Navbar() {
             <span className="text-blue-500">Q</span>
             <span className="text-white">uest</span>
           </h1>
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl permanent-marker-regular text-shadow-2xl">
+          {/* <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl permanent-marker-regular text-shadow-2xl">
             <span className="text-blue-500">Plan your </span>
-            <span className="text-white">dream </span>
+            <span className="text-pink-500">dream </span>
             <span className="text-blue-500">surf-trip</span>
-          </p>
+          </p> */}
         </div>
       </div>
     </>

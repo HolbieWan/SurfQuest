@@ -4,7 +4,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
 
 const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
@@ -13,7 +13,7 @@ const token = Cookies.get('access_token');
 console.log(surfZonesApiUrl);
 console.log(token);
 
-export default function SurfZonesRoute() {
+export default function MonthBestDestinations() {
   // State to track error, loading & response data
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -24,10 +24,10 @@ export default function SurfZonesRoute() {
   const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const currentMonth = monthNames[currentMonthIndex]; 
   
-  const getAllSurfZones = async (e) => {
+  const getSurfZonesCurrentMonth = async (e) => {
     setError('');
     setLoading(true);
-    setResponseData(null);
+    // setResponseData(null);
 
     try {
       const response = await fetch(`${surfZonesApiUrl}`, {
@@ -62,7 +62,7 @@ export default function SurfZonesRoute() {
   };
 
   useEffect(() => {
-    getAllSurfZones();
+    getSurfZonesCurrentMonth();
   }, []);
 
   return (
