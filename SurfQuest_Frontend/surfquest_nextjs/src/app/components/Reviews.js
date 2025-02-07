@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation';
 const reviewsApiUrl = 'http://localhost:8000/api/reviews/';
 const token = Cookies.get('access_token');
 
-export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
+export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId, surfSpotId }) {
   const [reviews, setReviews] = useState([]);
   const [userReview, setUserReview] = useState(null);
   const [error, setError] = useState('');
@@ -26,7 +26,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
   // Fetch reviews from API
   useEffect(() => {
     const fetchReviews = async () => {
-      if (!selectedSurfZone) return;
+      if (!selectedSurfZone && !selectedSurfSpot) return;
 
       setLoading(true);
       setError('');
@@ -51,7 +51,10 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
         console.log('Reviews:', data);
 
         // Filter reviews for selected Surf Zone
-        const filteredReviews = data.filter(review => review.surf_zone_details && review.surf_zone_details.name === selectedSurfZone);
+        const filteredReviews = data.filter((review) =>
+          (review.surf_zone_details && review.surf_zone_details.name === selectedSurfZone) ||
+          (review.surf_spot_details && review.surf_spot_details.name === selectedSurfSpot)
+        );
         setReviews(filteredReviews);
 
         // get the logged-in user's review 
@@ -69,7 +72,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
     };
 
     fetchReviews();
-  }, [selectedSurfZone, userId]);
+  }, [selectedSurfZone, selectedSurfSpot, userId]);
 
   // Handle input changes for new review
   const handleInputChange = (e) => {
@@ -79,6 +82,10 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
   useEffect(() => {
     console.log("Received SurfZoneId in Reviews:", surfZoneId);
   }, [surfZoneId]);
+
+  if (!surfZoneId) {
+    surfZoneId = "";
+  }
 
   useEffect(() => {
     console.log("Received SurfSpotId in Reviews:", surfSpotId);
@@ -128,7 +135,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
 
   return (
     <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center min-w-[600px]">
-      {selectedSurfZone && (
+      {(selectedSurfZone || selectedSurfSpot) && (
         <>
           <h2 className="text-4xl font-bold text-center text-white p-2 w-full">Reviews</h2>
 
@@ -138,7 +145,7 @@ export default function Reviews({ selectedSurfZone, surfZoneId, surfSpotId }) {
           {/* Display All Reviews */}
           {reviews.length > 0 ? (
             reviews.map((review) => (
-              <div key={review.id} className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] overflow-hidden">
+              <div key={review.id} className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] group overflow-hidden transform transition-transform duration-500 hover:scale-110">
                 <div className="flex items-center justify-center">  
                   <img src={review.user.avatar} alt="User Avatar" className="w-12 h-12 rounded-full ml-1 mr-1" />
                 </div>

@@ -34,6 +34,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
     permission_classes = [IsAuthenticated]
+    http_method_names = ['get', 'post']
 
     def perform_create(self, serializer):
         """Assign the authenticated user before saving."""

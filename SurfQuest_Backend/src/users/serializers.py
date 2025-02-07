@@ -1,9 +1,9 @@
 from .models import User, Review
-from surfzones.models import SurfZone
+from surfzones.models import SurfZone, SurfSpot
 from rest_framework import serializers
 from django.core.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password
-from surfzones.serializers import SurfZoneSerializer
+from surfzones.serializers import SurfZoneSerializer, SurfSpotSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -67,10 +67,19 @@ class UserSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
+
+    # Allow setting surf zone ID when creating a review
     surf_zone = serializers.PrimaryKeyRelatedField(
-        queryset=SurfZone.objects.all(), write_only=True
+        queryset=SurfZone.objects.all(), write_only=True, required=False, allow_null=True
     )
+    # Allow setting surf spot ID when creating a review
+    surf_spot = serializers.PrimaryKeyRelatedField(
+        queryset=SurfSpot.objects.all(), write_only=True, required=False, allow_null=True
+    )
+
     surf_zone_details = SurfZoneSerializer(source="surf_zone", read_only=True) 
+    surf_spot_details = SurfSpotSerializer(source="surf_spot", read_only=True)
+    
     class Meta:
         model = Review
         fields = '__all__'

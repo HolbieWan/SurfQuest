@@ -247,7 +247,7 @@ function SurfZoneDetailsPage() {
 
           {filteredSurfSpots.map((surfspot, index) => (
 
-            <div key={index} className="flex flex-col md:flex-row items-start justify-center space-y-4 md:space-y-0 md:space-x-10">
+            <div key={index} className="flex flex-col md:flex-row items-start justify-center space-y-10 md:space-y-0 md:space-x-12">
 
               <div className="bg-black rounded-md group flex-shrink-0 w-full md:w-1/2 lg:w-2/4" style={{ height: '400px' }}>
                 {surfspot.spot_images && surfspot.spot_images.map((image, imgIndex) => (
