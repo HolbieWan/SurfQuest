@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, Suspense } from 'react';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from "next/navigation";
@@ -12,7 +13,7 @@ const token = Cookies.get('access_token');
 console.log(surfZonesApiUrl);
 console.log(token);
 
-export default function surfZonesPage() {
+function SurfZonesPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [countries, setCountries] = useState([]);
@@ -132,5 +133,13 @@ export default function surfZonesPage() {
       </div>
   
     </div>
+  );
+}
+
+export default function SurfZonesPage() {
+  return (
+    <Suspense fallback={<p className="text-blue-500">Loading Surf Zones...</p>}>
+      <SurfZonesPageContent />
+    </Suspense>
   );
 }

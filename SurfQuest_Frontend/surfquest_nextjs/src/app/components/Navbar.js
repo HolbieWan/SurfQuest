@@ -47,7 +47,7 @@ export default function Navbar() {
           <Link href="/surfspots">
             <div
               className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                pathname === "/surfspots" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
+                pathname === "/surfspots" ? "bg-white text-blue-500" : "bg-black text-white hover:bg-white hover:text-blue-500"
               } w-14 sm:w-28`}
             >
               Surf Spots
@@ -58,7 +58,7 @@ export default function Navbar() {
           <Link href="/surfzones">
             <div
               className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                pathname.startsWith("/surfzones") ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
+                pathname.startsWith("/surfzones") ? "bg-white text-blue-500" : "bg-black text-white hover:bg-white hover:text-blue-500"
               } w-14 sm:w-28`}
             >
               Surf Zones
@@ -69,7 +69,7 @@ export default function Navbar() {
           <Link href="/search_zones">
             <div
               className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                pathname === "/search" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
+                pathname === "/search" ? "bg-white text-blue-500" : "bg-black text-white hover:bg-white hover:text-blue-500"
               } w-14 sm:w-28`}
             >
               Search
@@ -80,7 +80,7 @@ export default function Navbar() {
           <Link href="/profile">
             <div
               className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                pathname === "/profile" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
+                pathname === "/profile" ? "bg-white text-blue-500" : "bg-black text-white hover:bg-white hover:text-blue-500"
               } w-14 sm:w-28`}
             >
               Profile
@@ -100,7 +100,7 @@ export default function Navbar() {
               <Link href="/login">
                 <div
                   className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                    pathname === "/login" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
+                    pathname === "/login" ? "bg-white text-blue-500" : "bg-black text-white hover:bg-white hover:text-blue-500"
                   } w-14 sm:w-28`}
                 >
                   Log In
@@ -110,7 +110,7 @@ export default function Navbar() {
               <Link href="/signup">
                 <div
                   className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
-                    pathname === "/signup" ? "bg-white text-black" : "bg-black text-white hover:bg-white hover:text-blue-500"
+                    pathname === "/signup" ? "bg-white text-blue-500" : "bg-black text-white hover:bg-white hover:text-blue-500"
                   } w-14 sm:w-28`}
                 >
                   Sign Up
