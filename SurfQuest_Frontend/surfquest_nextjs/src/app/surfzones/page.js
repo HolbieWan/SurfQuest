@@ -17,6 +17,9 @@ export default function SearchSurfZonePage() {
   const [selectedCost, setSelectedCost] = useState('');
   const [selectedWaterTemp, setSelectedWaterTemp] = useState('');
   const [selectedSurfRating, setSelectedSurfRating] = useState('');
+  const [selectedSwellSize, setSelectedSwellSize] = useState('');
+  const [selectedCrowdFactor, setSelectedCrowdFactor] = useState('');
+  const [selectedSunnyDays, setSelectedSunnyDays] = useState('');
  
   const [countries, setCountries] = useState([]);
   const [surfZones, setSurfZones] = useState([]);
@@ -37,6 +40,30 @@ export default function SearchSurfZonePage() {
     Hot: { min: 28, max: 30 },
   };
   const surfRating = [1, 2, 3, 4, 5]
+  const swellSize = ["Under 1m", "1m - 1.5m", "1.5m - 2m", "2m - 3m", "Over 3m"]
+  const swellSizeRanges = {
+    "Under 1m": { min: 0, max: 1 },
+    "1m - 1.5m": { min: 1.1, max: 1.5 },
+    "1.5m - 2m": { min: 1.6, max: 2 },
+    "2m - 3m": { min: 2.1, max: 3 },
+    "Over 3m": { min: 3.1, max: 30 },
+  };
+  const crowdFactor = ['Few', 'Moderate', 'Crowded', 'Packed'];
+  const crowdFactorRanges = {
+    "Few": "Low",
+    "Moderate": "Medium",
+    "Crowded": "High",
+    "Packed": "Very High",
+  };
+  const sunnyDays = ['1 to 5', '5 to 10', '10 to 15', '15 to 20', '20 to 25', '25 to 30'];
+  const sunnyDaysRanges = {
+    "1 to 5": { min: 1, max: 5 },
+    "5 to 10": { min: 6, max: 10 },
+    "10 to 15": { min: 11, max: 15 },
+    "15 to 20": { min: 16, max: 20 },
+    "20 to 25": { min: 21, max: 25 },
+    "25 to 30": { min: 26, max: 30 },
+  };
 
   useEffect(() => {
 
@@ -92,8 +119,8 @@ export default function SearchSurfZonePage() {
   };
 
   const handleSurfLevelChange = (e) => {
-    const surflevel = e.target.value;
-    setSelectedSurfLevel(surflevel);
+    const surf_level = e.target.value;
+    setSelectedSurfLevel(surf_level);
   };
 
   const handleCostChange = (e) => {
@@ -111,41 +138,88 @@ export default function SearchSurfZonePage() {
     setSelectedSurfRating(surf_rating);
   };
 
-  // Filter surf zones by country
+  const handleSwellSizeChange = (e) => {
+    const swell_size = e.target.value;
+    setSelectedSwellSize(swell_size);
+  };
+
+  const handleCrowdFactorChange = (e) => {
+    const crowd_factor = e.target.value;
+    setSelectedCrowdFactor(crowd_factor);
+  };
+
+  const handleSunnyDaysChange = (e) => {
+    const sunny_days = e.target.value;
+    setSelectedSunnyDays(sunny_days);
+  };
+
+
+  // Filter surf zones by country, cost of living, 
   const filteredSurfZones = surfZones
     .filter(zone => !selectedCountry || zone.country.name === selectedCountry)
     
-    .filter(zone => 
-      !selectedSurfLevel || 
-      zone.conditions?.some(condition => 
-        (selectedMonth 
-          ? condition.month === selectedMonth && condition.surf_level.includes(selectedSurfLevel) 
-          : condition.surf_level.includes(selectedSurfLevel)
-        )
+    .filter(zone =>
+      !selectedSurfLevel ||
+      zone.conditions?.some(condition =>
+      (selectedMonth
+        ? condition.month === selectedMonth && condition.surf_level.includes(selectedSurfLevel)
+        : condition.surf_level.includes(selectedSurfLevel)
+      )
       )
     )
 
     .filter(zone => !selectedCost || zone.cost.includes(selectedCost))
 
     .filter(zone => {
-      if (!selectedWaterTemp) return true; 
-      const { min, max } = waterTempRanges[selectedWaterTemp] || {}; 
+      if (!selectedWaterTemp) return true;
+      const { min, max } = waterTempRanges[selectedWaterTemp] || {};
       if (min === undefined || max === undefined) return false;
-      return zone.conditions?.some(condition => 
-        (!selectedMonth || condition.month === selectedMonth) && 
+      return zone.conditions?.some(condition =>
+        (!selectedMonth || condition.month === selectedMonth) &&
         condition.water_temp_c >= min && condition.water_temp_c <= max
       );
     })
 
-    .filter(zone => 
-      !selectedSurfRating || 
-      zone.conditions?.some(condition => 
-        (selectedMonth 
-          ? condition.month === selectedMonth && condition.world_surf_rating === Number(selectedSurfRating) 
-          : condition.world_surf_rating === Number(selectedSurfRating)
-        )
+    .filter(zone =>
+      !selectedSurfRating ||
+      zone.conditions?.some(condition =>
+      (selectedMonth
+        ? condition.month === selectedMonth && condition.world_surf_rating === Number(selectedSurfRating)
+        : condition.world_surf_rating === Number(selectedSurfRating)
       )
-    );
+      )
+    )
+    
+    .filter(zone => {
+      if (!selectedSwellSize) return true;
+      const { min, max } = swellSizeRanges[selectedSwellSize] || {};
+      if (min === undefined || max === undefined) return false;
+      return zone.conditions?.some(condition =>
+        (!selectedMonth || condition.month === selectedMonth) &&
+        condition.swell_size_meter >= min && condition.swell_size_meter <= max
+      );
+    })
+
+    .filter(zone => {
+      if (!selectedCrowdFactor) return true;
+      const crowd = crowdFactorRanges[selectedCrowdFactor] || {};
+      if (crowd === undefined) return false;
+      return zone.conditions?.some(condition =>
+        (!selectedMonth || condition.month === selectedMonth) &&
+        condition.crowd === crowd
+      );
+    })
+
+    .filter(zone => {
+      if (!selectedSunnyDays || !sunnyDaysRanges[selectedSunnyDays]) return true;
+      const { min, max } = sunnyDaysRanges[selectedSunnyDays] || {};
+      if (min === undefined || max === undefined) return false;
+      return zone.conditions?.some(condition =>
+        (!selectedMonth || condition.month === selectedMonth) &&
+        condition.sunny_days >= min && condition.sunny_days <= max
+      );
+    });
+
 
   const gridColsClass = filteredSurfZones.length === 1
     ? 'grid-cols-1'
@@ -191,10 +265,10 @@ export default function SearchSurfZonePage() {
           value={selectedSurfLevel}
           onChange={handleSurfLevelChange}
         >
-          <option value="">Surf level</option>
-          {surfLevel.map((surflevel, index) => (
-            <option key={index} value={surflevel}>
-              {surflevel}
+          <option value="">Surf Level</option>
+          {surfLevel.map((surf_level, index) => (
+            <option key={index} value={surf_level}>
+              {surf_level}
             </option>
           ))}
         </select>
@@ -204,10 +278,23 @@ export default function SearchSurfZonePage() {
           value={selectedCost}
           onChange={handleCostChange}
         >
-          <option value="">Cost of living</option>
+          <option value="">Cost of Living</option>
           {cost.map((cost, index) => (
             <option key={index} value={cost}>
               {cost}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          value={selectedSunnyDays}
+          onChange={handleSunnyDaysChange}
+        >
+          <option value="">Sunny Days</option>
+          {sunnyDays.map((sunny_days, index) => (
+            <option key={index} value={sunny_days}>
+              {sunny_days}
             </option>
           ))}
         </select>
@@ -230,7 +317,7 @@ export default function SearchSurfZonePage() {
           value={selectedSurfRating}
           onChange={handleSurfRatingChange}
         >
-          <option value="">Surf rating</option>
+          <option value="">Surf Rating</option>
           {surfRating.map((surf_rating, index) => (
             <option key={index} value={surf_rating}>
               {surf_rating}
@@ -238,10 +325,33 @@ export default function SearchSurfZonePage() {
           ))}
         </select>
 
+        <select
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          value={selectedSwellSize}
+          onChange={handleSwellSizeChange}
+        >
+          <option value="">Swell Size</option>
+          {swellSize.map((swell_size, index) => (
+            <option key={index} value={swell_size}>
+              {swell_size}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          value={selectedCrowdFactor}
+          onChange={handleCrowdFactorChange}
+        >
+          <option value="">Crowd Factor</option>
+          {crowdFactor.map((crowd_factor, index) => (
+            <option key={index} value={crowd_factor}>
+              {crowd_factor}
+            </option>
+          ))}
+        </select>
         
       </div>
-
-      
 
       {/*Surf Zones card */}
       <div className="flex flex-col items-center justify-start pt-16 w-full">
