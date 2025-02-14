@@ -65,17 +65,26 @@ export default function MonthBestDestinations() {
     getSurfZonesCurrentMonth();
   }, []);
 
+  const doubleRightArrow = "\u21D2";
+  const doubleLeftArrow = "\u21D0";
+
   return (
-    <div className="flex flex-col items-center justify-start pt-16 bg-black text-white">
-      {responseData && <h2 className="text-2xl font-bold mb-6 text-center">Best surfing destinations in {currentMonth}</h2>}
+    <div className="flex flex-col items-center justify-start pt-4 bg-black text-white">
+      <div className="mb-12 text-center">
+        <a href="/surfzones" className="text-4xl font-bold text-cyan-200 hover:text-cyan-400">
+          {doubleRightArrow} Find the best surfing destinations for you {doubleLeftArrow}
+        </a>
+      </div>
+
+      {responseData && <h2 className="text-2xl font-bold mt-4 text-left">Best surfing destinations in <span className="text-blue-300">{currentMonth}</span></h2>}
       {error &&
         <div>
-          <p className="text-white text-md text center">Please sign-up or log-in to have access to full pages</p>
+          <p className="text-white text-md text center">Please sign-up or log-in to have access to the features</p>
           {/* <p className="text-red-500 text-sm text-center">{error}</p> */}
         </div>}
       {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
       {responseData && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 gap-4 rounded-md">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-2 gap-4 rounded-md">
           {responseData.map((surfzone, index) => (
             <div key={index} className="bg-black rounded-md p-4 relative overflow-hidden group">
               <Link href={`/surfzones/${encodeURIComponent(surfzone.name)}`} legacyBehavior>

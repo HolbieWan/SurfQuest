@@ -143,7 +143,7 @@ export default function UserReviews() {
           {/* Surf-Zone Reviews */}
           {reviews.some(review => review.surf_zone_details) && (
             <>
-              <h2 className="text-4xl font-bold text-left text-white p-2 w-full">Surf-zone reviews</h2>
+              <h2 className="text-4xl font-bold text-left text-white p-2 w-full">Your surf-zone reviews</h2>
               {reviews
                 .filter(review => review.surf_zone_details)
                 .map((review) => (
@@ -181,7 +181,7 @@ export default function UserReviews() {
           {/* Surf-Spot Reviews */}
           {reviews.some(review => review.surf_spot_details) && (
             <>
-              <h2 className="text-4xl font-bold text-left text-white p-2 mt-4 w-full">Surf-spot reviews</h2>
+              <h2 className="text-4xl font-bold text-left text-white p-2 mt-4 w-full">Your surf-spot reviews</h2>
               {reviews
                 .filter(review => review.surf_spot_details)
                 .map((review) => (

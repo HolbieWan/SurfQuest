@@ -66,7 +66,7 @@ export default function Navbar() {
           </Link>
 
           {/* Search */}
-          <Link href="/search_zones">
+          {/* <Link href="/search_zones">
             <div
               className={`px-1 py-0 md:px-2 md:py-1 rounded-md text-center ${
                 pathname === "/search" ? "bg-white text-blue-500" : "bg-black text-white hover:bg-white hover:text-blue-500"
@@ -74,7 +74,7 @@ export default function Navbar() {
             >
               Search
             </div>
-          </Link>
+          </Link> */}
 
           {/* Profile */}
           <Link href="/profile">

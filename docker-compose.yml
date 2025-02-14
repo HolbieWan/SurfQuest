@@ -79,7 +79,9 @@ services:
 
 volumes:
   pgdata:
+     external: true
   media_volume:
+     external: true
 
 networks:
   surfquest-network:
