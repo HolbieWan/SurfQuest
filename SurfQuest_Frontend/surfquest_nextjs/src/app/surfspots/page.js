@@ -21,6 +21,12 @@ function SearchSurfSpotsPage() {
   const [selectedWaveDirection, setSelectedWaveDirection] = useState('');
   const [selectedBestWindDirection, setSelectedBestWindDirection] = useState('');
   const [selectedBestSwellDirection, setSelectedBestSwellDirection] = useState('');
+  const [selectedBestSwellSize, setSelectedBestSwellSize] = useState('');
+  const [selectedSurfLevel, setSelectedSurfLevel] = useState('');
+  const [selectedBestTide, setSelectedBestTide] = useState('');
+  const [selectedSurfHazards, setSelectedSurfHazards] = useState('');
+  const [uniqueSurfHazardsList, sethUniqueSurfHazardsList] = useState([]);
+  const [selectedBestMonths, setSelectedBestMonths] = useState('');
   // const [selectedMonth, setSelectedMonth] = useState('January');  /*new Date().toLocaleString("default", { month: "long" }) */
   const [surfSpots, setSurfSpots] = useState([]);
   const [error, setError] = useState('');
@@ -31,6 +37,18 @@ function SearchSurfSpotsPage() {
   const waveDirectionList = ['Left', 'Right', 'Left and right'];
   const windDirectionList = ['N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE', 'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW'];
   const swellDirectionList = ['N', 'N-NE', 'NE', 'E-NE', 'E', 'E-SE', 'SE', 'S-SE', 'S', 'S-SW', 'SW', 'W-SW', 'W', 'W-NW', 'NW', 'N-NW'];
+  const swellSizeList = ["Under 1m", "1m - 1.5m", "1.5m - 2m", "2m - 3m", "Over 3m"];
+  const swellSizeRanges = {
+    "Under 1m": { min: 0, max: 1 },
+    "1m - 1.5m": { min: 1.1, max: 1.5 },
+    "1.5m - 2m": { min: 1.6, max: 2 },
+    "2m - 3m": { min: 2.1, max: 3 },
+    "Over 3m": { min: 3.1, max: 30 },
+  };
+  const surfLevelList = ['Beginner', 'Intermediate', 'Advanced', 'Pro'];
+  const bestTideList = ['Low', 'Mid', 'High'];
+  const monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  // const surfHazardsList = ['Rocks', 'Reef', 'Sharks', 'Jellyfish', 'Rips', 'Undertow', 'Currents'];
 
   useEffect(() => {
     // Fetch surf zones data
@@ -65,6 +83,10 @@ function SearchSurfSpotsPage() {
         const uniqueSurfSpotsList = [...new Set(data.map(item => item.name))];
         setUniqueSurfSpotsList(uniqueSurfSpotsList);
 
+        const uniqueSurfHazardsList = [...new Set(data.flatMap(item => item.surf_hazards))]
+          // .map(hazard => `No ${hazard}`);
+        sethUniqueSurfHazardsList(uniqueSurfHazardsList);
+
         // Set selected SurfZone from query parameter (link clicked from SurfZones page)
         // const surfzone = searchParams.get('surfzone');
         // if (surfzone) {
@@ -94,8 +116,19 @@ function SearchSurfSpotsPage() {
     .filter(spot => !selectedBreakType || spot.break_type === selectedBreakType)
     .filter(spot => !selectedWaveDirection || spot.wave_direction === selectedWaveDirection)
     .filter(spot => !selectedBestWindDirection || spot.best_wind_direction === selectedBestWindDirection)
-    .filter(spot => !selectedBestSwellDirection || spot.best_swell_direction === selectedBestSwellDirection);
-  
+    .filter(spot => !selectedBestSwellDirection || spot.best_swell_direction === selectedBestSwellDirection)
+    .filter(spot => {
+      if (!selectedBestSwellSize) return true;
+      const { min, max } = swellSizeRanges[selectedBestSwellSize] || {};
+      return spot.best_swell_size_meter >= min && spot.best_swell_size_meter <= max
+        ;
+    })
+    .filter(spot => !selectedSurfLevel || spot.surf_level.includes(selectedSurfLevel))
+    .filter(spot => !selectedBestTide || spot.best_tide.includes(selectedBestTide))  
+    .filter(spot => !selectedSurfHazards || !spot.surf_hazards.includes(selectedSurfHazards))
+    .filter(spot => !selectedBestMonths || spot.best_months.includes(selectedBestMonths));
+
+
   console.log(surfSpots);
 
   // Get surfSpot object from the array of objects: surfSpots based on selectedSurfSpot
@@ -214,7 +247,70 @@ function SearchSurfSpotsPage() {
           ))}
         </select>
 
+        <select
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          value={selectedBestSwellSize}
+          onChange={(e) => setSelectedBestSwellSize(e.target.value)}
+        >
+          <option value="">Best Swell Size</option>
+          {swellSizeList.map((swell_size, index) => (
+            <option key={index} value={swell_size}>
+              {swell_size}
+            </option>
+          ))}
+        </select>
 
+        <select
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          value={selectedSurfLevel}
+          onChange={(e) => setSelectedSurfLevel(e.target.value)}
+        >
+          <option value="">Surf Level</option>
+          {surfLevelList.map((surf_level, index) => (
+            <option key={index} value={surf_level}>
+              {surf_level}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          value={selectedBestTide}
+          onChange={(e) => setSelectedBestTide(e.target.value)}
+        >
+          <option value="">Best Tide</option>
+          {bestTideList.map((best_tide, index) => (
+            <option key={index} value={best_tide}>
+              {best_tide}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          value={selectedSurfHazards}
+          onChange={(e) => setSelectedSurfHazards(e.target.value)}
+        >
+          <option value="">(No) Surf Hazards </option>
+          {uniqueSurfHazardsList.map((surf_hazards, index) => (
+            <option key={index} value={surf_hazards}>
+              {surf_hazards}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          value={selectedBestMonths}
+          onChange={(e) => setSelectedBestMonths(e.target.value)}
+        >
+          <option value="">Best Months</option>
+          {monthList.map((best_months, index) => (
+            <option key={index} value={best_months}>
+              {best_months}
+            </option>
+          ))}
+        </select>
       
       </div>
 
@@ -249,13 +345,13 @@ function SearchSurfSpotsPage() {
                 <h2 className="text-pink-400 text-2xl font-bold text-center md:text-left">{surfspot.name}</h2>
                 <div className="mt-2 text-sm text-blue-500 text-center md:text-left font-semibold">{surfspot.surfzone.name}</div>
                 <div className="mt-2 text-sm text-gray-700 text-center md:text-left">{surfspot.description}</div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best months: <span className="text-black font-bold">{surfspot.best_months.join(', ')}</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell direction: <span className="text-black font-bold">{surfspot.best_swell_direction}</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell size: <span className="text-black font-bold">{surfspot.best_swell_size} ft</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best tide: <span className="text-black font-bold">{surfspot.best_tide.join(', ')}</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best wind direction: <span className="text-black font-bold">{surfspot.best_wind_direction}</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf hazards: <span className="text-black font-bold">{surfspot.surf_hazards.join(', ')}</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf level: <span className="text-black font-bold">{surfspot.surf_level.join(', ')}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best months: <span className="text-cyan-500 font-bold">{surfspot.best_months.join(', ')}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell direction: <span className="text-cyan-500 font-bold">{surfspot.best_swell_direction}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell size: <span className="text-cyan-500 font-bold">{surfspot.best_swell_size_meter} ft</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best tide: <span className="text-cyan-500 font-bold">{surfspot.best_tide.join(', ')}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best wind direction: <span className="text-cyan-500 font-bold">{surfspot.best_wind_direction}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf hazards: <span className="text-cyan-500 font-bold">{surfspot.surf_hazards.join(', ')}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf level: <span className="text-cyan-500 font-bold">{surfspot.surf_level.join(', ')}</span></div>
               </div>
 
             </div>

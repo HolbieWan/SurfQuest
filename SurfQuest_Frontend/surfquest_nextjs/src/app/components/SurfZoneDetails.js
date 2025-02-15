@@ -131,20 +131,20 @@ function SurfZoneDetailsPage() {
                           <>
                             <div className="mt-2 text-md text-black text-center lg:text-left font-semibold mb-4"><span className="">{surfSpot.surfzone.description}</span></div>
 
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Near city: <span className="font-bold">{surfSpot.surfzone.nearest_city}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Near airport: <span className="font-bold">{surfSpot.surfzone.nearest_airport}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Safety: <span className="font-bold">{surfSpot.surfzone.safety}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Health hazards: <span className="font-bold">{surfSpot.surfzone.health_hazards.join(', ')}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Surf hazards: <span className="font-bold">{surfSpot.surfzone.surf_hazards.join(', ')}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Traveler type: <span className="font-bold">{surfSpot.surfzone.traveler_type.join(', ')}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Best months: <span className="font-bold">{surfSpot.surfzone.best_months.join(', ')}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Confort: <span className="font-bold">{surfSpot.surfzone.confort}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Cost of living: <span className="font-bold">{surfSpot.surfzone.cost}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">language: <span className="font-bold">{surfSpot.surfzone.language}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Currency: <span className="font-bold">{surfSpot.surfzone.currency}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Main religion: <span className="font-bold">{surfSpot.surfzone.religion}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Surroundings: <span className="font-bold">{surfSpot.surfzone.surroundings}</span></div>
-                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Main waves direction: <span className="font-bold">{surfSpot.surfzone.main_wave_direction}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Near city: <span className="font-bold text-cyan-500">{surfSpot.surfzone.nearest_city}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Near airport: <span className="font-bold text-cyan-500">{surfSpot.surfzone.nearest_airport}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Safety: <span className="font-bold text-cyan-500">{surfSpot.surfzone.safety}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Health hazards: <span className="font-bold text-cyan-500">{surfSpot.surfzone.health_hazards.join(', ')}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Surf hazards: <span className="font-bold text-cyan-500">{surfSpot.surfzone.surf_hazards.join(', ')}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Traveler type: <span className="font-bold text-cyan-500">{surfSpot.surfzone.traveler_type.join(', ')}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Best months: <span className="font-bold text-cyan-500">{surfSpot.surfzone.best_months.join(', ')}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Confort: <span className="font-bold text-cyan-500">{surfSpot.surfzone.confort}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Cost of living: <span className="font-bold text-cyan-500">{surfSpot.surfzone.cost}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">language: <span className="font-bold text-cyan-500">{surfSpot.surfzone.language}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Currency: <span className="font-bold text-cyan-500">{surfSpot.surfzone.currency}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Main religion: <span className="font-bold text-cyan-500">{surfSpot.surfzone.religion}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Surroundings: <span className="font-bold text-cyan-500">{surfSpot.surfzone.surroundings}</span></div>
+                            <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Main waves direction: <span className="font-bold text-cyan-500">{surfSpot.surfzone.main_wave_direction}</span></div>
                           </>
                         )}
                     </div>
@@ -259,13 +259,13 @@ function SurfZoneDetailsPage() {
                 <h2 className="text-pink-400 text-2xl font-bold text-center md:text-left">{surfspot.name}</h2>
                 <div className="mt-2 text-sm text-blue-500 text-center md:text-left font-semibold">{surfspot.surfzone.name}</div>
                 <div className="mt-2 text-sm text-gray-700 text-center md:text-left">{surfspot.description}</div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best months: <span className="text-black font-bold">{surfspot.best_months.join(', ')}</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell direction: <span className="text-black font-bold">{surfspot.best_swell_direction}</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell size: <span className="text-black font-bold">{surfspot.best_swell_size} ft</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best tide: <span className="text-black font-bold">{surfspot.best_tide.join(', ')}</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best wind direction: <span className="text-black font-bold">{surfspot.best_wind_direction}</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf hazards: <span className="text-black font-bold">{surfspot.surf_hazards.join(', ')}</span></div>
-                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf level: <span className="text-black font-bold">{surfspot.surf_level.join(', ')}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best months: <span className="text-cyan-500 font-bold">{surfspot.best_months.join(', ')}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell direction: <span className="text-cyan-500 font-bold">{surfspot.best_swell_direction}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell size: <span className="text-cyan-500 font-bold">{surfspot.best_swell_size} ft</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best tide: <span className="text-cyan-500 font-bold">{surfspot.best_tide.join(', ')}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best wind direction: <span className="text-cyan-500 font-bold">{surfspot.best_wind_direction}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf hazards: <span className="text-cyan-500 font-bold">{surfspot.surf_hazards.join(', ')}</span></div>
+                <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Surf level: <span className="text-cyan-500 font-bold">{surfspot.surf_level.join(', ')}</span></div>
               </div>
 
             </div>
