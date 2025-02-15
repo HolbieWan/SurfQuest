@@ -134,7 +134,7 @@ export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId
   const userAlreadyReviewed = userReview !== null;
 
   return (
-    <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center min-w-[600px]">
+    <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
       {(selectedSurfZone || selectedSurfSpot) && (
         <>
           <h2 className="text-4xl font-bold text-center text-white p-2 w-full">Reviews</h2>
@@ -145,7 +145,7 @@ export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId
           {/* Display All Reviews */}
           {reviews.length > 0 ? (
             reviews.map((review) => (
-              <div key={review.id} className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] group overflow-hidden transform transition-transform duration-500 hover:scale-110">
+              <div key={review.id} className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] min-w-[400px] md:min-w-[500px] lg:min-w-[600px] group overflow-hidden transform transition-transform duration-500 hover:scale-110">
                 <div className="flex items-center justify-center">  
                   <img src={review.user.avatar} alt="User Avatar" className="w-12 h-12 rounded-full ml-1 mr-1" />
                 </div>
@@ -163,7 +163,7 @@ export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId
           {/* User Review Form */}
           {!userAlreadyReviewed && (
             <>
-              <div className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110">
+              <div className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[400px] md:min-w-[500px] lg:min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110">
                 <h3 className="text-lg font-bold text-black mb-4">
                   {userReview ? "Edit Your Review" : "Write a Review"}
                 </h3>

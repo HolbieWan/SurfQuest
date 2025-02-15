@@ -152,17 +152,17 @@ function SearchSurfSpotsPage() {
     <div className="flex flex-col items-center justify-start pt-10 h-screen bg-black text-white">
       {/* <h1 className="text-4xl font-bold">Surf spots</h1> */}
       {/* <p className="text-sm mt-8">Select a Surf-Zone</p> */}
-      <h1 className="text-4xl font-bold mb-8">Find the best spots for <span className="text-blue-500">you</span> 😎</h1>
+      <h1 className="text-4xl text-center font-bold mb-8">Find the best spots for <span className="text-blue-500">you</span> 😎</h1>
 
-      <div className="grid grid-cols-3 p-4 gap-3 items-center justify-center ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-3 items-center justify-center ">
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedSurfSpot}
           onChange={(e) => setSelectedSurfSpot(e.target.value)}
         >
           <option value="">View all surf-spots</option>
-          {uniqueSurfSpotsList.map((spot, index) => (
+          {uniqueSurfSpotsList.sort().map((spot, index) => (
             <option key={index} value={spot}>
               {spot}
             </option>
@@ -170,12 +170,12 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedSurfZone}
           onChange={(e) => setSelectedSurfZone(e.target.value)}
         >
           <option value="">Surf Zone</option>
-          {uniqueSurfZonesList.map((surf_zone, index) => (
+          {uniqueSurfZonesList.sort().map((surf_zone, index) => (
             <option key={index} value={surf_zone}>
               {surf_zone}
             </option>
@@ -183,12 +183,12 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedBreakType}
           onChange={(e) => setSelectedBreakType(e.target.value)}
         >
           <option value="">Break Type</option>
-          {breakTypeList.map((break_type, index) => (
+          {breakTypeList.sort().map((break_type, index) => (
             <option key={index} value={break_type}>
               {break_type}
             </option>
@@ -196,7 +196,7 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedWaveDirection}
           onChange={(e) => setSelectedWaveDirection(e.target.value)}
         >
@@ -209,7 +209,7 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedBestWindDirection}
           onChange={(e) => setSelectedBestWindDirection(e.target.value)}
         >
@@ -222,7 +222,7 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedBestSwellDirection}
           onChange={(e) => setSelectedBestSwellDirection(e.target.value)}
         >
@@ -235,7 +235,7 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedBestSwellDirection}
           onChange={(e) => setSelectedBestSwellDirection(e.target.value)}
         >
@@ -248,7 +248,7 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedBestSwellSize}
           onChange={(e) => setSelectedBestSwellSize(e.target.value)}
         >
@@ -261,7 +261,7 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedSurfLevel}
           onChange={(e) => setSelectedSurfLevel(e.target.value)}
         >
@@ -274,7 +274,7 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedBestTide}
           onChange={(e) => setSelectedBestTide(e.target.value)}
         >
@@ -287,12 +287,12 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedSurfHazards}
           onChange={(e) => setSelectedSurfHazards(e.target.value)}
         >
           <option value="">(No) Surf Hazards </option>
-          {uniqueSurfHazardsList.map((surf_hazards, index) => (
+          {uniqueSurfHazardsList.sort().map((surf_hazards, index) => (
             <option key={index} value={surf_hazards}>
               {surf_hazards}
             </option>
@@ -300,7 +300,7 @@ function SearchSurfSpotsPage() {
         </select>
 
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedBestMonths}
           onChange={(e) => setSelectedBestMonths(e.target.value)}
         >
@@ -360,7 +360,7 @@ function SearchSurfSpotsPage() {
 
           {/* Bloc 3 : card: list of REVIEWS */}
           {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-        <div className="group grid grid-cols-1  rounded-md items-center justify-center">
+        <div className="group grid grid-cols-1 rounded-md items-center justify-center">
           {selectedSurfSpot && <Reviews selectedSurfSpot={selectedSurfSpot} surfSpotId={surfSpotId}/>}
         </div>
 

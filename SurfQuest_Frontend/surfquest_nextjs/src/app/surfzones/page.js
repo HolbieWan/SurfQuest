@@ -230,12 +230,12 @@ export default function SearchSurfZonePage() {
   return (
     <div className="flex flex-col items-center justify-start pt-20 h-screen bg-black text-white rounded-lg">
 
-      <h1 className="text-4xl font-bold mb-8">Find the best destination for <span className="text-blue-500">you</span> 😎</h1>
+      <h1 className="text-4xl text-center font-bold mb-8">Find the best destination for <span className="text-blue-500">you</span> 😎</h1>
 
       {/* Selectors grill*/}
-      <div className="grid grid-cols-3 p-4 gap-3 items-center justify-center ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-3 items-center justify-center ">
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedCountry}
           onChange={handleCountryChange}
         >
@@ -248,7 +248,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedMonth}
           onChange={handleMonthChange}
         >
@@ -261,7 +261,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedSurfLevel}
           onChange={handleSurfLevelChange}
         >
@@ -274,7 +274,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedCost}
           onChange={handleCostChange}
         >
@@ -287,7 +287,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedSunnyDays}
           onChange={handleSunnyDaysChange}
         >
@@ -300,7 +300,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedWaterTemp}
           onChange={handleWaterTempChange}
         >
@@ -313,7 +313,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedSurfRating}
           onChange={handleSurfRatingChange}
         >
@@ -326,7 +326,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedSwellSize}
           onChange={handleSwellSizeChange}
         >
@@ -339,7 +339,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px]"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedCrowdFactor}
           onChange={handleCrowdFactorChange}
         >
