@@ -53,7 +53,7 @@ class BEST_TIDE_CHOICES(models.TextChoices):
 class WAVE_DIRECTION_CHOICES(models.TextChoices):
     LEFT = 'Left', 'Left'
     RIGHT = 'Right', 'Right'
-    LEFT_AND_RIGHT = 'Left_and_right', 'Left and Right'
+    LEFT_AND_RIGHT = 'Left and right', 'Left and Right'
 
 class BREAK_TYPE_CHOICES(models.TextChoices):
     BEACH_BREAK = 'Beach break', 'Beach break' 
