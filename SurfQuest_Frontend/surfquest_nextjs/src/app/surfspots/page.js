@@ -149,12 +149,12 @@ function SearchSurfSpotsPage() {
   // const surfZoneImage = surfSpot?.surfzone?.zone_images?.[0]?.image || null;
 
   return (
-    <div className="flex flex-col items-center justify-start pt-10 h-screen bg-black text-white">
+    <div className="flex flex-col items-center justify-start pt-20 h-screen bg-black text-white">
       {/* <h1 className="text-4xl font-bold">Surf spots</h1> */}
       {/* <p className="text-sm mt-8">Select a Surf-Zone</p> */}
       <h1 className="text-4xl text-center font-bold mb-8">Find the best spots for <span className="text-blue-500">you</span> 😎</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-3 items-center justify-center ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 gap-3 items-center justify-center ">
 
         <select
           className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"

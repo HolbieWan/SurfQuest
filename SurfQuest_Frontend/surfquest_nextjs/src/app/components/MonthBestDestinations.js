@@ -69,14 +69,24 @@ export default function MonthBestDestinations() {
   const doubleLeftArrow = "\u21D0";
 
   return (
-    <div className="flex flex-col items-center justify-start pt-4 bg-black text-white">
+    <div className="flex flex-col items-center justify-start pt-8 bg-black text-white">
       <div className="mb-12 text-center">
-        <a href="/surfzones" className="text-4xl font-bold text-cyan-200 hover:text-cyan-400">
-          {doubleRightArrow} Find the best surfing destinations for you {doubleLeftArrow}
+        <a
+          href="/surfzones"
+          className="text-4xl font-bold text-cyan-200 hover:text-cyan-400 inline-block group"
+        >
+          <span className="inline-block transform transition-transform group-hover:-translate-x-2 duration-300">
+            {doubleRightArrow}
+          </span>
+          <span className="mx-2 inline-block transform transition-transform group-hover:scale-105 duration-300 animate-pulse mr-2 group-hover:animate-none">
+            Find the best surfing destinations for you
+          </span>
+          <span className="inline-block transform transition-transform group-hover:translate-x-2 duration-300">
+            {doubleLeftArrow}
+          </span>
         </a>
       </div>
-
-      {responseData && <h2 className="text-2xl font-bold mt-4 text-left">Best surfing destinations in <span className="text-blue-300">{currentMonth}</span></h2>}
+      {responseData && <h2 className="text-2xl font-bold mt-12 text-left">Best surfing destinations in <span className="text-blue-300">{currentMonth}</span></h2>}
       {error &&
         <div>
           <p className="text-white text-md text center">Please sign-up or log-in to have access to the features</p>
