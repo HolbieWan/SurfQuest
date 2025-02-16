@@ -240,7 +240,7 @@ export default function SearchSurfZonePage() {
           onChange={handleCountryChange}
         >
           <option value="">Country</option>
-          {countries.map((country, index) => (
+          {countries.sort().map((country, index) => (
             <option key={index} value={country}>
               {country}
             </option>
