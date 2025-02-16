@@ -130,11 +130,11 @@ export default function Navbar() {
             <span className="text-blue-500">Q</span>
             <span className="text-white">uest</span>
           </h1>
-          {/* <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl permanent-marker-regular text-shadow-2xl">
-            <span className="text-blue-500">Plan your </span>
-            <span className="text-pink-500">dream </span>
-            <span className="text-blue-500">surf-trip</span>
-          </p> */}
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl permanent-marker-regular text-shadow-2xl">
+            <span className="text-white">SURF TRIP PLANNER</span>
+            <span className="text-white"></span>
+            <span className="text-white"></span>
+          </p>
         </div>
       </div>
     </>

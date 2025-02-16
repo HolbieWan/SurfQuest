@@ -16,7 +16,7 @@ export default function ProfilePage() {
   return (
     <>
       <div className="flex flex-col items-center justify-start pt-20 h-screen">
-              <h1 className="text-4xl font-bold">Hello {username}</h1>
+              <h1 className="text-4xl font-bold">Hello <span className="text-cyan-400">{username}</span></h1>
         <div className="flex flex-col items-center justify-start pt-16 bg-black text-white">
           <UserReviews />
         </div>
