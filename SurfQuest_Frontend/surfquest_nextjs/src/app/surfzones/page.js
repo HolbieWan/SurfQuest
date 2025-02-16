@@ -367,9 +367,14 @@ export default function SearchSurfZonePage() {
                 <a className="absolute inset-0 z-10"></a>
               </Link>
 
-              {surfzone.zone_images && surfzone.zone_images.map((image, imgIndex) => (
-                <img key={imgIndex} src={image.image} alt={surfzone.name} className="inset-0  w-full h-64 object-cover rounded-md transform transition-transform duration-500 group-hover:scale-110"/>
-              ))}
+              {surfzone.zone_images && surfzone.zone_images.length > 0 && (
+                <img 
+                  key={0} 
+                  src={surfzone.zone_images[0].image} 
+                  alt={surfzone.name} 
+                  className="inset-0 w-full h-64 object-cover rounded-md transform transition-transform duration-500 group-hover:scale-110"
+                />
+              )}
 
               <div className="absolute inset-0 bg-black bg-opacity-10 flex flex-col justify-center items-center p-4">
                 <h2 className="text-white text-xl font-bold text-center text-shadow-md">{surfzone.name}</h2>

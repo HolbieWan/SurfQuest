@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
 from .choices import CONFORT_CHOICES, COST_CHOICES, SURF_WIND_DIRECTION_CHOICES, SURF_LEVEL_CHOICES, BREAK_TYPE_CHOICES, BEST_TIDE_CHOICES, TRAVELER_TYPE_CHOICES, WAVE_DIRECTION_CHOICES, SAFETY_CHOICES, MONTHS_CHOICES
 from django.contrib.postgres.fields import ArrayField
+from datetime import datetime
 from users.models import User
 
 # Create your models here.
@@ -136,7 +137,8 @@ class SurfZoneImage(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.surfzone.name)
+            current_time = datetime.now().strftime('%Y%m%d%H%M%S%f')
+            self.slug = slugify(f"{self.surfzone.name}-{current_time}")
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -156,7 +158,8 @@ class SurfSpotImage(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.surfspot.name)
+            current_time = datetime.now().strftime('%Y%m%d%H%M%S%f')
+            self.slug = slugify(f"{self.surfspot.name}-{current_time}")
         super().save(*args, **kwargs)
 
     def __str__(self):

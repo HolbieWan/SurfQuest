@@ -329,15 +329,15 @@ function SearchSurfSpotsPage() {
 
               <div className="bg-black rounded-md group flex-shrink-0 w-full md:w-1/2 lg:w-2/4" style={{ height: '400px' }}>
 
-                {surfspot.spot_images && surfspot.spot_images.map((image, imgIndex) => (
-                  <Link href={`/surfspots?surfspot=${encodeURIComponent(surfspot.name)}`} passHref key={imgIndex}>
+                {surfspot.spot_images && surfspot.spot_images.length > 0 && (
+                  <Link href={`/surfspots?surfspot=${encodeURIComponent(surfspot.name)}`} passHref key={surfspot.id}>
                     <img
-                      key={imgIndex}
-                      src={image.image}
+                      key={0}
+                      src={surfspot.spot_images[0].image}
                       alt={surfspot.name}
                       className="w-full h-full object-cover rounded-md transform transition-transform duration-500 group-hover:scale-110" />
                   </Link>
-                ))}
+                )}
 
               </div>
 

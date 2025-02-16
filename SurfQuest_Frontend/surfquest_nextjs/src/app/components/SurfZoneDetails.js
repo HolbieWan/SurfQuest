@@ -92,7 +92,7 @@ function SurfZoneDetailsPage() {
   console.log(monthCondition);
 
   //Get the surfzone image from the surfSpot object
-  const surfZoneImage = surfSpot?.surfzone?.zone_images?.[0]?.image || null;
+  const surfZoneImages = surfSpot?.surfzone?.zone_images?.slice(0, 2) || [];
 
   return (
     <div className="flex flex-col items-center justify-start pt-10 h-screen bg-black text-white">
@@ -121,11 +121,11 @@ function SurfZoneDetailsPage() {
             {selectedSurfZone && (
               <>
                 <h1 className="text-white text-4xl font-bold text-center mb-6 p-2 w-full">Zone infos</h1>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-4 rounded-lg items-stretch justify-center mb-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 rounded-lg items-stretch justify-center mb-10">
 
                   {/* Bloc superieur: card INFOS */}
-                  <div className="group flex flex-col items-center justify-start w-full max-w-lg  ">
-                    <div className="bg-white rounded-lg p-10 flex flex-col justify-start border overflow-hidden w-full transform transition-transform duration-500 group-hover:scale-110" /*style={{ height: '700px' }}*/>
+                  <div className="group flex flex-col items-center justify-center w-full max-w-lg  ">
+                    <div className="bg-white rounded-lg p-10 flex flex-col justify-start border overflow-hidden w-full transform transition-transform duration-500 group-hover:scale-105" /*style={{ height: '700px' }}*/>
                       <h2 className="text-blue-500 text-4xl font-bold text-center lg:text-left mb-6 p-2">{surfSpot.surfzone.name}</h2>
                         {surfSpot && (
                           <>
@@ -152,14 +152,20 @@ function SurfZoneDetailsPage() {
                   
                   {/* Bloc superieur 2: card: CONDITIONS */}
                   {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-                  <div className="group flex flex-col items-center justify-start w-full max-w-lg rounded-lg">
-                    
-                    {selectedSurfZone  && surfSpot && surfSpot.surfzone && (
+                  <div className="group flex flex-col items-center justify-between w-full max-w-md rounded-lg">
+                    {selectedSurfZone && surfSpot && surfSpot.surfzone && (
                       <>
-                        <img src={surfZoneImage} alt={surfSpot.surfzone.name} className="w-full object-cover rounded-lg transform transition-transform duration-500 hover:scale-110 overflow-hidden"/>
+                        {surfZoneImages.slice(0, 2).map((image, index) => (
+                          <img 
+                            key={index}
+                            src={image.image} 
+                            alt={`${surfSpot.surfzone.name} - ${index + 1}`} 
+                            className="w-full h-[300px] object-cover rounded-lg transform transition-transform duration-500 hover:scale-105 overflow-hidden"
+                          />
+                        ))}
                       </>
                     )}
-                  </div>
+                  </div>                
                 </div>
               </>
             )}
