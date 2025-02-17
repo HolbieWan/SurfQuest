@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { useParams } from "next/navigation"; 
 import Reviews from "../components/Reviews";
 import Link from 'next/link';
-// import SurfZoneForecastCard from './SurfZoneForecastCardWindy';
+import SurfZoneForecast from './SurfZoneForecastCardWindy';
 
 const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';
 const token = Cookies.get('access_token');
@@ -297,9 +297,9 @@ function SurfZoneDetailsPage() {
 
           {/* Bloc 4 : card: SURFFORECAST */}
           {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-        {/* <div className="group grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
-          {selectedSurfZone && <SurfZoneForecastCard selectedSurfZone={selectedSurfZone} />}
-        </div> */}
+        <div className="group grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
+          {selectedSurfZone && <SurfZoneForecast selectedSurfZone={selectedSurfZone} />}
+        </div>
 
       </div>
     </div>
