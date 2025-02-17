@@ -8,35 +8,28 @@ const surfForecastApiUrl = 'https://api.windy.com/api/point-forecast/v2';
 const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
 const token = Cookies.get('access_token');
 
+function getDirectionArrow(deg) {
+  const directions = ['↑', '↗️', '→', '↘️', '↓', '↙️', '←', '↖️'];
+  const index = Math.round(deg / 45) % 8;
+  return directions[index];
+}
+
 function SurfZoneForecast({ selectedSurfZone }) {
   const [forecast, setForecast] = useState(null);
   const [surfZone, setSurfZone] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Fetch surf zone data (lat, lon)
   useEffect(() => {
     const fetchSurfZoneData = async () => {
       setLoading(true);
-      setError('');
       try {
         const response = await fetch(`${surfZonesApiUrl}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          mode: 'cors',
-          credentials: 'include',
+          headers: { 'Authorization': `Bearer ${token}` },
         });
-
-        if (!response.ok) throw new Error('Failed to fetch surf zone data');
-        
         const data = await response.json();
-        const selectedZone = data.find(zone => zone.name === selectedSurfZone);
-        if (!selectedZone) throw new Error('Selected surf zone not found');
-        setSurfZone(selectedZone);
-
+        const zone = data.find(z => z.name === selectedSurfZone);
+        setSurfZone(zone);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -46,45 +39,40 @@ function SurfZoneForecast({ selectedSurfZone }) {
     fetchSurfZoneData();
   }, [selectedSurfZone]);
 
-  // Fetch forecast data
   useEffect(() => {
     if (!surfZone) return;
-
     const fetchForecastData = async () => {
       setLoading(true);
-      setError('');
       try {
-        const [weatherResponse, waveResponse] = await Promise.all([
-          fetch(surfForecastApiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              lat: surfZone.latitude,
-              lon: surfZone.longitude,
-              model: 'gfs',
-              parameters: ["temp", "wind", "lclouds", "mclouds", "hclouds"],
-              levels: ['surface'],
-              key: APIKey,
-            }),
+        const weatherResponse = await fetch(surfForecastApiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            lat: surfZone.latitude,
+            lon: surfZone.longitude,
+            model: 'gfs',
+            parameters: ['temp', 'wind', 'lclouds', 'mclouds', 'hclouds'],
+            levels: ['surface'],
+            key: APIKey,
           }),
-          fetch(surfForecastApiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              lat: surfZone.latitude,
-              lon: surfZone.longitude,
-              model: 'gfsWave',
-              parameters: ['waves', 'swell1'],
-              levels: ['surface'],
-              key: APIKey,
-            }),
-          }),
-        ]);
-
+        });
         const weatherData = await weatherResponse.json();
-        const waveData = await waveResponse.json();
-        setForecast({ weather: weatherData, waves: waveData });
 
+        const waveResponse = await fetch(surfForecastApiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            lat: surfZone.latitude,
+            lon: surfZone.longitude,
+            model: 'gfsWave',
+            parameters: ['waves', 'swell1'],
+            levels: ['surface'],
+            key: APIKey,
+          }),
+        });
+        const waveData = await waveResponse.json();
+
+        setForecast({ weather: weatherData, waves: waveData });
       } catch (err) {
         setError('Failed to load surf forecast.');
       } finally {
@@ -99,30 +87,29 @@ function SurfZoneForecast({ selectedSurfZone }) {
   if (!forecast) return null;
 
   const { weather, waves } = forecast;
+
   const days = weather.ts.slice(0, 7).map((timestamp, i) => ({
     date: new Date(timestamp).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
-    temp: weather['temp-surface'][i]?.toFixed(1),
-    windSpeed: (Math.sqrt(weather['wind_u-surface'][i] ** 2 + weather['wind_v-surface'][i] ** 2) * 3.6).toFixed(1), // m/s to km/h
-    windDir: (Math.atan2(weather['wind_v-surface'][i], weather['wind_u-surface'][i]) * (180 / Math.PI)).toFixed(0),
-    cloudCover: weather['lclouds-surface'][i] || weather['mclouds-surface'][i] || weather['hclouds-surface'][i] || 0,
+    temp: (weather['temp-surface'][i] - 273.15).toFixed(1), // Kelvin to °C
+    windSpeed: (Math.sqrt(weather['wind_u-surface'][i] ** 2 + weather['wind_v-surface'][i] ** 2) * 3.6).toFixed(1), // km/h
+    windDir: getDirectionArrow(Math.atan2(weather['wind_v-surface'][i], weather['wind_u-surface'][i]) * (180 / Math.PI)),
+    cloudCover: Math.round(weather['lclouds-surface'][i] || weather['mclouds-surface'][i] || weather['hclouds-surface'][i]),
     swellHeight: waves['waves_height-surface'][i]?.toFixed(1),
     swellPeriod: waves['waves_period-surface'][i]?.toFixed(1),
-    swellDir: waves['waves_direction-surface'][i]?.toFixed(0),
+    swellDir: getDirectionArrow(waves['waves_direction-surface'][i]),
   }));
 
   return (
-    <div className="bg-gradient-to-r from-blue-800 to-blue-600 p-6 rounded-lg text-white shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">🏄 {selectedSurfZone} Surf Forecast</h2>
+    <div className="bg-gray-800 p-6 rounded-lg text-white shadow-md">
+      <h2 className="text-2xl font-bold mb-4">{selectedSurfZone} Surf Forecast 🏄</h2>
       <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
         {days.map((day, idx) => (
-          <div key={idx} className="bg-blue-700 p-4 rounded-lg text-center shadow hover:scale-105 transform transition duration-300">
-            <p className="font-semibold mb-2 text-lg">{day.date}</p>
+          <div key={idx} className="bg-blue-600 p-4 rounded-lg text-center">
+            <p className="font-semibold mb-2">{day.date}</p>
             <p>🌡️ {day.temp}°C</p>
-            <p>💨 {day.windSpeed} km/h</p>
-            <p>🧭 {day.windDir}°</p>
+            <p>💨 {day.windSpeed} km/h {day.windDir}</p>
             <p>☁️ {day.cloudCover}%</p>
-            <p>🌊 {day.swellHeight} m</p>
-            <p>↗️ {day.swellDir}°</p>
+            <p>🌊 {day.swellHeight} m {day.swellDir}</p>
             <p>⏱️ {day.swellPeriod} s</p>
           </div>
         ))}
