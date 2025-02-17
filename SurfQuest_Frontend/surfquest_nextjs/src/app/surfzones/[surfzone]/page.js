@@ -1,11 +1,11 @@
 "use client";
 
 import { use } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import SurfZoneDetails from "../../components/SurfZoneDetails";
 
 export default function SurfZonePage({ params }) {
-  const router = useRouter();
+  // const router = useRouter();
   const surfzone = use(params)?.surfzone;
   console.log("Selected Surf Zone:", surfzone);
 

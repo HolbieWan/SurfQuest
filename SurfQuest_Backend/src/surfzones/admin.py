@@ -50,6 +50,8 @@ class SurfZoneAdmin(admin.ModelAdmin):
         'id',
         'name',
         'country',
+        'latitude',
+        'longitude',
         'nearest_city',
         'nearest_airport',
         'airport_latitude',
@@ -73,6 +75,8 @@ class SurfZoneAdmin(admin.ModelAdmin):
 
     list_editable = [
         'name',
+        'latitude',
+        'longitude',
         'nearest_city',
         'nearest_airport',
         'airport_latitude',

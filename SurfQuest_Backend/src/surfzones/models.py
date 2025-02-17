@@ -56,6 +56,8 @@ class SurfZone(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=100)
     country = models.ForeignKey(Country, on_delete=models.PROTECT)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
     nearest_city = models.CharField(max_length=50, blank=True)
     nearest_airport = models.CharField(max_length=50, blank=True)
     airport_latitude = models.FloatField(null=True, blank=True)

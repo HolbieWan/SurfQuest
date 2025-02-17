@@ -14,7 +14,7 @@ export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId
   const [loading, setLoading] = useState(false);
   const [newReview, setNewReview] = useState({ rating: '', comment: '' });
   const [userId, setUserId] = useState(null);
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
 
   // Fetch userId safely inside useEffect
   useEffect(() => {
