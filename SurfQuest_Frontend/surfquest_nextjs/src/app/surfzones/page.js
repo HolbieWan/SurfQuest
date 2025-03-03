@@ -23,6 +23,7 @@ export default function SearchSurfZonePage() {
   const [selectedSwellSize, setSelectedSwellSize] = useState('');
   const [selectedCrowdFactor, setSelectedCrowdFactor] = useState('');
   const [selectedSunnyDays, setSelectedSunnyDays] = useState('');
+  const [selectedRainyDays, setSelectedRainyDays] = useState('');
  
   const [countries, setCountries] = useState([]);
   const [surfZones, setSurfZones] = useState([]);
@@ -54,14 +55,14 @@ export default function SearchSurfZonePage() {
     "2m - 3m": { min: 2.1, max: 3 },
     "Over 3m": { min: 3.1, max: 30 },
   };
-  const crowdFactor = ['Few', 'Moderate', 'Crowded', 'Packed'];
+  const crowdFactor = ['Few people', 'Moderate', 'Crowded', 'Packed'];
   const crowdFactorRanges = {
-    "Few": "Low",
+    "Few people": "Low",
     "Moderate": "Medium",
     "Crowded": "High",
     "Packed": "Very High",
   };
-  const sunnyDays = [/*'under 5'*/, 'min 5', 'min 10', 'min 15', 'min 20', 'min 25'];
+  const sunnyDays = [/*'under 5', */'min 5', 'min 10', 'min 15', 'min 20', 'min 25'];
   const sunnyDaysRanges = {
     // "under 5": { min: 1, max: 4 },
     "min 5": { min: 5, max: 30 },
@@ -70,6 +71,14 @@ export default function SearchSurfZonePage() {
     "min 20": { min: 20, max: 30 },
     "min 25": { min: 25, max: 30 },
   };
+  const rainyDays = ['max 5', 'max 10', 'max 15', 'max 20', 'max 25'];
+  const rainyDaysRanges = {
+    "max 5": { min: 0, max: 5 },
+    "max 10": { min: 0, max: 10 },
+    "max 15": { min: 0, max: 15 },
+    "max 20": { min: 0, max: 20 },
+    "max 25": { min: 0, max: 25 },
+  }
 
   useEffect(() => {
 
@@ -174,6 +183,11 @@ export default function SearchSurfZonePage() {
     setSelectedSunnyDays(sunny_days);
   };
 
+  const handleRainyDaysChange = (e) => {
+    const rainy_days = e.target.value;
+    setSelectedRainyDays(rainy_days);
+  };
+
 
   // Filter surf zones by country, cost of living, 
   const filteredSurfZones = surfZones
@@ -245,6 +259,16 @@ export default function SearchSurfZonePage() {
         (!selectedMonth || condition.month === selectedMonth) &&
         condition.sunny_days >= min && condition.sunny_days <= max
       );
+    })
+
+    .filter(zone => {
+      if (!selectedRainyDays || !rainyDaysRanges[selectedRainyDays]) return true;
+      const { min, max } = rainyDaysRanges[selectedRainyDays] || {};
+      if (min === undefined || max === undefined) return false;
+      return zone.conditions?.some(condition =>
+        (!selectedMonth || condition.month === selectedMonth) &&
+        condition.rain_days >= min && condition.rain_days <= max
+      );
     });
 
 
@@ -270,19 +294,6 @@ export default function SearchSurfZonePage() {
           {countries.sort().map((country, index) => (
             <option key={index} value={country}>
               {country}
-            </option>
-          ))}
-        </select>
-
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
-          value={selectedMonth}
-          onChange={handleMonthChange}
-        >
-          <option value="">Month</option>
-          {months.map((month, index) => (
-            <option key={index} value={month}>
-              {month}
             </option>
           ))}
         </select>
@@ -352,6 +363,31 @@ export default function SearchSurfZonePage() {
           ))}
         </select>
 
+      </div>
+
+      {/* Selectors grill*/}
+      <div className="grid grid-cols-1 gap-3 items-center justify-center mt-8">
+
+        <select
+          className=" p-2 border border-black rounded bg-amber-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          value={selectedMonth}
+          onChange={handleMonthChange}
+        >
+          <option value="">Month</option>
+          {months.map((month, index) => (
+            <option key={index} value={month}>
+              {month}
+            </option>
+          ))}
+        </select>
+
+        <p className="text-gray-500 text-sm">(Select a month to apply below filters)</p>
+        
+      </div>
+
+      {/* Month Depending Selectors grill*/}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-3 items-center justify-center ">
+
         <select
           className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
           value={selectedSunnyDays}
@@ -361,6 +397,19 @@ export default function SearchSurfZonePage() {
           {sunnyDays.map((sunny_days, index) => (
             <option key={index} value={sunny_days}>
               {sunny_days}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          value={selectedRainyDays}
+          onChange={handleRainyDaysChange}
+        >
+          <option value="">Rainy Days</option>
+          {rainyDays.map((rainy_days, index) => (
+            <option key={index} value={rainy_days}>
+              {rainy_days}
             </option>
           ))}
         </select>
@@ -416,7 +465,7 @@ export default function SearchSurfZonePage() {
             </option>
           ))}
         </select>
-        
+
       </div>
 
       {/*Surf Zones card */}
