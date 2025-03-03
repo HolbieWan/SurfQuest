@@ -11,11 +11,18 @@ console.log(surfZonesApiUrl);
 console.log(token);
 
 export default function SearchSurfZonePage() {
+
+  //Get the currennt month
+  const currentMonthIndex = new Date().getMonth();
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const currentMonth = monthNames[currentMonthIndex]; 
+
   const [selectedCountry, setSelectedCountry] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const [selectedTravelerType, setSelectedTravelerType] = useState('');
   const [selectedSafety, setSelectedSafety] = useState('');
   const [selectedComfort, setSelectedComfort] = useState('');
+  const [selectedMainWaveDirection, setSelectedMainWaveDirection] = useState('');
   const [selectedSurfLevel, setSelectedSurfLevel] = useState('');
   const [selectedCost, setSelectedCost] = useState('');
   const [selectedWaterTemp, setSelectedWaterTemp] = useState('');
@@ -36,6 +43,7 @@ export default function SearchSurfZonePage() {
   const travelerType = ['Solo', 'Couple', 'Family', 'Group'];
   const safety = ['Low', 'Moderate', 'High'];
   const comfort = ['Simple', 'Comfortable', 'Premium'];
+  const mainWaveDirection = ['Left', 'Right', 'Left and right'];
   const cost = ['Cheap', 'Moderate', 'Expensive'];
   const waterTemp_C = ['Freezing', 'Cold', 'Cool', 'Temperate', 'Warm', 'Hot'];
   const waterTempRanges = {
@@ -148,6 +156,11 @@ export default function SearchSurfZonePage() {
     setSelectedComfort(comfort);
   }
 
+  const handleMainWaveDirectionChange = (e) => {
+    const main_wave_direction = e.target.value;
+    setSelectedMainWaveDirection(main_wave_direction);
+  }
+
   const handleSurfLevelChange = (e) => {
     const surf_level = e.target.value;
     setSelectedSurfLevel(surf_level);
@@ -188,6 +201,23 @@ export default function SearchSurfZonePage() {
     setSelectedRainyDays(rainy_days);
   };
 
+  const handleReset = () => {
+    setSelectedCountry('');
+    setSelectedMonth('');
+    setSelectedTravelerType('');
+    setSelectedSafety('');
+    setSelectedComfort('');
+    setSelectedMainWaveDirection('');
+    setSelectedSurfLevel('');
+    setSelectedCost('');
+    setSelectedWaterTemp('');
+    setSelectedSurfRating('');
+    setSelectedSwellSize('');
+    setSelectedCrowdFactor('');
+    setSelectedSunnyDays('');
+    setSelectedRainyDays('');
+  };
+
 
   // Filter surf zones by country, cost of living, 
   const filteredSurfZones = surfZones
@@ -209,6 +239,8 @@ export default function SearchSurfZonePage() {
 
     .filter(zone => !selectedComfort || zone.confort?.includes(selectedComfort))
 
+    .filter(zone => !selectedMainWaveDirection || zone.main_wave_direction?.includes(selectedMainWaveDirection))
+
     .filter(zone => !selectedCost || zone.cost?.includes(selectedCost))
 
     .filter(zone => {
@@ -227,7 +259,7 @@ export default function SearchSurfZonePage() {
       (selectedMonth
         ? condition.month === selectedMonth && condition.world_surf_rating === Number(selectedSurfRating)
         : condition.world_surf_rating === Number(selectedSurfRating)
-      )
+        )
       )
     )
     
@@ -286,7 +318,7 @@ export default function SearchSurfZonePage() {
       {/* Selectors grill*/}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-3 items-center justify-center ">
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedCountry}
           onChange={handleCountryChange}
         >
@@ -299,20 +331,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
-          value={selectedSurfLevel}
-          onChange={handleSurfLevelChange}
-        >
-          <option value="">Surf Level</option>
-          {surfLevel.map((surf_level, index) => (
-            <option key={index} value={surf_level}>
-              {surf_level}
-            </option>
-          ))}
-        </select>
-
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedTravelerType}
           onChange={handleTravelerTypeChange}
         >
@@ -325,7 +344,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedSafety}
           onChange={handleSafetyChange}
         >
@@ -338,7 +357,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedComfort}
           onChange={handleComfortChange}
         >
@@ -351,7 +370,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedCost}
           onChange={handleCostChange}
         >
@@ -363,13 +382,26 @@ export default function SearchSurfZonePage() {
           ))}
         </select>
 
+        <select
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+          value={selectedMainWaveDirection}
+          onChange={handleMainWaveDirectionChange}
+        >
+          <option value="">Main Wave Direction</option>
+          {mainWaveDirection.map((main_waves_direction, index) => (
+            <option key={index} value={main_waves_direction}>
+              {main_waves_direction}
+            </option>
+          ))}
+        </select>
+
       </div>
 
       {/* Selectors grill*/}
-      <div className="grid grid-cols-1 gap-3 items-center justify-center mt-8">
+      <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
 
         <select
-          className=" p-2 border border-black rounded bg-amber-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedMonth}
           onChange={handleMonthChange}
         >
@@ -386,10 +418,23 @@ export default function SearchSurfZonePage() {
       </div>
 
       {/* Month Depending Selectors grill*/}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-3 items-center justify-center ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-3 place-items-center justify-center ">
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+          value={selectedSurfLevel}
+          onChange={handleSurfLevelChange}
+        >
+          <option value="">Surf Level</option>
+          {surfLevel.map((surf_level, index) => (
+            <option key={index} value={surf_level}>
+              {surf_level}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedSunnyDays}
           onChange={handleSunnyDaysChange}
         >
@@ -402,7 +447,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedRainyDays}
           onChange={handleRainyDaysChange}
         >
@@ -415,7 +460,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedWaterTemp}
           onChange={handleWaterTempChange}
         >
@@ -428,7 +473,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedSurfRating}
           onChange={handleSurfRatingChange}
         >
@@ -441,7 +486,7 @@ export default function SearchSurfZonePage() {
         </select>
 
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedSwellSize}
           onChange={handleSwellSizeChange}
         >
@@ -453,8 +498,13 @@ export default function SearchSurfZonePage() {
           ))}
         </select>
 
+      </div>
+
+      {/* Selectors grill*/}
+      <div className="grid grid-cols-1 place-items-center gap-3 justify-center">
+
         <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
           value={selectedCrowdFactor}
           onChange={handleCrowdFactorChange}
         >
@@ -466,6 +516,17 @@ export default function SearchSurfZonePage() {
           ))}
         </select>
 
+      </div>
+
+      {/* Reset Button*/}
+      <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
+
+        <button
+          className="p-2 border border-red-500 rounded text-red-500 text-center w-[200px] cursor-pointer transform transition-transform duration-200 hover:text-red-600 hover:scale-105"
+          onClick={handleReset}
+        >Reset Selection
+        </button>
+        
       </div>
 
       {/*Surf Zones card */}

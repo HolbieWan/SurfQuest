@@ -25,9 +25,9 @@ function SearchSurfSpotsPage() {
   const [selectedBestSwellSize, setSelectedBestSwellSize] = useState('');
   const [selectedSurfLevel, setSelectedSurfLevel] = useState('');
   const [selectedBestTide, setSelectedBestTide] = useState('');
-  const [selectedSurfHazards, setSelectedSurfHazards] = useState('');
-  const [uniqueSurfHazardsList, sethUniqueSurfHazardsList] = useState([]);
-  const [selectedBestMonths, setSelectedBestMonths] = useState('');
+  // const [selectedSurfHazards, setSelectedSurfHazards] = useState('');
+  // const [uniqueSurfHazardsList, sethUniqueSurfHazardsList] = useState([]);
+  // const [selectedBestMonths, setSelectedBestMonths] = useState('');
   // const [selectedMonth, setSelectedMonth] = useState('January');  /*new Date().toLocaleString("default", { month: "long" }) */
   const [surfSpots, setSurfSpots] = useState([]);
   const [error, setError] = useState('');
@@ -84,9 +84,11 @@ function SearchSurfSpotsPage() {
         const uniqueSurfSpotsList = [...new Set(data.map(item => item.name))];
         setUniqueSurfSpotsList(uniqueSurfSpotsList);
 
-        const uniqueSurfHazardsList = [...new Set(data.flatMap(item => item.surf_hazards))]
-          // .map(hazard => `No ${hazard}`);
-        sethUniqueSurfHazardsList(uniqueSurfHazardsList);
+        // const uniqueSurfHazardsList = [...new Set(data.flatMap(item => item.surf_hazards))]
+        //   // .map(hazard => `No ${hazard}`);
+        // sethUniqueSurfHazardsList(uniqueSurfHazardsList);
+
+
 
         // Set selected SurfZone from query parameter (link clicked from SurfZones page)
         // const surfzone = searchParams.get('surfzone');
@@ -109,6 +111,17 @@ function SearchSurfSpotsPage() {
 
     fetchAndFilterSurfSpots();
   }, [searchParams]);
+
+  const handleReset = () => {
+    setSelectedSurfZone('');
+    setSelectedBreakType('');
+    setSelectedWaveDirection('');
+    setSelectedBestWindDirection('');
+    setSelectedBestSwellDirection('');
+    setSelectedBestSwellSize('');
+    setSelectedSurfLevel('');
+    setSelectedBestTide('');
+  };
 
   // Filter surf spot by surf zone
   const filteredSurfSpots = surfSpots
@@ -160,7 +173,7 @@ function SearchSurfSpotsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-4 gap-3 items-center justify-center place-items-center">
 
             <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] w-auto transform transition-transform duration-200 hover:scale-105"
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] w-auto transform transition-transform duration-200 hover:border-white hover:scale-105"
               value={selectedSurfSpot}
               onChange={(e) => setSelectedSurfSpot(e.target.value)}
             >
@@ -173,7 +186,7 @@ function SearchSurfSpotsPage() {
             </select>
 
             <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
               value={selectedSurfZone}
               onChange={(e) => setSelectedSurfZone(e.target.value)}
             >
@@ -186,7 +199,7 @@ function SearchSurfSpotsPage() {
             </select>
 
             <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
               value={selectedBreakType}
               onChange={(e) => setSelectedBreakType(e.target.value)}
             >
@@ -199,7 +212,7 @@ function SearchSurfSpotsPage() {
             </select>
 
             <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
               value={selectedWaveDirection}
               onChange={(e) => setSelectedWaveDirection(e.target.value)}
             >
@@ -212,7 +225,7 @@ function SearchSurfSpotsPage() {
             </select>
 
             <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
               value={selectedSurfLevel}
               onChange={(e) => setSelectedSurfLevel(e.target.value)}
             >
@@ -225,7 +238,7 @@ function SearchSurfSpotsPage() {
             </select>
 
             <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
               value={selectedBestTide}
               onChange={(e) => setSelectedBestTide(e.target.value)}
             >
@@ -238,7 +251,7 @@ function SearchSurfSpotsPage() {
             </select>
 
             <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
               value={selectedBestSwellSize}
               onChange={(e) => setSelectedBestSwellSize(e.target.value)}
             >
@@ -251,7 +264,7 @@ function SearchSurfSpotsPage() {
             </select>
 
             <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
               value={selectedBestWindDirection}
               onChange={(e) => setSelectedBestWindDirection(e.target.value)}
             >
@@ -264,7 +277,7 @@ function SearchSurfSpotsPage() {
             </select>
 
             <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
               value={selectedBestSwellDirection}
               onChange={(e) => setSelectedBestSwellDirection(e.target.value)}
             >
@@ -301,8 +314,20 @@ function SearchSurfSpotsPage() {
                 </option>
               ))}
             </select> */}
-          
+
           </div>
+
+          {/* Reset Button*/}
+          <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
+
+            <button
+              className="p-2 border border-red-500 rounded text-red-500 text-center w-[200px] cursor-pointer transform transition-transform duration-200 hover:text-red-600 hover:scale-105"
+              onClick={handleReset}
+            >Reset Selection
+            </button>
+            
+          </div>
+
         </div>
       )}
 

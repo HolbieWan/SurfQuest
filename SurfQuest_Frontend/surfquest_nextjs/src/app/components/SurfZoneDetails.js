@@ -14,11 +14,16 @@ console.log(surfSpotsApiUrl);
 console.log(token);
 
 function SurfZoneDetailsPage() {
+  //Get the currennt month
+  const currentMonthIndex = new Date().getMonth();
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const currentMonth = monthNames[currentMonthIndex]; 
+
   const { surfzone } = useParams();
   const decodedSurfZone = decodeURIComponent(surfzone || "");
   const [surfZones, setSurfZones] = useState([]);
   const [selectedSurfZone, setSelectedSurfZone] = useState("");
-  const [selectedMonth, setSelectedMonth] = useState('January');  /*new Date().toLocaleString("default", { month: "long" }) */
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth);  /*new Date().toLocaleString("default", { month: "long" }) */
   const [surfSpots, setSurfSpots] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -103,7 +108,7 @@ function SurfZoneDetailsPage() {
       {/* <p className="text-sm mt-8">Select a Surf-Zone</p> */}
 
       <select
-        className="mt-4 p-2 border border-black rounded bg-blue-500 text-white text-center"
+        className="mt-4 p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
         value={selectedSurfZone}
         onChange={(e) => setSelectedSurfZone(e.target.value)}
       >
@@ -184,7 +189,7 @@ function SurfZoneDetailsPage() {
                 <div className="bg-black rounded-lg p-10 flex flex-col justify-center items-center overflow-hidden">
                   <h2 className="text-white rounded-lg text-4xl font-bold text-center mb-6 p-2 w-full">Surf Conditions</h2> {/*<span className="text-blue-400 font-bold">{surfSpot.surfzone.name}</span>*/}
                   <select
-                      className="ml-4 rounded bg-blue-500 text-white text-center w-60 text-2xl p-1 mb-4"
+                      className="ml-4 border border-black rounded bg-pink-500 text-white text-center p-2 mb-4 min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
                       value={selectedMonth}
                       onChange={(e) => setSelectedMonth(e.target.value)}
                     >
