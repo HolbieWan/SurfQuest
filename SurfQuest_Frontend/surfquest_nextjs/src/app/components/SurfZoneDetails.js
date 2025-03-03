@@ -113,14 +113,14 @@ function SurfZoneDetailsPage() {
         onChange={(e) => setSelectedSurfZone(e.target.value)}
       >
         <option value="">Select Surf-zone</option>
-        {surfZones.map((surfzone, index) => (
+        {surfZones.sort().map((surfzone, index) => (
           <option key={index} value={surfzone}>
             {surfzone}
           </option>
         ))}
       </select>
 
-      <div className="flex flex-col items-center justify-start pt-10 w-full">
+      <div className="flex flex-col items-center pt-10 w-full">
         {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
         {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
 
@@ -128,11 +128,19 @@ function SurfZoneDetailsPage() {
           <div>
             {selectedSurfZone && (
               <>
-                <h1 className="text-white text-4xl font-bold text-center mb-6 p-2 w-full">Zone infos</h1>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 rounded-lg items-stretch justify-center mb-10">
+                <h1 className="text-white text-4xl font-bold text-center mb-6 p-2 w-full">{surfSpot.surfzone.name} Surf Forecast</h1>
+
+                {/* Bloc 4 : card: SURFFORECAST */}
+                {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
+                <div className=" items-center justify-center mb-10">
+                  {selectedSurfZone && <SurfZoneForecast selectedSurfZone={selectedSurfZone} />}
+                </div>
+
+                <h1 className="text-white text-4xl font-bold text-center mb-6 mt-8 p-2 w-full">Zone infos</h1>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 rounded-lg items-stretch justify-items-center mb-10">
 
                   {/* Bloc superieur: card INFOS */}
-                  <div className="group flex flex-col items-center justify-center w-full max-w-lg  ">
+                  <div className="group flex flex-col items-center justify-items-center w-full max-w-lg  ">
                     <div className="bg-white rounded-lg p-10 flex flex-col justify-start border overflow-hidden w-full transform transition-transform duration-500 group-hover:scale-105" /*style={{ height: '700px' }}*/>
                       <h2 className="text-blue-500 text-4xl font-bold text-center lg:text-left mb-6 p-2">{surfSpot.surfzone.name}</h2>
                         {surfSpot && (
@@ -160,7 +168,7 @@ function SurfZoneDetailsPage() {
                   
                   {/* Bloc superieur 2: card: SURFZONE IMAGES */}
                   {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-                  <div className="group flex flex-col items-center justify-between w-full max-w-md rounded-lg">
+                  <div className="group flex flex-col items-center justify-between w-full max-w-lg rounded-lg">
                     {selectedSurfZone && surfSpot && surfSpot.surfzone && (
                       <>
                         {surfZoneImages.slice(0, 2).map((image, index) => (
@@ -254,7 +262,7 @@ function SurfZoneDetailsPage() {
           <div className="flex flex-col items-center justify-center w-full">
             {selectedSurfZone && (
               <>
-                <h2 className="text-4xl font-bold mt-10 text-center rounded-lg p-2">Popular surf spots</h2>
+                <h2 className="text-4xl font-bold mt-6 text-center rounded-lg p-2">Popular surf spots</h2>
               </>
             )}
           </div>
@@ -298,12 +306,6 @@ function SurfZoneDetailsPage() {
           {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
         <div className="group grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
           {selectedSurfZone && <Reviews selectedSurfZone={selectedSurfZone} surfZoneId={surfZoneId}/>}
-        </div>
-
-          {/* Bloc 4 : card: SURFFORECAST */}
-          {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-        <div className="group grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
-          {selectedSurfZone && <SurfZoneForecast selectedSurfZone={selectedSurfZone} />}
         </div>
 
       </div>

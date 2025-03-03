@@ -107,12 +107,13 @@ export default function SearchSurfZonePage() {
 
         if (!responseData.ok) {
           const errorData = await responseData.json();
-          setError(errorData || 'Failed to fetch datas, please try again')
+          setError(errorData.detail || 'Request failed, please try again');
           return;
         }
 
         const data = await responseData.json();
         console.log("Response data: ", data);
+
         setSurfZones(data);
 
         // Extract unique countries from surfZones

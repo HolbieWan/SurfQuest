@@ -9,7 +9,7 @@ const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
 const token = Cookies.get('access_token');
 
 function getDirectionArrow(deg) {
-  const directions = ['↑', '↗️', '→', '↘️', '↓', '↙️', '←', '↖️'];
+  const directions = ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖'];
   const index = Math.round(deg / 45) % 8;
   return directions[index];
 }
@@ -88,23 +88,34 @@ function SurfZoneForecast({ selectedSurfZone }) {
 
   const { weather, waves } = forecast;
 
-  const days = weather.ts.slice(0, 7).map((timestamp, i) => ({
-    date: new Date(timestamp).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
-    temp: (weather['temp-surface'][i] - 273.15).toFixed(1), // Kelvin to °C
-    windSpeed: (Math.sqrt(weather['wind_u-surface'][i] ** 2 + weather['wind_v-surface'][i] ** 2) * 3.6).toFixed(1), // km/h
-    windDir: getDirectionArrow(Math.atan2(weather['wind_v-surface'][i], weather['wind_u-surface'][i]) * (180 / Math.PI)),
-    cloudCover: Math.round(weather['lclouds-surface'][i] || weather['mclouds-surface'][i] || weather['hclouds-surface'][i]),
-    swellHeight: waves['waves_height-surface'][i]?.toFixed(1),
-    swellPeriod: waves['waves_period-surface'][i]?.toFixed(1),
-    swellDir: getDirectionArrow(waves['waves_direction-surface'][i]),
-  }));
+  const uniqueDates = [];
+  const days = weather.ts
+    .filter((timestamp) => {
+      const date = new Date(timestamp).toLocaleDateString();
+      if (!uniqueDates.includes(date)) {
+        uniqueDates.push(date);
+        return true;
+      }
+      return false;
+    })
+    .slice(0, 6) // Now it correctly picks 6 unique days
+    .map((timestamp, i) => ({
+      date: new Date(timestamp).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+      temp: Math.round(weather['temp-surface'][i] - 273.15).toFixed(1),
+      windSpeed: Math.round(Math.sqrt(weather['wind_u-surface'][i] ** 2 + weather['wind_v-surface'][i] ** 2) * 3.6).toFixed(1),
+      windDir: getDirectionArrow(Math.atan2(weather['wind_v-surface'][i], weather['wind_u-surface'][i]) * (180 / Math.PI)),
+      cloudCover: Math.round(weather['lclouds-surface'][i] || weather['mclouds-surface'][i] || weather['hclouds-surface'][i]),
+      swellHeight: waves['waves_height-surface'][i]?.toFixed(1),
+      swellPeriod: waves['waves_period-surface'][i]?.toFixed(1),
+      swellDir: getDirectionArrow(waves['waves_direction-surface'][i]),
+    }));
 
   return (
-    <div className="bg-gray-800 p-6 rounded-lg text-white shadow-md">
-      <h2 className="text-2xl font-bold mb-4">{selectedSurfZone} Surf Forecast 🏄</h2>
-      <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
+    // <div className="bg-gray-800 p-6 rounded-lg text-white shadow-md">
+    //   <h2 className="text-2xl font-bold mb-4">{selectedSurfZone} Surf Forecast 🏄</h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-20 items-center  justify-items-center">
         {days.map((day, idx) => (
-          <div key={idx} className="bg-blue-600 p-4 rounded-lg text-center">
+          <div key={idx} className="bg-blue-500 p-4 rounded-lg text-center  w-[160px] transform transition-transform duration-500 hover:scale-110">
             <p className="font-semibold mb-2">{day.date}</p>
             <p>🌡️ {day.temp}°C</p>
             <p>💨 {day.windSpeed} km/h {day.windDir}</p>
@@ -114,7 +125,7 @@ function SurfZoneForecast({ selectedSurfZone }) {
           </div>
         ))}
       </div>
-    </div>
+    // </div>
   );
 }
 
