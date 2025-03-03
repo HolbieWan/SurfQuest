@@ -126,8 +126,8 @@ function SearchSurfSpotsPage() {
     })
     .filter(spot => !selectedSurfLevel || spot.surf_level.includes(selectedSurfLevel))
     .filter(spot => !selectedBestTide || spot.best_tide.includes(selectedBestTide))  
-    .filter(spot => !selectedSurfHazards || !spot.surf_hazards.includes(selectedSurfHazards))
-    .filter(spot => !selectedBestMonths || spot.best_months.includes(selectedBestMonths));
+    // .filter(spot => !selectedSurfHazards || !spot.surf_hazards.includes(selectedSurfHazards))
+    // .filter(spot => !selectedBestMonths || spot.best_months.includes(selectedBestMonths));
 
 
   console.log(surfSpots);
@@ -157,7 +157,7 @@ function SearchSurfSpotsPage() {
       {!selectedSurfSpot && (
         <div>
           <h1 className="text-4xl text-center font-bold mb-8">Find the best spots for <span className="text-blue-500">you</span> 😎</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 gap-3 items-center justify-center place-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-4 gap-3 items-center justify-center place-items-center">
 
             <select
               className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] w-auto transform transition-transform duration-200 hover:scale-105"
@@ -213,58 +213,6 @@ function SearchSurfSpotsPage() {
 
             <select
               className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
-              value={selectedBestWindDirection}
-              onChange={(e) => setSelectedBestWindDirection(e.target.value)}
-            >
-              <option value="">Best Wind Direction</option>
-              {windDirectionList.map((wind_direction, index) => (
-                <option key={index} value={wind_direction}>
-                  {wind_direction}
-                </option>
-              ))}
-            </select>
-
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
-              value={selectedBestSwellDirection}
-              onChange={(e) => setSelectedBestSwellDirection(e.target.value)}
-            >
-              <option value="">Best Swell Direction</option>
-              {swellDirectionList.map((swell_direction, index) => (
-                <option key={index} value={swell_direction}>
-                  {swell_direction}
-                </option>
-              ))}
-            </select>
-
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
-              value={selectedBestSwellDirection}
-              onChange={(e) => setSelectedBestSwellDirection(e.target.value)}
-            >
-              <option value="">Best Swell Direction</option>
-              {swellDirectionList.map((swell_direction, index) => (
-                <option key={index} value={swell_direction}>
-                  {swell_direction}
-                </option>
-              ))}
-            </select>
-
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
-              value={selectedBestSwellSize}
-              onChange={(e) => setSelectedBestSwellSize(e.target.value)}
-            >
-              <option value="">Best Swell Size</option>
-              {swellSizeList.map((swell_size, index) => (
-                <option key={index} value={swell_size}>
-                  {swell_size}
-                </option>
-              ))}
-            </select>
-
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
               value={selectedSurfLevel}
               onChange={(e) => setSelectedSurfLevel(e.target.value)}
             >
@@ -291,6 +239,45 @@ function SearchSurfSpotsPage() {
 
             <select
               className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              value={selectedBestSwellSize}
+              onChange={(e) => setSelectedBestSwellSize(e.target.value)}
+            >
+              <option value="">Best Swell Size</option>
+              {swellSizeList.map((swell_size, index) => (
+                <option key={index} value={swell_size}>
+                  {swell_size}
+                </option>
+              ))}
+            </select>
+
+            <select
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              value={selectedBestWindDirection}
+              onChange={(e) => setSelectedBestWindDirection(e.target.value)}
+            >
+              <option value="">Best Wind Direction</option>
+              {windDirectionList.map((wind_direction, index) => (
+                <option key={index} value={wind_direction}>
+                  {wind_direction}
+                </option>
+              ))}
+            </select>
+
+            <select
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+              value={selectedBestSwellDirection}
+              onChange={(e) => setSelectedBestSwellDirection(e.target.value)}
+            >
+              <option value="">Best Swell Direction</option>
+              {swellDirectionList.map((swell_direction, index) => (
+                <option key={index} value={swell_direction}>
+                  {swell_direction}
+                </option>
+              ))}
+            </select>
+
+            {/* <select
+              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
               value={selectedSurfHazards}
               onChange={(e) => setSelectedSurfHazards(e.target.value)}
             >
@@ -300,9 +287,9 @@ function SearchSurfSpotsPage() {
                   {surf_hazards}
                 </option>
               ))}
-            </select>
+            </select> */}
 
-            <select
+            {/* <select
               className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
               value={selectedBestMonths}
               onChange={(e) => setSelectedBestMonths(e.target.value)}
@@ -313,7 +300,7 @@ function SearchSurfSpotsPage() {
                   {best_months}
                 </option>
               ))}
-            </select>
+            </select> */}
           
           </div>
         </div>

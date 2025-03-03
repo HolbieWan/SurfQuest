@@ -13,6 +13,9 @@ console.log(token);
 export default function SearchSurfZonePage() {
   const [selectedCountry, setSelectedCountry] = useState('');
   const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedTravelerType, setSelectedTravelerType] = useState('');
+  const [selectedSafety, setSelectedSafety] = useState('');
+  const [selectedComfort, setSelectedComfort] = useState('');
   const [selectedSurfLevel, setSelectedSurfLevel] = useState('');
   const [selectedCost, setSelectedCost] = useState('');
   const [selectedWaterTemp, setSelectedWaterTemp] = useState('');
@@ -29,6 +32,9 @@ export default function SearchSurfZonePage() {
 
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const surfLevel = ['Beginner', 'Intermediate', 'Advanced', 'Pro'];
+  const travelerType = ['Solo', 'Couple', 'Family', 'Group'];
+  const safety = ['Low', 'Moderate', 'High'];
+  const comfort = ['Simple', 'Comfortable', 'Premium'];
   const cost = ['Cheap', 'Moderate', 'Expensive'];
   const waterTemp_C = ['Freezing', 'Cold', 'Cool', 'Temperate', 'Warm', 'Hot'];
   const waterTempRanges = {
@@ -55,14 +61,14 @@ export default function SearchSurfZonePage() {
     "Crowded": "High",
     "Packed": "Very High",
   };
-  const sunnyDays = ['1 to 5', '5 to 10', '10 to 15', '15 to 20', '20 to 25', '25 to 30'];
+  const sunnyDays = [/*'under 5'*/, 'min 5', 'min 10', 'min 15', 'min 20', 'min 25'];
   const sunnyDaysRanges = {
-    "1 to 5": { min: 1, max: 5 },
-    "5 to 10": { min: 6, max: 10 },
-    "10 to 15": { min: 11, max: 15 },
-    "15 to 20": { min: 16, max: 20 },
-    "20 to 25": { min: 21, max: 25 },
-    "25 to 30": { min: 26, max: 30 },
+    // "under 5": { min: 1, max: 4 },
+    "min 5": { min: 5, max: 30 },
+    "min 10": { min: 10, max: 30 },
+    "min 15": { min: 15, max: 30 },
+    "min 20": { min: 20, max: 30 },
+    "min 25": { min: 25, max: 30 },
   };
 
   useEffect(() => {
@@ -118,6 +124,21 @@ export default function SearchSurfZonePage() {
     setSelectedMonth(month);
   };
 
+  const handleTravelerTypeChange = (e) => {
+    const traveler_type = e.target.value;
+    setSelectedTravelerType(traveler_type);
+  }
+
+  const handleSafetyChange = (e) => {
+    const safety = e.target.value;
+    setSelectedSafety(safety);
+  }
+
+  const handleComfortChange = (e) => {
+    const comfort = e.target.value;
+    setSelectedComfort(comfort);
+  }
+
   const handleSurfLevelChange = (e) => {
     const surf_level = e.target.value;
     setSelectedSurfLevel(surf_level);
@@ -167,8 +188,14 @@ export default function SearchSurfZonePage() {
       )
       )
     )
+    
+    .filter(zone => !selectedTravelerType || zone.traveler_type?.includes(selectedTravelerType))
 
-    .filter(zone => !selectedCost || zone.cost.includes(selectedCost))
+    .filter(zone => !selectedSafety || zone.safety?.includes(selectedSafety))
+
+    .filter(zone => !selectedComfort || zone.confort?.includes(selectedComfort))
+
+    .filter(zone => !selectedCost || zone.cost?.includes(selectedCost))
 
     .filter(zone => {
       if (!selectedWaterTemp) return true;
@@ -269,6 +296,45 @@ export default function SearchSurfZonePage() {
           {surfLevel.map((surf_level, index) => (
             <option key={index} value={surf_level}>
               {surf_level}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          value={selectedTravelerType}
+          onChange={handleTravelerTypeChange}
+        >
+          <option value="">Traveler Type</option>
+          {travelerType.map((traveler_type, index) => (
+            <option key={index} value={traveler_type}>
+              {traveler_type}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          value={selectedSafety}
+          onChange={handleSafetyChange}
+        >
+          <option value="">Safety</option>
+          {safety.map((safety, index) => (
+            <option key={index} value={safety}>
+              {safety}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:scale-105"
+          value={selectedComfort}
+          onChange={handleComfortChange}
+        >
+          <option value="">Comfort</option>
+          {comfort.map((comfort, index) => (
+            <option key={index} value={comfort}>
+              {comfort}
             </option>
           ))}
         </select>
