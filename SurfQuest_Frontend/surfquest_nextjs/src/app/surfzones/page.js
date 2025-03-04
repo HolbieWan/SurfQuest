@@ -38,6 +38,7 @@ export default function SearchSurfZonePage() {
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
 
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const surfLevel = ['Beginner', 'Intermediate', 'Advanced', 'Pro'];
@@ -444,125 +445,144 @@ export default function SearchSurfZonePage() {
 
           </div>
 
+
           {/* Selectors grill*/}
           <div ref={monthSelectorsRef} className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
 
-            <select
-              className=" p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedMonth}
-              onChange={handleMonthChange}
+            {/* Button to Toggle Advanced Filters */}
+            <button
+              className="p-2 mb-4 bg-gray-700 text-white rounded"
+              onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
             >
-              <option value="">Month</option>
-              {months.map((month, index) => (
-                <option key={index} value={month}>
-                  {month}
-                </option>
-              ))}
-            </select>
+              {showAdvancedFilters ? "Hide seasonal Filters ▲" : "Show seasonal Filters ▼"}
+            </button>
 
-            <p className="text-gray-500 text-sm">(Select a month to apply below filters)</p>
-            
+            {showAdvancedFilters && (
+              <>
+                <select
+                  className=" p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedMonth}
+                  onChange={handleMonthChange}
+                >
+                  <option value="">Month</option>
+                  {months.map((month, index) => (
+                    <option key={index} value={month}>
+                      {month}
+                    </option>
+                  ))}
+                </select>
+
+                <p className="text-gray-500 text-sm">(Select a month to apply below filters)</p>
+              </>
+            )}
           </div>
 
           {/* Month Depending Selectors grill*/}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-3 place-items-center justify-center ">
 
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedSurfLevel}
-              onChange={handleSurfLevelChange}
-            >
-              <option value="">Surf Level</option>
-              {surfLevel.map((surf_level, index) => (
-                <option key={index} value={surf_level}>
-                  {surf_level}
-                </option>
-              ))}
-            </select>
+            {showAdvancedFilters && (
+              <>
+                <select
+                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedSurfLevel}
+                  onChange={handleSurfLevelChange}
+                >
+                  <option value="">Surf Level</option>
+                  {surfLevel.map((surf_level, index) => (
+                    <option key={index} value={surf_level}>
+                      {surf_level}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedSunnyDays}
-              onChange={handleSunnyDaysChange}
-            >
-              <option value="">Sunny Days</option>
-              {sunnyDays.map((sunny_days, index) => (
-                <option key={index} value={sunny_days}>
-                  {sunny_days}
-                </option>
-              ))}
-            </select>
+                <select
+                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedSunnyDays}
+                  onChange={handleSunnyDaysChange}
+                >
+                  <option value="">Sunny Days</option>
+                  {sunnyDays.map((sunny_days, index) => (
+                    <option key={index} value={sunny_days}>
+                      {sunny_days}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedRainyDays}
-              onChange={handleRainyDaysChange}
-            >
-              <option value="">Rainy Days</option>
-              {rainyDays.map((rainy_days, index) => (
-                <option key={index} value={rainy_days}>
-                  {rainy_days}
-                </option>
-              ))}
-            </select>
+                <select
+                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedRainyDays}
+                  onChange={handleRainyDaysChange}
+                >
+                  <option value="">Rainy Days</option>
+                  {rainyDays.map((rainy_days, index) => (
+                    <option key={index} value={rainy_days}>
+                      {rainy_days}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedWaterTemp}
-              onChange={handleWaterTempChange}
-            >
-              <option value="">Water Temp</option>
-              {waterTemp_C.map((water_temp, index) => (
-                <option key={index} value={water_temp}>
-                  {water_temp}
-                </option>
-              ))}
-            </select>
+                <select
+                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedWaterTemp}
+                  onChange={handleWaterTempChange}
+                >
+                  <option value="">Water Temp</option>
+                  {waterTemp_C.map((water_temp, index) => (
+                    <option key={index} value={water_temp}>
+                      {water_temp}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedSurfRating}
-              onChange={handleSurfRatingChange}
-            >
-              <option value="">Surf Rating</option>
-              {surfRating.map((surf_rating, index) => (
-                <option key={index} value={surf_rating}>
-                  {surf_rating}
-                </option>
-              ))}
-            </select>
+                <select
+                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedSurfRating}
+                  onChange={handleSurfRatingChange}
+                >
+                  <option value="">Surf Rating</option>
+                  {surfRating.map((surf_rating, index) => (
+                    <option key={index} value={surf_rating}>
+                      {surf_rating}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedSwellSize}
-              onChange={handleSwellSizeChange}
-            >
-              <option value="">Swell Size</option>
-              {swellSize.map((swell_size, index) => (
-                <option key={index} value={swell_size}>
-                  {swell_size}
-                </option>
-              ))}
-            </select>
+                <select
+                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedSwellSize}
+                  onChange={handleSwellSizeChange}
+                >
+                  <option value="">Swell Size</option>
+                  {swellSize.map((swell_size, index) => (
+                    <option key={index} value={swell_size}>
+                      {swell_size}
+                    </option>
+                  ))}
+                </select>
+              </>
+            )}
 
           </div>
 
           {/* Selectors grill*/}
           <div className="grid grid-cols-1 place-items-center gap-3 justify-center">
 
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedCrowdFactor}
-              onChange={handleCrowdFactorChange}
-            >
-              <option value="">Crowd Factor</option>
-              {crowdFactor.map((crowd_factor, index) => (
-                <option key={index} value={crowd_factor}>
-                  {crowd_factor}
-                </option>
-              ))}
-            </select>
-
+            {showAdvancedFilters && (
+              <>
+                <select
+                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedCrowdFactor}
+                  onChange={handleCrowdFactorChange}
+                >
+                  <option value="">Crowd Factor</option>
+                  {crowdFactor.map((crowd_factor, index) => (
+                    <option key={index} value={crowd_factor}>
+                      {crowd_factor}
+                    </option>
+                  ))}
+                </select>
+              </>
+            )}
           </div>
 
           {/* Reset Button*/}
