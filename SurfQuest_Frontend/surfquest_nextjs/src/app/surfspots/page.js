@@ -381,7 +381,27 @@ function SearchSurfSpotsPage() {
         </div>
       )}
 
-      {selectedSurfSpot && <div><h1 className="text-4xl text-center text-white font-bold mb-8">{selectedSurfSpot}</h1></div>}
+      {selectedSurfSpot &&
+        <>
+          <div className="w-full flex justify-start">
+            <div className="ml-10 text-left ">
+            <Link
+              href={`/surfspots`}
+              onClick={(e) => {
+                e.preventDefault(); // Prevents unnecessary navigation reload
+                setSelectedSurfSpot("");
+              }}
+            >
+                <h2 className="text-gray-500 text-lg text-left hover:text-gray-300 transform transition-transform duration-300 hover:scale-105"> 👈🏻 Back to surf-spot search page</h2>
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <h1 className="text-4xl text-center text-white font-bold mb-8">{selectedSurfSpot}</h1>
+          </div>
+        </>
+      }
 
       <div ref={resultsRef} className="flex flex-col items-center justify-start pt-16 w-full">
 

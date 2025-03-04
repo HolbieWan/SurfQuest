@@ -2,6 +2,7 @@
 
 import './globals.css';
 import Navbar from "./components/Navbar";
+import ScrollToTop from "./components/ScrollToTop";
 
 export const metadata = {
   title: 'SurfQuest',
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       <body className="bg-black text-white">
         <Navbar />
         {children}
+        <ScrollToTop />
       </body>
     </html>
   );
