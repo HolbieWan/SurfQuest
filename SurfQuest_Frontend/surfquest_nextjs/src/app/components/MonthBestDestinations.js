@@ -44,6 +44,7 @@ export default function MonthBestDestinations() {
       if (!response.ok) {
         const data = await response.json();
         setError(data.detail || 'Request failed, please try again');
+        console.log(data.detail);
         return;
       }
       const data = await response.json();
@@ -113,7 +114,7 @@ export default function MonthBestDestinations() {
       {responseData && <h2 className="text-4xl font-bold mt-12 text-left">Best destinations in <span className="text-blue-300">{currentMonth}</span></h2>}
       {error &&
         <div>
-          <p className="text-white text-md text center">Please sign-up or log-in to have access to the features</p>
+          <p className="text-gray-500 text-md text center">Please sign-up / log-in to have access to all features</p>
           {/* <p className="text-red-500 text-sm text-center">{error}</p> */}
         </div>}
       {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}

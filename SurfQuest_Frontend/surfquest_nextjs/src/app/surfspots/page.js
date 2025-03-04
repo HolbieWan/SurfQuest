@@ -170,163 +170,173 @@ function SearchSurfSpotsPage() {
       {!selectedSurfSpot && (
         <div>
           <h1 className="text-4xl text-center font-bold mb-8">Find the best spots for <span className="text-blue-500">you</span> 😎</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-4 gap-3 items-center justify-center place-items-center">
 
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] w-auto transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedSurfSpot}
-              onChange={(e) => setSelectedSurfSpot(e.target.value)}
-            >
-              <option value="">View all surf-spots</option>
-              {uniqueSurfSpotsList.sort().map((spot, index) => (
-                <option key={index} value={spot}>
-                  {spot}
-                </option>
-              ))}
-            </select>
+          { token ? (
+            <>
+              {error && <div><p className="text-red-500 text-sm">Please sign-up or log-in to have access to this feature</p></div>}
+              {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
 
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedSurfZone}
-              onChange={(e) => setSelectedSurfZone(e.target.value)}
-            >
-              <option value="">Surf Zone</option>
-              {uniqueSurfZonesList.sort().map((surf_zone, index) => (
-                <option key={index} value={surf_zone}>
-                  {surf_zone}
-                </option>
-              ))}
-            </select>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-4 gap-3 items-center justify-center place-items-center">
 
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedBreakType}
-              onChange={(e) => setSelectedBreakType(e.target.value)}
-            >
-              <option value="">Break Type</option>
-              {breakTypeList.sort().map((break_type, index) => (
-                <option key={index} value={break_type}>
-                  {break_type}
-                </option>
-              ))}
-            </select>
+                <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] w-auto transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedSurfSpot}
+                  onChange={(e) => setSelectedSurfSpot(e.target.value)}
+                >
+                  <option value="">View all surf-spots</option>
+                  {uniqueSurfSpotsList.sort().map((spot, index) => (
+                    <option key={index} value={spot}>
+                      {spot}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedWaveDirection}
-              onChange={(e) => setSelectedWaveDirection(e.target.value)}
-            >
-              <option value="">Wave Direction</option>
-              {waveDirectionList.map((wave_direction, index) => (
-                <option key={index} value={wave_direction}>
-                  {wave_direction}
-                </option>
-              ))}
-            </select>
+                <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedSurfZone}
+                  onChange={(e) => setSelectedSurfZone(e.target.value)}
+                >
+                  <option value="">Surf Zone</option>
+                  {uniqueSurfZonesList.sort().map((surf_zone, index) => (
+                    <option key={index} value={surf_zone}>
+                      {surf_zone}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedSurfLevel}
-              onChange={(e) => setSelectedSurfLevel(e.target.value)}
-            >
-              <option value="">Surf Level</option>
-              {surfLevelList.map((surf_level, index) => (
-                <option key={index} value={surf_level}>
-                  {surf_level}
-                </option>
-              ))}
-            </select>
+                <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedBreakType}
+                  onChange={(e) => setSelectedBreakType(e.target.value)}
+                >
+                  <option value="">Break Type</option>
+                  {breakTypeList.sort().map((break_type, index) => (
+                    <option key={index} value={break_type}>
+                      {break_type}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedBestTide}
-              onChange={(e) => setSelectedBestTide(e.target.value)}
-            >
-              <option value="">Best Tide</option>
-              {bestTideList.map((best_tide, index) => (
-                <option key={index} value={best_tide}>
-                  {best_tide}
-                </option>
-              ))}
-            </select>
+                <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedWaveDirection}
+                  onChange={(e) => setSelectedWaveDirection(e.target.value)}
+                >
+                  <option value="">Wave Direction</option>
+                  {waveDirectionList.map((wave_direction, index) => (
+                    <option key={index} value={wave_direction}>
+                      {wave_direction}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedBestSwellSize}
-              onChange={(e) => setSelectedBestSwellSize(e.target.value)}
-            >
-              <option value="">Best Swell Size</option>
-              {swellSizeList.map((swell_size, index) => (
-                <option key={index} value={swell_size}>
-                  {swell_size}
-                </option>
-              ))}
-            </select>
+                <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedSurfLevel}
+                  onChange={(e) => setSelectedSurfLevel(e.target.value)}
+                >
+                  <option value="">Surf Level</option>
+                  {surfLevelList.map((surf_level, index) => (
+                    <option key={index} value={surf_level}>
+                      {surf_level}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedBestWindDirection}
-              onChange={(e) => setSelectedBestWindDirection(e.target.value)}
-            >
-              <option value="">Best Wind Direction</option>
-              {windDirectionList.map((wind_direction, index) => (
-                <option key={index} value={wind_direction}>
-                  {wind_direction}
-                </option>
-              ))}
-            </select>
+                <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedBestTide}
+                  onChange={(e) => setSelectedBestTide(e.target.value)}
+                >
+                  <option value="">Best Tide</option>
+                  {bestTideList.map((best_tide, index) => (
+                    <option key={index} value={best_tide}>
+                      {best_tide}
+                    </option>
+                  ))}
+                </select>
 
-            <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedBestSwellDirection}
-              onChange={(e) => setSelectedBestSwellDirection(e.target.value)}
-            >
-              <option value="">Best Swell Direction</option>
-              {swellDirectionList.map((swell_direction, index) => (
-                <option key={index} value={swell_direction}>
-                  {swell_direction}
-                </option>
-              ))}
-            </select>
+                <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedBestSwellSize}
+                  onChange={(e) => setSelectedBestSwellSize(e.target.value)}
+                >
+                  <option value="">Best Swell Size</option>
+                  {swellSizeList.map((swell_size, index) => (
+                    <option key={index} value={swell_size}>
+                      {swell_size}
+                    </option>
+                  ))}
+                </select>
 
-            {/* <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
-              value={selectedSurfHazards}
-              onChange={(e) => setSelectedSurfHazards(e.target.value)}
-            >
-              <option value="">(No) Surf Hazards </option>
-              {uniqueSurfHazardsList.sort().map((surf_hazards, index) => (
-                <option key={index} value={surf_hazards}>
-                  {surf_hazards}
-                </option>
-              ))}
-            </select> */}
+                <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedBestWindDirection}
+                  onChange={(e) => setSelectedBestWindDirection(e.target.value)}
+                >
+                  <option value="">Best Wind Direction</option>
+                  {windDirectionList.map((wind_direction, index) => (
+                    <option key={index} value={wind_direction}>
+                      {wind_direction}
+                    </option>
+                  ))}
+                </select>
 
-            {/* <select
-              className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
-              value={selectedBestMonths}
-              onChange={(e) => setSelectedBestMonths(e.target.value)}
-            >
-              <option value="">Best Months</option>
-              {monthList.map((best_months, index) => (
-                <option key={index} value={best_months}>
-                  {best_months}
-                </option>
-              ))}
-            </select> */}
+                <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedBestSwellDirection}
+                  onChange={(e) => setSelectedBestSwellDirection(e.target.value)}
+                >
+                  <option value="">Best Swell Direction</option>
+                  {swellDirectionList.map((swell_direction, index) => (
+                    <option key={index} value={swell_direction}>
+                      {swell_direction}
+                    </option>
+                  ))}
+                </select>
 
-          </div>
+                {/* <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+                  value={selectedSurfHazards}
+                  onChange={(e) => setSelectedSurfHazards(e.target.value)}
+                >
+                  <option value="">(No) Surf Hazards </option>
+                  {uniqueSurfHazardsList.sort().map((surf_hazards, index) => (
+                    <option key={index} value={surf_hazards}>
+                      {surf_hazards}
+                    </option>
+                  ))}
+                </select> */}
 
-          {/* Reset Button*/}
-          <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
+                {/* <select
+                  className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] transform transition-transform duration-200 hover:scale-105"
+                  value={selectedBestMonths}
+                  onChange={(e) => setSelectedBestMonths(e.target.value)}
+                >
+                  <option value="">Best Months</option>
+                  {monthList.map((best_months, index) => (
+                    <option key={index} value={best_months}>
+                      {best_months}
+                    </option>
+                  ))}
+                </select> */}
 
-            <button
-              className="p-2 border border-red-500 rounded text-red-500 text-center w-[200px] cursor-pointer transform transition-transform duration-200 hover:text-red-600 hover:scale-105"
-              onClick={handleReset}
-            >Reset Selection
-            </button>
-            
-          </div>
+              </div>
+
+              {/* Reset Button*/}
+              <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
+
+                <button
+                  className="p-2 border border-red-500 rounded text-red-500 text-center w-[200px] cursor-pointer transform transition-transform duration-200 hover:text-red-600 hover:scale-105"
+                  onClick={handleReset}
+                >Reset Selection
+                </button>
+                
+              </div>
+            </>
+          ) : (
+              <p className="text-gray-500 text-center">Please log in to enjoy surf spot search features</p>
+          )}
 
         </div>
       )}
@@ -334,9 +344,6 @@ function SearchSurfSpotsPage() {
       {selectedSurfSpot && <div><h1 className="text-4xl text-center text-blue-500 font-bold mb-8">{selectedSurfSpot}</h1></div>}
 
       <div className="flex flex-col items-center justify-start pt-16 w-full">
-        {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
-        {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
-
 
           {/* Bloc inferieur: card: list of surf SPOTS */}
           {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}

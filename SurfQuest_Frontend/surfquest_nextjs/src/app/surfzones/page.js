@@ -11,6 +11,7 @@ console.log(surfZonesApiUrl);
 console.log(token);
 
 export default function SearchSurfZonePage() {
+  const [hydrated, setHydrated] = useState(false);
 
   //Get the currennt month
   const currentMonthIndex = new Date().getMonth();
@@ -89,6 +90,7 @@ export default function SearchSurfZonePage() {
   }
 
   useEffect(() => {
+    setHydrated(true);
 
     const fetchAndFilterSurfZones = async () => {
       setLoading(true);
@@ -131,6 +133,8 @@ export default function SearchSurfZonePage() {
     fetchAndFilterSurfZones();
 
   }, []);
+
+  if (!hydrated) return null;
 
   const handleCountryChange = (e) => {
     const country = e.target.value;
@@ -316,253 +320,259 @@ export default function SearchSurfZonePage() {
 
       <h1 className="text-4xl text-center font-bold mb-8">Find the best destination for <span className="text-blue-500">you</span> 😎</h1>
 
-      {/* Selectors grill*/}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-3 items-center justify-center ">
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedCountry}
-          onChange={handleCountryChange}
-        >
-          <option value="">Country</option>
-          {countries.sort().map((country, index) => (
-            <option key={index} value={country}>
-              {country}
-            </option>
-          ))}
-        </select>
+      {token ? (
+        <>
+          {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
+          {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
+          
+          {/* Selectors grill*/}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-3 items-center justify-center ">
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedCountry}
+              onChange={handleCountryChange}
+            >
+              <option value="">Country</option>
+              {countries.sort().map((country, index) => (
+                <option key={index} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedTravelerType}
-          onChange={handleTravelerTypeChange}
-        >
-          <option value="">Traveler Type</option>
-          {travelerType.map((traveler_type, index) => (
-            <option key={index} value={traveler_type}>
-              {traveler_type}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedTravelerType}
+              onChange={handleTravelerTypeChange}
+            >
+              <option value="">Traveler Type</option>
+              {travelerType.map((traveler_type, index) => (
+                <option key={index} value={traveler_type}>
+                  {traveler_type}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedSafety}
-          onChange={handleSafetyChange}
-        >
-          <option value="">Safety</option>
-          {safety.map((safety, index) => (
-            <option key={index} value={safety}>
-              {safety}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedSafety}
+              onChange={handleSafetyChange}
+            >
+              <option value="">Safety</option>
+              {safety.map((safety, index) => (
+                <option key={index} value={safety}>
+                  {safety}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedComfort}
-          onChange={handleComfortChange}
-        >
-          <option value="">Comfort</option>
-          {comfort.map((comfort, index) => (
-            <option key={index} value={comfort}>
-              {comfort}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedComfort}
+              onChange={handleComfortChange}
+            >
+              <option value="">Comfort</option>
+              {comfort.map((comfort, index) => (
+                <option key={index} value={comfort}>
+                  {comfort}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedCost}
-          onChange={handleCostChange}
-        >
-          <option value="">Cost of Living</option>
-          {cost.map((cost, index) => (
-            <option key={index} value={cost}>
-              {cost}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedCost}
+              onChange={handleCostChange}
+            >
+              <option value="">Cost of Living</option>
+              {cost.map((cost, index) => (
+                <option key={index} value={cost}>
+                  {cost}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedMainWaveDirection}
-          onChange={handleMainWaveDirectionChange}
-        >
-          <option value="">Main Wave Direction</option>
-          {mainWaveDirection.map((main_waves_direction, index) => (
-            <option key={index} value={main_waves_direction}>
-              {main_waves_direction}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedMainWaveDirection}
+              onChange={handleMainWaveDirectionChange}
+            >
+              <option value="">Main Wave Direction</option>
+              {mainWaveDirection.map((main_waves_direction, index) => (
+                <option key={index} value={main_waves_direction}>
+                  {main_waves_direction}
+                </option>
+              ))}
+            </select>
 
-      </div>
+          </div>
 
-      {/* Selectors grill*/}
-      <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
+          {/* Selectors grill*/}
+          <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
 
-        <select
-          className=" p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedMonth}
-          onChange={handleMonthChange}
-        >
-          <option value="">Month</option>
-          {months.map((month, index) => (
-            <option key={index} value={month}>
-              {month}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedMonth}
+              onChange={handleMonthChange}
+            >
+              <option value="">Month</option>
+              {months.map((month, index) => (
+                <option key={index} value={month}>
+                  {month}
+                </option>
+              ))}
+            </select>
 
-        <p className="text-gray-500 text-sm">(Select a month to apply below filters)</p>
-        
-      </div>
+            <p className="text-gray-500 text-sm">(Select a month to apply below filters)</p>
+            
+          </div>
 
-      {/* Month Depending Selectors grill*/}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-3 place-items-center justify-center ">
+          {/* Month Depending Selectors grill*/}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-3 place-items-center justify-center ">
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedSurfLevel}
-          onChange={handleSurfLevelChange}
-        >
-          <option value="">Surf Level</option>
-          {surfLevel.map((surf_level, index) => (
-            <option key={index} value={surf_level}>
-              {surf_level}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedSurfLevel}
+              onChange={handleSurfLevelChange}
+            >
+              <option value="">Surf Level</option>
+              {surfLevel.map((surf_level, index) => (
+                <option key={index} value={surf_level}>
+                  {surf_level}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedSunnyDays}
-          onChange={handleSunnyDaysChange}
-        >
-          <option value="">Sunny Days</option>
-          {sunnyDays.map((sunny_days, index) => (
-            <option key={index} value={sunny_days}>
-              {sunny_days}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedSunnyDays}
+              onChange={handleSunnyDaysChange}
+            >
+              <option value="">Sunny Days</option>
+              {sunnyDays.map((sunny_days, index) => (
+                <option key={index} value={sunny_days}>
+                  {sunny_days}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedRainyDays}
-          onChange={handleRainyDaysChange}
-        >
-          <option value="">Rainy Days</option>
-          {rainyDays.map((rainy_days, index) => (
-            <option key={index} value={rainy_days}>
-              {rainy_days}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedRainyDays}
+              onChange={handleRainyDaysChange}
+            >
+              <option value="">Rainy Days</option>
+              {rainyDays.map((rainy_days, index) => (
+                <option key={index} value={rainy_days}>
+                  {rainy_days}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedWaterTemp}
-          onChange={handleWaterTempChange}
-        >
-          <option value="">Water Temp</option>
-          {waterTemp_C.map((water_temp, index) => (
-            <option key={index} value={water_temp}>
-              {water_temp}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedWaterTemp}
+              onChange={handleWaterTempChange}
+            >
+              <option value="">Water Temp</option>
+              {waterTemp_C.map((water_temp, index) => (
+                <option key={index} value={water_temp}>
+                  {water_temp}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedSurfRating}
-          onChange={handleSurfRatingChange}
-        >
-          <option value="">Surf Rating</option>
-          {surfRating.map((surf_rating, index) => (
-            <option key={index} value={surf_rating}>
-              {surf_rating}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedSurfRating}
+              onChange={handleSurfRatingChange}
+            >
+              <option value="">Surf Rating</option>
+              {surfRating.map((surf_rating, index) => (
+                <option key={index} value={surf_rating}>
+                  {surf_rating}
+                </option>
+              ))}
+            </select>
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedSwellSize}
-          onChange={handleSwellSizeChange}
-        >
-          <option value="">Swell Size</option>
-          {swellSize.map((swell_size, index) => (
-            <option key={index} value={swell_size}>
-              {swell_size}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedSwellSize}
+              onChange={handleSwellSizeChange}
+            >
+              <option value="">Swell Size</option>
+              {swellSize.map((swell_size, index) => (
+                <option key={index} value={swell_size}>
+                  {swell_size}
+                </option>
+              ))}
+            </select>
 
-      </div>
+          </div>
 
-      {/* Selectors grill*/}
-      <div className="grid grid-cols-1 place-items-center gap-3 justify-center">
+          {/* Selectors grill*/}
+          <div className="grid grid-cols-1 place-items-center gap-3 justify-center">
 
-        <select
-          className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedCrowdFactor}
-          onChange={handleCrowdFactorChange}
-        >
-          <option value="">Crowd Factor</option>
-          {crowdFactor.map((crowd_factor, index) => (
-            <option key={index} value={crowd_factor}>
-              {crowd_factor}
-            </option>
-          ))}
-        </select>
+            <select
+              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedCrowdFactor}
+              onChange={handleCrowdFactorChange}
+            >
+              <option value="">Crowd Factor</option>
+              {crowdFactor.map((crowd_factor, index) => (
+                <option key={index} value={crowd_factor}>
+                  {crowd_factor}
+                </option>
+              ))}
+            </select>
 
-      </div>
+          </div>
 
-      {/* Reset Button*/}
-      <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
+          {/* Reset Button*/}
+          <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
 
-        <button
-          className="p-2 border border-red-500 rounded text-red-500 text-center w-[200px] cursor-pointer transform transition-transform duration-200 hover:text-red-600 hover:scale-105"
-          onClick={handleReset}
-        >Reset Selection
-        </button>
-        
-      </div>
+            <button
+              className="p-2 border border-red-500 rounded text-red-500 text-center w-[200px] cursor-pointer transform transition-transform duration-200 hover:text-red-600 hover:scale-105"
+              onClick={handleReset}
+            >Reset Selection
+            </button>
+            
+          </div>
 
-      {/*Surf Zones card */}
-      <div className="flex flex-col items-center justify-start pt-16 w-full">
-        {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
-        {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
+          {/*Surf Zones card */}
+          <div className="flex flex-col items-center justify-start pt-16 w-full">
 
-        <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md`}>
-          {filteredSurfZones.map((surfzone, index) => (
+            <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md mb-10`}>
+              {filteredSurfZones.map((surfzone, index) => (
 
-            <div key={index} className="bg-black rounded-lg p-3 relative overflow-hidden group flex items-center justify-center">
+                <div key={index} className="bg-black rounded-lg p-3 relative overflow-hidden group flex items-center justify-center">
 
-              <Link href={`/surfzones/${encodeURIComponent(surfzone.name)}`} legacyBehavior>
-                <a className="absolute inset-0 z-10"></a>
-              </Link>
+                  <Link href={`/surfzones/${encodeURIComponent(surfzone.name)}`} legacyBehavior>
+                    <a className="absolute inset-0 z-10"></a>
+                  </Link>
 
-              {surfzone.zone_images && surfzone.zone_images.length > 0 && (
-                <img 
-                  key={0} 
-                  src={surfzone.zone_images[0].image} 
-                  alt={surfzone.name} 
-                  className="inset-0 w-full h-64 object-cover rounded-md transform transition-transform duration-500 group-hover:scale-110"
-                />
-              )}
+                  {surfzone.zone_images && surfzone.zone_images.length > 0 && (
+                    <img
+                      key={0}
+                      src={surfzone.zone_images[0].image}
+                      alt={surfzone.name}
+                      className="inset-0 w-full h-64 object-cover rounded-md transform transition-transform duration-500 group-hover:scale-110"
+                    />
+                  )}
 
-              <div className="absolute inset-0 bg-black bg-opacity-10 flex flex-col justify-center items-center p-4">
-                <h2 className="text-white text-xl font-bold text-center text-shadow-md">{surfzone.name}</h2>
-                <div className="mt-2 text-sm text-white text-center font-semibold text-shadow-lg">{surfzone.country.name}</div>
-              </div>
+                  <div className="absolute inset-0 bg-black bg-opacity-10 flex flex-col justify-center items-center p-4">
+                    <h2 className="text-white text-xl font-bold text-center text-shadow-md">{surfzone.name}</h2>
+                    <div className="mt-2 text-sm text-white text-center font-semibold text-shadow-lg">{surfzone.country.name}</div>
+                  </div>
 
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-  
+          </div>
+        </>
+      ): (
+        <p className="text-gray-500">Please log in to enjoy surf zone search features</p>
+      )}
     </div>
   );
 }
