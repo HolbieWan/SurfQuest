@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 
@@ -89,6 +89,9 @@ export default function SearchSurfZonePage() {
     "max 25": { min: 0, max: 25 },
   }
 
+  const resultsRef = useRef(null);
+  const monthSelectorsRef = useRef(null);
+
   useEffect(() => {
     setHydrated(true);
 
@@ -136,74 +139,104 @@ export default function SearchSurfZonePage() {
 
   if (!hydrated) return null;
 
+  const scrollToResults = () => {
+    setTimeout(() => {
+      if (resultsRef.current) {
+        resultsRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
+  const scrollToMonthFilters = () => {
+    setTimeout(() => {
+      if (monthSelectorsRef.current) {
+        monthSelectorsRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   const handleCountryChange = (e) => {
     const country = e.target.value;
     setSelectedCountry(country);
+    scrollToResults();
   };
 
   const handleMonthChange = (e) => {
     const month = e.target.value;
     setSelectedMonth(month);
+    scrollToMonthFilters();
   };
 
   const handleTravelerTypeChange = (e) => {
     const traveler_type = e.target.value;
     setSelectedTravelerType(traveler_type);
+    scrollToResults();
   }
 
   const handleSafetyChange = (e) => {
     const safety = e.target.value;
     setSelectedSafety(safety);
+    scrollToResults();
   }
 
   const handleComfortChange = (e) => {
     const comfort = e.target.value;
     setSelectedComfort(comfort);
+    scrollToResults();
   }
 
   const handleMainWaveDirectionChange = (e) => {
     const main_wave_direction = e.target.value;
     setSelectedMainWaveDirection(main_wave_direction);
+    scrollToResults();
   }
 
   const handleSurfLevelChange = (e) => {
     const surf_level = e.target.value;
     setSelectedSurfLevel(surf_level);
+    scrollToResults();
   };
 
   const handleCostChange = (e) => {
     const cost = e.target.value;
     setSelectedCost(cost);
+    scrollToResults();
   };
 
   const handleWaterTempChange = (e) => {
     const water_temp = e.target.value;
     setSelectedWaterTemp(water_temp);
+    scrollToResults();
   };
 
   const handleSurfRatingChange = (e) => {
     const surf_rating = e.target.value;
     setSelectedSurfRating(surf_rating);
+    scrollToResults();
   };
 
   const handleSwellSizeChange = (e) => {
     const swell_size = e.target.value;
     setSelectedSwellSize(swell_size);
+    scrollToResults();
   };
 
   const handleCrowdFactorChange = (e) => {
     const crowd_factor = e.target.value;
     setSelectedCrowdFactor(crowd_factor);
+    scrollToResults();
   };
 
   const handleSunnyDaysChange = (e) => {
     const sunny_days = e.target.value;
     setSelectedSunnyDays(sunny_days);
+    scrollToResults();
   };
 
   const handleRainyDaysChange = (e) => {
     const rainy_days = e.target.value;
     setSelectedRainyDays(rainy_days);
+    scrollToResults();
   };
 
   const handleReset = () => {
@@ -315,6 +348,7 @@ export default function SearchSurfZonePage() {
     ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2'
     : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
+
   return (
     <div className="flex flex-col items-center justify-start pt-20 h-screen bg-black text-white rounded-lg">
 
@@ -330,7 +364,10 @@ export default function SearchSurfZonePage() {
             <select
               className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
               value={selectedCountry}
-              onChange={handleCountryChange}
+              onChange={(e) => {
+                handleCountryChange(e);
+                scrollToResults();
+              }}
             >
               <option value="">Country</option>
               {countries.sort().map((country, index) => (
@@ -408,7 +445,7 @@ export default function SearchSurfZonePage() {
           </div>
 
           {/* Selectors grill*/}
-          <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
+          <div ref={monthSelectorsRef} className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
 
             <select
               className=" p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
@@ -540,9 +577,9 @@ export default function SearchSurfZonePage() {
           </div>
 
           {/*Surf Zones card */}
-          <div className="flex flex-col items-center justify-start pt-16 w-full">
+          <div ref={resultsRef} className="flex flex-col items-center justify-start pt-16 w-full">
 
-            <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md mb-10`}>
+            <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md mb-20`}>
               {filteredSurfZones.map((surfzone, index) => (
 
                 <div key={index} className="bg-black rounded-lg p-3 relative overflow-hidden group flex items-center justify-center">
