@@ -6,6 +6,8 @@ import { useSearchParams } from 'next/navigation';
 import Reviews from "../components/Reviews";
 import Link from 'next/link';
 import ImageCarousel from '../components/Carousel';
+import SurfZoneForecast from '../components/SurfZoneForecastCardWindy';
+
 
 const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';
 const token = Cookies.get('access_token');
@@ -381,6 +383,22 @@ function SearchSurfSpotsPage() {
         </div>
       )}
 
+      {selectedSurfZone && (
+        <>
+          <h1 className="text-white text-4xl font-bold text-center p-2 w-full mt-10">{selectedSurfZone} Surf Forecast</h1>
+
+          {/* Bloc 4 : card: SURFFORECAST */}
+          {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
+          <div className=" items-center justify-center mt-6">
+            {selectedSurfZone && <SurfZoneForecast selectedSurfZone={selectedSurfZone} />}
+          </div>
+
+          <h1 className="text-white text-4xl font-bold text-center p-2 w-full mt-10">{selectedSurfZone} Surf Spots</h1>
+
+        </>
+      )}
+      
+
       {selectedSurfSpot &&
         <>
           <div className="w-full flex justify-start">
@@ -403,7 +421,7 @@ function SearchSurfSpotsPage() {
         </>
       }
 
-      <div ref={resultsRef} className="flex flex-col items-center justify-start pt-16 w-full">
+      <div ref={resultsRef} className="flex flex-col items-center justify-start pt-10 w-full">
 
           {/* Bloc inferieur: card: list of surf SPOTS */}
           {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
