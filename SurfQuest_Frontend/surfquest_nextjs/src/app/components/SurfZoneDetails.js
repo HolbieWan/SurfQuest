@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import Reviews from "../components/Reviews";
 import Link from 'next/link';
 import SurfZoneForecast from './SurfZoneForecastCardWindy';
+// import SurfZoneForecast from './SurfZoneForecastCardStormglassAPI';
 
 const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';
 const token = Cookies.get('access_token');

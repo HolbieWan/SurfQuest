@@ -75,11 +75,11 @@ export default function SearchSurfZonePage() {
   const sunnyDays = [/*'under 5', */'min 5', 'min 10', 'min 15', 'min 20', 'min 25'];
   const sunnyDaysRanges = {
     // "under 5": { min: 1, max: 4 },
-    "min 5": { min: 5, max: 30 },
-    "min 10": { min: 10, max: 30 },
-    "min 15": { min: 15, max: 30 },
-    "min 20": { min: 20, max: 30 },
-    "min 25": { min: 25, max: 30 },
+    "min 5": { min: 5, max: 31 },
+    "min 10": { min: 10, max: 31 },
+    "min 15": { min: 15, max: 31 },
+    "min 20": { min: 20, max: 31 },
+    "min 25": { min: 25, max: 31 },
   };
   const rainyDays = ['max 5', 'max 10', 'max 15', 'max 20', 'max 25'];
   const rainyDaysRanges = {

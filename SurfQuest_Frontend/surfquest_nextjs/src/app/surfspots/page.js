@@ -7,6 +7,7 @@ import Reviews from "../components/Reviews";
 import Link from 'next/link';
 import ImageCarousel from '../components/Carousel';
 import SurfZoneForecast from '../components/SurfZoneForecastCardWindy';
+// import SurfZoneForecast from '../components/SurfZoneForecastCardStormglassAPI';
 
 
 const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';
