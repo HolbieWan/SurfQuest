@@ -53,3 +53,5 @@ docker-compose.override.yml
 #migrations/
 #migrations/*.py
 #migrations/*.pyc
+
+.DS_Store

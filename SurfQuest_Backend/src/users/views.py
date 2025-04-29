@@ -30,7 +30,7 @@ class ProtectedView(APIView):
 
 
 class ReviewViewSet(viewsets.ModelViewSet):
-    """ViewSet for SurfZoneImage.model"""
+    """ViewSet for Reviews"""
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
     permission_classes = [IsAuthenticated]
