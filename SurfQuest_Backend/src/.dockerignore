@@ -1,0 +1,28 @@
+__pycache__/
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Logs
+*.log
+
+# Virtual environments
+*.venv/
+*.env/
+.env.*
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Keep .env for Docker build
+!.env
