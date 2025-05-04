@@ -4,10 +4,6 @@ __pycache__/
 *.sqlite3
 db.sqlite3
 
-# Docker
-Dockerfile
-docker-compose.yml
-
 # Logs
 *.log
 
