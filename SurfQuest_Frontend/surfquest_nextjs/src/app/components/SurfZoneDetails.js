@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Cookies from 'js-cookie';
 import { useParams } from "next/navigation"; 
-import Reviews from "../components/Reviews";
+import Reviews from "./Reviews/Reviews";
 import Link from 'next/link';
 import SurfZoneForecast from './SurfZoneForecastCardWindy';
 // import SurfZoneForecast from './SurfZoneForecastCardStormglassAPI';

@@ -1,6 +1,6 @@
 'use client';
 
-import UserReviews from "../components/UserReviews";
+import UserReviews from "../components/Reviews/UserReviews";
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 

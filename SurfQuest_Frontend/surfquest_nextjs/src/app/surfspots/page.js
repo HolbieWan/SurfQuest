@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense, useRef } from 'react';
 import Cookies from 'js-cookie';
 import { useSearchParams } from 'next/navigation';
-import Reviews from "../components/Reviews";
+import Reviews from "../components/Reviews/Reviews";
 import Link from 'next/link';
 import ImageCarousel from '../components/Carousel';
 import SurfZoneForecast from '../components/SurfZoneForecastCardWindy';
