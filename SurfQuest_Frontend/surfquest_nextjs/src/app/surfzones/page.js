@@ -3,8 +3,11 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
-import MonthSelector from '../components/SurfZones/MonthSelector'
-import SurfZoneCard from '../components/SurfZones/SurfZoneCard'
+// import MonthSelector from '../components/SurfZones/MonthSelector';
+// import MainFilters from '../components/SurfZones/MainFilters';
+// import SeasonalFilters from '../components/SurfZones/SeasonalFilters';
+import SurfZoneCard from '../components/SurfZones/SurfZoneCard';
+
 
 const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
 const token = Cookies.get('access_token');
@@ -447,7 +450,6 @@ export default function SearchSurfZonePage() {
 
           </div>
 
-
           {/* Selectors grill*/}
           <div ref={monthSelectorsRef} className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
             <button
@@ -458,11 +460,22 @@ export default function SearchSurfZonePage() {
             </button>
 
             {showAdvancedFilters && (
-              <MonthSelector
-                selectedMonth={selectedMonth}
-                handleMonthChange={handleMonthChange}
-                months={months}
-              />
+              <>
+                <select
+                  className=" p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+                  value={selectedMonth}
+                  onChange={handleMonthChange}
+                >
+                  <option value="">Month</option>
+                  {months.map((month, index) => (
+                    <option key={index} value={month}>
+                      {month}
+                    </option>
+                  ))}
+                </select>
+
+                <p className="text-gray-500 text-sm">(Select a month to apply below filters)</p>
+              </>
             )}
           </div>
 
