@@ -3,9 +3,9 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import Cookies from 'js-cookie';
 import { useParams } from "next/navigation"; 
-import Reviews from "./Reviews/Reviews";
+import Reviews from "../Reviews/Reviews";
 import Link from 'next/link';
-import SurfZoneForecast from './SurfZoneForecastCardWindy';
+import SurfZoneForecast from './SurfZoneForecast/SurfZoneForecastCardWindy';
 // import SurfZoneForecast from './SurfZoneForecastCardStormglassAPI';
 
 const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';

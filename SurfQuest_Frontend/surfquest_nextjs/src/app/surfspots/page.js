@@ -5,8 +5,8 @@ import Cookies from 'js-cookie';
 import { useSearchParams } from 'next/navigation';
 import Reviews from "../components/Reviews/Reviews";
 import Link from 'next/link';
-import ImageCarousel from '../components/Carousel';
-import SurfZoneForecast from '../components/SurfZoneForecastCardWindy';
+import ImageCarousel from '../components/SurfSpots/Carousel';
+import SurfZoneForecast from '../components/SurfZones/SurfZoneForecast/SurfZoneForecastCardWindy';
 // import SurfZoneForecast from '../components/SurfZoneForecastCardStormglassAPI';
 
 

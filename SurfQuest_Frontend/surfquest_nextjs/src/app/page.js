@@ -1,6 +1,6 @@
 // app/page.js
 
-import MonthBestDestinations from "./components/MonthBestDestinations";
+import MonthBestDestinations from "./components/SurfZones/MonthBestDestinations";
 
 export const metadata = {
   title: "SurfQuest",
