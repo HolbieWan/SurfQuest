@@ -113,7 +113,7 @@ function SurfZoneDetailsPage() {
         </div>
       </div>
       
-      <div className="flex flex-col items-center justify-start pt-10 h-screen bg-black text-white">
+      <div className="flex flex-col items-center justify-start pt-10 min-h-screen bg-black text-white">
         {/* <h1 className="text-4xl font-bold">Surf spots</h1> */}
         {/* <p className="text-sm mt-8">Select a Surf-Zone</p> */}
 

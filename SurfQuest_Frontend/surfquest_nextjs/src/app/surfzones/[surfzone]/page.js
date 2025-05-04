@@ -14,7 +14,7 @@ export default function SurfZonePage({ params }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-start pt-10 h-screen bg-black text-white">
+    <div className="flex flex-col items-center justify-start pt-10 min-h-screen bg-black text-white">
       <SurfZoneDetails selectedSurfZone={surfzone} />
     </div>
   );

@@ -351,7 +351,7 @@ export default function SearchSurfZonePage() {
 
 
   return (
-    <div className="flex flex-col items-center justify-start pt-20 h-screen bg-black text-white rounded-lg">
+    <div className="flex flex-col items-center justify-start pt-20 min-h-screen bg-black text-white rounded-lg">
 
       <h1 className="text-4xl text-center font-bold mb-8">Find the best destination for <span className="text-blue-500">you</span> 😎</h1>
 

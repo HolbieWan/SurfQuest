@@ -3,6 +3,8 @@
 import './globals.css';
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
+import Footer from "./components/Footer";
+
 
 export const metadata = {
   title: 'SurfQuest',
@@ -16,10 +18,11 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className="bg-black text-white">
+      <body className="bg-black text-white flex flex-col min-h-screen">
         <Navbar />
-        {children}
+        <main className="flex-grow">{children}</main>
         <ScrollToTop />
+        <Footer />
       </body>
     </html>
   );
