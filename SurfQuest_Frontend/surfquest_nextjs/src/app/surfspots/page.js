@@ -461,6 +461,7 @@ function SearchSurfSpotsPage() {
                     <div className="mt-2 text-sm text-blue-500 text-center md:text-left font-semibold">{surfspot.surfzone.name}</div>
                     <div className="mt-2 text-sm text-gray-700 text-center md:text-left">{surfspot.description}</div>
                     <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best months: <span className="text-cyan-500 font-bold">{surfspot.best_months.join(', ')}</span></div>
+                    <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wave direction: <span className="text-cyan-500 font-bold">{surfspot.wave_direction}</span></div>
                     <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell direction: <span className="text-cyan-500 font-bold">{surfspot.best_swell_direction}</span></div>
                     <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell size: <span className="text-cyan-500 font-bold">{surfspot.best_swell_size_meter} ft</span></div>
                     <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best tide: <span className="text-cyan-500 font-bold">{surfspot.best_tide.join(', ')}</span></div>
@@ -474,6 +475,7 @@ function SearchSurfSpotsPage() {
                     <div className="mt-2 text-sm text-blue-500 text-center md:text-left font-semibold">{surfspot.surfzone.name}</div>
                     <div className="mt-2 text-sm text-gray-700 text-center md:text-left">{surfspot.description}</div>
                     <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best months: <span className="text-cyan-500 font-bold">{surfspot.best_months.join(', ')}</span></div>
+                    <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Wave direction: <span className="text-cyan-500 font-bold">{surfspot.wave_direction}</span></div>
                     <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell direction: <span className="text-cyan-500 font-bold">{surfspot.best_swell_direction}</span></div>
                     <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best swell size: <span className="text-cyan-500 font-bold">{surfspot.best_swell_size_meter} ft</span></div>
                     <div className="mt-2 text-sm text-gray-700 text-center md:text-left">Best tide: <span className="text-cyan-500 font-bold">{surfspot.best_tide.join(', ')}</span></div>
