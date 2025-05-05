@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import Link from "next/link";
 import SurfSpotDetails from "@/app/components/SurfSpots/SurfSpotDetails";
 
 const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';
@@ -10,7 +11,10 @@ const token = Cookies.get('access_token');
 
 export default function SurfSpotDetailsPage() {
   const { surfspot } = useParams();
+  const router = useRouter();
+  const [uniqueSurfSpotsList, setUniqueSurfSpotsList] = useState([]);
   const [surfSpotData, setSurfSpotData] = useState(null);
+  const [selectedSurfSpot, setSelectedSurfSpot] = useState(surfspot);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -30,6 +34,7 @@ export default function SurfSpotDetailsPage() {
         }
 
         const allSurfSpots = await res.json();
+        setUniqueSurfSpotsList(allSurfSpots.map(spot => spot.name));
         const matchedSurfSpot = allSurfSpots.find(spot => spot.name === decodeURIComponent(surfspot));
         setSurfSpotData(matchedSurfSpot);
 
@@ -44,8 +49,51 @@ export default function SurfSpotDetailsPage() {
     fetchSurfSpot();
   }, [surfspot]);
 
+  const handleSurfSpotChange = (e) => {
+    const newSurfSpot = e.target.value;
+    setSelectedSurfSpot(newSurfSpot);
+    router.push(`/surfspots/${encodeURIComponent(newSurfSpot)}`); // Navigate to the new surf spot page
+  };
+
   if (loading) return <div className="text-white text-center mt-10">Loading...</div>;
   if (error || !surfSpotData) return <div className="text-red-500 text-center mt-10">Error: {error || "Surf spot not found"}</div>;
 
-  return <SurfSpotDetails surfSpotData={surfSpotData} />;
+  return (
+    <div className="flex flex-col items-center justify-start pt-10 min-h-screen bg-black text-white">
+      {surfSpotData &&
+              <>
+                <div className="w-full flex justify-start">
+                  <div className="ml-10 text-left ">
+                    <Link
+                      href={`/surfspots`}
+                      onClick={(e) => {
+                        e.preventDefault(); // Prevents unnecessary navigation reload
+                        setSelectedSurfSpot("");
+                      }}
+                    >
+                        <h2 className="text-gray-500 text-lg text-left hover:text-gray-300 transform transition-transform duration-300 hover:scale-105"> 👈🏻 Back to surf-spot search page</h2>
+                    </Link>
+                  </div>
+                </div>
+              </>
+      }
+
+      <div className="flex justify-center items-center w-full p-4">
+        <select
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] w-auto transform transition-transform duration-200 hover:border-white hover:scale-105"
+          value={selectedSurfSpot}
+          onChange={handleSurfSpotChange}
+        >
+          <option value="">{selectedSurfSpot}</option>
+          {uniqueSurfSpotsList.sort().map((spot, index) => (
+            <option key={index} value={spot}>
+              {spot}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <SurfSpotDetails surfSpotData={surfSpotData} />
+    </div>
+  );
 }

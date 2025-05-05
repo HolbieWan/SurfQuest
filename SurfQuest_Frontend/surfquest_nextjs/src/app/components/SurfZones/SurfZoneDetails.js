@@ -280,7 +280,7 @@ function SurfZoneDetailsPage() {
             </div>
 
             {filteredSurfSpots.map((surfspot, index) => (
-                  <SurfSpotCard surfspot={surfspot} />
+                  <SurfSpotCard key={surfspot.id || index} surfspot={surfspot} />
             ))}
 
           </div>
