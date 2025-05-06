@@ -21,10 +21,15 @@ export default function ProfilePage() {
     <>
       { token ? (
         <div className="flex flex-col items-center justify-start pt-20 h-screen">
-                <h1 className="text-4xl font-bold">Hello <span className="text-cyan-400">{username}</span></h1>
+          <h1 className="text-4xl font-bold">Hello <span className="text-cyan-400">{username}</span></h1>
+
           <div className="flex flex-col items-center justify-start pt-16 bg-black text-white">
             <UserReviews />
           </div>
+
+          {/* <div className="flex flex-col items-center justify-start pt-16 bg-black text-white">
+            <AvatarUpload />
+          </div> */}
         </div>
       ) : (
           <p className="text-gray-500 text-center mt-20">Please log in to access your profile</p>

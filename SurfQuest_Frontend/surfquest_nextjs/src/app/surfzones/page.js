@@ -2,7 +2,7 @@
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import Cookies from 'js-cookie';
-import Link from 'next/link';
+// import Link from 'next/link';
 // import MonthSelector from '../components/SurfZones/MonthSelector';
 // import MainFilters from '../components/SurfZones/MainFilters';
 // import SeasonalFilters from '../components/SurfZones/SeasonalFilters';
