@@ -4,7 +4,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
-import PulsingHeaderLink from '../PulsingHeaderLink';
+import PulsingHeaderLink from '../HomePage/PulsingHeaderLink';
 import SurfZoneCard from './SurfZoneCard';
 // import { useRouter } from 'next/navigation';
 
@@ -71,7 +71,7 @@ export default function MonthBestDestinations() {
   return (
     <div className="flex flex-col items-center justify-start pt-16 bg-black text-white">
       <PulsingHeaderLink />
-      {responseData && <h2 className="text-4xl font-bold mt-12 mb-4 text-left">Best surf destinations in <span className="text-blue-300">{currentMonth}</span></h2>}
+      {responseData && <h2 className="text-4xl font-bold mt-12 mb-4 text-left">Where to go in <span className="text-blue-300">{currentMonth}</span> ?</h2>}
       {error &&
         <div>
           <p className="text-gray-500 text-md text center">Please sign-up / log-in to have access to all features</p>
