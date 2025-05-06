@@ -140,13 +140,6 @@ function SurfZoneDetailsPage() {
             <div>
               {selectedSurfZone && (
                 <>
-                  <h1 className="text-white text-4xl font-bold text-center mb-6 p-2 w-full">{surfSpot.surfzone.name} Surf Forecast</h1>
-
-                  {/* Bloc 4 : card: SURFFORECAST */}
-                  {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-                  <div className=" items-center justify-center mb-10">
-                    {selectedSurfZone && <SurfZoneForecast selectedSurfZone={selectedSurfZone} />}
-                  </div>
 
                   <h1 className="text-white text-4xl font-bold text-center mb-6 mt-8 p-2 w-full">Zone infos</h1>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 rounded-lg items-stretch justify-items-center mb-10">
@@ -263,18 +256,26 @@ function SurfZoneDetailsPage() {
                       )}
                     </div>
                   </div>
+
+                  {/* Bloc 4 : card: SURFFORECAST */}
+                  {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
+                  <h1 className="text-white text-4xl font-bold text-center mb-6 mt-2 p-2 w-full">{surfSpot.surfzone.name} Surf Forecast</h1>
+                  <div className=" items-center justify-center">
+                    {selectedSurfZone && <SurfZoneForecast selectedSurfZone={selectedSurfZone} />}
+                  </div>
+
                 </>
               )}
             </div>
 
             {/* Bloc inferieur: card: list of surf SPOTS */}
             {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-          <div className="grid grid-cols-1 p-4 gap-10 mb-10 rounded-md items-center justify-center w-full">
+          <div className="grid grid-cols-1 p-4 gap-10 rounded-md items-center justify-center w-full">
 
             <div className="flex flex-col items-center justify-center w-full">
               {selectedSurfZone && (
                 <>
-                  <h2 className="text-4xl font-bold mt-6 text-center rounded-lg p-2">Popular surf spots</h2>
+                  <h2 className="text-4xl font-bold mt-6 text-center rounded-lg p-2">Popular Surf-spots in {selectedSurfZone}</h2>
                 </>
               )}
             </div>

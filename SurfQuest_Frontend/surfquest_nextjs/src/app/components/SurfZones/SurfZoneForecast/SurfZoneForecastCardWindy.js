@@ -113,7 +113,7 @@ function SurfZoneForecast({ selectedSurfZone }) {
   return (
     // <div className="bg-gray-800 p-6 rounded-lg text-white shadow-md">
     //   <h2 className="text-2xl font-bold mb-4">{selectedSurfZone} Surf Forecast 🏄</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-20 items-center  justify-items-center">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-10 items-center justify-items-center">
         {days.map((day, idx) => (
           <div key={idx} className="bg-blue-500 p-4 rounded-lg text-center  w-[160px] transform transition-transform duration-500 hover:scale-110">
             <p className="font-semibold mb-2">{day.date}</p>
