@@ -107,15 +107,30 @@ export default function SignupPage() {
             <label htmlFor="avatar" className="block text-sm font-medium text-gray-300">
               Avatar
             </label>
-            <input
-              type="file"
-              id="avatar"
-              name="avatar"
-              accept="image/*"
-              onChange={(e) => setAvatar(e.target.files[0])} // Update state
-              className="w-full px-4 py-2 mt-1 text-black rounded-md"
-              required
-            />
+            <div className="flex items-center">
+              {/* Hidden File Input */}
+              <input
+                type="file"
+                id="avatar"
+                name="avatar"
+                accept="image/*"
+                onChange={(e) => setAvatar(e.target.files[0])} // Update state
+                className="hidden" // Hide the default input
+              />
+
+              {/* Custom Button */}
+              <label
+                htmlFor="avatar"
+                className="px-4 py-2 mt-1 mr-2 text-sm bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-600"
+              >
+                Choose File
+              </label>
+
+              {/* Display Selected File Name */}
+              <span className="text-sm text-gray-300">
+                {avatar ? avatar.name : "No file chosen"}
+              </span>
+  </div>
           </div>
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-300">
