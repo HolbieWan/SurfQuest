@@ -15,6 +15,7 @@ export default function SignupPage() {
   console.log('SignupPage component rendered');
   // State to track email, password, and any errors
   const [username, setUsername] = useState('');
+  const [avatar, setAvatar] = useState(null);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -27,14 +28,20 @@ export default function SignupPage() {
     setError(''); // Clear previous errors
 
     try {
-      console.log('Sending data:', { username, password, email });
+      console.log('Sending data:', { username, avatar, password, email });
+
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("password", password);
+      formData.append("email", email);
+      formData.append("avatar", avatar);
+
       const response = await fetch(`${usersApiUrl}`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify({ username, password, email }),
+        body: formData,
       });
       const data = await response.json();
       console.log('Response status:', response.status);
@@ -92,6 +99,20 @@ export default function SignupPage() {
               name="username"
               value={username} // Bind state
               onChange={(e) => setUsername(e.target.value)} // Update state
+              className="w-full px-4 py-2 mt-1 text-black rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="avatar" className="block text-sm font-medium text-gray-300">
+              Avatar
+            </label>
+            <input
+              type="file"
+              id="avatar"
+              name="avatar"
+              accept="image/*"
+              onChange={(e) => setAvatar(e.target.files[0])} // Update state
               className="w-full px-4 py-2 mt-1 text-black rounded-md"
               required
             />

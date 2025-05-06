@@ -14,7 +14,7 @@ export default function UserReviews() {
   const [userId, setUserId] = useState(null);
   const [updatedReview, setUpdatedReview] = useState({ rating: "", comment: "" });
 
-  // Fetch userId safely inside useEffect
+  // Fetch userId safely from local storage
   useEffect(() => {
     if (typeof window !== "undefined") {
       setUserId(localStorage.getItem("userId"));
@@ -61,7 +61,7 @@ export default function UserReviews() {
     console.log("Clicked Edit, setting editingReview:", review); // Debugging log
     setEditingReview(review);
     setUpdatedReview({ rating: review.rating, comment: review.comment });
-};
+  };
 
   // Handle input change for update form
   const handleInputChange = (e) => {
@@ -147,33 +147,86 @@ export default function UserReviews() {
               {reviews
                 .filter(review => review.surf_zone_details)
                 .map((review) => (
-                  <div key={review.id} className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] group overflow-hidden transform transition-transform duration-500 hover:scale-110">
-                    <div className="flex items-center justify-center">
-                      <img src={review.user.avatar} alt="User Avatar" className="w-12 h-12 rounded-full ml-1 mr-1" />
-                    </div>
-                    <div className="flex flex-col p-4">
-                      <p className="text-gray-300 mb-1">Username: <span className="text-white font-bold">{review.user.username}</span></p>
-                      <p className="text-gray-300 mb-1">Surf-zone: <span className="text-white font-bold">{review.surf_zone_details.name}</span></p>
-                      <p className="text-gray-300 mb-1">Rating: <span className="text-white">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span></p>
-                      <p className="text-gray-300 break-words">Comment: <span className="text-white block mt-2">{review.comment}</span></p>
+                  <React.Fragment key={review.id}>
+                    <div className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] group overflow-hidden transform transition-transform duration-500 hover:scale-110">
+                      <div className="flex items-center justify-center">
+                        <img src={review.user.avatar} alt="User Avatar" className="w-12 h-12 rounded-full ml-1 mr-1" />
+                      </div>
+                      <div className="flex flex-col p-4">
+                        <p className="text-gray-300 mb-1">Username: <span className="text-white font-bold">{review.user.username}</span></p>
+                        <p className="text-gray-300 mb-1">Surf-zone: <span className="text-white font-bold">{review.surf_zone_details.name}</span></p>
+                        <p className="text-gray-300 mb-1">Rating: <span className="text-white">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span></p>
+                        <p className="text-gray-300 break-words">Comment: <span className="text-white block mt-2">{review.comment}</span></p>
 
-                      {/* Update and Delete Buttons */}
-                      <div className="mt-4 flex space-x-2">
-                        <button
-                          onClick={() => handleEditClick(review)}
-                          className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-3 py-1 rounded-md"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => handleDeleteReview(review.id)}
-                          className="bg-red-500 hover:bg-red-600 text-white font-medium px-3 py-1 rounded-md"
-                        >
-                          Delete
-                        </button>
+                        {/* Update and Delete Buttons */}
+                        <div className="mt-4 flex space-x-2">
+                          <button
+                            onClick={() => handleEditClick(review)}
+                            className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-3 py-1 rounded-md"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => handleDeleteReview(review.id)}
+                            className="bg-red-500 hover:bg-red-600 text-white font-medium px-3 py-1 rounded-md"
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                    {editingReview && editingReview.id === review.id && (
+                      <div
+                        ref={updateFormRef}
+                        className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[400px] md:min-w-[500px] lg:min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110"
+                      >
+                        <h3 className="text-lg font-bold text-black mb-4">Edit Your Review</h3>
+                        <form onSubmit={handleUpdateReviewSubmit}>
+                          <div>
+                            <select
+                              name="rating"
+                              value={updatedReview.rating}
+                              onChange={handleInputChange}
+                              className="justify-center p-2 border rounded text-white bg-blue-500 text-center mb-2"
+                              required
+                            >
+                              <option value="">Select Rating</option>
+                              <option value="1">★</option>
+                              <option value="2">★★</option>
+                              <option value="3">★★★</option>
+                              <option value="4">★★★★</option>
+                              <option value="5">★★★★★</option>
+                            </select>
+                          </div>
+                          <div className="mt-4">
+                            <label className="block text-md font-medium text-gray-700">Comment</label>
+                            <textarea
+                              name="comment"
+                              value={updatedReview.comment}
+                              onChange={handleInputChange}
+                              className="w-full p-2 border rounded text-black"
+                              required
+                            />
+                          </div>
+                          <div className="mt-4 flex space-x-2">
+                            <button
+                              type="submit"
+                              className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md"
+                            >
+                              Update Review
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setEditingReview(null)}
+                              className="w-full mt-4 bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 rounded-md"
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    )}
+                  </React.Fragment>
                 ))}
             </>
           )}
@@ -185,93 +238,91 @@ export default function UserReviews() {
               {reviews
                 .filter(review => review.surf_spot_details)
                 .map((review) => (
-                  <div key={review.id} className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] group overflow-hidden transform transition-transform duration-500 hover:scale-110">
-                    <div className="flex items-center justify-center">
-                      <img src={review.user.avatar} alt="User Avatar" className="w-12 h-12 rounded-full ml-1 mr-1" />
-                    </div>
-                    <div className="flex flex-col p-4">
-                      <p className="text-gray-300 mb-1">Username: <span className="text-white font-bold">{review.user.username}</span></p>
-                      <p className="text-gray-300 mb-1">Surf-zone: <span className="text-white font-bold">{review.surf_spot_details.name}</span></p>
-                      <p className="text-gray-300 mb-1">Rating: <span className="text-white">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span></p>
-                      <p className="text-gray-300 break-words">Comment: <span className="text-white block mt-2">{review.comment}</span></p>
+                  <React.Fragment key={review.id}>
+                    <div className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] group overflow-hidden transform transition-transform duration-500 hover:scale-110">
+                      <div className="flex items-center justify-center">
+                        <img src={review.user.avatar} alt="User Avatar" className="w-12 h-12 rounded-full ml-1 mr-1" />
+                      </div>
+                      <div className="flex flex-col p-4">
+                        <p className="text-gray-300 mb-1">Username: <span className="text-white font-bold">{review.user.username}</span></p>
+                        <p className="text-gray-300 mb-1">Surf-zone: <span className="text-white font-bold">{review.surf_spot_details.name}</span></p>
+                        <p className="text-gray-300 mb-1">Rating: <span className="text-white">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span></p>
+                        <p className="text-gray-300 break-words">Comment: <span className="text-white block mt-2">{review.comment}</span></p>
 
-                      {/* Update and Delete Buttons */}
-                      <div className="mt-4 flex space-x-2">
-                        <button
-                          onClick={() => handleEditClick(review)}
-                          className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-3 py-1 rounded-md"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          onClick={() => handleDeleteReview(review.id)}
-                          className="bg-red-500 hover:bg-red-600 text-white font-medium px-3 py-1 rounded-md"
-                        >
-                          Delete
-                        </button>
+                        {/* Update and Delete Buttons */}
+                        <div className="mt-4 flex space-x-2">
+                          <button
+                            onClick={() => handleEditClick(review)}
+                            className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-3 py-1 rounded-md"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => handleDeleteReview(review.id)}
+                            className="bg-red-500 hover:bg-red-600 text-white font-medium px-3 py-1 rounded-md"
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                    {editingReview && editingReview.id === review.id && (
+                      <div
+                        className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[400px] md:min-w-[500px] lg:min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110"
+                      >
+                        <h3 className="text-lg font-bold text-black mb-4">Edit Your Review</h3>
+                        <form onSubmit={handleUpdateReviewSubmit}>
+                          <div>
+                            <select
+                              name="rating"
+                              value={updatedReview.rating}
+                              onChange={handleInputChange}
+                              className="justify-center p-2 border rounded text-white bg-blue-500 text-center mb-2"
+                              required
+                            >
+                              <option value="">Select Rating</option>
+                              <option value="1">★</option>
+                              <option value="2">★★</option>
+                              <option value="3">★★★</option>
+                              <option value="4">★★★★</option>
+                              <option value="5">★★★★★</option>
+                            </select>
+                          </div>
+                          <div className="mt-4">
+                            <label className="block text-md font-medium text-gray-700">Comment</label>
+                            <textarea
+                              name="comment"
+                              value={updatedReview.comment}
+                              onChange={handleInputChange}
+                              className="w-full p-2 border rounded text-black"
+                              required
+                            />
+                          </div>
+                          <div className="mt-4 flex space-x-2">
+                            <button
+                              type="submit"
+                              className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md"
+                            >
+                              Update Review
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setEditingReview(null)}
+                              className="w-full mt-4 bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 rounded-md"
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    )}
+                  </React.Fragment>
                 ))}
             </>
           )}
         </>
       ) : (
         <p className="text-gray-400">No reviews yet.</p>
-      )}
-
-      {/* Update Review Form */}
-      {editingReview && (
-        <div className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[400px] md:min-w-[500px] lg:min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110">
-          <h3 className="text-lg font-bold text-black mb-4">Edit Your Review</h3>
-
-          <form onSubmit={handleUpdateReviewSubmit}>
-            <div>
-              {/* <label className="block text-md font-medium text-gray-700">Rating</label> */}
-              <select
-                name="rating"
-                value={updatedReview.rating}
-                onChange={handleInputChange}
-                className="justify-center p-2 border rounded text-white bg-blue-500 text-center mb-2"
-                required
-              >
-                <option value="">Select Rating</option>
-                <option value="1">★</option>
-                <option value="2">★★</option>
-                <option value="3">★★★</option>
-                <option value="4">★★★★</option>
-                <option value="5">★★★★★</option>
-              </select>
-            </div>
-
-            <div className="mt-4">
-              <label className="block text-md font-medium text-gray-700">Comment</label>
-              <textarea
-                name="comment"
-                value={updatedReview.comment}
-                onChange={handleInputChange}
-                className="w-full p-2 border rounded text-black"
-                required
-              />
-            </div>
-
-            <div className="mt-4 flex space-x-2">
-              <button
-                type="submit"
-                className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md"
-              >
-                Update Review
-              </button>
-              <button
-                type="button"
-                onClick={() => setEditingReview(null)}
-                className="w-full mt-4 bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 rounded-md"
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
       )}
     </div>
   );
