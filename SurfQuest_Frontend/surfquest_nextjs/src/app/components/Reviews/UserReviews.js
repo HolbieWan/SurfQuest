@@ -177,7 +177,6 @@ export default function UserReviews() {
                     </div>
                     {editingReview && editingReview.id === review.id && (
                       <div
-                        ref={updateFormRef}
                         className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[400px] md:min-w-[500px] lg:min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110"
                       >
                         <h3 className="text-lg font-bold text-black mb-4">Edit Your Review</h3>
