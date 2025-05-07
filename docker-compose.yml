@@ -1,27 +1,22 @@
+version: "3.9"
+
 services:
   backend:
     build: ./SurfQuest_Backend/src
     container_name: django_app
-    command: python manage.py runserver 0.0.0.0:8000
     environment:
       - DATABASE_NAME=${DATABASE_NAME}
       - DATABASE_USER=${DATABASE_USER}
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_PORT=${DATABASE_PORT}
-      - DEBUG=${DEBUG}
+      - DEBUG=False  # Always false for prod
       - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS}
       - ENVIRONMENT=docker
-    volumes:
-      - ./SurfQuest_Backend/src:/app
-      - media_volume:/app/media
     env_file:
       - ./.env
     ports:
       - "8000:8000"
-    depends_on:
-      db:
-       condition: service_healthy
     networks:
       - surfquest-network
 
@@ -29,7 +24,7 @@ services:
     image: postgres:15
     container_name: postgres_db
     environment:
-      POSTGRES_DB: postgres_db
+      POSTGRES_DB: surfquest-db
       POSTGRES_USER: Admin44
       POSTGRES_PASSWORD: Admin44
     ports:
@@ -39,7 +34,7 @@ services:
     networks:
       - surfquest-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U Admin44 -d postgres_db"]
+      test: ["CMD-SHELL", "pg_isready -U Admin44 -d surfquest-db"]
       interval: 5s
       retries: 5
     
@@ -48,16 +43,13 @@ services:
       context: ./SurfQuest_Frontend/surfquest_nextjs
       dockerfile: Dockerfile
     container_name: nextjs_app
-    command: npm run dev 
-    volumes:
-      - ./SurfQuest_Frontend/surfquest_nextjs/src:/app/src
+    environment:
+      - NEXT_PUBLIC_USERS_API_URL=http://backend:8000/api/users/
+      - NEXT_PUBLIC_TOKENS_API_URL=http://backend:8000/api/login/
+      - NODE_ENV=production
+      - ENVIRONMENT=docker
     ports:
       - "3000:3000"
-    environment:
-      - NEXT_PUBLIC_USERS_API_URL=http://localhost:8000/api/users/
-      - NEXT_PUBLIC_TOKENS_API_URL=http://localhost:8000/api/login/
-      - NODE_ENV=development
-      - ENVIRONMENT=docker
     depends_on:
       - backend
       - db
@@ -68,12 +60,13 @@ services:
     image: nginx:latest
     container_name: nginx_server
     volumes:
-      - media_volume:/app/media
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - media_volume:/app/media
     ports:
       - "8080:80"
     depends_on:
       - backend
+      - frontend
     networks:
       - surfquest-network
 
