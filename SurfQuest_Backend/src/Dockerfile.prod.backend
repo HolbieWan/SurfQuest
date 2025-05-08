@@ -1,0 +1,54 @@
+# ============================
+# Step 1 - Build Stage
+# ============================
+FROM python:3.12.5-alpine AS builder
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV ENVIRONMENT=production
+
+# Set the working directory
+WORKDIR /app
+
+# Install dependencies needed for building Python packages
+RUN apk update && apk add --no-cache \
+    gcc \
+    musl-dev \
+    libffi-dev \
+    openssl-dev \
+    cargo \
+    postgresql-dev
+
+# Copy requirements and install dependencies
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# ============================
+# Step 2 - Production Stage
+# ============================
+FROM python:3.12.5-alpine
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV ENVIRONMENT=production
+
+# Set the working directory
+WORKDIR /app
+
+# Install runtime dependencies
+RUN apk add --no-cache \
+    libpq \
+    bash
+
+# Copy from the builder image
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+COPY . /app
+
+# Expose the application port
+EXPOSE 8000
+
+# Run the application with Gunicorn for better performance
+CMD ["gunicorn", "--workers=4", "--bind=0.0.0.0:8000", "surfquest.wsgi:application"]

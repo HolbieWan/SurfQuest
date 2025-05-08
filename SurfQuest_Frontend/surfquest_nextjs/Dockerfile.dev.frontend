@@ -1,0 +1,41 @@
+# ============================
+# Base Image
+# ============================
+FROM node:22-alpine
+
+# ============================
+# Working Directory
+# ============================
+WORKDIR /app
+
+# ============================
+# Dependencies Installation
+# ============================
+# Copy package files and install dependencies
+COPY package.json package-lock.json ./
+RUN npm install
+
+# Run npm install without cache
+RUN rm -rf node_modules
+RUN npm cache clean --force
+RUN npm install
+
+# ============================
+# Application Code
+# ============================
+COPY . /app
+
+# ============================
+# Volume for Hot Reloading
+# ============================
+VOLUME ["/app"]
+
+# ============================
+# Expose Port
+# ============================
+EXPOSE 3000
+
+# ============================
+# Command to Run Dev Server
+# ============================
+CMD ["npm", "run", "dev"]

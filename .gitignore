@@ -184,7 +184,9 @@ cython_debug/
 
 .gz
 
+# Backup files
 /Backups
+backup.sql
 
 surfquest_media_backup.tar.gz
 surfquest_pgdata_backup.tar.gz
@@ -197,3 +199,9 @@ stormglassAPI.md
 windyAPI.md
 
 /Performance
+
+# .env files:
+.env.dev.backend
+.env.prod.backend
+.env.dev.frontend
+.env.prod.frontend
