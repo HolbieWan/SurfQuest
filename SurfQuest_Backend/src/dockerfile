@@ -1,17 +1,21 @@
-FROM python:3.12.5
+FROM python:3.12.5-alpine
 
-# 2. Set environment variables
-# Prevents Python from writing .pyc files to disc
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1  
-# Prevents Python from buffering stdout and stderr
 ENV PYTHONUNBUFFERED=1
 
+# Set the working directory
 WORKDIR /app
 
+# Install dependencies
 COPY requirements.txt /app/
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Install build dependencies for Alpine
+RUN apk update && apk add --no-cache gcc musl-dev libffi-dev openssl-dev cargo && \
+    pip install --no-cache-dir -r requirements.txt && \
+    apk del gcc musl-dev libffi-dev openssl-dev cargo
 
+# Copy application code
 COPY . /app/
 
 EXPOSE 8000

@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   backend:
     build: ./SurfQuest_Backend/src
@@ -10,13 +8,15 @@ services:
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - DATABASE_HOST=${DATABASE_HOST}
       - DATABASE_PORT=${DATABASE_PORT}
-      - DEBUG=False  # Always false for prod
+      - DEBUG=False
       - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS}
       - ENVIRONMENT=docker
     env_file:
       - ./.env
     ports:
       - "8000:8000"
+    volumes:
+    - ./SurfQuest_Backend/src/media:/app/media
     networks:
       - surfquest-network
 

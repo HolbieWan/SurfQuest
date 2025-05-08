@@ -20,5 +20,14 @@ db.sqlite3
 .vscode/
 .idea/
 
+# Media files or unnecessary files
+media/
+
+fixtures/
+static/
+*.tar
+*.zip
+*.gz
+
 # Keep .env for Docker build
 !.env
