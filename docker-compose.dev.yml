@@ -16,6 +16,12 @@ services:
     env_file:
       - ./.env.dev.backend
 
+    # Explicitly set DJANGO_ENV for clarity
+    environment:
+      - DJANGO_ENV=dev
+      - DJANGO_SETTINGS_MODULE=surfquest.settings.dev
+      - PYTHONPATH=/app  
+
     # Map the container's internal port 8000 to the host's port 8000
     ports:
       - "8000:8000"
@@ -24,6 +30,7 @@ services:
     volumes:
       - ./SurfQuest_Backend/src:/app             # Sync the backend source code
       - ./SurfQuest_Backend/src/media:/app/media # Map media folder for uploads
+      - ./staticfiles:/app/staticfiles         # Map static files for serving
 
     # Specify the Docker network to use
     networks:

@@ -12,6 +12,9 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 # Set environment to development
 ENV ENVIRONMENT=development
+ENV DJANGO_ENV=dev
+ENV DJANGO_SETTINGS_MODULE=surfquest.settings.dev
+ENV PYTHONPATH=/app:/app/surfquest
 
 # ============================
 # Working Directory
@@ -40,6 +43,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Application Code
 # ============================
 COPY . /app
+RUN touch /app/surfquest/settings/__init__.py
+RUN touch /app/surfquest/__init__.py
+
 
 # ============================
 # Volume for Media Files
