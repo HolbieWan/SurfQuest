@@ -9,11 +9,13 @@ import Cookies from 'js-cookie';
 import SurfZoneCard from '../components/SurfZones/SurfZoneCard';
 
 
-const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
+const surfZonesApiUrl = process.env.NEXT_PUBLIC_SURFZONES_API_URL;
+const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
 const token = Cookies.get('access_token');
 
-console.log(surfZonesApiUrl);
-console.log(token);
+console.log("SurfZones Api Url:", surfZonesApiUrl);
+console.log("Environment:", environment);
+console.log("Access Token:", token);
 
 export default function SearchSurfZonePage() {
   const [hydrated, setHydrated] = useState(false);

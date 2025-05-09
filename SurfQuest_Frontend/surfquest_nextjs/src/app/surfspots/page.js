@@ -11,10 +11,12 @@ import SurfZoneForecast from '../components/SurfZones/SurfZoneForecast/SurfZoneF
 // import SurfZoneForecast from '../components/SurfZoneForecastCardStormglassAPI';
 
 
-const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';
+const surfSpotsApiUrl = process.env.NEXT_PUBLIC_SURFSPOTS_API_URL;
+const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
 const token = Cookies.get('access_token');
 
 console.log(surfSpotsApiUrl);
+console.log('Environment:', environment);
 console.log(token);
 
 function SearchSurfSpotsPage() {

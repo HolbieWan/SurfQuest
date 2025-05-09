@@ -6,8 +6,13 @@ import Cookies from 'js-cookie';
 import ReviewCard from './ReviewCard';
 import ReviewForm from './ReviewForm';
 
-const reviewsApiUrl = 'http://localhost:8000/api/reviews/';
+const reviewsApiUrl = process.env.NEXT_PUBLIC_REVIEWS_API_URL;
+const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
 const token = Cookies.get('access_token');
+
+console.log("Reviews API URL:", reviewsApiUrl);
+console.log("Environment:", environment);
+console.log("Access Token:", token);
 
 export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId, surfSpotId }) {
   const [reviews, setReviews] = useState([]);

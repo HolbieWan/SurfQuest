@@ -205,3 +205,5 @@ windyAPI.md
 .env.prod.backend
 .env.dev.frontend
 .env.prod.frontend
+
+/logs

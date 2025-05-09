@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
-const reviewsApiUrl = "http://localhost:8000/api/user-reviews/";
+const reviewsApiUrl = process.env.NEXT_PUBLIC_USER_REVIEWS_API_URL;
 const token = Cookies.get("access_token");
 
 export default function UserReviews() {

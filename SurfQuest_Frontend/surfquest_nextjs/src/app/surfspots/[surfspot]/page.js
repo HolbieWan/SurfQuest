@@ -6,8 +6,13 @@ import Cookies from "js-cookie";
 import Link from "next/link";
 import SurfSpotDetails from "@/app/components/SurfSpots/SurfSpotDetails";
 
-const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';
+const surfSpotsApiUrl = process.env.NEXT_PUBLIC_SURFSPOTS_API_URL;
+const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
 const token = Cookies.get('access_token');
+
+console.log("Surf Spots API URL:", surfSpotsApiUrl);
+console.log("Environment:", environment);
+console.log("Access Token:", token);
 
 export default function SurfSpotDetailsPage() {
   const { surfspot } = useParams();

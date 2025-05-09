@@ -20,11 +20,17 @@ DEBUG = False
 
 # Define allowed hosts for production environment
 ALLOWED_HOSTS = [
-    'yourdomain.com',     # Replace with your domain
+    'yourdomain.com',      # Replace with your domain
     'localhost',           # Localhost for local testing
     '127.0.0.1',           # Loopback IP address
     'backend',             # Docker service name for backend
-    'nginx'                # Docker service name for Nginx
+    'nextjs_app',          # Docker service name for Next.js frontend
+    'db',                  # Docker service name for PostgreSQL
+    'django_app',          # Docker service name for Django
+    'nginx',               # Docker service name for Nginx
+    'nginx_server'         # Docker service name for Nginx server
+    '0.0.0.0',             # Allow all IP addresses (not recommended for production)
+    '*'                    # Allow all hosts (not recommended for production)
 ]
 
 # ============================
@@ -40,6 +46,10 @@ CSRF_TRUSTED_ORIGINS = [
     "http://backend:8000",            # Docker backend service
     "http://nginx",                   # Docker nginx service
     "http://nextjs_app:3000",         # Docker frontend service
+    "http://localhost:3000",          # Local development for frontend
+    "http://django_app",
+    "http://0.0.0.0",
+    "http://<your_server_ip>"
 ]
 
 # Allowed origins for Cross-Origin Resource Sharing (CORS)
@@ -51,6 +61,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://backend:8000",            # Docker backend service
     "http://nginx",                   # Docker nginx service
     "http://nextjs_app:3000",         # Docker frontend service
+    "http://localhost:3000",          # Local development for frontend
+    "http://django_app",
 ]
 
 # ============================
@@ -74,8 +86,9 @@ DATABASES = {
 # ============================
 
 # Static files (CSS, JavaScript, Images)
+STATICFILES_DIRS = []
 STATIC_URL = '/static/'                 # URL to access static files
-STATIC_ROOT = '/app/static'             # Path inside the Docker container for static files
+STATIC_ROOT = '/app/staticfiles'             # Path inside the Docker container for static files
 
 # Media files (User uploads)
 MEDIA_URL = '/media/'                   # URL to access media files

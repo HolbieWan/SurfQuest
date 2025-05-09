@@ -46,18 +46,16 @@ RUN apk add --no-cache \
     libpq \
     bash \
     jpeg-dev \
-    zlib-dev
+    zlib-dev \
+    curl
 
 # Copy from the builder image
 COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 COPY . /app
 
-# Collect static files (this will place them in /app/staticfiles)
-RUN python manage.py collectstatic --noinput
-
 # Expose the application port
 EXPOSE 8000
 
-# Run the application with Gunicorn for better performance
-CMD ["gunicorn", "--workers=4", "--bind=0.0.0.0:8000", "surfquest.wsgi:application"]
+# Collect static files
+CMD ["sh", "-c", "python manage.py collectstatic --noinput && gunicorn --workers=4 --bind=0.0.0.0:8000 surfquest.wsgi:application"]

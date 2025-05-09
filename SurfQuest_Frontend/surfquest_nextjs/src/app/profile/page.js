@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 
 
 const token = Cookies.get('access_token');
+const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
 
 export default function ProfilePage() {
     const [username, setUsername] = useState('');
