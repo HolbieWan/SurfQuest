@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  env: {
+    NEXT_PUBLIC_USERS_API_URL: process.env.NEXT_PUBLIC_USERS_API_URL,
+    NEXT_PUBLIC_TOKENS_API_URL: process.env.NEXT_PUBLIC_TOKENS_API_URL,
+    NEXT_PUBLIC_SURFSPOTS_API_URL: process.env.NEXT_PUBLIC_SURFSPOTS_API_URL,
+    NEXT_PUBLIC_SURFZONES_API_URL: process.env.NEXT_PUBLIC_SURFZONES_API_URL,
+    NEXT_PUBLIC_REVIEWS_API_URL: process.env.NEXT_PUBLIC_REVIEWS_API_URL,
+    NEXT_PUBLIC_USER_REVIEWS_API_URL: process.env.NEXT_PUBLIC_USER_REVIEWS_API_URL,
+    
+    
+  }
+};
 
 export default nextConfig;

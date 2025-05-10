@@ -7,7 +7,7 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 # Copy environment variables for production
-COPY .env.prod.frontend .env.local
+COPY .env.prod.frontend .env.production.local
 
 # Copy package files and install dependencies
 COPY package.json package-lock.json ./
@@ -28,6 +28,9 @@ WORKDIR /app
 # Install only production dependencies (optional but recommended)
 COPY package.json package-lock.json ./
 RUN npm install --omit=dev --frozen-lockfile
+
+# Install curl for healthcheck
+RUN apk update && apk add --no-cache curl
 
 # Copy compiled app from builder
 COPY --from=builder /app/.next ./.next
