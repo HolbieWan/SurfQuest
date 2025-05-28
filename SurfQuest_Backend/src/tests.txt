@@ -2,7 +2,7 @@ To run all py-tests in docker container:
 docker-compose -f docker-compose.dev.yml exec backend pytest
 
 To run coverage:
-Ex: docker-compose -f docker-compose.dev.yml exec backend pytest --cov=users --cov=surfzones
+Ex: docker-compose -f docker-compose.dev.yml exec backend pytest --cov=users --cov=surfzones --cov=conditions
 
 To identify not covered lines:
 docker-compose -f docker-compose.dev.yml exec backend pytest --cov=users --cov=surfzones --cov-report=term-missing

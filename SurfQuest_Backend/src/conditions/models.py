@@ -67,7 +67,7 @@ class Condition(models.Model):
     def save(self, *args, **kwargs):
         """Automatically generate a slug from surf zone name and month if not set."""
         if not self.slug:
-            self.slug = slugify(self.surfzone.name + self.month)
+            self.slug = slugify(f"{self.surfzone.name}-{self.month}")
         super().save(*args, **kwargs)
 
     def __str__(self):
