@@ -40,9 +40,6 @@ MEDIA_ROOT = '/app/media/'
 STATIC_URL = '/static/'                 # URL to access static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')             # Path inside the Docker container for static files
 
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 # ============================
 # CORS (Cross-Origin Resource Sharing) Configuration
 # ============================
@@ -90,11 +87,11 @@ CORS_ALLOW_HEADERS = [
 # PostgreSQL database configuration for local development
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',             # Use PostgreSQL as database engine
-        'NAME': os.getenv('DATABASE_NAME', 'surfquest_db'),   # Database name
-        'USER': os.getenv('DATABASE_USER', 'Admin44'),             # Database user
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'Admin44'),     # Database password
+        'ENGINE': 'django.db.backends.postgresql',          # Use PostgreSQL as database engine
+        'NAME': os.getenv('DATABASE_NAME', ''),             # Database name
+        'USER': os.getenv('DATABASE_USER', ''),             # Database user
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', ''),     # Database password
         'HOST': os.getenv('DATABASE_HOST', 'db'),           # Database host
-        'PORT': os.getenv('DATABASE_PORT', '5432'),                # Database port
+        'PORT': os.getenv('DATABASE_PORT', '5432'),         # Database port
     }
 }

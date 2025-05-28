@@ -5,7 +5,7 @@
 
 // const APIKey = '7ca336b0-ec84-11ef-ae24-0242ac130003-7ca3371e-ec84-11ef-ae24-0242ac130003';
 // const surfForecastApiUrl = 'https://api.stormglass.io/v2/weather/point';
-// const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
+// const surfZonesApiUrl = process.env.NEXT_PUBLIC_SURFZONES_API_URL;
 // const token = Cookies.get('access_token');
 
 // // Helper to convert a degree value into an arrow representation.

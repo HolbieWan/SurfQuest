@@ -9,7 +9,7 @@ import SurfSpotCard from '../SurfSpots/SurfSpotCard';
 import SurfZoneForecast from './SurfZoneForecast/SurfZoneForecastCardWindy';
 // import SurfZoneForecast from './SurfZoneForecastCardStormglassAPI';
 
-const surfSpotsApiUrl = 'http://localhost:8000/api/surfspots/';
+const surfSpotsApiUrl = process.env.NEXT_PUBLIC_SURFSPOTS_API_URL;
 const token = Cookies.get('access_token');
 
 console.log(surfSpotsApiUrl);

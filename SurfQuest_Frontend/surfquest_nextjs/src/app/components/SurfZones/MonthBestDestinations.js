@@ -9,7 +9,7 @@ import SurfZoneCard from './SurfZoneCard';
 // import { useRouter } from 'next/navigation';
 
 
-const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
+const surfZonesApiUrl = process.env.NEXT_PUBLIC_SURFZONES_API_URL;
 const token = Cookies.get('access_token');
 
 console.log(surfZonesApiUrl);

@@ -1,0 +1,30 @@
+PYTHONPATH: ['/app', '/app', '/usr/local/lib/python312.zip', '/usr/local/lib/python3.12', '/usr/local/lib/python3.12/lib-dynload', '/usr/local/lib/python3.12/site-packages', '/app']
+DJANGO_SETTINGS_MODULE: surfquest.settings.dev
+[
+{
+  "model": "users.review",
+  "pk": "038ee863-1099-417c-8b71-29c947d377fb",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
+    "surf_spot": null,
+    "rating": 5,
+    "comment": "I agree with king Kelly!!!",
+    "created_at": "2025-05-10T10:10:57.433Z",
+    "updated_at": "2025-05-22T14:20:40.111Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "c589bf86-fd68-4b0d-8dd3-51cd1b0955dd",
+  "fields": {
+    "user": "61bdfb38-8a2e-4515-a551-0f530e3a2d8d",
+    "surf_zone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
+    "surf_spot": null,
+    "rating": 5,
+    "comment": "Really amazing!!!",
+    "created_at": "2025-03-09T12:33:11.642Z",
+    "updated_at": "2025-05-04T13:43:33.074Z"
+  }
+}
+]

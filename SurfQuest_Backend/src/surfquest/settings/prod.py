@@ -28,9 +28,9 @@ ALLOWED_HOSTS = [
     'db',                  # Docker service name for PostgreSQL
     'django_app',          # Docker service name for Django
     'nginx',               # Docker service name for Nginx
-    'nginx_server'         # Docker service name for Nginx server
-    '0.0.0.0',             # Allow all IP addresses (not recommended for production)
-    '*'                    # Allow all hosts (not recommended for production)
+    'nginx_server',        # Docker service name for Nginx server
+    # '0.0.0.0',             # Allow all IP addresses (not recommended for production)
+    # '*'                    # Allow all hosts (not recommended for production)
 ]
 
 # ============================

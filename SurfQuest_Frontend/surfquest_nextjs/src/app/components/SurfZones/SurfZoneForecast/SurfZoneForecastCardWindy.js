@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 
 const APIKey = 'UmpC41QE7vcwtTKhlLLI9DhpkVqA1hoG';
 const surfForecastApiUrl = 'https://api.windy.com/api/point-forecast/v2';
-const surfZonesApiUrl = 'http://localhost:8000/api/surfzones/';
+const surfZonesApiUrl = process.env.NEXT_PUBLIC_SURFZONES_API_URL;
 const token = Cookies.get('access_token');
 
 function getDirectionArrow(deg) {

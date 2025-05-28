@@ -1,9 +1,25 @@
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+"""
+Admin configuration for the Users app in the SurfQuest project.
 
+Registers the custom User model and Review model with enhanced admin display,
+editing, and search capabilities.
+"""
+
+# ============================
+# Django Admin Imports
+# ============================
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin   # Inherit default UserAdmin behavior
+
+# ============================
+# Local App Models
+# ============================
 from .models import User, Review
 
-# Register your models here.
+
+# ============================
+# Admin: Custom User
+# ============================
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     list_display = (
@@ -50,8 +66,12 @@ class UserAdmin(BaseUserAdmin):
         'budget',
         'slug'
     )
-    empty_value_display = 'unknown'
 
+    empty_value_display = 'unknown'   # Display when a field is empty
+
+# ============================
+# Custom fieldsets to show extended profile fields in admin
+# ============================
 fieldsets = UserAdmin.fieldsets + (
     ('Personal Info', {
         'fields': ('country', 'state', 'city', 'zip_code', 'latitude', 'longitude', 'nearest_airport')
@@ -61,9 +81,17 @@ fieldsets = UserAdmin.fieldsets + (
     }),
 )
 
-search_fields = ('id', 'username', 'email', 'first_name', 'last_name', 'country', 'state', 'city', 'zip_code', 'nearest_airport')
+# Enable search on these fields in the admin panel
+search_fields = (
+    'id', 'username', 'email',
+    'first_name', 'last_name',
+    'country', 'state', 'city', 'zip_code', 'nearest_airport'
+)
 
 
+# ============================
+# Admin: Review
+# ============================
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = (
@@ -81,7 +109,8 @@ class ReviewAdmin(admin.ModelAdmin):
         'rating',
         'comment'
     )
-    empty_value_display = 'unknown'
+
+    empty_value_display = 'unknown'   # Display when a field is empty
 
     search_fields = ('user__username', 'surf_zone__name', 'surf_spot__name')
     list_filter = ('rating', 'created_at')

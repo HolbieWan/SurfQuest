@@ -1,7 +1,23 @@
+"""
+Admin configuration for the Conditions app in the SurfQuest project.
+
+Registers the Condition model with custom display, search, and editing options
+for the Django admin interface.
+"""
+
+# ============================
+# Django Admin Import
+# ============================
 from django.contrib import admin
+
+# ============================
+# Local App Model
+# ============================
 from .models import Condition
 
-# Register your models here.
+# ============================
+# Admin: Condition
+# ============================
 @admin.register(Condition)
 class ConditionAdmin(admin.ModelAdmin):
     list_display = (
@@ -30,6 +46,7 @@ class ConditionAdmin(admin.ModelAdmin):
         'wind_consistency',
         'slug',
     )
+
     empty_value_display = 'unknown'
 
     list_editable = (
@@ -57,8 +74,8 @@ class ConditionAdmin(admin.ModelAdmin):
     )
     
     search_fields = [
-        'surfzone__name',
-        'month',
+        'surfzone__name',   # Enables searching by surf zone name
+        'month',            # Enables searching by month
     ]
 
     # autocomplete_fields = [

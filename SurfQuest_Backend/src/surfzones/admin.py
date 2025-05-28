@@ -1,7 +1,23 @@
+"""
+Admin configuration for the SurfZones app in the SurfQuest project.
+
+Registers Continent, Country, SurfZone, SurfSpot, SurfZoneImage, and SurfSpotImage models
+with custom admin display, search, and editing features to enhance data management.
+"""
+
+# ============================
+# Django Admin Utilities
+# ============================
 from django.contrib import admin
+
+# ============================
+# Local Application Models
+# ============================
 from .models import Country, Continent, SurfZone, SurfSpot, SurfSpotImage, SurfZoneImage
 
-# Register your models here.
+# ============================
+# Admin: Continent
+# ============================
 @admin.register(Continent)
 class ContinentAdmin(admin.ModelAdmin):
     list_display = (
@@ -10,7 +26,8 @@ class ContinentAdmin(admin.ModelAdmin):
         'code',
         'slug'
     )
-    empty_value_display = 'unknown'
+
+    empty_value_display = 'unknown'   # Display when a field is empty
 
     list_editable = [
         'name',
@@ -22,6 +39,10 @@ class ContinentAdmin(admin.ModelAdmin):
         'name',
     ]
 
+
+# ============================
+# Admin: Country
+# ============================
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
     list_display = (
@@ -31,7 +52,8 @@ class CountryAdmin(admin.ModelAdmin):
         'continent',
         'slug'
     )
-    empty_value_display = 'unknown'
+
+    empty_value_display = 'unknown'   # Display when a field is empty
 
     list_editable = [
         'name',
@@ -44,6 +66,11 @@ class CountryAdmin(admin.ModelAdmin):
         'name',
     ]
 
+
+
+# ============================
+# Admin: SurfZone
+# ============================
 @admin.register(SurfZone)
 class SurfZoneAdmin(admin.ModelAdmin):
     list_display = (
@@ -71,7 +98,8 @@ class SurfZoneAdmin(admin.ModelAdmin):
         'main_wave_direction',
         'slug'
     )
-    empty_value_display = 'unknown'
+
+    empty_value_display = 'unknown'   # Display when a field is empty
 
     list_editable = [
         'name',
@@ -103,9 +131,12 @@ class SurfZoneAdmin(admin.ModelAdmin):
     # autocomplete_fields = [
     #     'name',
     #     'country',
-    # ]
+    # ]                              # Optional: Enables AJAX search
 
 
+# ============================
+# Admin: SurfSpot
+# ============================
 @admin.register(SurfSpot)
 class SurfSpotAdmin(admin.ModelAdmin):
     list_display = (
@@ -127,7 +158,8 @@ class SurfSpotAdmin(admin.ModelAdmin):
         'description',
         'slug'
     )
-    empty_value_display = 'unknown'
+
+    empty_value_display = 'unknown'   # Display when a field is empty
 
     list_editable = [
         'name',
@@ -157,6 +189,9 @@ class SurfSpotAdmin(admin.ModelAdmin):
     # ]
 
 
+# ============================
+# Admin: SurfSpotImage
+# ============================
 @admin.register(SurfSpotImage)
 class SurfSpotImageAdmin(admin.ModelAdmin):
     list_display = (
@@ -167,7 +202,8 @@ class SurfSpotImageAdmin(admin.ModelAdmin):
         'slug',
         'created_at'
     )
-    empty_value_display = 'unknown'
+
+    empty_value_display = 'unknown'   # Display when a field is empty
 
     list_editable = [
         'image',
@@ -183,6 +219,10 @@ class SurfSpotImageAdmin(admin.ModelAdmin):
     #     'surfspot',
     # ]
 
+
+# ============================
+# Admin: SurfZoneImage
+# ============================
 @admin.register(SurfZoneImage)
 class SurfZoneImageAdmin(admin.ModelAdmin):
     list_display = (
@@ -193,7 +233,8 @@ class SurfZoneImageAdmin(admin.ModelAdmin):
         'slug',
         'created_at'
     )
-    empty_value_display = 'unknown'
+
+    empty_value_display = 'unknown'   # Display when a field is empty
 
     list_editable = [
         'image',
