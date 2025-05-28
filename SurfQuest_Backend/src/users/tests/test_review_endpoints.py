@@ -127,3 +127,27 @@ def test_user_cannot_delete_other_users_review():
 
     assert response.status_code == status.HTTP_404_NOT_FOUND  # type: ignore
     assert Review.objects.filter(id=review.id).exists()
+
+
+@pytest.mark.django_db
+def test_user_reviews_post_creates_review_and_covers_perform_create():
+    """Test that POST to /api/v1/user-reviews/ creates a review and hits perform_create."""
+    user = User.objects.create_user(username="creator", password="StrongPassword123!")
+    continent = Continent.objects.create(name="North America")
+    country = Country.objects.create(name="USA", code="US", continent=continent)
+    zone = SurfZone.objects.create(name="California", country=country)
+
+    client = APIClient()
+    login = client.post("/api/login/", {"username": "creator", "password": "StrongPassword123!"})
+    token = login.data["access"]  # type: ignore
+    client.credentials(HTTP_AUTHORIZATION=f"Bearer {token}")
+
+    response = client.post("/api/v1/user-reviews/", {
+        "surf_zone": str(zone.id),
+        "rating": 5,
+        "comment": "Testing perform_create"
+    })
+
+    assert response.status_code == status.HTTP_201_CREATED  # type: ignore
+    assert response.data["comment"] == "Testing perform_create"  # type: ignore
+    assert response.data["rating"] == 5  # type: ignore

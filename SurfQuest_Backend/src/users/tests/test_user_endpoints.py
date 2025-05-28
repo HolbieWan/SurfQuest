@@ -121,6 +121,19 @@ def test_protected_view_with_token():
     assert "message" in response.data # type: ignore
 
 
+@pytest.mark.django_db
+def test_user_viewset_retrieve_requires_authentication():
+    """Test that retrieving user details requires authentication."""
+    user = User.objects.create_user(username="testuser", password="StrongPassword123!", email="test@example.com")
+    client = APIClient()
+    client.force_authenticate(user=user)
+    
+    response = client.get(f"/api/v1/users/{user.id}/")
+    
+    assert response.status_code == 200 # type: ignore
+    assert response.data["email"] == user.email # type: ignore
+
+
 # @pytest.mark.django_db
 # def test_user_detail_by_slug():
 #     """Test retrieving user details using the slug instead of the UUID (currently commented out)."""

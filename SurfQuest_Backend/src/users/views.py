@@ -17,7 +17,6 @@ from rest_framework import viewsets   # Base class for building ViewSets
 from rest_framework.views import APIView   # Generic class-based API view
 from rest_framework.response import Response   # Used to return API responses
 from rest_framework.permissions import IsAuthenticated, AllowAny   # Access control
-from rest_framework.decorators import api_view   # For function-based views (not used here)
 from rest_framework.generics import RetrieveAPIView   # Add at the top with DRF imports
 
 # ============================
@@ -102,7 +101,7 @@ class UserReviewsViewSet(viewsets.ModelViewSet):
     """
     serializer_class = ReviewSerializer 
     permission_classes = [IsAuthenticated]
-    http_method_names = ['get', 'put', 'delete']   # Restrict to GET, PUT, DELETE only
+    http_method_names = ['get', 'post', 'put', 'delete']   # Restrict to GET, PUT, DELETE only
     
     def get_queryset(self):
         """
