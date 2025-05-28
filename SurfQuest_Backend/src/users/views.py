@@ -18,6 +18,7 @@ from rest_framework.views import APIView   # Generic class-based API view
 from rest_framework.response import Response   # Used to return API responses
 from rest_framework.permissions import IsAuthenticated, AllowAny   # Access control
 from rest_framework.decorators import api_view   # For function-based views (not used here)
+from rest_framework.generics import RetrieveAPIView   # Add at the top with DRF imports
 
 # ============================
 # Local Application Imports
@@ -48,6 +49,19 @@ class UserViewSet(viewsets.ModelViewSet):
         else:
             self.permission_classes = [IsAuthenticated]
         return super().get_permissions()
+
+
+class UserDetailView(RetrieveAPIView):
+    """
+    API view to retrieve a user's public profile using their slug.
+
+    Useful for public profile pages.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = 'slug'
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class ProtectedView(APIView):

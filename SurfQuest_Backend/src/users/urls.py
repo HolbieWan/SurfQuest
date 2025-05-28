@@ -20,7 +20,7 @@ from rest_framework.routers import DefaultRouter   # Import DRF's router to auto
 # ============================
 # Local Application Imports
 # ============================
-from .views import UserViewSet, ProtectedView, ReviewViewSet, UserReviewsViewSet   # Import views and ViewSets for users and reviews
+from .views import UserViewSet, ProtectedView, ReviewViewSet, UserReviewsViewSet, UserDetailView   # Import views and ViewSets for users and reviews
 
 
 # ============================
@@ -36,7 +36,8 @@ router.register(r'user-reviews', UserReviewsViewSet, basename='user-reviews')   
 # ============================
 urlpatterns = [
     path('', include(router.urls)),   # Include all ViewSet-generated routes
-    path('protected-endpoint/', ProtectedView.as_view(), name='protected-endpoint')   # Protected endpoint accessible with valid token
+    path('users/<slug:slug>/', UserDetailView.as_view(), name='user-detail-slug'),   # Detail view for user profile by slug
+    path('protected-endpoint/', ProtectedView.as_view(), name='protected-endpoint'),   # Protected endpoint accessible with valid token
 ]
 
 # ============================

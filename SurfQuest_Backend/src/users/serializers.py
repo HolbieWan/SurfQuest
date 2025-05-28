@@ -136,12 +136,18 @@ class ReviewSerializer(serializers.ModelSerializer):
         user = request.user if request else None
         surf_zone = data.get("surf_zone")
         surf_spot = data.get("surf_spot")
+
+        if not surf_zone and not surf_spot:
+            instance = getattr(self, 'instance', None)
+            if not instance or (not instance.surf_zone and not instance.surf_spot):
+                raise serializers.ValidationError("You must provide either a surf zone or a surf spot.")
         
         if request and request.method in ['POST', 'PUT', 'PATCH']:
             existing_review = Review.objects.filter(user=user, surf_zone=surf_zone, surf_spot=surf_spot)
 
             # Exclude the current review if it's an update
-            if request.method in ['PUT', 'PATCH'] and request.parser_context:
+            review_id = None
+            if hasattr(request, 'parser_context'):
                 review_id = request.parser_context['kwargs'].get('pk')  # Get review ID from URL
                 existing_review = existing_review.exclude(id=review_id)
 

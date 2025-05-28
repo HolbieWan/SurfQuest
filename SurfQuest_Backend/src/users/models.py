@@ -64,7 +64,7 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         """Return the absolute URL for a user profile (used in templates or redirects)."""
-        return reverse("blog-post", kwargs={"slug": self.slug})
+        return reverse("user-detail-slug", kwargs={"slug": self.slug})
 
 
 class Review(models.Model):
@@ -88,5 +88,7 @@ class Review(models.Model):
     
     class Meta:
         # Constraints to ensure a user can only review a zone or a spot once
-        unique_together = ('user', 'surf_zone')  # Ensures only 1 review per user per surf zone
-        unique_together = ('user', 'surf_spot')  # Ensures only 1 review per user per surf spot
+        unique_together = (
+        ('user', 'surf_zone'),
+        ('user', 'surf_spot'),
+    )
