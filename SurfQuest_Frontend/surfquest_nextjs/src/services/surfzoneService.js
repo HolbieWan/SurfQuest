@@ -14,11 +14,6 @@ import API_BASE_URLS from '@/config/api';  // Configuration file for API base UR
 import { getAuthHeader } from '@/utils/authService';  // Library to manage cookies in the browser
 
 // ============================
-// Configuration
-// ============================
-const surfZonesApiUrl = API_BASE_URLS.SURFZONES; //
-
-// ============================
 // Public Service Functions
 // ============================
 
@@ -32,7 +27,7 @@ const surfZonesApiUrl = API_BASE_URLS.SURFZONES; //
  * @throws {Error} If the request fails or returns an error response
  */
 export async function fetchSurfZones() {
-  const response = await fetch(`${surfZonesApiUrl}`, {
+  const response = await fetch(`${API_BASE_URLS.SURFZONES}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json', // Expect JSON data format

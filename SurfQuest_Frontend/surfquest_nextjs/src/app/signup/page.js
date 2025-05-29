@@ -1,137 +1,116 @@
+// src/app/signup/page.js
+
 'use client';
 
+// ============================
+// Imports
+// ============================
 import { useState } from 'react';
-import Cookies from 'js-cookie';
+import { registerUser, loginAfterSignup } from '@/services/signupService';
 
-const usersApiUrl = process.env.NEXT_PUBLIC_USERS_API_URL;
-const tokensApiUrl = process.env.NEXT_PUBLIC_TOKENS_API_URL;
-const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
-
-console.log('Users API URL:', usersApiUrl);
-console.log('Tokens API URL:', tokensApiUrl);
-console.log('Environment:', environment);
-
+/**
+ * SignupPage Component – Handles user registration flow.
+ *
+ * This page provides a form for new users to create an account by submitting
+ * their username, email, password, and an optional avatar image.
+ * On successful signup, the user is automatically logged in and redirected.
+ */
 export default function SignupPage() {
-  console.log('SignupPage component rendered');
-  // State to track email, password, and any errors
+  // ============================
+  // State Management
+  // ============================
   const [username, setUsername] = useState('');
   const [avatar, setAvatar] = useState(null);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // loading state
+  const [loading, setLoading] = useState(false);
 
-  // Function to handle form submission
-  const atSubmission = async (e) => {
+  /**
+   * Handles form submission.
+   * - Registers the user by calling the signup service.
+   * - Logs the user in and stores JWT tokens in cookies.
+   * - Redirects to the homepage.
+   *
+   * @param {Event} e - Form submit event
+   */
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true while the request is in progress
-    setError(''); // Clear previous errors
+    setLoading(true);
+    setError('');
 
     try {
-      console.log('Sending data:', { username, avatar, password, email });
-
-      const formData = new FormData();
-      formData.append("username", username);
-      formData.append("password", password);
-      formData.append("email", email);
-      formData.append("avatar", avatar);
-
-      const response = await fetch(`${usersApiUrl}`, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-        },
-        body: formData,
-      });
+      const response = await registerUser({ username, password, email, avatar });
       const data = await response.json();
-      console.log('Response status:', response.status);
-      console.log('Response data:', data);
 
       if (!response.ok) {
         setError(data.detail || JSON.stringify(data));
         return;
       }
-      // Automatically log in the user after successful signup
-      const loginResponse = await fetch(`${tokensApiUrl}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-      if (!loginResponse.ok) {
-        throw new Error('Failed to log in after registration');
-      }
 
-      const { access, refresh } = await loginResponse.json();
-      console.log('access_token:', access);
-      console.log('refresh_token:', refresh);
-
-      // Store the access token in the local storage
-      Cookies.set('access_token', access, { expires: 1, secure: true, sameSite: 'Strict' });
-      Cookies.set('refresh_token', refresh, { expires: 7, secure: true, sameSite: 'Strict' });
-      console.log('access tokens stored in cookies')
-      console.log('access_token:', Cookies.get('access_Token'));
-      console.log('refresh_token:', Cookies.get('refresh_Token'));
-
+      await loginAfterSignup(username, password);
+      // Redirect to homepage after successful signup and login
       window.location.href = '/';
-
     } catch (err) {
-      console.error('Error details:', err);
+      console.error('Signup error:', err);
       setError(`Error: ${err.message}`);
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
-  }
+  };
+
+  // ============================
+  // JSX Output
+  // ============================
   return (
     <div className="flex flex-col items-center justify-start pt-16 bg-black text-white">
       <div className="w-full max-w-sm p-8 bg-gray-800 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">Sign up to SurfQuest</h2>
-        <form className="space-y-4" onSubmit={atSubmission}>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          {/* Username Input */}
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-gray-300">
               Username
             </label>
             <input
-              type="username"
+              type="text"
               id="username"
               name="username"
-              value={username} // Bind state
-              onChange={(e) => setUsername(e.target.value)} // Update state
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               className="w-full px-4 py-2 mt-1 text-black rounded-md"
               required
+              autoComplete="username"
             />
           </div>
+
+          {/* Avatar Upload */}
           <div>
             <label htmlFor="avatar" className="block text-sm font-medium text-gray-300">
               Avatar
             </label>
             <div className="flex items-center">
-              {/* Hidden File Input */}
               <input
                 type="file"
                 id="avatar"
                 name="avatar"
                 accept="image/*"
-                onChange={(e) => setAvatar(e.target.files[0])} // Update state
-                className="hidden" // Hide the default input
+                onChange={(e) => setAvatar(e.target.files[0])}
+                className="hidden"
               />
-
-              {/* Custom Button */}
               <label
                 htmlFor="avatar"
                 className="px-4 py-2 mt-1 mr-2 text-sm bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-600"
               >
                 Choose File
               </label>
-
-              {/* Display Selected File Name */}
               <span className="text-sm text-gray-300">
                 {avatar ? avatar.name : "No file chosen"}
               </span>
-  </div>
+            </div>
           </div>
+
+          {/* Password Input */}
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-300">
               Password
@@ -140,12 +119,15 @@ export default function SignupPage() {
               type="password"
               id="password"
               name="password"
-              value={password} // Bind password
-              onChange={(e) => setPassword(e.target.value)} // Update state
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 mt-1 text-black rounded-md"
               required
+              autoComplete="new-password"
             />
           </div>
+
+          {/* Email Input */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-300">
               Email
@@ -154,17 +136,28 @@ export default function SignupPage() {
               type="email"
               id="email"
               name="email"
-              value={email} // Bind password
-              onChange={(e) => setEmail(e.target.value)} // Update state
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 mt-1 text-black rounded-md"
               required
+              autoComplete="email"
             />
           </div>
-            {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
+
+          {/* Error Message */}
+          {error && (
+            <div>
+              <p className="text-red-500 text-sm">{error}</p>
+            </div>
+          )}
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md">
-            Sign Up
+            disabled={loading}
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 rounded-md"
+          >
+            {loading ? 'Signing Up...' : 'Sign Up'}
           </button>
         </form>
       </div>
