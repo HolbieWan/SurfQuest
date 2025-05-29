@@ -4,8 +4,8 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
-import PulsingHeaderLink from '../HomePage/PulsingHeaderLink';
-import SurfZoneCard from './SurfZoneCard';
+import PulsingHeaderLink from '@/components/HomePage/PulsingHeaderLink';
+import SurfZoneCard from '@/components/SurfZones/SurfZoneCard';
 // import { useRouter } from 'next/navigation';
 
 

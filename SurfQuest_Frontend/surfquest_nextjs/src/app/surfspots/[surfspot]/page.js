@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import Link from "next/link";
-import SurfSpotDetails from "@/app/components/SurfSpots/SurfSpotDetails";
+import SurfSpotDetails from "@/components/SurfSpots/SurfSpotDetails";
 
 const surfSpotsApiUrl = process.env.NEXT_PUBLIC_SURFSPOTS_API_URL;
 const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;

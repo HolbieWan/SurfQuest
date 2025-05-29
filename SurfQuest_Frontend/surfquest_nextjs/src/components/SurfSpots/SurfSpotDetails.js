@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import SurfSpotCard from "@/app/components/SurfSpots/SurfSpotCard";
-import Reviews from "@/app/components/Reviews/Reviews";
+import SurfSpotCard from "@/components/SurfSpots/SurfSpotCard";
+import Reviews from "@/components/Reviews/Reviews";
 import Link from "next/link";
 
 export default function SurfSpotDetails({ surfSpotData }) {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import ImageCarousel from '../SurfSpots/Carousel';
+import ImageCarousel from '@/components/SurfSpots/Carousel';
 
 export default function SurfSpotCard({ surfspot, index, selectedSurfSpot=null }) {
   if (!surfspot) {

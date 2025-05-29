@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 // import MonthSelector from '../components/SurfZones/MonthSelector';
 // import MainFilters from '../components/SurfZones/MainFilters';
 // import SeasonalFilters from '../components/SurfZones/SeasonalFilters';
-import SurfZoneCard from '../components/SurfZones/SurfZoneCard';
+import SurfZoneCard from '@/components/SurfZones/SurfZoneCard';
 
 
 const surfZonesApiUrl = process.env.NEXT_PUBLIC_SURFZONES_API_URL;

@@ -2,7 +2,7 @@
 
 import { use } from "react";
 // import { useRouter } from "next/navigation";
-import SurfZoneDetails from "../../components/SurfZones/SurfZoneDetails";
+import SurfZoneDetails from "@/components/SurfZones/SurfZoneDetails";
 
 export default function SurfZonePage({ params }) {
   // const router = useRouter();

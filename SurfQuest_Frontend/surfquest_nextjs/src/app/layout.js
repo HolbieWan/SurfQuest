@@ -1,9 +1,9 @@
 // app/page.js
 
-import './globals.css';
-import Navbar from "./components/Layout/Navbar";
-import ScrollToTop from "./components/Layout/ScrollToTop";
-import Footer from "./components/Layout/Footer";
+import '@/styles/globals.css';
+import Navbar from "@/components/Common/Navbar";
+import ScrollToTop from "@/components/Common/ScrollToTop";
+import Footer from "@/components/Common/Footer";
 
 
 export const metadata = {

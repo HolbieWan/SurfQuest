@@ -3,11 +3,11 @@
 import React, { useState, useEffect, Suspense, useRef } from 'react';
 import Cookies from 'js-cookie';
 import { useSearchParams } from 'next/navigation';
-import Reviews from "../components/Reviews/Reviews";
 import Link from 'next/link';
-import SurfSpotCard from '../components/SurfSpots/SurfSpotCard';
-import ImageCarousel from '../components/SurfSpots/Carousel';
-import SurfZoneForecast from '../components/SurfZones/SurfZoneForecast/SurfZoneForecastCardWindy';
+import Reviews from "@/components/Reviews/Reviews";
+import SurfSpotCard from '@/components/SurfSpots/SurfSpotCard';
+import ImageCarousel from '@/components/SurfSpots/Carousel';
+import SurfZoneForecast from '@/components/SurfZones/SurfZoneForecast/SurfZoneForecastCardWindy';
 // import SurfZoneForecast from '../components/SurfZoneForecastCardStormglassAPI';
 
 

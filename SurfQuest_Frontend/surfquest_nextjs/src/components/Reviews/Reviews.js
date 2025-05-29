@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 // import { useSearchParams } from 'next/navigation';
-import ReviewCard from './ReviewCard';
-import ReviewForm from './ReviewForm';
+import ReviewCard from '@/components/Reviews/ReviewCard';
+import ReviewForm from '@/components/Reviews/ReviewForm';
 
 const reviewsApiUrl = process.env.NEXT_PUBLIC_REVIEWS_API_URL;
 const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;

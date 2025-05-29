@@ -5,8 +5,8 @@ import Cookies from 'js-cookie';
 import { useParams } from "next/navigation"; 
 import Reviews from "../Reviews/Reviews";
 import Link from 'next/link';
-import SurfSpotCard from '../SurfSpots/SurfSpotCard';
-import SurfZoneForecast from './SurfZoneForecast/SurfZoneForecastCardWindy';
+import SurfSpotCard from '@/components/SurfSpots/SurfSpotCard';
+import SurfZoneForecast from '@/components/SurfZones/SurfZoneForecast/SurfZoneForecastCardWindy';
 // import SurfZoneForecast from './SurfZoneForecastCardStormglassAPI';
 
 const surfSpotsApiUrl = process.env.NEXT_PUBLIC_SURFSPOTS_API_URL;
