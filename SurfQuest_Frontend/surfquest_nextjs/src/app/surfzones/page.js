@@ -1,618 +1,246 @@
- "use client";
-import React from 'react';
-import { useState, useEffect, useRef } from 'react';
-import Cookies from 'js-cookie';
-// import Link from 'next/link';
-// import MonthSelector from '../components/SurfZones/MonthSelector';
-// import MainFilters from '../components/SurfZones/MainFilters';
-// import SeasonalFilters from '../components/SurfZones/SeasonalFilters';
+// src/app/search-zones/page.js
+
+'use client';
+
+/**
+ * SurfQuest - SearchSurfZonePage
+ *
+ * This page displays all surf zones and allows users to filter them
+ * based on general preferences (country, cost, etc.) and seasonal conditions (month, swell size, etc.).
+ */
+
+import React, { useState, useEffect, useRef } from 'react';
+import { fetchSurfZones } from '@/services/surfzoneService';
+import { applySurfZoneFilters } from '@/utils/filters';
 import SurfZoneCard from '@/components/SurfZones/SurfZoneCard';
+import BasicFiltersGrid from '@/components/SurfZones/BasicFiltersGrid';
+import AdvancedFiltersGrid from '@/components/SurfZones/AdvancedFiltersGrid';
 
+import {
+  months,
+  surfLevel,
+  travelerType,
+  safety,
+  comfort,
+  mainWaveDirection,
+  cost,
+  waterTemp_C,
+  surfRating,
+  swellSize,
+  crowdFactor,
+  sunnyDays,
+  rainyDays,
+  waterTempRanges,
+  swellSizeRanges,
+  crowdFactorRanges,
+  sunnyDaysRanges,
+  rainyDaysRanges,
+} from '@/utils/filterOptions';
 
-const surfZonesApiUrl = process.env.NEXT_PUBLIC_SURFZONES_API_URL;
-const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
-const token = Cookies.get('access_token');
-
-console.log("SurfZones Api Url:", surfZonesApiUrl);
-console.log("Environment:", environment);
-console.log("Access Token:", token);
 
 export default function SearchSurfZonePage() {
+  // UI hydration state to avoid SSR mismatches
   const [hydrated, setHydrated] = useState(false);
 
-  //Get the currennt month
-  const currentMonthIndex = new Date().getMonth();
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const currentMonth = monthNames[currentMonthIndex]; 
+  // Data states
+  const [surfZones, setSurfZones] = useState([]);             // All surf zones
+  const [countries, setCountries] = useState([]);             // Unique country names from surf zones
+  const [error, setError] = useState('');                     // Error message
+  const [loading, setLoading] = useState(false);              // Loading state
 
-  const [selectedCountry, setSelectedCountry] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState(currentMonth);
-  const [selectedTravelerType, setSelectedTravelerType] = useState('');
-  const [selectedSafety, setSelectedSafety] = useState('');
-  const [selectedComfort, setSelectedComfort] = useState('');
-  const [selectedMainWaveDirection, setSelectedMainWaveDirection] = useState('');
-  const [selectedSurfLevel, setSelectedSurfLevel] = useState('');
-  const [selectedCost, setSelectedCost] = useState('');
-  const [selectedWaterTemp, setSelectedWaterTemp] = useState('');
-  const [selectedSurfRating, setSelectedSurfRating] = useState('');
-  const [selectedSwellSize, setSelectedSwellSize] = useState('');
-  const [selectedCrowdFactor, setSelectedCrowdFactor] = useState('');
-  const [selectedSunnyDays, setSelectedSunnyDays] = useState('');
-  const [selectedRainyDays, setSelectedRainyDays] = useState('');
- 
-  const [countries, setCountries] = useState([]);
-  const [surfZones, setSurfZones] = useState([]);
+  // Filters selected by the user
+  const [selectedFilters, setSelectedFilters] = useState({
+    country: '',
+    month: new Date().toLocaleString('default', { month: 'long' }),
+    travelerType: '',
+    safety: '',
+    comfort: '',
+    mainWaveDirection: '',
+    surfLevel: '',
+    cost: '',
+    waterTemp: '',
+    surfRating: '',
+    swellSize: '',
+    crowdFactor: '',
+    sunnyDays: '',
+    rainyDays: '',
+  });
 
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  // Toggle for displaying seasonal filters
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
 
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const surfLevel = ['Beginner', 'Intermediate', 'Advanced', 'Pro'];
-  const travelerType = ['Solo', 'Couple', 'Family', 'Group'];
-  const safety = ['Low', 'Moderate', 'High'];
-  const comfort = ['Simple', 'Comfortable', 'Premium'];
-  const mainWaveDirection = ['Left', 'Right', 'Left and right'];
-  const cost = ['Cheap', 'Moderate', 'Expensive'];
-  const waterTemp_C = ['Freezing', 'Cold', 'Cool', 'Temperate', 'Warm', 'Hot'];
-  const waterTempRanges = {
-    Freezing: { min: 0, max: 9 },
-    Cold: { min: 10, max: 15 },
-    Cool: { min: 16, max: 19 },
-    Temperate: { min: 20, max: 23 },
-    Warm: { min: 24, max: 27 },
-    Hot: { min: 28, max: 30 },
-  };
-  const surfRating = [1, 2, 3, 4, 5]
-  const swellSize = ["Under 1m", "1m - 1.5m", "1.5m - 2m", "2m - 3m", "Over 3m"]
-  const swellSizeRanges = {
-    "Under 1m": { min: 0, max: 1 },
-    "1m - 1.5m": { min: 1.1, max: 1.5 },
-    "1.5m - 2m": { min: 1.6, max: 2 },
-    "2m - 3m": { min: 2.1, max: 3 },
-    "Over 3m": { min: 3.1, max: 30 },
-  };
-  const crowdFactor = ['Few people', 'Moderate', 'Crowded', 'Packed'];
-  const crowdFactorRanges = {
-    "Few people": "Low",
-    "Moderate": "Medium",
-    "Crowded": "High",
-    "Packed": "Very High",
-  };
-  const sunnyDays = [/*'under 5', */'min 5', 'min 10', 'min 15', 'min 20', 'min 25'];
-  const sunnyDaysRanges = {
-    // "under 5": { min: 1, max: 4 },
-    "min 5": { min: 5, max: 31 },
-    "min 10": { min: 10, max: 31 },
-    "min 15": { min: 15, max: 31 },
-    "min 20": { min: 20, max: 31 },
-    "min 25": { min: 25, max: 31 },
-  };
-  const rainyDays = ['max 5', 'max 10', 'max 15', 'max 20', 'max 25'];
-  const rainyDaysRanges = {
-    "max 5": { min: 0, max: 5 },
-    "max 10": { min: 0, max: 10 },
-    "max 15": { min: 0, max: 15 },
-    "max 20": { min: 0, max: 20 },
-    "max 25": { min: 0, max: 25 },
-  }
-
+  // Refs for scroll behavior
   const resultsRef = useRef(null);
   const monthSelectorsRef = useRef(null);
 
+  // Mapping of filter keys to numerical or label ranges
+  const conditionRanges = {
+    waterTemp: waterTempRanges,
+    swellSize: swellSizeRanges,
+    crowdFactor: crowdFactorRanges,
+    sunnyDays: sunnyDaysRanges,
+    rainyDays: rainyDaysRanges,
+  };
+
+  // Load surf zones on first render
   useEffect(() => {
     setHydrated(true);
-
-    const fetchAndFilterSurfZones = async () => {
+    const loadSurfZones = async () => {
       setLoading(true);
-      setError('');
-
       try {
-        const responseData = await fetch(`${surfZonesApiUrl}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          mode: 'cors',
-          credentials: 'include'
-        });
-
-        if (!responseData.ok) {
-          const errorData = await responseData.json();
-          setError(errorData.detail || 'Request failed, please try again');
-          return;
-        }
-
-        const data = await responseData.json();
-        console.log("Response data: ", data);
-
+        const data = await fetchSurfZones();
         setSurfZones(data);
-
-        // Extract unique countries from surfZones
-        const uniqueCountries = [...new Set(data.map(item => item.country.name))];
-        setCountries(uniqueCountries);
-
+        setCountries([...new Set(data.map((zone) => zone.country.name))]);
       } catch (err) {
-        setError(`Request failed: ${err.message}`)
-
+        setError(err.message);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     };
-
-    fetchAndFilterSurfZones();
-
+    loadSurfZones();
   }, []);
 
+  // Prevent render on server-side
   if (!hydrated) return null;
 
+  /**
+   * Scroll smoothly to the results section.
+   */
   const scrollToResults = () => {
-    setTimeout(() => {
-      if (resultsRef.current) {
-        resultsRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
+    setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
   };
 
+  /**
+   * Scroll to month selector when month is changed.
+   */
   const scrollToMonthFilters = () => {
-    setTimeout(() => {
-      if (monthSelectorsRef.current) {
-        monthSelectorsRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
+    setTimeout(() => monthSelectorsRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
   };
 
-  const handleCountryChange = (e) => {
-    const country = e.target.value;
-    setSelectedCountry(country);
-    scrollToResults();
+  /**
+   * Handles changes in filter values.
+   * @param {string} key - The filter key to update.
+   * @param {string} value - The new value for the filter.
+   */
+  const handleFilterChange = (key, value) => {
+    setSelectedFilters((prev) => ({ ...prev, [key]: value }));
+    if (key === 'month') scrollToMonthFilters();
+    else scrollToResults();
   };
 
-  const handleMonthChange = (e) => {
-    const month = e.target.value;
-    setSelectedMonth(month);
-    scrollToMonthFilters();
-  };
-
-  const handleTravelerTypeChange = (e) => {
-    const traveler_type = e.target.value;
-    setSelectedTravelerType(traveler_type);
-    scrollToResults();
-  }
-
-  const handleSafetyChange = (e) => {
-    const safety = e.target.value;
-    setSelectedSafety(safety);
-    scrollToResults();
-  }
-
-  const handleComfortChange = (e) => {
-    const comfort = e.target.value;
-    setSelectedComfort(comfort);
-    scrollToResults();
-  }
-
-  const handleMainWaveDirectionChange = (e) => {
-    const main_wave_direction = e.target.value;
-    setSelectedMainWaveDirection(main_wave_direction);
-    scrollToResults();
-  }
-
-  const handleSurfLevelChange = (e) => {
-    const surf_level = e.target.value;
-    setSelectedSurfLevel(surf_level);
-    scrollToResults();
-  };
-
-  const handleCostChange = (e) => {
-    const cost = e.target.value;
-    setSelectedCost(cost);
-    scrollToResults();
-  };
-
-  const handleWaterTempChange = (e) => {
-    const water_temp = e.target.value;
-    setSelectedWaterTemp(water_temp);
-    scrollToResults();
-  };
-
-  const handleSurfRatingChange = (e) => {
-    const surf_rating = e.target.value;
-    setSelectedSurfRating(surf_rating);
-    scrollToResults();
-  };
-
-  const handleSwellSizeChange = (e) => {
-    const swell_size = e.target.value;
-    setSelectedSwellSize(swell_size);
-    scrollToResults();
-  };
-
-  const handleCrowdFactorChange = (e) => {
-    const crowd_factor = e.target.value;
-    setSelectedCrowdFactor(crowd_factor);
-    scrollToResults();
-  };
-
-  const handleSunnyDaysChange = (e) => {
-    const sunny_days = e.target.value;
-    setSelectedSunnyDays(sunny_days);
-    scrollToResults();
-  };
-
-  const handleRainyDaysChange = (e) => {
-    const rainy_days = e.target.value;
-    setSelectedRainyDays(rainy_days);
-    scrollToResults();
-  };
-
+  /**
+   * Resets all filter values.
+   */
   const handleReset = () => {
-    setSelectedCountry('');
-    setSelectedMonth('');
-    setSelectedTravelerType('');
-    setSelectedSafety('');
-    setSelectedComfort('');
-    setSelectedMainWaveDirection('');
-    setSelectedSurfLevel('');
-    setSelectedCost('');
-    setSelectedWaterTemp('');
-    setSelectedSurfRating('');
-    setSelectedSwellSize('');
-    setSelectedCrowdFactor('');
-    setSelectedSunnyDays('');
-    setSelectedRainyDays('');
+    setSelectedFilters({
+      country: '',
+      month: '',
+      travelerType: '',
+      safety: '',
+      comfort: '',
+      mainWaveDirection: '',
+      surfLevel: '',
+      cost: '',
+      waterTemp: '',
+      surfRating: '',
+      swellSize: '',
+      crowdFactor: '',
+      sunnyDays: '',
+      rainyDays: '',
+    });
   };
 
+  // Apply all filters to the loaded surf zones
+  const filteredSurfZones = applySurfZoneFilters(surfZones, selectedFilters, conditionRanges);
 
-  // Filter surf zones by country, cost of living, ...
-  const filteredSurfZones = surfZones
-    .filter(zone => !selectedCountry || zone.country.name === selectedCountry)
-    
-    .filter(zone =>
-      !selectedSurfLevel ||
-      zone.conditions?.some(condition =>
-      (selectedMonth
-        ? condition.month === selectedMonth && condition.surf_level.includes(selectedSurfLevel)
-        : condition.surf_level.includes(selectedSurfLevel)
-      )
-      )
-    )
-    
-    .filter(zone => !selectedTravelerType || zone.traveler_type?.includes(selectedTravelerType))
-
-    .filter(zone => !selectedSafety || zone.safety?.includes(selectedSafety))
-
-    .filter(zone => !selectedComfort || zone.confort?.includes(selectedComfort))
-
-    .filter(zone => !selectedMainWaveDirection || zone.main_wave_direction?.includes(selectedMainWaveDirection))
-
-    .filter(zone => !selectedCost || zone.cost?.includes(selectedCost))
-
-    .filter(zone => {
-      if (!selectedWaterTemp) return true;
-      const { min, max } = waterTempRanges[selectedWaterTemp] || {};
-      if (min === undefined || max === undefined) return false;
-      return zone.conditions?.some(condition =>
-        (!selectedMonth || condition.month === selectedMonth) &&
-        condition.water_temp_c >= min && condition.water_temp_c <= max
-      );
-    })
-
-    .filter(zone =>
-      !selectedSurfRating ||
-      zone.conditions?.some(condition =>
-      (selectedMonth
-        ? condition.month === selectedMonth && condition.world_surf_rating === Number(selectedSurfRating)
-        : condition.world_surf_rating === Number(selectedSurfRating)
-        )
-      )
-    )
-    
-    .filter(zone => {
-      if (!selectedSwellSize) return true;
-      const { min, max } = swellSizeRanges[selectedSwellSize] || {};
-      if (min === undefined || max === undefined) return false;
-      return zone.conditions?.some(condition =>
-        (!selectedMonth || condition.month === selectedMonth) &&
-        condition.swell_size_meter >= min && condition.swell_size_meter <= max
-      );
-    })
-
-    .filter(zone => {
-      if (!selectedCrowdFactor) return true;
-      const crowd = crowdFactorRanges[selectedCrowdFactor] || {};
-      if (crowd === undefined) return false;
-      return zone.conditions?.some(condition =>
-        (!selectedMonth || condition.month === selectedMonth) &&
-        condition.crowd === crowd
-      );
-    })
-
-    .filter(zone => {
-      if (!selectedSunnyDays || !sunnyDaysRanges[selectedSunnyDays]) return true;
-      const { min, max } = sunnyDaysRanges[selectedSunnyDays] || {};
-      if (min === undefined || max === undefined) return false;
-      return zone.conditions?.some(condition =>
-        (!selectedMonth || condition.month === selectedMonth) &&
-        condition.sunny_days >= min && condition.sunny_days <= max
-      );
-    })
-
-    .filter(zone => {
-      if (!selectedRainyDays || !rainyDaysRanges[selectedRainyDays]) return true;
-      const { min, max } = rainyDaysRanges[selectedRainyDays] || {};
-      if (min === undefined || max === undefined) return false;
-      return zone.conditions?.some(condition =>
-        (!selectedMonth || condition.month === selectedMonth) &&
-        condition.rain_days >= min && condition.rain_days <= max
-      );
-    });
-
-
-  const gridColsClass = filteredSurfZones.length === 1
-    ? 'grid-cols-1'
-    : filteredSurfZones.length === 2
-    ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2'
-    : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
-
+  // Determine grid layout class based on the number of results
+  const gridColsClass =
+    filteredSurfZones.length === 1
+      ? 'grid-cols-1'
+      : filteredSurfZones.length === 2
+        ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-2'
+        : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
   return (
     <div className="flex flex-col items-center justify-start pt-20 min-h-screen bg-black text-white rounded-lg">
+      <h1 className="text-4xl text-center font-bold mb-8">
+        Find the best destination for <span className="text-blue-500">you</span> 😎
+      </h1>
 
-      <h1 className="text-4xl text-center font-bold mb-8">Find the best destination for <span className="text-blue-500">you</span> 😎</h1>
+      {/* Status Messages */}
+      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {loading && <p className="text-blue-500 text-sm">Loading...</p>}
 
-      {token ? (
-        <>
-          {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
-          {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
-          
-          {/* Selectors grill*/}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-3 items-center justify-center ">
+      {/* Basic Filters Section */}
+      <BasicFiltersGrid
+        selectedFilters={selectedFilters}
+        countries={countries}
+        travelerType={travelerType}
+        safety={safety}
+        comfort={comfort}
+        cost={cost}
+        mainWaveDirection={mainWaveDirection}
+        handleFilterChange={handleFilterChange}
+        scrollToResults={scrollToResults}
+      />
+
+      {/* Toggle Advanced Filters + Month Select */}
+      <div ref={monthSelectorsRef} className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
+        <button
+          className="p-2 mb-4 bg-gray-700 text-white rounded"
+          onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+        >
+          {showAdvancedFilters ? 'Hide seasonal Filters ▲' : 'Show seasonal Filters ▼'}
+        </button>
+
+        {showAdvancedFilters && (
+          <>
             <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedCountry}
-              onChange={(e) => {
-                handleCountryChange(e);
-                scrollToResults();
-              }}
+              className="p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+              value={selectedFilters.month}
+              onChange={(e) => handleFilterChange('month', e.target.value)}
             >
-              <option value="">Country</option>
-              {countries.sort().map((country, index) => (
-                <option key={index} value={country}>
-                  {country}
+              <option value="">Month</option>
+              {months.map((month, index) => (
+                <option key={index} value={month}>
+                  {month}
                 </option>
               ))}
             </select>
+            <p className="text-gray-500 text-sm">(Select a month to apply below filters)</p>
+          </>
+        )}
+      </div>
 
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedTravelerType}
-              onChange={handleTravelerTypeChange}
-            >
-              <option value="">Traveler Type</option>
-              {travelerType.map((traveler_type, index) => (
-                <option key={index} value={traveler_type}>
-                  {traveler_type}
-                </option>
-              ))}
-            </select>
-
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedSafety}
-              onChange={handleSafetyChange}
-            >
-              <option value="">Safety</option>
-              {safety.map((safety, index) => (
-                <option key={index} value={safety}>
-                  {safety}
-                </option>
-              ))}
-            </select>
-
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedComfort}
-              onChange={handleComfortChange}
-            >
-              <option value="">Comfort</option>
-              {comfort.map((comfort, index) => (
-                <option key={index} value={comfort}>
-                  {comfort}
-                </option>
-              ))}
-            </select>
-
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedCost}
-              onChange={handleCostChange}
-            >
-              <option value="">Cost of Living</option>
-              {cost.map((cost, index) => (
-                <option key={index} value={cost}>
-                  {cost}
-                </option>
-              ))}
-            </select>
-
-            <select
-              className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-              value={selectedMainWaveDirection}
-              onChange={handleMainWaveDirectionChange}
-            >
-              <option value="">Main Wave Direction</option>
-              {mainWaveDirection.map((main_waves_direction, index) => (
-                <option key={index} value={main_waves_direction}>
-                  {main_waves_direction}
-                </option>
-              ))}
-            </select>
-
-          </div>
-
-          {/* Selectors grill*/}
-          <div ref={monthSelectorsRef} className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
-            <button
-              className="p-2 mb-4 bg-gray-700 text-white rounded"
-              onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-            >
-              {showAdvancedFilters ? "Hide seasonal Filters ▲" : "Show seasonal Filters ▼"}
-            </button>
-
-            {showAdvancedFilters && (
-              <>
-                <select
-                  className=" p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-                  value={selectedMonth}
-                  onChange={handleMonthChange}
-                >
-                  <option value="">Month</option>
-                  {months.map((month, index) => (
-                    <option key={index} value={month}>
-                      {month}
-                    </option>
-                  ))}
-                </select>
-
-                <p className="text-gray-500 text-sm">(Select a month to apply below filters)</p>
-              </>
-            )}
-          </div>
-
-          {/* Month Depending Selectors grill*/}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-3 place-items-center justify-center ">
-
-            {showAdvancedFilters && (
-              <>
-                <select
-                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-                  value={selectedSurfLevel}
-                  onChange={handleSurfLevelChange}
-                >
-                  <option value="">Surf Level</option>
-                  {surfLevel.map((surf_level, index) => (
-                    <option key={index} value={surf_level}>
-                      {surf_level}
-                    </option>
-                  ))}
-                </select>
-
-                <select
-                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-                  value={selectedSunnyDays}
-                  onChange={handleSunnyDaysChange}
-                >
-                  <option value="">Sunny Days</option>
-                  {sunnyDays.map((sunny_days, index) => (
-                    <option key={index} value={sunny_days}>
-                      {sunny_days}
-                    </option>
-                  ))}
-                </select>
-
-                <select
-                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-                  value={selectedRainyDays}
-                  onChange={handleRainyDaysChange}
-                >
-                  <option value="">Rainy Days</option>
-                  {rainyDays.map((rainy_days, index) => (
-                    <option key={index} value={rainy_days}>
-                      {rainy_days}
-                    </option>
-                  ))}
-                </select>
-
-                <select
-                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-                  value={selectedWaterTemp}
-                  onChange={handleWaterTempChange}
-                >
-                  <option value="">Water Temp</option>
-                  {waterTemp_C.map((water_temp, index) => (
-                    <option key={index} value={water_temp}>
-                      {water_temp}
-                    </option>
-                  ))}
-                </select>
-
-                <select
-                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-                  value={selectedSurfRating}
-                  onChange={handleSurfRatingChange}
-                >
-                  <option value="">Surf Rating</option>
-                  {surfRating.map((surf_rating, index) => (
-                    <option key={index} value={surf_rating}>
-                      {surf_rating}
-                    </option>
-                  ))}
-                </select>
-
-                <select
-                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-                  value={selectedSwellSize}
-                  onChange={handleSwellSizeChange}
-                >
-                  <option value="">Swell Size</option>
-                  {swellSize.map((swell_size, index) => (
-                    <option key={index} value={swell_size}>
-                      {swell_size}
-                    </option>
-                  ))}
-                </select>
-              </>
-            )}
-
-          </div>
-
-          {/* Selectors grill*/}
-          <div className="grid grid-cols-1 place-items-center gap-3 justify-center">
-
-            {showAdvancedFilters && (
-              <>
-                <select
-                  className=" p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-                  value={selectedCrowdFactor}
-                  onChange={handleCrowdFactorChange}
-                >
-                  <option value="">Crowd Factor</option>
-                  {crowdFactor.map((crowd_factor, index) => (
-                    <option key={index} value={crowd_factor}>
-                      {crowd_factor}
-                    </option>
-                  ))}
-                </select>
-              </>
-            )}
-          </div>
-
-          {/* Reset Button*/}
-          <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
-
-            <button
-              className="p-2 border border-red-500 rounded text-red-500 text-center w-[200px] cursor-pointer transform transition-transform duration-200 hover:text-red-600 hover:scale-105"
-              onClick={handleReset}
-            >Reset Selection
-            </button>
-            
-          </div>
-
-          {/*Surf Zones card */}
-          <div ref={resultsRef} className="flex flex-col items-center justify-start pt-16 w-full">
-
-            <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md mb-20`}>
-              {filteredSurfZones.map((surfzone, index) => (
-                <SurfZoneCard key={index} surfzone={surfzone} />
-              ))}
-            </div>
-          </div>
-        </>
-      ): (
-        <p className="text-gray-500">Please log in to enjoy surf zone search features</p>
+      {/* Advanced Filters Section */}
+      {showAdvancedFilters && (
+        <AdvancedFiltersGrid
+          selectedFilters={selectedFilters}
+          handleFilterChange={handleFilterChange}
+          showAdvancedFilters={showAdvancedFilters}
+          setShowAdvancedFilters={setShowAdvancedFilters}
+          monthSelectorsRef={monthSelectorsRef}
+        />
       )}
+
+      {/* Reset Filters Button */}
+      <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
+        <button
+          className="p-2 border border-red-500 rounded text-red-500 text-center w-[200px] cursor-pointer transform transition-transform duration-200 hover:text-red-600 hover:scale-105"
+          onClick={handleReset}
+        >
+          Reset Selection
+        </button>
+      </div>
+
+      {/* SurfZone Card Results */}
+      <div ref={resultsRef} className="flex flex-col items-center justify-start pt-16 w-full">
+        <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md mb-20`}>
+          {filteredSurfZones.map((surfzone, index) => (
+            <SurfZoneCard key={index} surfzone={surfzone} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
