@@ -1,20 +1,53 @@
-"use client";
+// src/components/SurfSpots/SurfSpotDetails.jsx
 
-import React from "react";
-import SurfSpotCard from "@/components/SurfSpots/SurfSpotCard";
-import Reviews from "@/components/Reviews/Reviews";
-import Link from "next/link";
+'use client';
+
+/**
+ * SurfSpotDetails Component
+ * -------------------------
+ * Renders detailed view for a single surf spot, including:
+ * - The spot’s name as a heading
+ * - A SurfSpotCard summary of the spot
+ * - A Reviews section for user feedback
+ *
+ * @param {Object} props
+ * @param {Object} props.surfSpotData - The surf spot object fetched from API
+ * @param {string} props.surfSpotData.name - Name of the surf spot
+ * @param {number} props.surfSpotData.id - Unique identifier of the surf spot
+ */
+
+// ============================
+// External Dependencies
+// ============================
+import React from 'react';
+
+// ============================
+// Local Dependencies
+// ============================
+import SurfSpotCard from '@/components/SurfSpots/SurfSpotCard';
+import Reviews from '@/components/Reviews/Reviews';
+import Link from 'next/link';
 
 export default function SurfSpotDetails({ surfSpotData }) {
   return (
     <div className="flex flex-col items-center justify-start pt-10 min-h-screen bg-black text-white">
+      {/* Spot Name */}
+      <h1 className="text-4xl font-bold text-center mb-10">
+        {surfSpotData.name}
+      </h1>
 
-      <h1 className="text-4xl font-bold text-center mb-10">{surfSpotData.name}</h1>
+      {/* Summary Card */}
+      <SurfSpotCard
+        surfspot={surfSpotData}
+        selectedSurfSpot={surfSpotData.name}
+      />
 
-      <SurfSpotCard surfspot={surfSpotData} selectedSurfSpot={surfSpotData.name} />
-
-      <div className="group grid grid-cols-1 rounded-md items-center justify-center">
-        <Reviews selectedSurfSpot={surfSpotData.name} surfSpotId={surfSpotData.id} />
+      {/* Reviews Section */}
+      <div className="group grid grid-cols-1 rounded-md items-center justify-center mt-8">
+        <Reviews
+          selectedSurfSpot={surfSpotData.name}
+          surfSpotId={surfSpotData.id}
+        />
       </div>
     </div>
   );

@@ -1,102 +1,139 @@
-"use client";
+// src/app/surfspots/[surfspot]/page.js
 
-import React, { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import Cookies from "js-cookie";
-import Link from "next/link";
-import SurfSpotDetails from "@/components/SurfSpots/SurfSpotDetails";
+'use client';
 
-const surfSpotsApiUrl = process.env.NEXT_PUBLIC_SURFSPOTS_API_URL;
-const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
-const token = Cookies.get('access_token');
+/**
+ * SurfSpotDetailsPage Component
+ * -----------------------------
+ * Displays detailed information for a selected surf spot.
+ * - Fetches all surf spots via surfspotService.
+ * - Finds the one matching the URL parameter.
+ * - Renders the SurfSpotDetails component.
+ * - Provides a dropdown to switch between surf spots.
+ * - Includes a back-link to the surf spot search page.
+ *
+ * @returns {JSX.Element}
+ */
 
-console.log("Surf Spots API URL:", surfSpotsApiUrl);
-console.log("Environment:", environment);
-console.log("Access Token:", token);
+// ============================
+// External Dependencies
+// ============================
+import React, { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
+import Link from 'next/link';
+
+// ============================
+// Local Dependencies
+// ============================
+import SurfSpotDetails from '@/components/SurfSpots/SurfSpotDetails';
+import { fetchSurfSpots } from '@/services/surfspotService';
+import { getUniqueSurfSpots } from '@/utils/surfspotUtils';
+import API_BASE_URLS from '@/config/api';
 
 export default function SurfSpotDetailsPage() {
+  // ============================
+  // Router & URL Parameter
+  // ============================
   const { surfspot } = useParams();
-  // decode any %20 or UTF-8 bytes back into real characters
-  const decodedSurfSpot = decodeURIComponent(surfspot || "");
+  const decodedSurfSpot = decodeURIComponent(surfspot || '');
   const router = useRouter();
-  const [uniqueSurfSpotsList, setUniqueSurfSpotsList] = useState([]);
-  const [surfSpotData, setSurfSpotData] = useState(null);
-  const [selectedSurfSpot, setSelectedSurfSpot] = useState(decodedSurfSpot);
-  const [error, setError] = useState(null);
+
+  // ============================
+  // State Management
+  // ============================
+  const [allSpots, setAllSpots] = useState([]);
+  const [uniqueNames, setUniqueNames] = useState([]);
+  const [selectedSpot, setSelectedSpot] = useState(decodedSurfSpot);
+  const [spotData, setSpotData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
+  // ============================
+  // Fetch Spots on Mount / Param Change
+  // ============================
   useEffect(() => {
-    const fetchSurfSpot = async () => {
+    const loadSpots = async () => {
+      setLoading(true);
+      setError('');
       try {
-        const res = await fetch(surfSpotsApiUrl, {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-        });
+        const token = Cookies.get('access_token');
+        const spots = await fetchSurfSpots(API_BASE_URLS.SURFSPOTS, token);
+        setAllSpots(spots);
 
-        if (!res.ok) {
-          throw new Error("Failed to fetch surf spots.");
-        }
+        // Derive unique spot names for dropdown
+        setUniqueNames(getUniqueSurfSpots(spots));
 
-        const allSurfSpots = await res.json();
-        setUniqueSurfSpotsList(allSurfSpots.map(spot => spot.name));
-        const matchedSurfSpot = allSurfSpots.find(spot => spot.name === decodeURIComponent(surfspot));
-        setSurfSpotData(matchedSurfSpot);
-
+        // Find and set the currently selected spot's data
+        const match = spots.find(s => s.name === decodedSurfSpot);
+        setSpotData(match || null);
       } catch (err) {
         setError(err.message);
-
       } finally {
         setLoading(false);
       }
     };
 
-    fetchSurfSpot();
-  }, [surfspot]);
+    loadSpots();
+  }, [decodedSurfSpot]);
 
-  const handleSurfSpotChange = (e) => {
-    const newSurfSpot = e.target.value;
-    setSelectedSurfSpot(newSurfSpot);
-    router.push(`/surfspots/${encodeURIComponent(newSurfSpot)}`); // Navigate to the new surf spot page
+  // ============================
+  // Handle Dropdown Change
+  // ============================
+  const handleSpotChange = (e) => {
+    const newSpot = e.target.value;
+    setSelectedSpot(newSpot);
+    // Navigate to the new spot's page
+    router.push(`/surfspots/${encodeURIComponent(newSpot)}`);
   };
 
-  if (loading) return <div className="text-white text-center mt-10">Loading...</div>;
-  if (error || !surfSpotData) return <div className="text-red-500 text-center mt-10">Error: {error || "Surf spot not found"}</div>;
+  // ============================
+  // Render States
+  // ============================
+  if (loading) {
+    return <div className="text-white text-center mt-10">Loading surf spot...</div>;
+  }
+  if (error || !spotData) {
+    return (
+      <div className="text-red-500 text-center mt-10">
+        Error: {error || 'Surf spot not found.'}
+      </div>
+    );
+  }
 
+  // ============================
+  // JSX Output
+  // ============================
   return (
-    <div className="flex flex-col items-center justify-start pt-10 min-h-screen bg-black text-white">
-      {surfSpotData &&
-              <>
-                <div className="w-full flex justify-start">
-                  <div className="ml-10 text-left ">
-                    <Link
-                      href={`/surfspots`}
-                    >
-                        <h2 className="text-gray-500 text-lg text-left hover:text-gray-300 transform transition-transform duration-300 hover:scale-105"> 👈🏻 Back to surf-spot search page</h2>
-                    </Link>
-                  </div>
-                </div>
-              </>
-      }
+    <div className="flex flex-col items-center pt-10 min-h-screen bg-black text-white">
+      {/* Back Link */}
+      <div className="w-full flex justify-start mb-6">
+        <div className="ml-10">
+          <Link href="/surfspots">
+            <h2 className="text-gray-500 text-lg hover:text-gray-300 hover:scale-105">
+              👈🏻 Back to surf-spot search page
+            </h2>
+          </Link>
+        </div>
+      </div>
 
-      <div className="flex justify-center items-center w-full p-4">
+      {/* Surf Spot Selector */}
+      <div className="w-full flex justify-center mb-8">
         <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[210px] w-auto transform transition-transform duration-200 hover:border-white hover:scale-105"
-          value={selectedSurfSpot}
-          onChange={handleSurfSpotChange}
+          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[240px] hover:scale-105"
+          value={selectedSpot}
+          onChange={handleSpotChange}
         >
-          <option value="">{selectedSurfSpot}</option>
-          {uniqueSurfSpotsList.sort().map((spot, index) => (
-            <option key={index} value={spot}>
-              {spot}
+          {uniqueNames.map((name) => (
+            <option key={name} value={name}>
+              {name}
             </option>
           ))}
         </select>
       </div>
 
-      <SurfSpotDetails surfSpotData={surfSpotData} />
+      {/* Spot Details */}
+      <SurfSpotDetails surfSpotData={spotData} />
     </div>
   );
 }
