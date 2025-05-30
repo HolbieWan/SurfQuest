@@ -1,13 +1,28 @@
 'use client';
-import React from 'react';
 
 /**
- * Shows up to two images for a surf zone.
+ * ImageGallery Component
+ * ----------------------
+ * Displays up to two images for a surf zone in a responsive gallery.
+ * Each image includes hover scaling for a subtle interaction effect.
+ *
+ * @param {Object[]} props.images - Array of image objects.
+ * @param {string} props.images[].image - URL of the image.
+ * @param {string} props.alt - Alt text base for accessibility.
  */
+
+// ============================
+// External Dependencies
+// ============================
+import React from 'react';
+
+// ============================
+// Component Definition
+// ============================
 export default function ImageGallery({ images, alt }) {
   return (
     <div className="group flex flex-col items-center justify-between w-full max-w-lg rounded-lg">
-      {images.map((img, i) => (
+      {images.slice(0, 2).map((img, i) => (
         <img
           key={i}
           src={img.image}
