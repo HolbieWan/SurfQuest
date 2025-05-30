@@ -68,7 +68,7 @@ export default function SearchSurfSpotsPage() {
   // ============================
   useEffect(() => {
     setHydrated(true);
-    const load = async () => {
+    const loadSpots = async () => {
       setLoading(true);
       setError('');
       try {
@@ -77,17 +77,23 @@ export default function SearchSurfSpotsPage() {
         setSpots(data);
         setUniqueZones(getUniqueSurfZones(data));
         setUniqueSpots(getUniqueSurfSpots(data));
+
+        // Initialize surfSpot filter from URL param if present
         const param = searchParams.get('surfspot');
-        if (param) setFilters(f => ({ ...f, surfSpot: param }));
-      } catch (e) {
-        setError(e.message);
+        if (param) {
+          setFilters(f => ({ ...f, surfSpot: param }));
+        }
+      } catch (err) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
-    load();
+
+    loadSpots();
   }, [searchParams]);
 
+  // Avoid SSR mismatch
   if (!hydrated) return null;
   if (loading)   return <p className="text-blue-500 text-center mt-10">Loading...</p>;
   if (error)     return <p className="text-red-500 text-center mt-10">{error}</p>;
@@ -95,18 +101,18 @@ export default function SearchSurfSpotsPage() {
   // ============================
   // Apply Shared Filtering Utility
   // ============================
-  const filtered = applySurfSpotFilters(
+  const filteredSpots = applySurfSpotFilters(
     spots,
     {
-      name:        filters.surfSpot,
-      breakType:   filters.breakType,
-      waveDir:     filters.waveDirection,
-      level:       filters.surfLevel,
-      tide:        filters.bestTide,
-      swellSize:   filters.bestSwellSize,
-      windDir:     filters.bestWindDirection,
-      swellDir:    filters.bestSwellDirection,
-      month:       filters.bestMonth,
+      name:      filters.surfSpot,
+      breakType: filters.breakType,
+      waveDir:   filters.waveDirection,
+      level:     filters.surfLevel,
+      tide:      filters.bestTide,
+      swellSize: filters.bestSwellSize,
+      windDir:   filters.bestWindDirection,
+      swellDir:  filters.bestSwellDirection,
+      month:     filters.bestMonth,
     },
     { swellSizeRanges: opts.swellSizeRanges }
   );
@@ -114,16 +120,29 @@ export default function SearchSurfSpotsPage() {
   // ============================
   // Handlers
   // ============================
+
+  /**
+   * Handles changes to any filter input.
+   * - For non-spot filters, scrolls results into view.
+   * - For surfSpot selection, navigates to the detail page.
+   *
+   * @param {string} key - The filter key in state.
+   * @returns {Function}
+   */
   const onFilterChange = (key) => (e) => {
-    const val = e.target.value;
-    setFilters(f => ({ ...f, [key]: val }));
-    if (key !== 'surfSpot') {
+    const value = e.target.value;
+    setFilters(prev => ({ ...prev, [key]: value }));
+
+    if (key === 'surfSpot' && value) {
+      router.push(`/surfspots/${encodeURIComponent(value)}`);
+    } else if (key !== 'surfSpot') {
       setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
-    } else if (val) {
-      router.push(`/surfspots/${encodeURIComponent(val)}`);
     }
   };
 
+  /**
+   * Resets all filter values to their defaults (empty strings).
+   */
   const resetAll = () => {
     setFilters({
       surfSpot: '', breakType: '', waveDirection: '',
@@ -137,6 +156,7 @@ export default function SearchSurfSpotsPage() {
   // ============================
   return (
     <div className="flex flex-col items-center pt-20 min-h-screen bg-black text-white">
+      {/* Filters Section (shown when no spot is selected) */}
       {!filters.surfSpot && (
         <>
           <h1 className="text-4xl font-bold mb-8 text-center">
@@ -166,9 +186,10 @@ export default function SearchSurfSpotsPage() {
         </>
       )}
 
+      {/* Results Section */}
       <div ref={resultsRef} className="w-full px-4">
         <div className="grid grid-cols-1 gap-10 mb-10">
-          {filtered.map(spot => (
+          {filteredSpots.map(spot => (
             <SurfSpotCard key={spot.id} surfspot={spot} />
           ))}
         </div>
@@ -177,6 +198,7 @@ export default function SearchSurfSpotsPage() {
   );
 }
 
+// Wrap in Suspense for safety
 export function Page() {
   return (
     <Suspense fallback={<div>Loading…</div>}>

@@ -6,16 +6,25 @@
  * Renders a uniform grid of select inputs for filtering surf spots.
  * Delegates filter state updates via onFilterChange callbacks.
  *
- * @param {string[]} uniqueSpots
- * @param {Object} filters
- * @param {Function} onFilterChange
- * @param {Object} options - imported from spotFilterOptions
+ * @param {Object} props
+ * @param {string[]} props.uniqueSpots - Array of all unique surf spot names.
+ * @param {Object} props.filters - Current filter state object.
+ * @param {Function} props.onFilterChange - Higher-order function that returns an onChange handler for each filter key.
+ * @param {Object} props.options - Object containing arrays of valid filter option values.
  */
+
+// ============================
+// External Dependencies
+// ============================
 import React from 'react';
 
+// ============================
+// FiltersGrid Component
+// ============================
 export default function FiltersGrid({ uniqueSpots, filters, onFilterChange, options }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-4 gap-4">
+      {/* Surf Spot Selector */}
       <select
         className="p-2 bg-blue-500 text-white text-center rounded hover:scale-105"
         value={filters.surfSpot}
@@ -23,10 +32,13 @@ export default function FiltersGrid({ uniqueSpots, filters, onFilterChange, opti
       >
         <option value="">View all surf-spots</option>
         {uniqueSpots.sort().map(spot => (
-          <option key={spot} value={spot}>{spot}</option>
+          <option key={spot} value={spot}>
+            {spot}
+          </option>
         ))}
       </select>
-      
+
+      {/* Best Month Selector */}
       <select
         className="p-2 bg-blue-500 text-white text-center rounded hover:scale-105"
         value={filters.bestMonth}
@@ -34,10 +46,13 @@ export default function FiltersGrid({ uniqueSpots, filters, onFilterChange, opti
       >
         <option value="">Best Month</option>
         {options.monthList.map(m => (
-          <option key={m} value={m}>{m}</option>
+          <option key={m} value={m}>
+            {m}
+          </option>
         ))}
       </select>
 
+      {/* Surf Level Selector */}
       <select
         className="p-2 bg-blue-500 text-white text-center rounded hover:scale-105"
         value={filters.surfLevel}
@@ -45,10 +60,13 @@ export default function FiltersGrid({ uniqueSpots, filters, onFilterChange, opti
       >
         <option value="">Surf Level</option>
         {options.surfLevelList.map(l => (
-          <option key={l} value={l}>{l}</option>
+          <option key={l} value={l}>
+            {l}
+          </option>
         ))}
       </select>
 
+      {/* Break Type Selector */}
       <select
         className="p-2 bg-blue-500 text-white text-center rounded hover:scale-105"
         value={filters.breakType}
@@ -56,10 +74,13 @@ export default function FiltersGrid({ uniqueSpots, filters, onFilterChange, opti
       >
         <option value="">Break Type</option>
         {options.breakTypeList.map(b => (
-          <option key={b} value={b}>{b}</option>
+          <option key={b} value={b}>
+            {b}
+          </option>
         ))}
       </select>
 
+      {/* Wave Direction Selector */}
       <select
         className="p-2 bg-blue-500 text-white text-center rounded hover:scale-105"
         value={filters.waveDirection}
@@ -67,10 +88,13 @@ export default function FiltersGrid({ uniqueSpots, filters, onFilterChange, opti
       >
         <option value="">Wave Direction</option>
         {options.waveDirectionList.map(w => (
-          <option key={w} value={w}>{w}</option>
+          <option key={w} value={w}>
+            {w}
+          </option>
         ))}
       </select>
 
+      {/* Best Tide Selector */}
       <select
         className="p-2 bg-blue-500 text-white text-center rounded hover:scale-105"
         value={filters.bestTide}
@@ -78,10 +102,13 @@ export default function FiltersGrid({ uniqueSpots, filters, onFilterChange, opti
       >
         <option value="">Best Tide</option>
         {options.bestTideList.map(t => (
-          <option key={t} value={t}>{t}</option>
+          <option key={t} value={t}>
+            {t}
+          </option>
         ))}
       </select>
 
+      {/* Best Swell Size Selector */}
       <select
         className="p-2 bg-blue-500 text-white text-center rounded hover:scale-105"
         value={filters.bestSwellSize}
@@ -89,10 +116,13 @@ export default function FiltersGrid({ uniqueSpots, filters, onFilterChange, opti
       >
         <option value="">Best Swell Size</option>
         {options.swellSizeList.map(s => (
-          <option key={s} value={s}>{s}</option>
+          <option key={s} value={s}>
+            {s}
+          </option>
         ))}
       </select>
 
+      {/* Best Wind Direction Selector */}
       <select
         className="p-2 bg-blue-500 text-white text-center rounded hover:scale-105"
         value={filters.bestWindDirection}
@@ -100,10 +130,13 @@ export default function FiltersGrid({ uniqueSpots, filters, onFilterChange, opti
       >
         <option value="">Best Wind Direction</option>
         {options.windDirectionList.map(d => (
-          <option key={d} value={d}>{d}</option>
+          <option key={d} value={d}>
+            {d}
+          </option>
         ))}
       </select>
 
+      {/* Best Swell Direction Selector */}
       <select
         className="p-2 bg-blue-500 text-white text-center rounded hover:scale-105"
         value={filters.bestSwellDirection}
@@ -111,10 +144,11 @@ export default function FiltersGrid({ uniqueSpots, filters, onFilterChange, opti
       >
         <option value="">Best Swell Direction</option>
         {options.swellDirectionList.map(d => (
-          <option key={d} value={d}>{d}</option>
+          <option key={d} value={d}>
+            {d}
+          </option>
         ))}
       </select>
-
     </div>
   );
 }
