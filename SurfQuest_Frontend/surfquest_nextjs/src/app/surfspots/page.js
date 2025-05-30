@@ -95,8 +95,6 @@ export default function SearchSurfSpotsPage() {
 
   // Avoid SSR mismatch
   if (!hydrated) return null;
-  if (loading)   return <p className="text-blue-500 text-center mt-10">Loading...</p>;
-  if (error)     return <p className="text-red-500 text-center mt-10">{error}</p>;
 
   // ============================
   // Apply Shared Filtering Utility
@@ -156,6 +154,7 @@ export default function SearchSurfSpotsPage() {
   // ============================
   return (
     <div className="flex flex-col items-center pt-20 min-h-screen bg-black text-white">
+
       {/* Filters Section (shown when no spot is selected) */}
       {!filters.surfSpot && (
         <>
@@ -165,6 +164,10 @@ export default function SearchSurfSpotsPage() {
 
           {Cookies.get('access_token') ? (
             <>
+              {/* Error / Loading feedback */}
+              { loading && (<p className="text-blue-500 text-center mt-10">Loading...</p>) }
+              { error && (<p className="text-red-500 text-center mt-10">{error}</p>)}
+
               <FiltersGrid
                 uniqueSpots={uniqueSpots}
                 filters={filters}
@@ -180,7 +183,7 @@ export default function SearchSurfSpotsPage() {
             </>
           ) : (
             <p className="text-gray-500 text-center">
-              Please log in to enjoy surf-spot search features
+              Please <a href="/login" className="text-blue-400 hover:text-blue-600">log in</a> to enjoy surf-spot search features
             </p>
           )}
         </>

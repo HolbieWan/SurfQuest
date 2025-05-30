@@ -72,7 +72,7 @@ export default function MonthBestDestinations() {
 
       {error && (
         <p className="text-gray-500 text-md text-center">
-          Please sign-up / log-in to have access to all features.
+           Please <a href="/signup" className="text-blue-400 hover:text-blue-600">signup</a> or <a href="/login" className="text-blue-400 hover:text-blue-600">log in</a> to have access to all features
         </p>
       )}
 

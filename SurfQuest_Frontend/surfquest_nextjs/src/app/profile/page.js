@@ -64,7 +64,7 @@ export default function ProfilePage() {
         </div>
       ) : (
         <p className="text-gray-500 text-center mt-20">
-          Please log in to access your profile
+           Please <a href="/login" className="text-blue-400 hover:text-blue-600">log in</a> to access your profile
         </p>
       )}
     </>
