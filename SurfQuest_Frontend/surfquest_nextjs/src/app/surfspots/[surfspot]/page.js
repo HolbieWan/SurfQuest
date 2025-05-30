@@ -71,10 +71,6 @@ export default function SurfSpotDetailsPage() {
                   <div className="ml-10 text-left ">
                     <Link
                       href={`/surfspots`}
-                      onClick={(e) => {
-                        e.preventDefault(); // Prevents unnecessary navigation reload
-                        setSelectedSurfSpot("");
-                      }}
                     >
                         <h2 className="text-gray-500 text-lg text-left hover:text-gray-300 transform transition-transform duration-300 hover:scale-105"> 👈🏻 Back to surf-spot search page</h2>
                     </Link>

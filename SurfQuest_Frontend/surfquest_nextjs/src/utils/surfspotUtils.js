@@ -1,5 +1,3 @@
-// src/utils/surfspotUtils.js
-
 /**
  * Extract unique surf zones from a list of surf spots.
  *
