@@ -1,300 +1,153 @@
-"use client";
+'use client';
+
+/**
+ * SurfZone Details Page – Refactored
+ *
+ * Displays detailed information, conditions, forecast, surf spots, and reviews for a selected surf zone.
+ * Fetches surf spot data and filters based on the selected zone and month.
+ */
 
 import React, { useState, useEffect, Suspense } from 'react';
-import Cookies from 'js-cookie';
-import { useParams } from "next/navigation"; 
-import Reviews from "../Reviews/Reviews";
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
+
+// External Components
 import SurfSpotCard from '@/components/SurfSpots/SurfSpotCard';
 import SurfZoneForecast from '@/components/SurfZones/SurfZoneForecast/SurfZoneForecastCardWindy';
-// import SurfZoneForecast from './SurfZoneForecastCardStormglassAPI';
+import Reviews from '@/components/Reviews/Reviews';
 
-const surfSpotsApiUrl = process.env.NEXT_PUBLIC_SURFSPOTS_API_URL;
-const token = Cookies.get('access_token');
+// Services and Utilities
+import API_BASE_URLS from '@/config/api';
+import { fetchSurfSpots } from '@/services/surfspotService';
+import { getUniqueSurfZones, filterSpotsByZone } from '@/utils/surfzoneUtils';
 
-console.log(surfSpotsApiUrl);
-console.log(token);
+const months = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+];
 
 function SurfZoneDetailsPage() {
-  //Get the currennt month
-  const currentMonthIndex = new Date().getMonth();
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const currentMonth = monthNames[currentMonthIndex]; 
-
   const { surfzone } = useParams();
-  const decodedSurfZone = decodeURIComponent(surfzone || "");
-  const [surfZones, setSurfZones] = useState([]);
-  const [selectedSurfZone, setSelectedSurfZone] = useState("");
-  const [selectedMonth, setSelectedMonth] = useState(currentMonth);  /*new Date().toLocaleString("default", { month: "long" }) */
+  const decodedSurfZone = decodeURIComponent(surfzone || '');
+
   const [surfSpots, setSurfSpots] = useState([]);
+  const [selectedSurfZone, setSelectedSurfZone] = useState(decodedSurfZone);
+  const [selectedMonth, setSelectedMonth] = useState(months[new Date().getMonth()]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-
   useEffect(() => {
-    // Fetch surf zones data
-    const fetchData = async () => {
+    const loadData = async () => {
       setLoading(true);
       setError('');
       try {
-        const surfSpotsResponse = await fetch(`${surfSpotsApiUrl}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          mode: 'cors',
-          credentials: 'include',
-        });
-
-        console.log(`Response status: ${surfSpotsResponse.status}`);
-
-        if (!surfSpotsResponse.ok) {
-          const errorData = await surfSpotsResponse.json();
-          setError(errorData.detail || 'Request failed, please try again');
-          return;
-        }
-        const data = await surfSpotsResponse.json();
-        console.log('Response data: ', data);
+        const data = await (fetchSurfSpots);
         setSurfSpots(data);
-
-        // Set the selected surf zone from the URL
-        if (decodedSurfZone) {
-          setSelectedSurfZone(decodedSurfZone);
-        }
-
-        // Extract unique SurfZones from surfSpots data
-        const uniqueSurfZones = [...new Set(data.map(item => item.surfzone.name))];
-        setSurfZones(uniqueSurfZones);
-
       } catch (err) {
-        setError(`Request failed: ${err.message}`);
-
+        setError(`Failed to load surf spots: ${err.message}`);
       } finally {
         setLoading(false);
       }
     };
+    loadData();
+  }, []);
 
-    fetchData();
-  }, [decodedSurfZone]);
+  const uniqueSurfZones = getUniqueSurfZones(surfSpots);
+  const filteredSpots = filterSpotsByZone(surfSpots, selectedSurfZone);
+  const currentSpot = filteredSpots[0];
+  const monthCondition = currentSpot?.surfzone?.conditions?.find(c => c.month === selectedMonth);
+  const surfZoneImages = currentSpot?.surfzone?.zone_images?.slice(0, 2) || [];
+  const surfZoneId = currentSpot?.surfzone?.id || '';
 
-  // Filter surf spot by surf zone
-  const filteredSurfSpots = surfSpots.filter(
-    (spot) => spot.surfzone.name === selectedSurfZone
-  );
-  console.log(filteredSurfSpots);
-
-  // Wait for data before filtering
-  if (!surfSpots.length) return <p className="text-white">Loading surf spots...</p>;
-
-  // Get surfSpot object from the array of objects: surfSpots based on selectedSurfZone
-  const surfSpot = surfSpots.find(spot => spot.surfzone.name === selectedSurfZone);
-  console.log(`surfSpotObject (surfzone details page): ${surfSpot}`);
-
-  // Extract surfZoneId from the selected surfSpot
-  const surfZoneId = surfSpot?.surfzone?.id || "No ID Available";
-  console.log("Surf Zone ID:", surfZoneId);
-
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-  // Get Condition object from the array of objects: surfSpot.surfzone based on selected SurfZone
-  const monthCondition = surfSpot?.surfzone?.conditions.find((item) => item.month === selectedMonth);
-  console.log(monthCondition);
-
-  //Get the surfzone image from the surfSpot object
-  const surfZoneImages = surfSpot?.surfzone?.zone_images?.slice(0, 2) || [];
+  if (loading) return <p className="text-blue-500">Loading...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <>
-      <div className="w-full flex justify-start">
-        <div className="ml-20 text-left ">
-          <Link href={`/surfzones`}>
-            <h2 className="text-gray-500 text-lg text-left hover:text-gray-300 transform transition-transform duration-300 hover:scale-105"> 👈🏻 Back to surf-zone search page</h2>
-          </Link>
-        </div>
-      </div>
-      
-      <div className="flex flex-col items-center justify-start pt-10 min-h-screen bg-black text-white">
-        {/* <h1 className="text-4xl font-bold">Surf spots</h1> */}
-        {/* <p className="text-sm mt-8">Select a Surf-Zone</p> */}
+    <div className="min-h-screen bg-black text-white px-4 py-10">
+      <Link href="/surfzones">
+        <h2 className="text-gray-500 text-lg hover:text-gray-300">👈🏻 Back to surf-zone search page</h2>
+      </Link>
 
-
+      {/* Surfzone Selector */}
+      <div className="my-6">
         <select
-          className="mt-4 p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+          className="p-2 bg-blue-500 text-white rounded min-w-[200px]"
           value={selectedSurfZone}
           onChange={(e) => setSelectedSurfZone(e.target.value)}
         >
           <option value="">Select Surf-zone</option>
-          {surfZones.sort().map((surfzone, index) => (
-            <option key={index} value={surfzone}>
-              {surfzone}
-            </option>
+          {uniqueSurfZones.sort().map((zone, i) => (
+            <option key={i} value={zone}>{zone}</option>
           ))}
         </select>
-
-        <div className="flex flex-col items-center pt-10 w-full">
-          {error && <div><p className="text-red-500 text-sm">{error}</p></div>}
-          {loading && <div><p className="text-blue-500 text-sm">Loading...</p></div>}
-
-            {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-            <div>
-              {selectedSurfZone && (
-                <>
-
-                  <h1 className="text-white text-4xl font-bold text-center mb-6 mt-8 p-2 w-full">Zone infos</h1>
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 rounded-lg items-stretch justify-items-center mb-10">
-
-                    {/* Bloc superieur: card INFOS */}
-                    <div className="group flex flex-col items-center justify-items-center w-full max-w-lg  ">
-                      <div className="bg-white rounded-lg p-10 flex flex-col justify-start border overflow-hidden w-full transform transition-transform duration-500 group-hover:scale-105" /*style={{ height: '700px' }}*/>
-                        <h2 className="text-blue-500 text-4xl font-bold text-center lg:text-left mb-6 p-2">{surfSpot.surfzone.name}</h2>
-                          {surfSpot && (
-                            <>
-                              <div className="mt-2 text-md text-black text-center lg:text-left font-semibold mb-4"><span className="">{surfSpot.surfzone.description}</span></div>
-
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Near city: <span className="font-bold text-cyan-500">{surfSpot.surfzone.nearest_city}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Near airport: <span className="font-bold text-cyan-500">{surfSpot.surfzone.nearest_airport}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Safety: <span className="font-bold text-cyan-500">{surfSpot.surfzone.safety}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Health hazards: <span className="font-bold text-cyan-500">{surfSpot.surfzone.health_hazards.join(', ')}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Surf hazards: <span className="font-bold text-cyan-500">{surfSpot.surfzone.surf_hazards.join(', ')}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Traveler type: <span className="font-bold text-cyan-500">{surfSpot.surfzone.traveler_type.join(', ')}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Best months: <span className="font-bold text-cyan-500">{surfSpot.surfzone.best_months.join(', ')}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Confort: <span className="font-bold text-cyan-500">{surfSpot.surfzone.confort}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Cost of living: <span className="font-bold text-cyan-500">{surfSpot.surfzone.cost}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">language: <span className="font-bold text-cyan-500">{surfSpot.surfzone.language}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Currency: <span className="font-bold text-cyan-500">{surfSpot.surfzone.currency}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Main religion: <span className="font-bold text-cyan-500">{surfSpot.surfzone.religion}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Surroundings: <span className="font-bold text-cyan-500">{surfSpot.surfzone.surroundings}</span></div>
-                              <div className="mt-2 text-sm text-gray-700 text-center lg:text-left">Main waves direction: <span className="font-bold text-cyan-500">{surfSpot.surfzone.main_wave_direction}</span></div>
-                            </>
-                          )}
-                      </div>
-                    </div>
-                    
-                    {/* Bloc superieur 2: card: SURFZONE IMAGES */}
-                    {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-                    <div className="group flex flex-col items-center justify-between w-full max-w-lg rounded-lg">
-                      {selectedSurfZone && surfSpot && surfSpot.surfzone && (
-                        <>
-                          {surfZoneImages.slice(0, 2).map((image, index) => (
-                            <img 
-                              key={index}
-                              src={image.image} 
-                              alt={`${surfSpot.surfzone.name} - ${index + 1}`} 
-                              className="w-full h-[300px] object-cover rounded-lg transform transition-transform duration-500 hover:scale-105 overflow-hidden"
-                            />
-                          ))}
-                        </>
-                      )}
-                    </div>                
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Bloc Conditions */}
-            {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-            <div className="flex flex-col items-center justify-start w-full">
-              
-              {selectedSurfZone && (
-                <>
-                  {/* <h1 className="text-white text-4xl font-bold text-center mb-6 p-2 w-full">Surf conditions</h1> */}
-                  <div className="bg-black rounded-lg p-10 flex flex-col justify-center items-center overflow-hidden">
-                    <h2 className="text-white rounded-lg text-4xl font-bold text-center mb-6 p-2 w-full">Surf Conditions</h2> {/*<span className="text-blue-400 font-bold">{surfSpot.surfzone.name}</span>*/}
-                    <select
-                        className="ml-4 border border-black rounded bg-pink-500 text-white text-center p-2 mb-4 min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-                        value={selectedMonth}
-                        onChange={(e) => setSelectedMonth(e.target.value)}
-                      >
-                        <option value="">Select a Month</option>
-                        {months.map((month, index) => (
-                          <option key={index} value={month}>
-                            {month}
-                          </option>
-                        ))}
-                    </select>
-                    
-                  
-                    <div className="bg-black rounded-lg p-4 flex flex-col justify-center overflow-hidden">
-
-                      
-                      {selectedSurfZone && surfSpot && surfSpot.surfzone && monthCondition && (
-                        <>
-                          <div className="p-2 flex flex-col justify-center mb-10 overflow-hidden">
-                            <div className="mt-2 text-lg text-white text-center">Surf rating: <span className="text-pink-400 font-bold">{'★'.repeat(monthCondition.world_surf_rating)}{'☆'.repeat(5 - monthCondition.world_surf_rating)}</span></div>
-                            <div className="mt-2 text-lg text-white text-center">Recomended surf level: <span className="text-pink-400 font-bold">{monthCondition.surf_level.join(', ')}</span></div>
-                          </div>
-
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 rounded-md">
-
-                            <div className="group bg-blue-400 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden transform transition-transform duration-500 hover:scale-110" style={{ height: '300px' }}>
-                              <div className="text-lg lg:text-xl text-white font-semibold text-center mb-10">Surf</div>
-                              <div className="mt-2 text-sm text-black text-center">Water temp: <span className="text-white font-bold">{monthCondition.water_temp_c} °c</span></div>
-                              <div className="mt-2 text-sm text-black text-center">Average swell size: <span className="text-white font-bold">{monthCondition.swell_size_meter} m</span></div>
-                              <div className="mt-2 text-sm text-black text-center">Swell consistency: <span className="text-white font-bold">{monthCondition.swell_consistency} %</span></div>
-                              <div className="mt-2 text-sm text-black text-center">Surf crowd: <span className="text-white font-bold">{monthCondition.crowd}</span></div>
-                            </div>
-
-                            <div className="group bg-green-500 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden transform transition-transform duration-500 hover:scale-110" style={{ height: '300px' }}>
-                              <div className="text-lg lg:text-xl text-white font-semibold text-center mb-10">Weather</div>
-                              <div className="mt-2 text-sm text-black text-center">Min air temp: <span className="text-white font-bold">{monthCondition.min_air_temp_c} °c</span></div>
-                              <div className="mt-2 text-sm text-black text-center">Max air temp: <span className="text-white  font-bold">{monthCondition.max_air_temp_c} °c</span></div>
-                              <div className="mt-2 text-sm text-black text-center">Rainy days: <span className="text-white  font-bold">{monthCondition.rain_days} / month</span></div>
-                              <div className="mt-2 text-sm text-black text-center">Sunny days: <span className="text-white  font-bold">{monthCondition.sunny_days} / month</span></div>
-                            </div>
-
-                            <div className="group bg-orange-400 rounded-lg p-4 flex flex-col justify-center border border-gray-700 overflow-hidden transform transition-transform duration-500 hover:scale-110" style={{ height: '300px' }}>
-                              <div className="text-lg lg:text-xl text-white font-semibold text-center mb-10">Wind</div>
-                              <div className="mt-2 text-sm text-black text-center">Wind force: <span className="text-white  font-bold">{monthCondition.wind_force}</span></div>
-                              <div className="mt-2 text-sm text-black text-center">Wind direction: <span className="text-white  font-bold">{monthCondition.wind_direction}</span></div>
-                              <div className="mt-2 text-sm text-black text-center">Wind consistency: <span className="text-white  font-bold">{monthCondition.wind_consistency} %</span></div>
-                              <div className="mt-2 text-sm text-orange-400 text-center">'</div>
-                            </div>
-
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Bloc 4 : card: SURFFORECAST */}
-                  {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-                  <h1 className="text-white text-4xl font-bold text-center mb-6 mt-2 p-2 w-full">{surfSpot.surfzone.name} Surf Forecast</h1>
-                  <div className=" items-center justify-center">
-                    {selectedSurfZone && <SurfZoneForecast selectedSurfZone={selectedSurfZone} />}
-                  </div>
-
-                </>
-              )}
-            </div>
-
-            {/* Bloc inferieur: card: list of surf SPOTS */}
-            {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-          <div className="grid grid-cols-1 p-4 gap-10 rounded-md items-center justify-center w-full">
-
-            <div className="flex flex-col items-center justify-center w-full">
-              {selectedSurfZone && (
-                <>
-                  <h2 className="text-4xl font-bold mt-6 text-center rounded-lg p-2">Popular Surf-spots in {selectedSurfZone}</h2>
-                </>
-              )}
-            </div>
-
-            {filteredSurfSpots.map((surfspot, index) => (
-                  <SurfSpotCard key={surfspot.id || index} surfspot={surfspot} />
-            ))}
-
-          </div>
-
-            {/* Bloc 3 : card: list of REVIEWS */}
-            {/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------     */}
-          <div className="group grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
-            {selectedSurfZone && <Reviews selectedSurfZone={selectedSurfZone} surfZoneId={surfZoneId}/>}
-          </div>
-
-        </div>
       </div>
-    </>
+
+      {/* Surfzone Details */}
+      {selectedSurfZone && currentSpot && (
+        <>
+          <h1 className="text-4xl font-bold text-center my-6">{currentSpot.surfzone.name}</h1>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Info Card */}
+            <div className="bg-white text-black rounded p-6">
+              <p>{currentSpot.surfzone.description}</p>
+              <p><strong>Nearest City:</strong> {currentSpot.surfzone.nearest_city}</p>
+              <p><strong>Airport:</strong> {currentSpot.surfzone.nearest_airport}</p>
+              {/* Add more fields as needed */}
+            </div>
+
+            {/* Image Card */}
+            <div className="flex flex-col gap-4">
+              {surfZoneImages.map((img, i) => (
+                <img key={i} src={img.image} alt={currentSpot.surfzone.name} className="rounded-lg w-full h-64 object-cover" />
+              ))}
+            </div>
+          </div>
+
+          {/* Monthly Conditions */}
+          <div className="my-10">
+            <h2 className="text-2xl font-bold mb-4">Surf Conditions</h2>
+            <select
+              className="p-2 bg-pink-500 text-white rounded mb-4"
+              value={selectedMonth}
+              onChange={(e) => setSelectedMonth(e.target.value)}
+            >
+              {months.map((m, i) => (
+                <option key={i} value={m}>{m}</option>
+              ))}
+            </select>
+            {monthCondition && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-blue-400 p-4 rounded">Water Temp: {monthCondition.water_temp_c}°C</div>
+                <div className="bg-green-400 p-4 rounded">Air Temp: {monthCondition.min_air_temp_c}°C - {monthCondition.max_air_temp_c}°C</div>
+                <div className="bg-orange-400 p-4 rounded">Wind: {monthCondition.wind_direction} {monthCondition.wind_force}</div>
+              </div>
+            )}
+          </div>
+
+          {/* Surf Forecast */}
+          <div className="my-10">
+            <h2 className="text-2xl font-bold mb-4">{currentSpot.surfzone.name} Surf Forecast</h2>
+            <SurfZoneForecast selectedSurfZone={selectedSurfZone} />
+          </div>
+
+          {/* SurfSpots List */}
+          <div className="my-10">
+            <h2 className="text-2xl font-bold mb-4">Popular Surf Spots</h2>
+            <div className="grid grid-cols-1 gap-6">
+              {filteredSpots.map((spot) => (
+                <SurfSpotCard key={spot.id} surfspot={spot} />
+              ))}
+            </div>
+          </div>
+
+          {/* Reviews Section */}
+          <div className="my-10">
+            <Reviews selectedSurfZone={selectedSurfZone} surfZoneId={surfZoneId} />
+          </div>
+        </>
+      )}
+    </div>
   );
 }
 
