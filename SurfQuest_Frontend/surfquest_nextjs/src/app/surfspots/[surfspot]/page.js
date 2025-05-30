@@ -16,10 +16,12 @@ console.log("Access Token:", token);
 
 export default function SurfSpotDetailsPage() {
   const { surfspot } = useParams();
+  // decode any %20 or UTF-8 bytes back into real characters
+  const decodedSurfSpot = decodeURIComponent(surfspot || "");
   const router = useRouter();
   const [uniqueSurfSpotsList, setUniqueSurfSpotsList] = useState([]);
   const [surfSpotData, setSurfSpotData] = useState(null);
-  const [selectedSurfSpot, setSelectedSurfSpot] = useState(surfspot);
+  const [selectedSurfSpot, setSelectedSurfSpot] = useState(decodedSurfSpot);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
