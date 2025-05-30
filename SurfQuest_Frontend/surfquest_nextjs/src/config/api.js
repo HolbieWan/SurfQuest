@@ -1,5 +1,3 @@
-// src/config/api.js
-
 import UserReviews from "@/components/Reviews/UserReviews";
 
 /**

@@ -32,8 +32,10 @@ export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId
 
   // Fetch reviews from API
   useEffect(() => {
+    if ((!selectedSurfZone && !selectedSurfSpot) || userId === null) return;
+    console.log("Fetching reviews for Surf Zone:", selectedSurfZone, "and Surf Spot:", selectedSurfSpot, "for User ID:", userId);
+
     const fetchReviews = async () => {
-      if (!selectedSurfZone && !selectedSurfSpot) return;
 
       setLoading(true);
       setError('');

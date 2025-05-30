@@ -72,7 +72,7 @@ export async function loginUser(username, password) {
 
   // Decode token and extract user info
   const decodedToken = jwtDecode(access);
-  const { user_id } = decodedToken.user_id;
+  const { user_id } = decodedToken;
 
   localStorage.setItem('userId', user_id);
   localStorage.setItem('username', username);

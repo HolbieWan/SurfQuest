@@ -35,7 +35,7 @@ export default function LoginPage() {
     setError('');
 
     try {
-      // 🔐 Clear any existing token before logging in
+      // Clear any existing token before logging in
       Cookies.remove('access_token');
       // Attempt to log in the user
       await loginUser(username, password);

@@ -1,5 +1,3 @@
-// surfspotService.js
-
 /**
  * Fetch all surf spots with token-based authentication.
  *
