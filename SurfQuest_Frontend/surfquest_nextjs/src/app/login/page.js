@@ -12,6 +12,7 @@
 // ============================
 import { useState } from 'react';
 import { loginUser } from '@/services/loginService';
+import Cookies from 'js-cookie'; // For managing JWT tokens in cookies
 
 // ============================
 // Main Login Page Component
@@ -34,7 +35,11 @@ export default function LoginPage() {
     setError('');
 
     try {
+      // 🔐 Clear any existing token before logging in
+      Cookies.remove('access_token');
+      // Attempt to log in the user
       await loginUser(username, password);
+      // If successful, redirect to the home page
       window.location.href = '/';
     } catch (err) {
       console.error('Login error:', err.message);

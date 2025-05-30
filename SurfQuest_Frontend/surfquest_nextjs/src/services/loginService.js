@@ -32,6 +32,18 @@ import API_BASE_URLS from '@/config/api';    // Centralized API endpoint configu
  * @throws {Error} If login fails or the API returns an error response
  */
 export async function loginUser(username, password) {
+  // ============================
+  // Clear any existing session before logging in
+  // ============================
+  Cookies.remove('access_token');
+  Cookies.remove('refresh_token');
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('userId');
+  localStorage.removeItem('username');
+
+  // ============================
+  // Send credentials to API
+  // ============================
   const response = await fetch(API_BASE_URLS.TOKENS, {
     method: 'POST',
     headers: {

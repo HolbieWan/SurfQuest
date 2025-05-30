@@ -55,6 +55,18 @@ export async function registerUser(userData) {
  * @throws {Error} - If login fails (e.g., incorrect credentials).
  */
 export async function loginAfterSignup(username, password) {
+  // ============================
+  // Clear any existing session before logging in
+  // ============================
+  Cookies.remove('access_token');
+  Cookies.remove('refresh_token');
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('userId');
+  localStorage.removeItem('username');
+
+  // ============================
+  // Perform login request
+  // ============================
   const response = await fetch(API_BASE_URLS.TOKENS, {
     method: "POST",
     headers: {
@@ -73,4 +85,6 @@ export async function loginAfterSignup(username, password) {
   // Store tokens in cookies for subsequent authenticated requests
   Cookies.set("access_token", access, { expires: 1, secure: true, sameSite: "Strict" });
   Cookies.set("refresh_token", refresh, { expires: 7, secure: true, sameSite: "Strict" });
+  // Store access token in local storage for easy access
+  localStorage.setItem('username', username);
 }
