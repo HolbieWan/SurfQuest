@@ -51,6 +51,7 @@ export default function SearchSurfSpotsPage() {
   const [uniqueSpots, setUniqueSpots] = useState([]);
   const [filters, setFilters] = useState({
     surfSpot: '',
+    surfZone: '',
     breakType: '',
     waveDirection: '',
     surfLevel: '',
@@ -103,6 +104,7 @@ export default function SearchSurfSpotsPage() {
     spots,
     {
       name:      filters.surfSpot,
+      zone:      filters.surfZone,
       breakType: filters.breakType,
       waveDir:   filters.waveDirection,
       level:     filters.surfLevel,
@@ -143,7 +145,7 @@ export default function SearchSurfSpotsPage() {
    */
   const resetAll = () => {
     setFilters({
-      surfSpot: '', breakType: '', waveDirection: '',
+      surfSpot: '', surfZone: '', breakType: '', waveDirection: '',
       surfLevel: '', bestTide: '', bestSwellSize: '',
       bestWindDirection: '', bestSwellDirection: '', bestMonth: '',
     });
@@ -170,6 +172,7 @@ export default function SearchSurfSpotsPage() {
 
               <FiltersGrid
                 uniqueSpots={uniqueSpots}
+                uniqueZone={uniqueZones}
                 filters={filters}
                 onFilterChange={onFilterChange}
                 options={opts}

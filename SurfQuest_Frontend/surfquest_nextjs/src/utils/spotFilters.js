@@ -38,6 +38,9 @@ export function applySurfSpotFilters(
     return spots
       // Exact match on name
       .filter(s => !f.name || s.name === f.name)
+
+      // Exact match on surf zone
+      .filter(s => !f.zone || s.surfzone?.name === f.zone)
   
       // Break type filter
       .filter(s => !f.breakType || s.break_type === f.breakType)
