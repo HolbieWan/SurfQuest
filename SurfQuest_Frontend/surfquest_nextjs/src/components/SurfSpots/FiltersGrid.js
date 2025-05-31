@@ -31,7 +31,7 @@ export default function FiltersGrid({ uniqueSpots, uniqueZone, filters, onFilter
           value={filters.surfSpot}
           onChange={onFilterChange('surfSpot')}
         >
-          <option value="">View all surf-spots</option>
+          <option value="">View all surf spots</option>
           {uniqueSpots.sort().map(spot => (
             <option key={spot} value={spot}>
               {spot}
@@ -52,7 +52,7 @@ export default function FiltersGrid({ uniqueSpots, uniqueZone, filters, onFilter
           value={filters.surfZone}
           onChange={onFilterChange('surfZone')}
         >
-          <option value="">Surf Zone</option>
+          <option value="">Surf Place</option>
           {uniqueZone.sort().map(zone => (
             <option key={zone} value={zone}>
               {zone}

@@ -109,7 +109,7 @@ export default function ConditionsSection({
       <div className="bg-black rounded-lg p-4 flex flex-col justify-center overflow-hidden w-full">
         <div className="p-2 flex flex-col justify-center mb-10">
           <div className="text-lg text-white text-center">
-            Surf rating: <span className="text-pink-400 font-bold">{stars}</span>
+            Surf rating: <span className="text-blue-500 font-bold">{stars}</span>
           </div>
           <div className="text-lg text-white text-center">
             Recommended surf level:{' '}
