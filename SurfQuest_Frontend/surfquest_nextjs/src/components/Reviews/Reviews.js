@@ -1,80 +1,77 @@
 "use client";
 
+/**
+ * Reviews Component
+ * -----------------
+ * Fetches and displays reviews for a given surf zone or surf spot.
+ * Allows the logged-in user to submit a new review if they haven't already.
+ * Delegates API calls to reviewService and filtering logic to reviewUtils.
+ *
+ * @param {Object} props
+ * @param {string} [props.selectedSurfZone] - Name of the selected surf zone.
+ * @param {string} [props.selectedSurfSpot] - Name of the selected surf spot.
+ * @param {string} [props.surfZoneId] - UUID of the selected surf zone.
+ * @param {string} [props.surfSpotId] - UUID of the selected surf spot.
+ */
+
+// ============================
+// External Dependencies
+// ============================
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-// import { useSearchParams } from 'next/navigation';
+
+// ============================
+// Local Dependencies
+// ============================
 import ReviewCard from '@/components/Reviews/ReviewCard';
 import ReviewForm from '@/components/Reviews/ReviewForm';
-
-const reviewsApiUrl = process.env.NEXT_PUBLIC_REVIEWS_API_URL;
-const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
-const token = Cookies.get('access_token');
-
-console.log("Reviews API URL:", reviewsApiUrl);
-console.log("Environment:", environment);
-console.log("Access Token:", token);
+import { fetchAllReviews, postNewReview } from '@/services/reviewService';
+import { filterReviewsByContext, findUserReview } from '@/utils/reviewUtils';
 
 export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId, surfSpotId }) {
+  // ============================
+  // State Management
+  // ============================
   const [reviews, setReviews] = useState([]);
   const [userReview, setUserReview] = useState(null);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const [newReview, setNewReview] = useState({ rating: '', comment: '' });
   const [userId, setUserId] = useState(null);
-  // const searchParams = useSearchParams();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  // Fetch userId safely inside useEffect
+  // ============================
+  // Read userId from localStorage (client-side only)
+  // ============================
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setUserId(localStorage.getItem("userId"));
+      const storedId = localStorage.getItem("userId");
+      setUserId(storedId);
     }
   }, []);
 
-  // Fetch reviews from API
+  // ============================
+  // Fetch and filter reviews when context or userId changes
+  // ============================
   useEffect(() => {
+    // Only fetch if either a surf zone or surf spot is selected, and userId is known
     if ((!selectedSurfZone && !selectedSurfSpot) || userId === null) return;
-    console.log("Fetching reviews for Surf Zone:", selectedSurfZone, "and Surf Spot:", selectedSurfSpot, "for User ID:", userId);
 
     const fetchReviews = async () => {
-
       setLoading(true);
       setError('');
       try {
-        const response = await fetch(reviewsApiUrl, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          mode: 'cors',
-          credentials: 'include',
-        });
+        const token = Cookies.get('access_token');
+        const allReviews = await fetchAllReviews(token);
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          setError(errorData.detail || 'Failed to fetch reviews');
-          return;
-        }
+        // Filter by selected surf zone or surf spot
+        const filtered = filterReviewsByContext(allReviews, selectedSurfZone, selectedSurfSpot);
+        setReviews(filtered);
 
-        const data = await response.json();
-        console.log('Reviews:', data);
-
-        // Filter reviews for selected Surf Zone
-        const filteredReviews = data.filter((review) =>
-          (review.surf_zone_details && review.surf_zone_details.name === selectedSurfZone) ||
-          (review.surf_spot_details && review.surf_spot_details.name === selectedSurfSpot)
-        );
-        setReviews(filteredReviews);
-
-        // get the logged-in user's review 
-        if (userId) {
-          const userReview = filteredReviews.find(review => review.user.id === userId);
-          setUserReview(userReview || null);
-        }
-
+        // Find this user’s review (if any)
+        const existingReview = findUserReview(filtered, userId);
+        setUserReview(existingReview);
       } catch (err) {
         setError(`Request failed: ${err.message}`);
-
       } finally {
         setLoading(false);
       }
@@ -83,65 +80,46 @@ export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId
     fetchReviews();
   }, [selectedSurfZone, selectedSurfSpot, userId]);
 
-  // Handle input changes for new review
+  // ============================
+  // Handle form field changes
+  // ============================
   const handleInputChange = (e) => {
     setNewReview({ ...newReview, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    console.log("Received SurfZoneId in Reviews:", surfZoneId);
-  }, [surfZoneId]);
-
-  if (!surfZoneId) {
-    surfZoneId = "";
-  }
-
-  useEffect(() => {
-    console.log("Received SurfSpotId in Reviews:", surfSpotId);
-  }, [surfSpotId]);
-
-  if (!surfSpotId) {
-    surfSpotId = "";
-  }
-
+  // ============================
   // Submit a new review
+  // ============================
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
     try {
-      const response = await fetch(reviewsApiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          surf_zone: `${surfZoneId}` ,
-          surf_spot: `${surfSpotId}` ,
-          rating: newReview.rating,
-          comment: newReview.comment,
-        }),
+      const token = Cookies.get('access_token');
+      const created = await postNewReview(token, {
+        surfZoneId: surfZoneId || '',
+        surfSpotId: surfSpotId || '',
+        rating: newReview.rating,
+        comment: newReview.comment,
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to post review');
-      }
-
-      const newReviewData = await response.json();
-      setReviews([...reviews, newReviewData]);
-      setUserReview(newReviewData);
-
+      // Append the new review and mark that user as having reviewed
+      setReviews((prev) => [...prev, created]);
+      setUserReview(created);
     } catch (err) {
-      setError(err.message)
-
+      setError(err.message);
     } finally {
       setLoading(false);
     }
   };
 
+  // ============================
+  // Determine whether the user has already posted
+  // ============================
   const userAlreadyReviewed = userReview !== null;
 
+  // ============================
+  // Render
+  // ============================
   return (
     <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
       {(selectedSurfZone || selectedSurfSpot) && (
@@ -160,15 +138,13 @@ export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId
             <p className="text-gray-400">No reviews yet.</p>
           )}
 
-          {/* User Review Form */}
+          {/* Only show the form if the user hasn’t posted yet */}
           {!userAlreadyReviewed && (
-            <>
-              <ReviewForm
-                newReview={newReview}
-                handleInputChange={handleInputChange}
-                handleReviewSubmit={handleReviewSubmit}
-              />
-            </>
+            <ReviewForm
+              newReview={newReview}
+              handleInputChange={handleInputChange}
+              handleReviewSubmit={handleReviewSubmit}
+            />
           )}
         </>
       )}

@@ -1,107 +1,128 @@
 "use client";
 
+/**
+ * UserReviews Component
+ * ---------------------
+ * Fetches and displays the logged-in user’s own surf-zone and surf-spot reviews.
+ * Allows in-place editing or deletion of each review. Delegates API calls to
+ * userReviewService for clarity and separation of concerns.
+ *
+ * @returns {JSX.Element} A list of the user’s reviews with edit/delete capabilities.
+ */
+
+// ============================
+// External Dependencies
+// ============================
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
-const reviewsApiUrl = process.env.NEXT_PUBLIC_USER_REVIEWS_API_URL;
-const token = Cookies.get("access_token");
+// ============================
+// Local Dependencies
+// ============================
+import {
+  fetchUserReviews,
+  updateUserReview,
+  deleteUserReview,
+} from "@/services/userReviewService";
 
 export default function UserReviews() {
+  // ============================
+  // State Management
+  // ============================
   const [reviews, setReviews] = useState([]);
   const [editingReview, setEditingReview] = useState(null);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [userId, setUserId] = useState(null);
   const [updatedReview, setUpdatedReview] = useState({ rating: "", comment: "" });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [userId, setUserId] = useState(null);
 
-  // Fetch userId safely from local storage
+  // ============================
+  // Read userId from localStorage (client-side only)
+  // ============================
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setUserId(localStorage.getItem("userId"));
+      const storedId = localStorage.getItem("userId");
+      setUserId(storedId);
     }
   }, []);
 
-  // Fetch user reviews
+  // ============================
+  // Fetch the user’s reviews once userId is known
+  // ============================
   useEffect(() => {
-    const fetchReviews = async () => {
+    // Only fetch when userId is available
+    if (!userId) return;
+
+    const loadReviews = async () => {
       setLoading(true);
       setError("");
       try {
-        const response = await fetch(reviewsApiUrl, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          mode: "cors",
-          credentials: "include",
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          setError(errorData.detail || "Failed to fetch reviews");
-          return;
-        }
-
-        const data = await response.json();
-        console.log("User Reviews:", data);
+        const token = Cookies.get("access_token");
+        const data = await fetchUserReviews(token);
         setReviews(data);
       } catch (err) {
-        setError(`Request failed: ${err.message}`);
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchReviews();
+    loadReviews();
   }, [userId]);
 
-  // Handle update button click
+  // ============================
+  // Handle clicking “Edit” on a review
+  // ============================
   const handleEditClick = (review) => {
-    console.log("Clicked Edit, setting editingReview:", review); // Debugging log
+    // Pre-populate the form fields with the existing rating/comment
     setEditingReview(review);
-    setUpdatedReview({ rating: review.rating, comment: review.comment });
+    setUpdatedReview({
+      rating: review.rating,
+      comment: review.comment,
+    });
   };
 
-  // Handle input change for update form
+  // ============================
+  // Track form field changes for editing
+  // ============================
   const handleInputChange = (e) => {
     setUpdatedReview({ ...updatedReview, [e.target.name]: e.target.value });
   };
 
-  // Submit updated review
+  // ============================
+  // Submit an updated review to the API
+  // ============================
   const handleUpdateReviewSubmit = async (e) => {
-      e.preventDefault();
-      console.log("Editing Review before submit:", editingReview); // Debugging log
+    e.preventDefault();
 
     if (!editingReview) {
-        console.error("Error: editingReview is null!");
-        return; // Stop execution if editingReview is not set
+      console.error("No review is currently being edited.");
+      return;
     }
 
+    setLoading(true);
+    setError("");
     try {
-      const response = await fetch(`${reviewsApiUrl}${editingReview.id}/`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          id: editingReview.id,
-          surf_zone: editingReview.surf_zone_details ? editingReview.surf_zone_details.id : null, 
-          surf_spot: editingReview.surf_spot_details ? editingReview.surf_spot_details.id : null,  
-          rating: updatedReview.rating,
-          comment: updatedReview.comment,
-        }),
-      });
+      const token = Cookies.get("access_token");
+      const payload = {
+        id: editingReview.id,
+        rating: updatedReview.rating,
+        comment: updatedReview.comment,
+        // Send surf_zone or surf_spot IDs if present
+        surfZoneId: editingReview.surf_zone_details
+          ? editingReview.surf_zone_details.id
+          : null,
+        surfSpotId: editingReview.surf_spot_details
+          ? editingReview.surf_spot_details.id
+          : null,
+      };
+      const updated = await updateUserReview(token, payload);
 
-      if (!response.ok) {
-        throw new Error("Failed to update review");
-      }
-
-      const updatedReviewData = await response.json();
-      setReviews(reviews.map((review) => (review.id === updatedReviewData.id ? updatedReviewData : review)));
-      setEditingReview(null); // Close the edit form
-
+      // Replace the old review with the newly returned object
+      setReviews((prev) =>
+        prev.map((r) => (r.id === updated.id ? updated : r))
+      );
+      setEditingReview(null);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -109,22 +130,20 @@ export default function UserReviews() {
     }
   };
 
-  // Handle delete review
+  // ============================
+  // Delete a review via the API
+  // ============================
   const handleDeleteReview = async (reviewId) => {
     setLoading(true);
+    setError("");
     try {
-      const response = await fetch(`${reviewsApiUrl}${reviewId}/`, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete review");
+      const token = Cookies.get("access_token");
+      await deleteUserReview(token, reviewId);
+      setReviews((prev) => prev.filter((r) => r.id !== reviewId));
+      // If we were editing this review, cancel the form
+      if (editingReview && editingReview.id === reviewId) {
+        setEditingReview(null);
       }
-
-      setReviews(reviews.filter((review) => review.id !== reviewId));
     } catch (err) {
       setError(err.message);
     } finally {
@@ -132,33 +151,64 @@ export default function UserReviews() {
     }
   };
 
+  // ============================
+  // JSX Output
+  // ============================
   return (
     <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center min-w-[400px] md:min-w-[500px] lg:min-w-[600px]">
-
       {error && <p className="text-red-500">{error}</p>}
       {loading && <p className="text-blue-400">Loading...</p>}
 
       {reviews.length > 0 ? (
         <>
-          {/* Surf-Zone Reviews */}
-          {reviews.some(review => review.surf_zone_details) && (
+          {/* ==== Surf-Zone Reviews ==== */}
+          {reviews.some((rv) => rv.surf_zone_details) && (
             <>
-              <h2 className="text-4xl font-bold text-left text-white p-2 w-full">Your surf-zone reviews</h2>
+              <h2 className="text-4xl font-bold text-left text-white p-2 w-full">
+                Your Surf-Zone Reviews
+              </h2>
               {reviews
-                .filter(review => review.surf_zone_details)
+                .filter((rv) => rv.surf_zone_details)
                 .map((review) => (
                   <React.Fragment key={review.id}>
+                    {/* Review Card */}
                     <div className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] group overflow-hidden transform transition-transform duration-500 hover:scale-110">
                       <div className="flex items-center justify-center">
-                        <img src={review.user.avatar} alt="User Avatar" className="w-12 h-12 rounded-full ml-1 mr-1" />
+                        <img
+                          src={review.user.avatar}
+                          alt="User Avatar"
+                          className="w-12 h-12 rounded-full ml-1 mr-1"
+                        />
                       </div>
                       <div className="flex flex-col p-4">
-                        <p className="text-gray-300 mb-1">Username: <span className="text-white font-bold">{review.user.username}</span></p>
-                        <p className="text-gray-300 mb-1">Surf-zone: <span className="text-white font-bold">{review.surf_zone_details.name}</span></p>
-                        <p className="text-gray-300 mb-1">Rating: <span className="text-white">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span></p>
-                        <p className="text-gray-300 break-words">Comment: <span className="text-white block mt-2">{review.comment}</span></p>
-
-                        {/* Update and Delete Buttons */}
+                        <p className="text-gray-300 mb-1">
+                          Username:{" "}
+                          <span className="text-white font-bold">
+                            {review.user.username}
+                          </span>
+                        </p>
+                        <p className="text-gray-300 mb-1">
+                          Surf-Zone:{" "}
+                          <span className="text-white font-bold">
+                            {review.surf_zone_details.name}
+                          </span>
+                        </p>
+                        <p className="text-gray-300 mb-1">
+                          Rating:{" "}
+                          <span className="text-blue-500">
+                            {'★'.repeat(review.rating)}
+                          </span>
+                          <span className="text-blue-500">
+                            {'☆'.repeat(5 - review.rating)}
+                          </span>
+                        </p>
+                        <p className="text-gray-300 break-words">
+                          Comment:{" "}
+                          <span className="text-white block mt-2">
+                            {review.comment}
+                          </span>
+                        </p>
+                        {/* Edit & Delete Buttons */}
                         <div className="mt-4 flex space-x-2">
                           <button
                             onClick={() => handleEditClick(review)}
@@ -175,11 +225,13 @@ export default function UserReviews() {
                         </div>
                       </div>
                     </div>
+
+                    {/* Edit Form (only if this review is being edited) */}
                     {editingReview && editingReview.id === review.id && (
-                      <div
-                        className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[400px] md:min-w-[500px] lg:min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110"
-                      >
-                        <h3 className="text-lg font-bold text-black mb-4">Edit Your Review</h3>
+                      <div className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[400px] md:min-w-[500px] lg:min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110">
+                        <h3 className="text-lg font-bold text-black mb-4">
+                          Edit Your Review
+                        </h3>
                         <form onSubmit={handleUpdateReviewSubmit}>
                           <div>
                             <select
@@ -198,7 +250,9 @@ export default function UserReviews() {
                             </select>
                           </div>
                           <div className="mt-4">
-                            <label className="block text-md font-medium text-gray-700">Comment</label>
+                            <label className="block text-md font-medium text-gray-700">
+                              Comment
+                            </label>
                             <textarea
                               name="comment"
                               value={updatedReview.comment}
@@ -230,25 +284,54 @@ export default function UserReviews() {
             </>
           )}
 
-          {/* Surf-Spot Reviews */}
-          {reviews.some(review => review.surf_spot_details) && (
+          {/* ==== Surf-Spot Reviews ==== */}
+          {reviews.some((rv) => rv.surf_spot_details) && (
             <>
-              <h2 className="text-4xl font-bold text-left text-white p-2 mt-4 w-full">Your surf-spot reviews</h2>
+              <h2 className="text-4xl font-bold text-left text-white p-2 mt-4 w-full">
+                Your Surf-Spot Reviews
+              </h2>
               {reviews
-                .filter(review => review.surf_spot_details)
+                .filter((rv) => rv.surf_spot_details)
                 .map((review) => (
                   <React.Fragment key={review.id}>
+                    {/* Review Card */}
                     <div className="bg-gray-800 grid grid-cols-[80px,1fr] rounded-lg p-2 max-w-[800px] group overflow-hidden transform transition-transform duration-500 hover:scale-110">
                       <div className="flex items-center justify-center">
-                        <img src={review.user.avatar} alt="User Avatar" className="w-12 h-12 rounded-full ml-1 mr-1" />
+                        <img
+                          src={review.user.avatar}
+                          alt="User Avatar"
+                          className="w-12 h-12 rounded-full ml-1 mr-1"
+                        />
                       </div>
                       <div className="flex flex-col p-4">
-                        <p className="text-gray-300 mb-1">Username: <span className="text-white font-bold">{review.user.username}</span></p>
-                        <p className="text-gray-300 mb-1">Surf-zone: <span className="text-white font-bold">{review.surf_spot_details.name}</span></p>
-                        <p className="text-gray-300 mb-1">Rating: <span className="text-white">{'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}</span></p>
-                        <p className="text-gray-300 break-words">Comment: <span className="text-white block mt-2">{review.comment}</span></p>
-
-                        {/* Update and Delete Buttons */}
+                        <p className="text-gray-300 mb-1">
+                          Username:{" "}
+                          <span className="text-white font-bold">
+                            {review.user.username}
+                          </span>
+                        </p>
+                        <p className="text-gray-300 mb-1">
+                          Surf-Spot:{" "}
+                          <span className="text-white font-bold">
+                            {review.surf_spot_details.name}
+                          </span>
+                        </p>
+                        <p className="text-gray-300 mb-1">
+                          Rating:{" "}
+                          <span className="text-blue-500">
+                            {'★'.repeat(review.rating)}
+                          </span>
+                          <span className="text-blue-500">
+                            {'☆'.repeat(5 - review.rating)}
+                          </span>
+                        </p>
+                        <p className="text-gray-300 break-words">
+                          Comment:{" "}
+                          <span className="text-white block mt-2">
+                            {review.comment}
+                          </span>
+                        </p>
+                        {/* Edit & Delete Buttons */}
                         <div className="mt-4 flex space-x-2">
                           <button
                             onClick={() => handleEditClick(review)}
@@ -265,11 +348,13 @@ export default function UserReviews() {
                         </div>
                       </div>
                     </div>
+
+                    {/* Edit Form (if this review is active in edit mode) */}
                     {editingReview && editingReview.id === review.id && (
-                      <div
-                        className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[400px] md:min-w-[500px] lg:min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110"
-                      >
-                        <h3 className="text-lg font-bold text-black mb-4">Edit Your Review</h3>
+                      <div className="group bg-white rounded-lg p-6 mt-6 items-center justify-center min-w-[400px] md:min-w-[500px] lg:min-w-[600px] w-full transform transition-transform duration-500 hover:scale-110">
+                        <h3 className="text-lg font-bold text-black mb-4">
+                          Edit Your Review
+                        </h3>
                         <form onSubmit={handleUpdateReviewSubmit}>
                           <div>
                             <select
@@ -288,7 +373,9 @@ export default function UserReviews() {
                             </select>
                           </div>
                           <div className="mt-4">
-                            <label className="block text-md font-medium text-gray-700">Comment</label>
+                            <label className="block text-md font-medium text-gray-700">
+                              Comment
+                            </label>
                             <textarea
                               name="comment"
                               value={updatedReview.comment}
@@ -321,7 +408,7 @@ export default function UserReviews() {
           )}
         </>
       ) : (
-        <p className="text-gray-400">No reviews yet.</p>
+        <p className="text-gray-400">You have no reviews yet.</p>
       )}
     </div>
   );

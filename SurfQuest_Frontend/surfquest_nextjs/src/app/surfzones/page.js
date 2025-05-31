@@ -251,7 +251,7 @@ export default function SearchSurfZonePage() {
         </>
       ) : (
         <p className="text-gray-500 text-center">
-           Please <a href="/login" className="text-blue-400 hover:text-blue-600">log in</a> to enjoy surf-spot search features
+           Please <a href="/login" className="text-blue-400 hover:text-blue-600">log in</a> to enjoy surf-places search features
         </p>
       )}
     </div>
