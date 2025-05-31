@@ -165,7 +165,7 @@ export default function UserReviews() {
           {reviews.some((rv) => rv.surf_zone_details) && (
             <>
               <h2 className="text-4xl font-bold text-left text-white p-2 w-full">
-                Your Surf-Zone Reviews
+              Your <span className="text-pink-400">Surf Places</span> Reviews
               </h2>
               {reviews
                 .filter((rv) => rv.surf_zone_details)
@@ -288,7 +288,7 @@ export default function UserReviews() {
           {reviews.some((rv) => rv.surf_spot_details) && (
             <>
               <h2 className="text-4xl font-bold text-left text-white p-2 mt-4 w-full">
-                Your Surf-Spot Reviews
+                Your <span className="text-pink-400">Surf Spot</span> Reviews
               </h2>
               {reviews
                 .filter((rv) => rv.surf_spot_details)

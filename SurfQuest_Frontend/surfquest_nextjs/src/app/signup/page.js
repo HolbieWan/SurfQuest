@@ -49,6 +49,9 @@ export default function SignupPage() {
       }
 
       await loginAfterSignup(username, password);
+      localStorage.setItem('userId', data.id);
+      localStorage.setItem('username', data.username);
+
       // Redirect to homepage after successful signup and login
       window.location.href = '/';
     } catch (err) {
