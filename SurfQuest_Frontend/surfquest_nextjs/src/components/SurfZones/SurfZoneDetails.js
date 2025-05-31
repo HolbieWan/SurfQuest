@@ -139,7 +139,7 @@ function SurfZoneDetailsPage() {
           <>
             {/* Zone Title */}
             <h1 className="text-white text-4xl font-bold text-center my-6">
-              {current.surfzone.name}
+              <span className="text-pink-400">{current.surfzone.name}</span> Informations
             </h1>
 
             {/* Info & Images Grid */}
@@ -153,11 +153,12 @@ function SurfZoneDetailsPage() {
               selectedMonth={month}
               onMonthChange={setMonth}
               condition={cond}
+              zoneName={zone} 
             />
 
             {/* Forecast */}
             <h2 className="text-white text-4xl font-bold text-center my-6">
-              {current.surfzone.name} Surf Forecast
+              <span className="text-pink-400">{current.surfzone.name}</span> Surf Forecast
             </h2>
             <SurfZoneForecast selectedSurfZone={zone} />
 

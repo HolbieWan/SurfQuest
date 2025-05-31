@@ -45,7 +45,8 @@ const months = [
 export default function ConditionsSection({
   selectedMonth,
   onMonthChange,
-  condition
+  condition,
+  zoneName
 }) {
   if (!condition) return null;
 
@@ -90,7 +91,7 @@ export default function ConditionsSection({
     <div className="bg-black rounded-lg p-10 flex flex-col justify-center items-center overflow-hidden">
       {/* Section Header */}
       <h2 className="text-white text-4xl font-bold text-center mb-6 w-full">
-        Surf Conditions
+        <span className="text-pink-400">{zoneName}</span> Surf Conditions
       </h2>
 
       {/* Month Selector */}

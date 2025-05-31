@@ -29,7 +29,7 @@ export default function SurfSpotsList({ spots, zoneName }) {
       {/* Section Heading */}
       <div className="flex flex-col items-center justify-center w-full">
         <h2 className="text-4xl font-bold mt-6 text-center rounded-lg p-2">
-          Popular Surf-spots in {zoneName}
+          <span className="text-pink-400">{zoneName}</span> Popular Surf Spots
         </h2>
       </div>
 

@@ -85,6 +85,7 @@ export default function SearchSurfZonePage() {
     crowdFactor: '',
     sunnyDays: '',
     rainyDays: '',
+    bestMonths: '',
   });
 
   // ============================
@@ -194,6 +195,7 @@ export default function SearchSurfZonePage() {
       crowdFactor: '',
       sunnyDays: '',
       rainyDays: '',
+      bestMonths: '',
     });
   };
 
@@ -281,7 +283,7 @@ export default function SearchSurfZonePage() {
             className="grid grid-cols-1 gap-3 place-items-center justify-center mt-"
           >
             <button
-              className="p-2  text-gray-500 rounded"
+              className="p-2  text-gray-500 hover:text-gray-400"
               onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
             >
               {showAdvancedFilters ? 'Hide seasonal Filters ▲' : 'Show seasonal Filters ▼'}

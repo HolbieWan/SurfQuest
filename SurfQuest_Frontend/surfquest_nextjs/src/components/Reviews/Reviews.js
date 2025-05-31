@@ -124,7 +124,9 @@ export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId
     <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
       {(selectedSurfZone || selectedSurfSpot) && (
         <>
-          <h2 className="text-4xl font-bold text-center text-white p-2 w-full">Reviews</h2>
+          <h2 className="text-4xl font-bold text-center text-white p-2 w-full"
+            ><span className="text-pink-400">{selectedSurfZone}</span> Reviews
+          </h2>
 
           {error && <p className="text-red-500">{error}</p>}
           {loading && <p className="text-blue-400">Loading...</p>}

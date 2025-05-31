@@ -46,11 +46,47 @@ export default function AdvancedFiltersGrid({
   setShowAdvancedFilters,
   monthSelectorsRef
 }) {
+
+    // Determine whether the “bestMonths” filter is currently active:
+    // That is, did the user click “Show Best Surf Places For Selected Month”,
+    // and has not changed the month since?
+    const isBestBtnActive =
+      selectedFilters.bestMonths &&
+      selectedFilters.bestMonths === selectedFilters.month;
+
   return (
     <>
-      {/* Conditionally display advanced seasonal filter selects */}
+      {/* Only render when the user has toggled “Show Advanced Filters” */}
       {showAdvancedFilters && (
         <>
+          {/* === “Show Best Surf Places For Selected Month” Button === */}
+          <div className="grid grid-cols-1 p-3 place-items-center justify-center mx-auto">
+            <button
+              type="button"
+              onClick={() => {
+                if (isBestBtnActive) {
+                  handleFilterChange('bestMonths', '');
+                } else {
+                  handleFilterChange('bestMonths', selectedFilters.month);
+                  setTimeout(() => monthSelectorsRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
+                }
+              }}
+              disabled={!selectedFilters.month}
+              className={
+                // common classes:
+                'flex items-center gap-2 p-2 rounded text-white text-center min-w-[200px] transform transition-transform duration-200 ' +
+                (isBestBtnActive
+                  ? 'text-amber-300 hover:text-amber-400'
+                  : 'text-amber-600 hover:text-amber-500')
+              }
+            >
+              <span className="text-xl md:text-2xl lg:text-4xl">
+                {isBestBtnActive ? '☑' : '☐'}
+              </span>
+              <span className="text-md md:text-xl lg:text-2xl">Show Only Best Surf Places For Selected Month</span>
+            </button>
+          </div>
+
           {/* Grid of seasonal filter dropdowns */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-3 place-items-center justify-center">
             {/* Surf Level Selector */}
