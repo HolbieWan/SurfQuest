@@ -1,7 +1,19 @@
 {
   "compilerOptions": {
+    // “baseUrl” allows you to treat the specified folder as the root for module resolution.
+    // In this case, any import starting with “@/…” will be resolved relative to “src/”.
     "baseUrl": "src",
+
+    // “jsx” tells TypeScript (or VS Code’s language service) how to interpret JSX syntax.
+    // “react” indicates that JSX should be compiled in the classic React style (i.e., React.createElement).
     "jsx": "react",
+
+    // “paths” is used in combination with “baseUrl” to create custom import aliases.
+    // Here, any import that starts with “@/” will map to the “src/” directory.
+    //   • "@/components/Button" → "src/components/Button"
+    //   • "@/utils/helpers"   → "src/utils/helpers"
+    //
+    // This makes imports shorter and avoids long relative paths like “../../../”.
     "paths": {
       "@/*": ["*"]
     }

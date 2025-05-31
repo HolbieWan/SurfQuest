@@ -74,16 +74,16 @@ export default function AdvancedFiltersGrid({
               disabled={!selectedFilters.month}
               className={
                 // common classes:
-                'flex items-center gap-2 p-2 rounded text-white text-center min-w-[200px] transform transition-transform duration-200 ' +
+                'flex items-center gap-2 p-2 rounded text-center min-w-[200px] transform transition-transform duration-200 ' +
                 (isBestBtnActive
                   ? 'text-amber-300 hover:text-amber-400'
                   : 'text-amber-600 hover:text-amber-500')
               }
             >
-              <span className="text-xl md:text-2xl lg:text-4xl">
+              <span className="text-lg md:text-xl lg:text-2xl">
                 {isBestBtnActive ? '☑' : '☐'}
               </span>
-              <span className="text-md md:text-xl lg:text-2xl">Show Only Best Surf Places For Selected Month</span>
+              <span className="text-md md:text-lg lg:text-xl">Show Only Best Surf Places For Selected Month</span>
             </button>
           </div>
 

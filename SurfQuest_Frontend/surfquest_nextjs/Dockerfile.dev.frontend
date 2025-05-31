@@ -1,21 +1,23 @@
 # ============================
 # Base Image
 # ============================
+# Use the official Node.js 22 Alpine image for a lightweight runtime
 FROM node:22-alpine
 
 # ============================
 # Working Directory
 # ============================
+# Set /app as the working directory inside the container
 WORKDIR /app
 
 # ============================
 # Dependencies Installation
 # ============================
-# Copy package files and install dependencies
+# Copy package manifest files to the container and install dependencies
 COPY package.json package-lock.json ./
 RUN npm install
 
-# Run npm install without cache
+# Re-install dependencies without using any existing cache to ensure a clean state
 RUN rm -rf node_modules
 RUN npm cache clean --force
 RUN npm install
@@ -23,19 +25,23 @@ RUN npm install
 # ============================
 # Application Code
 # ============================
+# Copy all source files into the working directory of the container
 COPY . /app
 
 # ============================
 # Volume for Hot Reloading
 # ============================
+# Mount the /app directory as a volume to allow changes on the host to reflect immediately in the container
 VOLUME ["/app"]
 
 # ============================
 # Expose Port
 # ============================
+# Expose port 3000 so that the development server is reachable externally
 EXPOSE 3000
 
 # ============================
 # Command to Run Dev Server
 # ============================
+# Start the Next.js development server when the container launches
 CMD ["npm", "run", "dev"]

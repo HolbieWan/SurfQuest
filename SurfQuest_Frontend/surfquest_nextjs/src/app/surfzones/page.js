@@ -341,12 +341,16 @@ export default function SearchSurfZonePage() {
           </div>
         </>
       ) : (
-        <p className="text-gray-500 text-center">
+        <p className="text-gray-500 text-md text-center px-4">
           Please{' '}
+          <a href="/signup" className="text-blue-400 hover:text-blue-600">
+            sign up
+          </a>{' '}
+          or{' '}
           <a href="/login" className="text-blue-400 hover:text-blue-600">
             log in
           </a>{' '}
-          to enjoy surf-places search features
+          to have access to all features.
         </p>
       )}
     </div>

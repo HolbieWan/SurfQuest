@@ -63,8 +63,16 @@ export default function ProfilePage() {
           </div>
         </div>
       ) : (
-        <p className="text-gray-500 text-center mt-20">
-           Please <a href="/login" className="text-blue-400 hover:text-blue-600">log in</a> to access your profile
+        <p className="text-gray-500 text-md text-center px-4 py-16">
+          Please{' '}
+          <a href="/signup" className="text-blue-400 hover:text-blue-600">
+            sign up
+          </a>{' '}
+          or{' '}
+          <a href="/login" className="text-blue-400 hover:text-blue-600">
+            log in
+          </a>{' '}
+          to have access to all features.
         </p>
       )}
     </>

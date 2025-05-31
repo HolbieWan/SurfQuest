@@ -185,8 +185,16 @@ export default function SearchSurfSpotsPage() {
               </button>
             </>
           ) : (
-            <p className="text-gray-500 text-center">
-              Please <a href="/login" className="text-blue-400 hover:text-blue-600">log in</a> to enjoy surf-spot search features
+            <p className="text-gray-500 text-md text-center px-4">
+              Please{' '}
+              <a href="/signup" className="text-blue-400 hover:text-blue-600">
+                sign up
+              </a>{' '}
+              or{' '}
+              <a href="/login" className="text-blue-400 hover:text-blue-600">
+                log in
+              </a>{' '}
+              to have access to all features.
             </p>
           )}
         </>

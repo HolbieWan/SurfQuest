@@ -1,15 +1,43 @@
+# -----------------------------------------------------------------------------
+# Base Image
+# -----------------------------------------------------------------------------
+# Use the official Node.js 22 Alpine image for a lightweight runtime
 FROM node:22-alpine
 
+# -----------------------------------------------------------------------------
+# Working Directory
+# -----------------------------------------------------------------------------
+# Set /app as the working directory inside the container
 WORKDIR /app
 
+# -----------------------------------------------------------------------------
+# Install Dependencies
+# -----------------------------------------------------------------------------
+# Copy package manifest files and install dependencies before copying the rest
 COPY package.json package-lock.json ./
 RUN npm install
 
+# -----------------------------------------------------------------------------
+# Copy Application Source
+# -----------------------------------------------------------------------------
+# Copy all application source code and environment variables file into the container
 COPY . /app
 COPY .env.local /app/.env.local
 
+# -----------------------------------------------------------------------------
+# Build Application
+# -----------------------------------------------------------------------------
+# Run the build script to compile the Next.js application for production
 RUN npm run build
 
+# -----------------------------------------------------------------------------
+# Expose Port
+# -----------------------------------------------------------------------------
+# Expose port 3000 to allow external connections to the application
 EXPOSE 3000
 
+# -----------------------------------------------------------------------------
+# Start Command
+# -----------------------------------------------------------------------------
+# Use the start script to launch the production server
 CMD ["npm", "start"]

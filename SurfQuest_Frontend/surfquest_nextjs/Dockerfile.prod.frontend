@@ -1,47 +1,99 @@
 # ============================
 # Step 1 - Build Stage
 # ============================
+
+# Use an official Node.js 22 Alpine image as a lightweight builder environment.
+# Alpine is chosen for its small footprint; Node.js 22 ensures compatibility
+# with modern language features and libraries.
 FROM node:22-alpine AS builder
 
-# Set the working directory
+# ----------------------------
+# Set Working Directory
+# ----------------------------
+# All subsequent commands will run in /app inside this container.
 WORKDIR /app
 
-# Copy environment variables for production
+# ----------------------------
+# Copy Environment Variables
+# ----------------------------
+# Copy the production-specific .env file into the build context.
+# By naming it .env.production.local, Next.js will automatically pick it up
+# when building in production mode.
 COPY .env.prod.frontend .env.production.local
 
-# Copy package files and install dependencies
+# ----------------------------
+# Install Dependencies
+# ----------------------------
+# Only package.json and package-lock.json are copied to leverage Docker's cache:
+# - If neither file changes, Docker will reuse previously cached node_modules.
+# - `npm install` installs all dependencies (including devDependencies),
+#   so that we can build the production bundle in the next step.
 COPY package.json package-lock.json ./
 RUN npm install
 
-# Copy application code and build
+# ----------------------------
+# Copy Application Source & Build
+# ----------------------------
+# Copy all remaining files into /app. Then run the production build.
+# This step produces the optimized assets and server files in .next/.
 COPY . /app
 RUN npm run build
 
 # ============================
 # Step 2 - Production Stage
 # ============================
+
+# Use a fresh Node.js 22 Alpine image as the final (production) runtime.
+# This keeps the final image small because it does not include build tools
+# or devDependencies.
 FROM node:22-alpine
 
-# Set the working directory
+# ----------------------------
+# Set Working Directory
+# ----------------------------
 WORKDIR /app
 
-# Install only production dependencies (optional but recommended)
+# ----------------------------
+# Install Production-Only Dependencies
+# ----------------------------
+# Copy package.json and package-lock.json again. Then install in production mode:
+#   --omit=dev        → do not install devDependencies
+#   --frozen-lockfile → ensures that package-lock.json is honored exactly
 COPY package.json package-lock.json ./
 RUN npm install --omit=dev --frozen-lockfile
 
-# Install curl for healthcheck
+# ----------------------------
+# Install curl for Healthcheck
+# ----------------------------
+# Adding curl lets us run simple HTTP health checks or probes if needed.
 RUN apk update && apk add --no-cache curl
 
-# Copy compiled app from builder
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
+# ----------------------------
+# Copy Built Artifacts from Builder
+# ----------------------------
+# Copy only what’s necessary to run the Next.js app:
+#   - .next           → Next.js build output (server and static assets)
+#   - public          → static files to be served
+#   - package.json    → metadata & scripts (optional here, but sometimes used)
+#   - node_modules    → production dependencies
+#   - next.config.mjs → any Next.js custom configuration
+#   - .env.local      → environment variables needed at runtime
+COPY --from=builder /app/.next       ./.next
+COPY --from=builder /app/public       ./public
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/next.config.mjs ./next.config.mjs
-COPY --from=builder /app/.env.local .env.local
+COPY --from=builder /app/next.config.mjs   ./next.config.mjs
+COPY --from=builder /app/.env.local        ./.env.local
 
-# Expose the application port
+# ----------------------------
+# Expose Application Port
+# ----------------------------
+# Next.js listens on port 3000 by default in production mode.
 EXPOSE 3000
 
-# Start the app in production mode
+# ----------------------------
+# Start the Application
+# ----------------------------
+# Use npm to run the “start” script (which typically invokes "next start"),
+# serving the optimized production build.
 CMD ["npm", "run", "start"]

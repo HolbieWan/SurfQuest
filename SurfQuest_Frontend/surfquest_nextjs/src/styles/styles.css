@@ -1,7 +1,42 @@
-.text-shadow-lg {
+/* ==========================================================================
+   Text Shadow Utilities
+   --------------------------------------------------------------------------
+   These classes apply predefined text-shadow styles for consistent
+   drop-shadow effects on text elements throughout the application.
+   ========================================================================== */
+
+/**
+ * .text-shadow-lg
+ * ----------------
+ * Applies a large drop shadow beneath text.
+ *
+ * Shadow values:
+ *   Offset X: 4px
+ *   Offset Y: 4px
+ *   Blur Radius: 8px
+ *   Color: rgba(0, 0, 0, 0.5) (semi-transparent black)
+ *
+ * Usage:
+ *   <h1 class="text-shadow-lg">Large Shadowed Heading</h1>
+ */
+ .text-shadow-lg {
   text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+/**
+ * .text-shadow-md
+ * ----------------
+ * Applies a medium drop shadow beneath text.
+ *
+ * Shadow values:
+ *   Offset X: 3px
+ *   Offset Y: 3px
+ *   Blur Radius: 6px
+ *   Color: rgba(0, 0, 0, 0.5) (semi-transparent black)
+ *
+ * Usage:
+ *   <h2 class="text-shadow-md">Medium Shadowed Subheading</h2>
+ */
 .text-shadow-md {
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }

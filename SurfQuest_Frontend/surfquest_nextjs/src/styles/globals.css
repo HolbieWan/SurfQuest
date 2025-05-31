@@ -1,37 +1,82 @@
+/* ==========================================================================
+   Global Styles and Font Imports
+   ========================================================================== */
+
+/* Import Google Fonts for various decorative typefaces */
 @import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&family=Montez&family=Ms+Madi&family=Permanent+Marker&display=swap');
+
+/* Tailwind base, components, and utilities layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   Dark Mode Color Variables
+   --------------------------------------------------------------------------
+   Defines CSS custom properties for background and foreground colors
+   when the user’s system prefers a dark color scheme. These variables
+   are used throughout the app to ensure consistent theming.
+   ========================================================================== */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a0a0a;  /* Dark page background */
+    --foreground: #ededed;  /* Light text color for readability */
   }
 }
 
+/* ==========================================================================
+   Base Body Styles
+   --------------------------------------------------------------------------
+   Sets the global font stack, background, and default text color
+   using the custom properties defined above.
+   ========================================================================== */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground);                   /* Use light color in dark mode */
+  background: var(--background);               /* Use dark background in dark mode */
+  font-family: Arial, Helvetica, sans-serif;   /* Fallback sans-serif stack */
 }
 
-/* Fonts */
+/* ==========================================================================
+   Custom Font Classes
+   --------------------------------------------------------------------------
+   Utility classes to apply imported Google Fonts to specific elements.
+   Each class corresponds to one decorative typeface with its weight/style.
+   ========================================================================== */
+
+/**
+ * Apply the "Grechen Fuemen" font.
+ * Usage: <h1 class="grechen-fuemen-regular">...</h1>
+ */
 .grechen-fuemen-regular {
   font-family: "Grechen Fuemen", serif;
   font-weight: 400;
   font-style: normal;
 }
+
+/**
+ * Apply the "Ms Madi" font.
+ * Usage: <h2 class="ms-madi-regular">...</h2>
+ */
 .ms-madi-regular {
   font-family: "Ms Madi", serif;
   font-weight: 400;
   font-style: normal;
 }
+
+/**
+ * Apply the "Montez" font.
+ * Usage: <h3 class="montez-regular">...</h3>
+ */
 .montez-regular {
   font-family: "Montez", serif;
   font-weight: 400;
   font-style: normal;
 }
+
+/**
+ * Apply the "Permanent Marker" font.
+ * Usage: <p class="permanent-marker-regular">...</p>
+ */
 .permanent-marker-regular {
   font-family: "Permanent Marker", serif;
   font-weight: 400;
