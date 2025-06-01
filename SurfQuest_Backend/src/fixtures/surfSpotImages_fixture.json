@@ -1,0 +1,1830 @@
+PYTHONPATH: ['/app', '/app', '/usr/local/lib/python312.zip', '/usr/local/lib/python3.12', '/usr/local/lib/python3.12/lib-dynload', '/usr/local/lib/python3.12/site-packages', '/app']
+DJANGO_SETTINGS_MODULE: surfquest.settings.dev
+[
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "00c136ce-7ecb-4f49-9b73-4a969c29e711",
+  "fields": {
+    "surfspot": "8a54a40d-afd2-485b-9c69-a428d8cda170",
+    "image": "surfspots/surf_spots_images/Sunzal_3_ZOk8if2.jpg",
+    "description": "",
+    "slug": "sunzal-20250601165813658386",
+    "created_at": "2025-06-01T16:58:13.659Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "032ae62f-da54-4738-89d7-5264799c2db5",
+  "fields": {
+    "surfspot": "ab93979b-c043-4ad0-a129-672380284bb3",
+    "image": "surfspots/surf_spots_images/Cokes_2_TniOgc1.jpg",
+    "description": "",
+    "slug": "cokes-20250601161624450111",
+    "created_at": "2025-06-01T16:16:24.453Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "0450190a-c049-4dcf-a9ba-a6b904c1b9b6",
+  "fields": {
+    "surfspot": "981bb455-66db-438a-82a3-d7295429db5e",
+    "image": "surfspots/surf_spots_images/Pipeline_5_s1GsfBs.webp",
+    "description": "",
+    "slug": "pipeline-20250601164146799309",
+    "created_at": "2025-06-01T16:41:46.801Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "048dfe1d-4438-4732-8626-90dbba6e264f",
+  "fields": {
+    "surfspot": "0d91659c-0ac7-400b-b5f3-6cc64e7e169b",
+    "image": "surfspots/surf_spots_images/Zicatela_Beach_83RN9XQ.jpg",
+    "description": "",
+    "slug": "zicatela-beach-20250601170646958001",
+    "created_at": "2025-06-01T17:06:46.961Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "082c09f6-5b82-4443-95e0-4bc3423903a4",
+  "fields": {
+    "surfspot": "d584227b-4d92-4f95-8b93-6a166b14b512",
+    "image": "surfspots/surf_spots_images/Nias_4_IQYxAa3.jpg",
+    "description": "",
+    "slug": "nias-20250601163339691020",
+    "created_at": "2025-06-01T16:33:39.693Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "0da475f7-b125-48a5-951f-81a9714e3ae5",
+  "fields": {
+    "surfspot": "02455a15-1aec-4f00-9c3d-32324b333085",
+    "image": "surfspots/surf_spots_images/Outer_Reef_Popoyo_2_CkRx2We.jpg",
+    "description": "",
+    "slug": "outer-reef-popoyo-20250601163743261709",
+    "created_at": "2025-06-01T16:37:43.264Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "10053ff8-2013-4c24-a493-18cb46fbc3a3",
+  "fields": {
+    "surfspot": "5cd623d3-39aa-4480-8004-1bfeadc7d26a",
+    "image": "surfspots/surf_spots_images/Praya_Mole_3_5fSxAt1.jpg",
+    "description": "",
+    "slug": "praia-mole-20250601164952785507",
+    "created_at": "2025-06-01T16:49:52.788Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "13560186-e941-4358-b800-1e3dc0f3b0a3",
+  "fields": {
+    "surfspot": "efed3407-6f59-4ce0-b8bc-26d6eefc071b",
+    "image": "surfspots/surf_spots_images/Whale_Bay_3_0qxeOr0.jpg",
+    "description": "",
+    "slug": "whale-bay-20250601170633862548",
+    "created_at": "2025-06-01T17:06:33.865Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "13f3f0ff-517d-484d-a03c-7e6d92845c04",
+  "fields": {
+    "surfspot": "3bca94fb-f1fc-4b15-8245-591afb7b4215",
+    "image": "surfspots/surf_spots_images/Les_Culs_Nus_2_HdfaXk2.jpg",
+    "description": "",
+    "slug": "les-culs-nus-20250601162744242102",
+    "created_at": "2025-06-01T16:27:44.244Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "13fbe448-36dd-4255-affd-ea7ce4175f95",
+  "fields": {
+    "surfspot": "29e61b91-e170-4474-8a90-2f7a9d5f86a8",
+    "image": "surfspots/surf_spots_images/Supertubes_2_3RtZlfC.webp",
+    "description": "",
+    "slug": "supertubes-20250601165852464452",
+    "created_at": "2025-06-01T16:58:52.467Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "1719887a-12c0-4623-b2ca-5c51c3287030",
+  "fields": {
+    "surfspot": "ac34f928-222f-4f3b-ae38-dfc457aa2b5f",
+    "image": "surfspots/surf_spots_images/Taapuna_2_wd5ggRY.jpg",
+    "description": "",
+    "slug": "taapuna-20250601165955893576",
+    "created_at": "2025-06-01T16:59:55.896Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "1b0bb5ee-3bb5-4c95-834b-5b58650daac5",
+  "fields": {
+    "surfspot": "0268d0f2-1d94-4445-97b8-cfaf8bc05291",
+    "image": "surfspots/surf_spots_images/Manu_Bay_F7rf83P.jpg",
+    "description": "",
+    "slug": "manu-bay-20250601163127589700",
+    "created_at": "2025-06-01T16:31:27.592Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "1b257188-0d6f-404c-8816-52a1f9864b6a",
+  "fields": {
+    "surfspot": "981bb455-66db-438a-82a3-d7295429db5e",
+    "image": "surfspots/surf_spots_images/Pipeline_6_3Uwl79y.webp",
+    "description": "",
+    "slug": "pipeline-20250601164200292794",
+    "created_at": "2025-06-01T16:42:00.295Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "1b70c520-56eb-4c7f-9a02-2e2d657f228c",
+  "fields": {
+    "surfspot": "d4233957-7fe4-40bd-a365-b1b137841055",
+    "image": "surfspots/surf_spots_images/Tullan_Strand_Ui90bP5.jpg",
+    "description": "",
+    "slug": "tullan-strand-20250601170234985539",
+    "created_at": "2025-06-01T17:02:34.988Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "1cf7f3d7-9f0a-471b-b508-689fb04ccf06",
+  "fields": {
+    "surfspot": "5cd623d3-39aa-4480-8004-1bfeadc7d26a",
+    "image": "surfspots/surf_spots_images/Praia_Mole_VcnsyAF.jpg",
+    "description": "",
+    "slug": "praia-mole-20250601164912998751",
+    "created_at": "2025-06-01T16:49:13.001Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "1dc28fa0-f661-4b57-97a0-3536df37fcd7",
+  "fields": {
+    "surfspot": "0d91659c-0ac7-400b-b5f3-6cc64e7e169b",
+    "image": "surfspots/surf_spots_images/Zicatela_Beach_2_LNqlG84.jpg",
+    "description": "",
+    "slug": "zicatela-beach-20250601170703229563",
+    "created_at": "2025-06-01T17:07:03.236Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "1f0a88a8-1051-478b-b157-cf9e885cc02d",
+  "fields": {
+    "surfspot": "724e54bf-994c-41f0-8901-eee33ef8b065",
+    "image": "surfspots/surf_spots_images/Padang_Padang_2_bRGNE9T.webp",
+    "description": "",
+    "slug": "padang-padang-20250601163841360038",
+    "created_at": "2025-06-01T16:38:41.363Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "1f7f70a4-6297-4d8b-be8d-6d2505e94e49",
+  "fields": {
+    "surfspot": "1ed38706-3ad8-4940-93be-0de5371a3d11",
+    "image": "surfspots/surf_spots_images/Snapper_Rocks_3_h27wikU.jpg",
+    "description": "",
+    "slug": "snapper-rocks-20250601165601280956",
+    "created_at": "2025-06-01T16:56:01.284Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "20feb783-f691-4d74-be5e-df8132bfccd0",
+  "fields": {
+    "surfspot": "9add3f77-0587-44bc-8293-c12a23458be7",
+    "image": "surfspots/surf_spots_images/Lances_Right_2_ab5faHo.jpg",
+    "description": "",
+    "slug": "lances-right-20250601162608838613",
+    "created_at": "2025-06-01T16:26:08.841Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "24a2c647-124d-42f7-a5ca-21a963ae76b4",
+  "fields": {
+    "surfspot": "eeae0274-6129-4658-84f3-54affd7139f2",
+    "image": "surfspots/surf_spots_images/The_Peak.jpg",
+    "description": "",
+    "slug": "the-peak-20250601170147727471",
+    "created_at": "2025-06-01T17:01:47.730Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "251b6336-b312-4526-9eb8-029a35f79279",
+  "fields": {
+    "surfspot": "0954f664-3546-4e32-94e3-4bab27917b02",
+    "image": "surfspots/surf_spots_images/Macaronis_4_xmYKUE3.jpg",
+    "description": "",
+    "slug": "macaronis-20250601162945004720",
+    "created_at": "2025-06-01T16:29:45.007Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "265ba079-145b-4de5-8488-c8ed12b44723",
+  "fields": {
+    "surfspot": "ef0aac54-2f9b-4d34-b708-2e69b754bd09",
+    "image": "surfspots/surf_spots_images/Popoyo_Main_Break_2_6C0UYp5.jpg",
+    "description": "",
+    "slug": "popoyo-main-break-20250601164501566607",
+    "created_at": "2025-06-01T16:45:01.569Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "273d9dae-b3c6-4ae2-9323-6fd09b1db45f",
+  "fields": {
+    "surfspot": "04c10df8-bf60-4349-9ac3-3dc47b837c68",
+    "image": "surfspots/surf_spots_images/Boneyards_3_otzBeNw.jpg",
+    "description": "",
+    "slug": "boneyards-20250601161157075444",
+    "created_at": "2025-06-01T16:11:57.078Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "275ac5a0-13e4-42c6-8bff-28c7d2cb8640",
+  "fields": {
+    "surfspot": "eeae0274-6129-4658-84f3-54affd7139f2",
+    "image": "surfspots/surf_spots_images/The_Peak_3.jpeg",
+    "description": "",
+    "slug": "the-peak-20250601170217914448",
+    "created_at": "2025-06-01T17:02:17.916Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "28080710-a976-4987-898b-c5c347a1b939",
+  "fields": {
+    "surfspot": "2a557ec6-640f-4d3f-b36d-5c1fa5a2d17c",
+    "image": "surfspots/surf_spots_images/Restaurant_3_JxBnpOM.webp",
+    "description": "",
+    "slug": "restaurant-20250601165145509824",
+    "created_at": "2025-06-01T16:51:45.512Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "28d2e989-6464-4187-a5e4-4cef3987b38c",
+  "fields": {
+    "surfspot": "c6a6b65e-ef63-40c2-87f7-7195b59bb1a2",
+    "image": "surfspots/surf_spots_images/Shichirigahama_BVK6hra.jpg",
+    "description": "",
+    "slug": "shichirigahama-beach-20250601165453606413",
+    "created_at": "2025-06-01T16:54:53.609Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "29f8597f-7fd2-455c-bbed-6c141eb9d2b7",
+  "fields": {
+    "surfspot": "28f10aba-dbf4-4d35-848a-8aac805bb6a2",
+    "image": "surfspots/surf_spots_images/La_Nord_2_sj7Ra1k.jpg",
+    "description": "",
+    "slug": "la-nord-20250601162705174515",
+    "created_at": "2025-06-01T16:27:05.176Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "2bc6b91c-f05e-4e08-8573-88ccb05c3b79",
+  "fields": {
+    "surfspot": "3bdf94e5-d8f0-49fe-a647-34b9cc2d1033",
+    "image": "surfspots/surf_spots_images/Guethary_4_y8Z8aJd.jpeg",
+    "description": "",
+    "slug": "guethary-20250601161931554282",
+    "created_at": "2025-06-01T16:19:31.557Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "2c37922b-170d-4e20-a9a6-a58c86450fc6",
+  "fields": {
+    "surfspot": "02455a15-1aec-4f00-9c3d-32324b333085",
+    "image": "surfspots/surf_spots_images/Outer_Reef_Popoyo_3_5qG90Hu.jpg",
+    "description": "",
+    "slug": "outer-reef-popoyo-20250601163801229501",
+    "created_at": "2025-06-01T16:38:01.232Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "2d154d09-0668-4fbc-b0f5-558845314f2d",
+  "fields": {
+    "surfspot": "724e54bf-994c-41f0-8901-eee33ef8b065",
+    "image": "surfspots/surf_spots_images/Padang_Padang_HGwhXKp.jpg",
+    "description": "",
+    "slug": "padang-padang-20250601163817817408",
+    "created_at": "2025-06-01T16:38:17.820Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "2e4f26a7-92ba-4cf2-babc-cab43027c347",
+  "fields": {
+    "surfspot": "6b1df69b-2a28-4126-b30f-138195ab2750",
+    "image": "surfspots/surf_spots_images/Cloudbreak_5_pucydod.jpeg",
+    "description": "",
+    "slug": "cloudbreak-20250601161520482039",
+    "created_at": "2025-06-01T16:15:20.491Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "2eeffa72-6750-494f-90a6-780616457241",
+  "fields": {
+    "surfspot": "73500a84-4e63-4981-b0c2-17a4bbe6f9fe",
+    "image": "surfspots/surf_spots_images/Balangan_2_hjBHI59.jpg",
+    "description": "",
+    "slug": "balangan-20250601160954424215",
+    "created_at": "2025-06-01T16:09:54.428Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "3319b8a1-5de2-4845-a15e-78b8089ed767",
+  "fields": {
+    "surfspot": "cb7f7e2a-fb19-4816-9dac-cad31fd9419a",
+    "image": "surfspots/surf_spots_images/Kandui_Lefts-2_xxynDi5.jpg",
+    "description": "",
+    "slug": "kandui-lefts-20250601162128758894",
+    "created_at": "2025-06-01T16:21:28.761Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "33451e8f-f0b2-40ae-a84a-b8693808a391",
+  "fields": {
+    "surfspot": "ef0aac54-2f9b-4d34-b708-2e69b754bd09",
+    "image": "surfspots/surf_spots_images/Popoyo_Main_Break_4KicmHz.webp",
+    "description": "",
+    "slug": "popoyo-main-break-20250601164440973316",
+    "created_at": "2025-06-01T16:44:40.976Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "35de9791-87a0-4b0e-a741-b395d6c73835",
+  "fields": {
+    "surfspot": "d245d76b-7637-4f15-a324-d19a6ec6d209",
+    "image": "surfspots/surf_spots_images/Playa_Tamarindo_3_KhGlmFa.jpeg",
+    "description": "",
+    "slug": "playa-tamarindo-20250601171546901458",
+    "created_at": "2025-06-01T17:15:46.903Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "3650bfab-3bc7-46dc-aa5a-b561a8c9f852",
+  "fields": {
+    "surfspot": "7cf28b25-3f41-4257-9243-c9159a2924f8",
+    "image": "surfspots/surf_spots_images/Burleigh_Heads_3_qrdnc1A.webp",
+    "description": "",
+    "slug": "burleigh-heads-20250601171956224003",
+    "created_at": "2025-06-01T17:19:56.226Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "3ea4149f-b9ab-4306-b0d8-b39d5d684d5e",
+  "fields": {
+    "surfspot": "534f4295-22f2-4ecc-8437-c01bce779469",
+    "image": "surfspots/surf_spots_images/Kirra-2_pLtspbE.jpg",
+    "description": "",
+    "slug": "kirra-20250601162210890031",
+    "created_at": "2025-06-01T16:22:10.893Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "3f73d08b-0759-48ed-8a2c-f240543693ce",
+  "fields": {
+    "surfspot": "cb7f7e2a-fb19-4816-9dac-cad31fd9419a",
+    "image": "surfspots/surf_spots_images/Kandui_Lefts_3_xinNddu.jpg",
+    "description": "",
+    "slug": "kandui-lefts-20250601162143096289",
+    "created_at": "2025-06-01T16:21:43.099Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "3f7bd9a4-b55d-4a41-ace8-b63a30fd32d4",
+  "fields": {
+    "surfspot": "724e54bf-994c-41f0-8901-eee33ef8b065",
+    "image": "surfspots/surf_spots_images/Padang_Padang_4_iqDcBxW.webp",
+    "description": "",
+    "slug": "padang-padang-20250601163924325672",
+    "created_at": "2025-06-01T16:39:24.328Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "40002df3-930c-4dd3-998e-31df13fb249e",
+  "fields": {
+    "surfspot": "fbb8e0aa-392b-4e70-aaf1-4893e8200067",
+    "image": "surfspots/surf_spots_images/Bingin_2_fWUAMu9.jpg",
+    "description": "",
+    "slug": "bingin-20250601161033919125",
+    "created_at": "2025-06-01T16:10:33.925Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "403fd0f3-3708-4630-81ed-ec5ade6d00e3",
+  "fields": {
+    "surfspot": "9add3f77-0587-44bc-8293-c12a23458be7",
+    "image": "surfspots/surf_spots_images/Lances_Right_5juHb63.jpg",
+    "description": "",
+    "slug": "lances-right-20250601162552484871",
+    "created_at": "2025-06-01T16:25:52.489Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "4375ba89-8fe8-4b26-8c7d-e973341895c6",
+  "fields": {
+    "surfspot": "4f3d478c-42ab-4d96-848b-af9d34aa0f52",
+    "image": "surfspots/surf_spots_images/La_Bocana_3_HsmRJPh.jpg",
+    "description": "",
+    "slug": "la-bocana-20250601162340905294",
+    "created_at": "2025-06-01T16:23:40.907Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "437752b4-fb57-4ac4-98f0-04ebb2bc432f",
+  "fields": {
+    "surfspot": "983677d0-1521-4448-832e-7105bf7105fe",
+    "image": "surfspots/surf_spots_images/Praia_Do_Norte_2_bn4lGGx.jpg",
+    "description": "",
+    "slug": "praia-do-norte-20250601164602028499",
+    "created_at": "2025-06-01T16:46:02.030Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "47b2f605-8439-4712-b059-b9c65d432264",
+  "fields": {
+    "surfspot": "2a557ec6-640f-4d3f-b36d-5c1fa5a2d17c",
+    "image": "surfspots/surf_spots_images/Restaurant_2_sWo1qHj.jpg",
+    "description": "",
+    "slug": "restaurant-20250601165125994785",
+    "created_at": "2025-06-01T16:51:25.997Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "4933e470-5283-4205-8228-0d76ee6394a4",
+  "fields": {
+    "surfspot": "67b66e1b-38a1-4b10-80e0-0eff806d962d",
+    "image": "surfspots/surf_spots_images/Avellanas_2_kqsU4V6.jpg",
+    "description": "",
+    "slug": "avellanas-20250601160131351811",
+    "created_at": "2025-06-01T16:01:31.354Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "49ef76d1-e7a9-477b-b19b-5855087ed3f9",
+  "fields": {
+    "surfspot": "f02b0d64-9f34-4692-801f-517c00483b9d",
+    "image": "surfspots/surf_spots_images/Orofara_gqxysEP.jpg",
+    "description": "",
+    "slug": "orofara-20250601163634468957",
+    "created_at": "2025-06-01T16:36:34.471Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "4a2bb0ab-7d9b-4de4-9eab-10327a6f3a64",
+  "fields": {
+    "surfspot": "981bb455-66db-438a-82a3-d7295429db5e",
+    "image": "surfspots/surf_spots_images/Pipeline_4_HGGtz2o.jpg",
+    "description": "",
+    "slug": "pipeline-20250601164133418346",
+    "created_at": "2025-06-01T16:41:33.421Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "4cfa5145-bab4-43c3-b49b-9e6b8f2874dd",
+  "fields": {
+    "surfspot": "c98281c5-3f37-4789-9c83-073618d15bb8",
+    "image": "surfspots/surf_spots_images/Punta_De_Lobos_2_uCK4kV4.jpg",
+    "description": "",
+    "slug": "punta-de-lobos-20250601165025718417",
+    "created_at": "2025-06-01T16:50:25.719Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "4dc30756-49e1-49fb-b7eb-07b5c6978c12",
+  "fields": {
+    "surfspot": "73500a84-4e63-4981-b0c2-17a4bbe6f9fe",
+    "image": "surfspots/surf_spots_images/Balangan_3_KwV8qh7.jpg",
+    "description": "",
+    "slug": "balangan-20250601161006302118",
+    "created_at": "2025-06-01T16:10:06.304Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "51d884b8-2daa-46d7-88d0-6177f64a4bcc",
+  "fields": {
+    "surfspot": "f3544237-30c1-4cc9-89a0-e3f668f24a54",
+    "image": "surfspots/surf_spots_images/Anchor_Point_EqAKzQq.jpg",
+    "description": "",
+    "slug": "anchor-point-20250601160052408208",
+    "created_at": "2025-06-01T16:00:52.411Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "527c9cdf-77f3-4b56-be4d-96b8c6a1d64c",
+  "fields": {
+    "surfspot": "ca67a5b4-5cef-4181-bec5-64990e40cd95",
+    "image": "surfspots/surf_spots_images/Rifles_3_Ece0g6R.jpg",
+    "description": "",
+    "slug": "rifles-20250601165338182683",
+    "created_at": "2025-06-01T16:53:38.185Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "54252d64-c39b-4841-824d-5d15734a5a77",
+  "fields": {
+    "surfspot": "c90cd883-132b-47e9-ae02-bcb512584a40",
+    "image": "surfspots/surf_spots_images/Hash_Point_1YjgK41.webp",
+    "description": "",
+    "slug": "hash-point-20250601161946970840",
+    "created_at": "2025-06-01T16:19:46.973Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "56bb06e3-2adb-4e07-bc25-280f4e46dea0",
+  "fields": {
+    "surfspot": "724e54bf-994c-41f0-8901-eee33ef8b065",
+    "image": "surfspots/surf_spots_images/Padang_Padang_3_H24uk3C.jpg",
+    "description": "",
+    "slug": "padang-padang-20250601163907984413",
+    "created_at": "2025-06-01T16:39:07.985Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "578c2485-a786-46b7-8302-12d4f4b5b248",
+  "fields": {
+    "surfspot": "28f10aba-dbf4-4d35-848a-8aac805bb6a2",
+    "image": "surfspots/surf_spots_images/La_Nord_3_aSAspZK.webp",
+    "description": "",
+    "slug": "la-nord-20250601162717145341",
+    "created_at": "2025-06-01T16:27:17.148Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "593b1a6f-8e13-4e50-a478-0df708b3b287",
+  "fields": {
+    "surfspot": "67b66e1b-38a1-4b10-80e0-0eff806d962d",
+    "image": "surfspots/surf_spots_images/Avellanas_3_PW8qnM3.jpg",
+    "description": "",
+    "slug": "avellanas-20250601160143110939",
+    "created_at": "2025-06-01T16:01:43.113Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "5b0a8c17-0f8d-48a5-8cba-65680544d023",
+  "fields": {
+    "surfspot": "3806bea2-8859-4325-976c-8804290ce876",
+    "image": "surfspots/surf_spots_images/La_Graviere.jpg",
+    "description": "",
+    "slug": "la-graviere-20250601162447955227",
+    "created_at": "2025-06-01T16:24:47.957Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "5dcd1b0c-db9c-4aa9-8cde-b21225a969cd",
+  "fields": {
+    "surfspot": "3bdf94e5-d8f0-49fe-a647-34b9cc2d1033",
+    "image": "surfspots/surf_spots_images/Guethary_GTkTcwA.jpg",
+    "description": "",
+    "slug": "guethary-20250601161840348531",
+    "created_at": "2025-06-01T16:18:40.356Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "5faa23ce-4ca7-4e6e-8493-7ca8933c4072",
+  "fields": {
+    "surfspot": "7cf28b25-3f41-4257-9243-c9159a2924f8",
+    "image": "surfspots/surf_spots_images/Burleigh_Heads_VyqfmaU.jpg",
+    "description": "",
+    "slug": "burleigh-heads-20250601161311338853",
+    "created_at": "2025-06-01T16:13:11.341Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "5fdefa3b-22c1-4f44-98e6-4c30fa9f467d",
+  "fields": {
+    "surfspot": "4bc8f9b3-c768-44c9-b5af-32d364aa5c02",
+    "image": "surfspots/surf_spots_images/Joaquina_Beach-2_RHPShWv.jpg",
+    "description": "",
+    "slug": "joaquina-beach-20250601162045529231",
+    "created_at": "2025-06-01T16:20:45.530Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "62073fce-c558-44f2-91bd-29e97c0bd538",
+  "fields": {
+    "surfspot": "b8f4de2b-44e1-4e4a-9dc4-78d7cfa9fcd6",
+    "image": "surfspots/surf_spots_images/sapinus_eq8Yt56.jpg",
+    "description": "",
+    "slug": "sapinus-20250601165355211963",
+    "created_at": "2025-06-01T16:53:55.214Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "62349364-3cd5-4a76-93a9-9b60e79ae316",
+  "fields": {
+    "surfspot": "3bdf94e5-d8f0-49fe-a647-34b9cc2d1033",
+    "image": "surfspots/surf_spots_images/Guethary_2_ibQ6PPi.jpeg",
+    "description": "",
+    "slug": "guethary-20250601161854234313",
+    "created_at": "2025-06-01T16:18:54.235Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "64d2bbb1-9d5e-438e-8b3d-a4d351beead6",
+  "fields": {
+    "surfspot": "28f10aba-dbf4-4d35-848a-8aac805bb6a2",
+    "image": "surfspots/surf_spots_images/La_Nord_y7MiHtB.jpeg",
+    "description": "",
+    "slug": "la-nord-20250601162649331547",
+    "created_at": "2025-06-01T16:26:49.335Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "65d0c341-6736-44f3-aba8-7ab9bfc5fd08",
+  "fields": {
+    "surfspot": "00946f4d-65ef-465b-8e2d-25ae36c46d83",
+    "image": "surfspots/surf_spots_images/Kugenuma_Beach_2_ABNSjt9.jpg",
+    "description": "",
+    "slug": "kugenuma-beach-20250601162247064957",
+    "created_at": "2025-06-01T16:22:47.067Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "668f9034-dbb9-4a86-bdfe-05f6476a34f7",
+  "fields": {
+    "surfspot": "fbb8e0aa-392b-4e70-aaf1-4893e8200067",
+    "image": "surfspots/surf_spots_images/Bingin_3_jsnYcD7.jpg",
+    "description": "",
+    "slug": "bingin-20250601161045686656",
+    "created_at": "2025-06-01T16:10:45.689Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "66d68473-e735-4931-85c8-aa1327410418",
+  "fields": {
+    "surfspot": "21dbf864-5c52-4e99-91b5-4811f64c8259",
+    "image": "surfspots/surf_spots_images/Teahupoo_2_Pg7SDBN.jpg",
+    "description": "",
+    "slug": "teahupoo-20250601170048708366",
+    "created_at": "2025-06-01T17:00:48.711Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "678d0fdc-b78c-434f-b47a-f6f660383ebd",
+  "fields": {
+    "surfspot": "ca67a5b4-5cef-4181-bec5-64990e40cd95",
+    "image": "surfspots/surf_spots_images/Rifles_2_noJSIHM.webp",
+    "description": "",
+    "slug": "rifles-20250601165321005653",
+    "created_at": "2025-06-01T16:53:21.008Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "68a35aaa-f007-4bf4-879c-35b6fb76a7a9",
+  "fields": {
+    "surfspot": "983677d0-1521-4448-832e-7105bf7105fe",
+    "image": "surfspots/surf_spots_images/Praia_Do_Norte_DdAHJ5T.jpg",
+    "description": "",
+    "slug": "praia-do-norte-20250601164537558791",
+    "created_at": "2025-06-01T16:45:37.562Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "6c2b14c9-4c20-4f21-a423-fa9c894d7f36",
+  "fields": {
+    "surfspot": "6b1df69b-2a28-4126-b30f-138195ab2750",
+    "image": "surfspots/surf_spots_images/Cloudbreak_3_ePlkRda.jpg",
+    "description": "",
+    "slug": "cloudbreak-20250601161443449214",
+    "created_at": "2025-06-01T16:14:43.452Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "6c9002b1-7002-4127-9d0d-fe9365fd89a7",
+  "fields": {
+    "surfspot": "04c10df8-bf60-4349-9ac3-3dc47b837c68",
+    "image": "surfspots/surf_spots_images/Boneyards_Cq4GVbp.jpg",
+    "description": "",
+    "slug": "boneyards-20250601161126637466",
+    "created_at": "2025-06-01T16:11:26.640Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "6d93a2fa-848b-4611-8cca-77db5a60539c",
+  "fields": {
+    "surfspot": "04c10df8-bf60-4349-9ac3-3dc47b837c68",
+    "image": "surfspots/surf_spots_images/Boneyards_5_ziiBX3y.webp",
+    "description": "",
+    "slug": "boneyards-20250601161221970254",
+    "created_at": "2025-06-01T16:12:21.973Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "6daae522-a763-4613-b8a3-5209b7c185e3",
+  "fields": {
+    "surfspot": "a909c689-f862-437f-8127-13dba21fbd6f",
+    "image": "surfspots/surf_spots_images/Uluwatu_4_qCq6rSM.webp",
+    "description": "",
+    "slug": "uluwatu-20250601170357368459",
+    "created_at": "2025-06-01T17:03:57.370Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "703e7423-cd1d-4df0-931a-1178b7003e64",
+  "fields": {
+    "surfspot": "d115aabc-c0b8-4b44-9827-1675b3258d72",
+    "image": "surfspots/surf_spots_images/Waimea_Bay_5_mKicHlh.jpg",
+    "description": "",
+    "slug": "waimea-bay-20250601170555347799",
+    "created_at": "2025-06-01T17:05:55.350Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "70529aad-69c7-4ed4-a838-7916d302f1f8",
+  "fields": {
+    "surfspot": "981bb455-66db-438a-82a3-d7295429db5e",
+    "image": "surfspots/surf_spots_images/Pipeline_3_qQZ5hiR.jpg",
+    "description": "",
+    "slug": "pipeline-20250601164116669648",
+    "created_at": "2025-06-01T16:41:16.673Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "7210a2a4-1265-4957-aeca-ee47f16552ac",
+  "fields": {
+    "surfspot": "d584227b-4d92-4f95-8b93-6a166b14b512",
+    "image": "surfspots/surf_spots_images/Nias_zMDwhVZ.jpg",
+    "description": "",
+    "slug": "nias-20250601163218784593",
+    "created_at": "2025-06-01T16:32:18.787Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "7581e8d4-7edb-4c63-bf50-e4b95b000bd2",
+  "fields": {
+    "surfspot": "c6a6b65e-ef63-40c2-87f7-7195b59bb1a2",
+    "image": "surfspots/surf_spots_images/Shichirigahama_2_nBH9ybC.jpg",
+    "description": "",
+    "slug": "shichirigahama-beach-20250601165508447340",
+    "created_at": "2025-06-01T16:55:08.449Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "7785286f-2142-48e2-953c-a2998d39913f",
+  "fields": {
+    "surfspot": "6b1df69b-2a28-4126-b30f-138195ab2750",
+    "image": "surfspots/surf_spots_images/Cloudbreak_4_VH3tcbV.jpg",
+    "description": "",
+    "slug": "cloudbreak-20250601161500489469",
+    "created_at": "2025-06-01T16:15:00.492Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "798000e5-7855-49be-bf4d-9e7583865eba",
+  "fields": {
+    "surfspot": "d115aabc-c0b8-4b44-9827-1675b3258d72",
+    "image": "surfspots/surf_spots_images/Waimea_Bay_2_mM1SoXE.jpg",
+    "description": "",
+    "slug": "waimea-bay-20250601170505196970",
+    "created_at": "2025-06-01T17:05:05.199Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "79a3a67d-cf4f-4f28-ba2f-720ff4f00120",
+  "fields": {
+    "surfspot": "fbb8e0aa-392b-4e70-aaf1-4893e8200067",
+    "image": "surfspots/surf_spots_images/Bingin_2jSYovn.jpg",
+    "description": "",
+    "slug": "bingin-20250601161020748892",
+    "created_at": "2025-06-01T16:10:20.757Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "7ab0b6ab-a09b-40ab-81a5-82b2012a1a59",
+  "fields": {
+    "surfspot": "b9546d21-e67f-40ff-a198-91ed02df2b1a",
+    "image": "surfspots/surf_spots_images/Grande_Plage_fEg7RK3.jpg",
+    "description": "",
+    "slug": "grande-plage-20250601161750838065",
+    "created_at": "2025-06-01T16:17:50.841Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "7af8d298-9bb5-47cc-afe7-94bd26152ed9",
+  "fields": {
+    "surfspot": "cb7f7e2a-fb19-4816-9dac-cad31fd9419a",
+    "image": "surfspots/surf_spots_images/Kandui_Lefts_HXetrvR.jpg",
+    "description": "",
+    "slug": "kandui-lefts-20250601162115073583",
+    "created_at": "2025-06-01T16:21:15.080Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "7cb0f021-87c0-4fae-ac0f-48f4edff9a49",
+  "fields": {
+    "surfspot": "5f7b6e0e-b793-4de7-813d-d6eb19c85c34",
+    "image": "surfspots/surf_spots_images/Sunset_Beach_D7W9U0i.jpg",
+    "description": "",
+    "slug": "sunset-beach-20250601165616389958",
+    "created_at": "2025-06-01T16:56:16.393Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "7d8b27e7-cac2-4449-8d8f-6e6ce9b05b78",
+  "fields": {
+    "surfspot": "c98281c5-3f37-4789-9c83-073618d15bb8",
+    "image": "surfspots/surf_spots_images/Punta_De_Lobos_3_AbuFK2P.jpg",
+    "description": "",
+    "slug": "punta-de-lobos-20250601165046502641",
+    "created_at": "2025-06-01T16:50:46.505Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "7d908304-5dc7-48fd-b83c-bb147e1f176f",
+  "fields": {
+    "surfspot": "f3544237-30c1-4cc9-89a0-e3f668f24a54",
+    "image": "surfspots/surf_spots_images/Anchor_Point_3_Dp8LSQ2.webp",
+    "description": "",
+    "slug": "anchor-point-20250601160116947108",
+    "created_at": "2025-06-01T16:01:16.949Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "81ae0e36-d4a2-4344-a0c1-78a6dc90ca2d",
+  "fields": {
+    "surfspot": "1ed38706-3ad8-4940-93be-0de5371a3d11",
+    "image": "surfspots/surf_spots_images/Snapper_Rocks_truwbzA.webp",
+    "description": "",
+    "slug": "snapper-rocks-20250601165530076053",
+    "created_at": "2025-06-01T16:55:30.079Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "82124bcc-cde3-412f-ac94-8ddf065c337a",
+  "fields": {
+    "surfspot": "ba0e882d-c805-42ad-b752-01148237f900",
+    "image": "surfspots/surf_spots_images/Chickens_GUaQhid.jpg",
+    "description": "",
+    "slug": "chickens-20250601161329120153",
+    "created_at": "2025-06-01T16:13:29.123Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "8412bfe7-659d-425f-9e47-31909c9de3c8",
+  "fields": {
+    "surfspot": "4bc8f9b3-c768-44c9-b5af-32d364aa5c02",
+    "image": "surfspots/surf_spots_images/Joaquina_Beach_3_JrMup0C.jpg",
+    "description": "",
+    "slug": "joaquina-beach-20250601162059872175",
+    "created_at": "2025-06-01T16:20:59.874Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "86b18d51-b495-4a79-8d52-8eff2eb8c480",
+  "fields": {
+    "surfspot": "0d91659c-0ac7-400b-b5f3-6cc64e7e169b",
+    "image": "surfspots/surf_spots_images/Zicatela_Beach_3_yvD2dL4.jpg",
+    "description": "",
+    "slug": "zicatela-beach-20250601170718833426",
+    "created_at": "2025-06-01T17:07:18.835Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "87a50b4f-8817-4359-862d-5e47ebed00c6",
+  "fields": {
+    "surfspot": "c90cd883-132b-47e9-ae02-bcb512584a40",
+    "image": "surfspots/surf_spots_images/Hash_Point_3_Iu7q9hr.jpg",
+    "description": "",
+    "slug": "hash-point-20250601162013372056",
+    "created_at": "2025-06-01T16:20:13.374Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "89c3573a-96d6-45cc-ab0e-b348ee3b7d33",
+  "fields": {
+    "surfspot": "4bc8f9b3-c768-44c9-b5af-32d364aa5c02",
+    "image": "surfspots/surf_spots_images/Joaquina_Beach_uoDzJTz.webp",
+    "description": "",
+    "slug": "joaquina-beach-20250601162034035852",
+    "created_at": "2025-06-01T16:20:34.038Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "8c03f3d4-4369-49aa-a463-79f8e61ece51",
+  "fields": {
+    "surfspot": "8a54a40d-afd2-485b-9c69-a428d8cda170",
+    "image": "surfspots/surf_spots_images/Sunzal_2_HZkOR5b.jpg",
+    "description": "",
+    "slug": "sunzal-20250601165800388689",
+    "created_at": "2025-06-01T16:58:00.391Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "8c69011d-bb1b-4be2-9b95-deb52d7e014c",
+  "fields": {
+    "surfspot": "2a557ec6-640f-4d3f-b36d-5c1fa5a2d17c",
+    "image": "surfspots/surf_spots_images/Restaurant_6_dcYexJK.jpg",
+    "description": "",
+    "slug": "restaurant-20250601165242484764",
+    "created_at": "2025-06-01T16:52:42.488Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "8d478328-e884-4d7c-94a1-9e8d7d3b9e4a",
+  "fields": {
+    "surfspot": "73500a84-4e63-4981-b0c2-17a4bbe6f9fe",
+    "image": "surfspots/surf_spots_images/Balangan_RJjsLrI.jpg",
+    "description": "",
+    "slug": "balangan-20250601160943390860",
+    "created_at": "2025-06-01T16:09:43.393Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "92243353-e2a2-43e4-8edf-7589f0ed6eca",
+  "fields": {
+    "surfspot": "8a54a40d-afd2-485b-9c69-a428d8cda170",
+    "image": "surfspots/surf_spots_images/Sunzal_c6GURo5.jpg",
+    "description": "",
+    "slug": "sunzal-20250601165741530864",
+    "created_at": "2025-06-01T16:57:41.536Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "92967fa3-e1de-4192-92c0-f80cbee0aca8",
+  "fields": {
+    "surfspot": "ca67a5b4-5cef-4181-bec5-64990e40cd95",
+    "image": "surfspots/surf_spots_images/Rifles_i49uuQz.jpg",
+    "description": "",
+    "slug": "rifles-20250601165301156007",
+    "created_at": "2025-06-01T16:53:01.158Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "9303d8e8-3578-4714-b036-36f3ef9755aa",
+  "fields": {
+    "surfspot": "ab93979b-c043-4ad0-a129-672380284bb3",
+    "image": "surfspots/surf_spots_images/Cokes_itsWg7c.jpg",
+    "description": "",
+    "slug": "cokes-20250601161605997085",
+    "created_at": "2025-06-01T16:16:06.000Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "97447620-fbb2-4f0f-9627-7d37273d7cea",
+  "fields": {
+    "surfspot": "ac34f928-222f-4f3b-ae38-dfc457aa2b5f",
+    "image": "surfspots/surf_spots_images/Taapuna_KIwyArO.jpg",
+    "description": "",
+    "slug": "taapuna-20250601165941681365",
+    "created_at": "2025-06-01T16:59:41.683Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "9bca7cb9-625d-4c93-8394-968760c8388c",
+  "fields": {
+    "surfspot": "21dbf864-5c52-4e99-91b5-4811f64c8259",
+    "image": "surfspots/surf_spots_images/Teahupoo_5_9QV6JTm.jpg",
+    "description": "",
+    "slug": "teahupoo-20250601170132118904",
+    "created_at": "2025-06-01T17:01:32.121Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "9cf79006-5fd4-4397-a606-e68ad800d031",
+  "fields": {
+    "surfspot": "00946f4d-65ef-465b-8e2d-25ae36c46d83",
+    "image": "surfspots/surf_spots_images/Kugenuma_Beach_3_oQico1Y.jpeg",
+    "description": "",
+    "slug": "kugenuma-beach-20250601162302166522",
+    "created_at": "2025-06-01T16:23:02.169Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "9f7ad9c1-15a4-4603-88c7-58cc5911c611",
+  "fields": {
+    "surfspot": "29e61b91-e170-4474-8a90-2f7a9d5f86a8",
+    "image": "surfspots/surf_spots_images/Supertubes_4_SUv5x3x.jpg",
+    "description": "",
+    "slug": "supertubes-20250601165925119197",
+    "created_at": "2025-06-01T16:59:25.121Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "a16439e8-2caa-416c-8343-34e6e24476fb",
+  "fields": {
+    "surfspot": "4f3d478c-42ab-4d96-848b-af9d34aa0f52",
+    "image": "surfspots/surf_spots_images/La_Bocana_3xOhLKY.jpg",
+    "description": "",
+    "slug": "la-bocana-20250601162314387345",
+    "created_at": "2025-06-01T16:23:14.390Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "a3dd84ea-8669-46e3-ba6f-50d81f1b73a4",
+  "fields": {
+    "surfspot": "b9546d21-e67f-40ff-a198-91ed02df2b1a",
+    "image": "surfspots/surf_spots_images/Grande_Plage_2_i7JEids.jpg",
+    "description": "",
+    "slug": "grande-plage-20250601161807506304",
+    "created_at": "2025-06-01T16:18:07.509Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "a4248dd7-bb6e-4838-a7ff-effff842eb40",
+  "fields": {
+    "surfspot": "b8f4de2b-44e1-4e4a-9dc4-78d7cfa9fcd6",
+    "image": "surfspots/surf_spots_images/Sapinus_3_Bu1AlHY.jpg",
+    "description": "",
+    "slug": "sapinus-20250601165429945704",
+    "created_at": "2025-06-01T16:54:29.948Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "a5f004bf-7777-47e1-bb25-3926e831700d",
+  "fields": {
+    "surfspot": "724e54bf-994c-41f0-8901-eee33ef8b065",
+    "image": "surfspots/surf_spots_images/Padang_Padang_5_c4m3heT.jpg",
+    "description": "",
+    "slug": "padang-padang-20250601163945421141",
+    "created_at": "2025-06-01T16:39:45.424Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "a6a30e75-53ee-4711-a0e4-df3896e83115",
+  "fields": {
+    "surfspot": "ac34f928-222f-4f3b-ae38-dfc457aa2b5f",
+    "image": "surfspots/surf_spots_images/Taapuna_3_1MRgjSJ.jpg",
+    "description": "",
+    "slug": "taapuna-20250601170011969929",
+    "created_at": "2025-06-01T17:00:11.972Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "a827e470-d944-4b0b-81b0-87b5f97fdc8f",
+  "fields": {
+    "surfspot": "d9e6c2b6-136e-4091-b95f-8dbdcd7613f1",
+    "image": "surfspots/surf_spots_images/Papara_RMpmxD2.jpg",
+    "description": "",
+    "slug": "papara-20250601164022126521",
+    "created_at": "2025-06-01T16:40:22.129Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b0d99453-9cf7-494d-9bf2-3230caa80879",
+  "fields": {
+    "surfspot": "f3544237-30c1-4cc9-89a0-e3f668f24a54",
+    "image": "surfspots/surf_spots_images/Anchor_Point_2_GwwRgQ7.webp",
+    "description": "",
+    "slug": "anchor-point-20250601160103658551",
+    "created_at": "2025-06-01T16:01:03.660Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b0dfb61a-a16a-4034-a280-cfa566002589",
+  "fields": {
+    "surfspot": "ce764a4c-3cc8-4d0d-bf0e-235a26d4b261",
+    "image": "surfspots/surf_spots_images/Playa_Langosta_LhvRXsw.jpg",
+    "description": "",
+    "slug": "playa-langosta-20250601164309787702",
+    "created_at": "2025-06-01T16:43:09.790Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b0e0407f-fbdb-45e6-b90c-2b11d246243e",
+  "fields": {
+    "surfspot": "a909c689-f862-437f-8127-13dba21fbd6f",
+    "image": "surfspots/surf_spots_images/Uluwatu_3_7StS5sc.jpg",
+    "description": "",
+    "slug": "uluwatu-20250601170340973151",
+    "created_at": "2025-06-01T17:03:40.976Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b1dbb931-865d-406f-b6f6-aed8395e620f",
+  "fields": {
+    "surfspot": "2a557ec6-640f-4d3f-b36d-5c1fa5a2d17c",
+    "image": "surfspots/surf_spots_images/Restaurant_4_T96BEW7.webp",
+    "description": "",
+    "slug": "restaurant-20250601165200975491",
+    "created_at": "2025-06-01T16:52:00.977Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b21d8c1c-95d2-47c3-9b7f-886724b6525b",
+  "fields": {
+    "surfspot": "a909c689-f862-437f-8127-13dba21fbd6f",
+    "image": "surfspots/surf_spots_images/Uluwatu_2_ljElono.jpeg",
+    "description": "",
+    "slug": "uluwatu-20250601170324783494",
+    "created_at": "2025-06-01T17:03:24.786Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b362c675-9053-47a0-84ab-31780bddee77",
+  "fields": {
+    "surfspot": "5f7b6e0e-b793-4de7-813d-d6eb19c85c34",
+    "image": "surfspots/surf_spots_images/Sunset_Beach_2_J7ehUWy.jpg",
+    "description": "",
+    "slug": "sunset-beach-20250601165632797692",
+    "created_at": "2025-06-01T16:56:32.800Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b51f1f38-5b64-4fba-a7ea-6a4a94b644fa",
+  "fields": {
+    "surfspot": "0954f664-3546-4e32-94e3-4bab27917b02",
+    "image": "surfspots/surf_spots_images/Macaronis_2_BBNKhrH.jpg",
+    "description": "",
+    "slug": "macaronis-20250601162833237684",
+    "created_at": "2025-06-01T16:28:33.240Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b53dd4cf-dbbd-4417-adc1-057bdc27af1b",
+  "fields": {
+    "surfspot": "c98281c5-3f37-4789-9c83-073618d15bb8",
+    "image": "surfspots/surf_spots_images/Punta_De_Lobos_WxRgUaX.jpg",
+    "description": "",
+    "slug": "punta-de-lobos-20250601165010617937",
+    "created_at": "2025-06-01T16:50:10.620Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b59dfc1c-2c3f-4d0f-abc0-972cd5c4a73d",
+  "fields": {
+    "surfspot": "eeae0274-6129-4658-84f3-54affd7139f2",
+    "image": "surfspots/surf_spots_images/The_Peak_2.jpg",
+    "description": "",
+    "slug": "the-peak-20250601170204772409",
+    "created_at": "2025-06-01T17:02:04.775Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b7679c4c-e392-4120-bccd-62f8c9920a6e",
+  "fields": {
+    "surfspot": "0d91659c-0ac7-400b-b5f3-6cc64e7e169b",
+    "image": "surfspots/surf_spots_images/Zicatela_Beach_5_ee6wF3w.jpg",
+    "description": "",
+    "slug": "zicatela-beach-20250601170748119518",
+    "created_at": "2025-06-01T17:07:48.124Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "b7b66cee-eede-4670-b48d-56abb4dab8dc",
+  "fields": {
+    "surfspot": "67b66e1b-38a1-4b10-80e0-0eff806d962d",
+    "image": "surfspots/surf_spots_images/Avellanas_AZL2uyC.jpg",
+    "description": "",
+    "slug": "avellanas-20250601160153984558",
+    "created_at": "2025-06-01T16:01:53.986Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "baacff49-5970-443c-ac8b-49fe2624d9e8",
+  "fields": {
+    "surfspot": "21dbf864-5c52-4e99-91b5-4811f64c8259",
+    "image": "surfspots/surf_spots_images/Teahupoo_4_JZhSckA.jpg",
+    "description": "",
+    "slug": "teahupoo-20250601170116443028",
+    "created_at": "2025-06-01T17:01:16.445Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "bbb90d7a-5933-4f21-956b-1a7988d810ff",
+  "fields": {
+    "surfspot": "3bca94fb-f1fc-4b15-8245-591afb7b4215",
+    "image": "surfspots/surf_spots_images/Les_Culs_Nus_MK5Hodf.jpg",
+    "description": "",
+    "slug": "les-culs-nus-20250601162731180121",
+    "created_at": "2025-06-01T16:27:31.183Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "bc171e3e-6300-4b6b-9ade-417f448e65c4",
+  "fields": {
+    "surfspot": "983677d0-1521-4448-832e-7105bf7105fe",
+    "image": "surfspots/surf_spots_images/Praia_Do_Norte_3_941xY7S.jpeg",
+    "description": "",
+    "slug": "praia-do-norte-20250601164621185232",
+    "created_at": "2025-06-01T16:46:21.187Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "beb52bbe-7f5b-4f52-b164-6c07126c494c",
+  "fields": {
+    "surfspot": "b8f4de2b-44e1-4e4a-9dc4-78d7cfa9fcd6",
+    "image": "surfspots/surf_spots_images/Sapinus_2_vOCFlHd.jpg",
+    "description": "",
+    "slug": "sapinus-20250601165410380469",
+    "created_at": "2025-06-01T16:54:10.382Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "bfb6de6e-38ba-48bd-ad23-5e515bb7ae23",
+  "fields": {
+    "surfspot": "04c10df8-bf60-4349-9ac3-3dc47b837c68",
+    "image": "surfspots/surf_spots_images/Boneyards_2_KFzV9pf.webp",
+    "description": "",
+    "slug": "boneyards-20250601161142990108",
+    "created_at": "2025-06-01T16:11:42.992Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "bfcce290-8a05-4438-815f-afd7ab5e8f41",
+  "fields": {
+    "surfspot": "9add3f77-0587-44bc-8293-c12a23458be7",
+    "image": "surfspots/surf_spots_images/Lances_Right_3_Si6I8oQ.png",
+    "description": "",
+    "slug": "lances-right-20250601162625158763",
+    "created_at": "2025-06-01T16:26:25.162Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "c0a2112d-2dae-4131-a68e-c5b541d3c5f7",
+  "fields": {
+    "surfspot": "d9e6c2b6-136e-4091-b95f-8dbdcd7613f1",
+    "image": "surfspots/surf_spots_images/Papara_2_rWoNpVO.jpg",
+    "description": "",
+    "slug": "papara-20250601164038473928",
+    "created_at": "2025-06-01T16:40:38.476Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "c0ea4612-5e11-4485-89bd-ad5533371634",
+  "fields": {
+    "surfspot": "d4233957-7fe4-40bd-a365-b1b137841055",
+    "image": "surfspots/surf_spots_images/Tullan_Strand-2_ZGLxPV4.jpg",
+    "description": "",
+    "slug": "tullan-strand-20250601170252740300",
+    "created_at": "2025-06-01T17:02:52.744Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "c2fff503-dd08-437b-845b-a5446297d15c",
+  "fields": {
+    "surfspot": "981bb455-66db-438a-82a3-d7295429db5e",
+    "image": "surfspots/surf_spots_images/Pipeline_HcokOX9.webp",
+    "description": "",
+    "slug": "pipeline-20250601164055237769",
+    "created_at": "2025-06-01T16:40:55.240Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "c5126b76-a00d-4c79-806b-84fb2ce3c853",
+  "fields": {
+    "surfspot": "29e61b91-e170-4474-8a90-2f7a9d5f86a8",
+    "image": "surfspots/surf_spots_images/Supertubes_3_4BI1KFu.jpg",
+    "description": "",
+    "slug": "supertubes-20250601165906925923",
+    "created_at": "2025-06-01T16:59:06.928Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "c73d04b4-4a4d-486a-b791-a75dbb35023f",
+  "fields": {
+    "surfspot": "4a988118-91b0-48f8-b3aa-f0d6394c15ca",
+    "image": "surfspots/surf_spots_images/La_Cote_de_Basque_2.webp",
+    "description": "",
+    "slug": "la-cote-des-basques-20250601162413150243",
+    "created_at": "2025-06-01T16:24:13.152Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "c78b268c-76b1-4ef4-90b3-364309335efa",
+  "fields": {
+    "surfspot": "c90cd883-132b-47e9-ae02-bcb512584a40",
+    "image": "surfspots/surf_spots_images/Hash_point_2_7uwgXzz.jpg",
+    "description": "",
+    "slug": "hash-point-20250601161959738171",
+    "created_at": "2025-06-01T16:19:59.739Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "c8ee4c5f-5c09-4183-9c54-03bce11b83b1",
+  "fields": {
+    "surfspot": "097d92d9-15af-446b-ae31-3ad3f860ae6e",
+    "image": "surfspots/surf_spots_images/Panorama_Beach_P6GiApS.jpg",
+    "description": "",
+    "slug": "panorama-beach-20250601164005749779",
+    "created_at": "2025-06-01T16:40:05.752Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "cab18e5c-53c4-453d-b6c0-fe31b0959be6",
+  "fields": {
+    "surfspot": "f02b0d64-9f34-4692-801f-517c00483b9d",
+    "image": "surfspots/surf_spots_images/Orofara_2_A1LlcyN.jpg",
+    "description": "",
+    "slug": "orofara-20250601163652119983",
+    "created_at": "2025-06-01T16:36:52.122Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "cb6e76b1-edb8-429a-af5c-2387c4e25770",
+  "fields": {
+    "surfspot": "d115aabc-c0b8-4b44-9827-1675b3258d72",
+    "image": "surfspots/surf_spots_images/Waimea_Bay_3_JAcS5JD.jpg",
+    "description": "",
+    "slug": "waimea-bay-20250601170521952081",
+    "created_at": "2025-06-01T17:05:21.954Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "cc5f90d4-3b97-4a64-ba49-9c9bfd4aaa55",
+  "fields": {
+    "surfspot": "d584227b-4d92-4f95-8b93-6a166b14b512",
+    "image": "surfspots/surf_spots_images/Nias_2_GvvyNYI.jpg",
+    "description": "",
+    "slug": "nias-20250601163250274671",
+    "created_at": "2025-06-01T16:32:50.276Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "cceb7939-3fbc-46db-9a4a-6a18e55ccac3",
+  "fields": {
+    "surfspot": "3806bea2-8859-4325-976c-8804290ce876",
+    "image": "surfspots/surf_spots_images/La_Graviere_3.png",
+    "description": "",
+    "slug": "la-graviere-20250601162518412478",
+    "created_at": "2025-06-01T16:25:18.415Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "cd806151-36ac-4f00-b746-e3c9cac1fc94",
+  "fields": {
+    "surfspot": "0954f664-3546-4e32-94e3-4bab27917b02",
+    "image": "surfspots/surf_spots_images/Macaronis_qJtT0XN.png",
+    "description": "",
+    "slug": "macaronis-20250601162818108756",
+    "created_at": "2025-06-01T16:28:18.112Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "cfe3be57-d568-4b06-b5c8-6a0cddc963a0",
+  "fields": {
+    "surfspot": "3806bea2-8859-4325-976c-8804290ce876",
+    "image": "surfspots/surf_spots_images/La_Graviere_2.jpg",
+    "description": "",
+    "slug": "la-graviere-20250601162502508474",
+    "created_at": "2025-06-01T16:25:02.510Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "d045767d-a44e-4690-aeb2-19952bf35f69",
+  "fields": {
+    "surfspot": "a909c689-f862-437f-8127-13dba21fbd6f",
+    "image": "surfspots/surf_spots_images/Uluwatu_YZfC5fW.webp",
+    "description": "",
+    "slug": "uluwatu-20250601170308619131",
+    "created_at": "2025-06-01T17:03:08.621Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "d197b3ea-29b5-4f8e-85cb-c71e80ae82b6",
+  "fields": {
+    "surfspot": "534f4295-22f2-4ecc-8437-c01bce779469",
+    "image": "surfspots/surf_spots_images/Kirra_cDXvx6k.jpeg",
+    "description": "",
+    "slug": "kirra-20250601162156813673",
+    "created_at": "2025-06-01T16:21:56.816Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "d217c637-45a7-4113-8b00-d8e0a8f30cd1",
+  "fields": {
+    "surfspot": "981bb455-66db-438a-82a3-d7295429db5e",
+    "image": "surfspots/surf_spots_images/Pipeline_7_T5oke5I.webp",
+    "description": "",
+    "slug": "pipeline-20250601164214472563",
+    "created_at": "2025-06-01T16:42:14.475Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "d3235028-d14d-4a27-8653-ae6145844596",
+  "fields": {
+    "surfspot": "4a988118-91b0-48f8-b3aa-f0d6394c15ca",
+    "image": "surfspots/surf_spots_images/La_Cote_des_Basques_3.jpeg",
+    "description": "",
+    "slug": "la-cote-des-basques-20250601162434213662",
+    "created_at": "2025-06-01T16:24:34.216Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "d39bd64c-fb4a-4494-82f8-9bfdb06adcd1",
+  "fields": {
+    "surfspot": "ce764a4c-3cc8-4d0d-bf0e-235a26d4b261",
+    "image": "surfspots/surf_spots_images/Playa_Langosta_2_AkII5E7.jpg",
+    "description": "",
+    "slug": "playa-langosta-20250601164330082653",
+    "created_at": "2025-06-01T16:43:30.084Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "d3fdb272-e253-45bf-93e0-1add3f8500b2",
+  "fields": {
+    "surfspot": "00946f4d-65ef-465b-8e2d-25ae36c46d83",
+    "image": "surfspots/surf_spots_images/Kugenuma_Beach_yke3gKy.jpg",
+    "description": "",
+    "slug": "kugenuma-beach-20250601162232707846",
+    "created_at": "2025-06-01T16:22:32.710Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "d45b3c0a-e8e9-405d-80b7-42efa8cf253e",
+  "fields": {
+    "surfspot": "d115aabc-c0b8-4b44-9827-1675b3258d72",
+    "image": "surfspots/surf_spots_images/Waimea_Bay_4_iuFyGyS.webp",
+    "description": "",
+    "slug": "waimea-bay-20250601170537393351",
+    "created_at": "2025-06-01T17:05:37.394Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "d60c6aaf-6ef0-4ee2-884a-37354e21c837",
+  "fields": {
+    "surfspot": "6b1df69b-2a28-4126-b30f-138195ab2750",
+    "image": "surfspots/surf_spots_images/Cloudbreak_2_tP3rupm.jpg",
+    "description": "",
+    "slug": "cloudbreak-20250601161430443583",
+    "created_at": "2025-06-01T16:14:30.446Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "d70ae704-890d-4d29-9c6a-e90c1d256110",
+  "fields": {
+    "surfspot": "04c10df8-bf60-4349-9ac3-3dc47b837c68",
+    "image": "surfspots/surf_spots_images/Boneyards_4_NGTqvft.jpg",
+    "description": "",
+    "slug": "boneyards-20250601161210711836",
+    "created_at": "2025-06-01T16:12:10.716Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "dac29a07-51a1-424c-9569-46ce3f93fdfa",
+  "fields": {
+    "surfspot": "4a988118-91b0-48f8-b3aa-f0d6394c15ca",
+    "image": "surfspots/surf_spots_images/La_Cote_des_Basques.jpg",
+    "description": "",
+    "slug": "la-cote-des-basques-20250601162401233091",
+    "created_at": "2025-06-01T16:24:01.235Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "dc6694b5-3aec-4bc6-99e1-d91e3c51ffc3",
+  "fields": {
+    "surfspot": "a909c689-f862-437f-8127-13dba21fbd6f",
+    "image": "surfspots/surf_spots_images/Uluwatu_5_6a3QcWJ.webp",
+    "description": "",
+    "slug": "uluwatu-20250601170414636476",
+    "created_at": "2025-06-01T17:04:14.638Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "dfed81eb-0426-418b-a395-b6fc9cd9dafc",
+  "fields": {
+    "surfspot": "d245d76b-7637-4f15-a324-d19a6ec6d209",
+    "image": "surfspots/surf_spots_images/Playa_Tamarindo_5ZaRloN.jpg",
+    "description": "",
+    "slug": "playa-tamarindo-20250601171347050475",
+    "created_at": "2025-06-01T17:13:47.053Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "e0c9f135-0a5e-4845-aa32-0c24a6fb6f44",
+  "fields": {
+    "surfspot": "5f7b6e0e-b793-4de7-813d-d6eb19c85c34",
+    "image": "surfspots/surf_spots_images/Sunset_Beach_3_Qlj4t65.webp",
+    "description": "",
+    "slug": "sunset-beach-20250601165704319024",
+    "created_at": "2025-06-01T16:57:04.321Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "e349c5b8-3863-4fbc-b0c4-886322fb68d3",
+  "fields": {
+    "surfspot": "0d91659c-0ac7-400b-b5f3-6cc64e7e169b",
+    "image": "surfspots/surf_spots_images/Zicatela_Beach_4_RkbeEHz.jpg",
+    "description": "",
+    "slug": "zicatela-beach-20250601170731658789",
+    "created_at": "2025-06-01T17:07:31.662Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "e36c94da-2489-4763-afc2-bcfbcb69352c",
+  "fields": {
+    "surfspot": "5cd623d3-39aa-4480-8004-1bfeadc7d26a",
+    "image": "surfspots/surf_spots_images/Praya_Mole_2_HFXVCOS.png",
+    "description": "",
+    "slug": "praia-mole-20250601164936264195",
+    "created_at": "2025-06-01T16:49:36.268Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "e83653f3-7f42-4c9c-92fa-3b8ae90fd98d",
+  "fields": {
+    "surfspot": "ba0e882d-c805-42ad-b752-01148237f900",
+    "image": "surfspots/surf_spots_images/Chickens_2_GKxfk1m.jpg",
+    "description": "",
+    "slug": "chickens-20250601161339824167",
+    "created_at": "2025-06-01T16:13:39.826Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "e8636617-e2f3-4932-b88f-67a0e4512f24",
+  "fields": {
+    "surfspot": "2a557ec6-640f-4d3f-b36d-5c1fa5a2d17c",
+    "image": "surfspots/surf_spots_images/Restaurant_StCwTkq.jpeg",
+    "description": "",
+    "slug": "restaurant-20250601165102851574",
+    "created_at": "2025-06-01T16:51:02.854Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "e884d8c3-cab0-42a3-938a-aa58a478a7cb",
+  "fields": {
+    "surfspot": "d115aabc-c0b8-4b44-9827-1675b3258d72",
+    "image": "surfspots/surf_spots_images/Waimea_Bay_gYSzQKf.jpg",
+    "description": "",
+    "slug": "waimea-bay-20250601170450727242",
+    "created_at": "2025-06-01T17:04:50.730Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "eb0adc52-4c6f-4bf0-95d1-afca916d24ca",
+  "fields": {
+    "surfspot": "efed3407-6f59-4ce0-b8bc-26d6eefc071b",
+    "image": "surfspots/surf_spots_images/Whale_Bay_yF1aHbn.jpg",
+    "description": "",
+    "slug": "whale-bay-20250601170609827616",
+    "created_at": "2025-06-01T17:06:09.828Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "ec89d411-73db-43d3-8caa-5f7ff70bd4e7",
+  "fields": {
+    "surfspot": "ba0e882d-c805-42ad-b752-01148237f900",
+    "image": "surfspots/surf_spots_images/Chickens_3_a6pgE4y.jpg",
+    "description": "",
+    "slug": "chickens-20250601161350662535",
+    "created_at": "2025-06-01T16:13:50.664Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "ed811226-c67a-4d9a-b1f1-682d9d53e726",
+  "fields": {
+    "surfspot": "0268d0f2-1d94-4445-97b8-cfaf8bc05291",
+    "image": "surfspots/surf_spots_images/Manu_bay_3_bRnS1gJ.webp",
+    "description": "",
+    "slug": "manu-bay-20250601163156172416",
+    "created_at": "2025-06-01T16:31:56.175Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "efb03b56-c300-44b5-9f72-a8220e986458",
+  "fields": {
+    "surfspot": "2a557ec6-640f-4d3f-b36d-5c1fa5a2d17c",
+    "image": "surfspots/surf_spots_images/Restaurant_5_biULeSi.webp",
+    "description": "",
+    "slug": "restaurant-20250601165218320308",
+    "created_at": "2025-06-01T16:52:18.323Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "f252a655-6a05-4cd0-8d7c-b4a43d3de91e",
+  "fields": {
+    "surfspot": "4f3d478c-42ab-4d96-848b-af9d34aa0f52",
+    "image": "surfspots/surf_spots_images/La_Bocana-2_WHFFDG8.jpg",
+    "description": "",
+    "slug": "la-bocana-20250601162326771958",
+    "created_at": "2025-06-01T16:23:26.781Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "f306ee2c-d938-46cc-8f03-9013ed9e41ff",
+  "fields": {
+    "surfspot": "0954f664-3546-4e32-94e3-4bab27917b02",
+    "image": "surfspots/surf_spots_images/Macaronis_3_Xds2bXA.jpg",
+    "description": "",
+    "slug": "macaronis-20250601162930023098",
+    "created_at": "2025-06-01T16:29:30.025Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "f72543eb-16bf-4d49-aa2f-56d83255a173",
+  "fields": {
+    "surfspot": "21dbf864-5c52-4e99-91b5-4811f64c8259",
+    "image": "surfspots/surf_spots_images/Teahupoo_yvpGXMI.webp",
+    "description": "",
+    "slug": "teahupoo-20250601170031485202",
+    "created_at": "2025-06-01T17:00:31.487Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "f78551cf-cbb0-41b4-83b6-7708b064e3fa",
+  "fields": {
+    "surfspot": "7cf28b25-3f41-4257-9243-c9159a2924f8",
+    "image": "surfspots/surf_spots_images/Burleigh_Heads_2_5iDPlcm.jpeg",
+    "description": "",
+    "slug": "burleigh-heads-20250601171943784782",
+    "created_at": "2025-06-01T17:19:43.788Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "f7891092-26fe-4b91-9316-5f612c1a803d",
+  "fields": {
+    "surfspot": "21dbf864-5c52-4e99-91b5-4811f64c8259",
+    "image": "surfspots/surf_spots_images/Teahupoo_3_sThzHK3.jpg",
+    "description": "",
+    "slug": "teahupoo-20250601170102206751",
+    "created_at": "2025-06-01T17:01:02.209Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "fbec8095-0978-4720-a707-0153c4a98b42",
+  "fields": {
+    "surfspot": "1ed38706-3ad8-4940-93be-0de5371a3d11",
+    "image": "surfspots/surf_spots_images/Snapper_Rocks_2_0XkQVoA.jpg",
+    "description": "",
+    "slug": "snapper-rocks-20250601165548239285",
+    "created_at": "2025-06-01T16:55:48.241Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "fc7a34d4-e801-4537-b9a7-b35db841fad5",
+  "fields": {
+    "surfspot": "3bca94fb-f1fc-4b15-8245-591afb7b4215",
+    "image": "surfspots/surf_spots_images/Les_Culs_Nus_3_LqzqpEh.jpg",
+    "description": "",
+    "slug": "les-culs-nus-20250601162801787144",
+    "created_at": "2025-06-01T16:28:01.789Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "fe8208e0-2a0c-4f16-b975-91fc7647e1ac",
+  "fields": {
+    "surfspot": "534f4295-22f2-4ecc-8437-c01bce779469",
+    "image": "surfspots/surf_spots_images/Kirra_3_yROHGch.jpg",
+    "description": "",
+    "slug": "kirra-20250601162221177566",
+    "created_at": "2025-06-01T16:22:21.180Z"
+  }
+},
+{
+  "model": "surfzones.surfspotimage",
+  "pk": "fed92f82-e48e-42d6-a22b-f82bc09643ae",
+  "fields": {
+    "surfspot": "d245d76b-7637-4f15-a324-d19a6ec6d209",
+    "image": "surfspots/surf_spots_images/Playa_Tamarindo_2_urYxzdi.jpg",
+    "description": "",
+    "slug": "playa-tamarindo-20250601171521144359",
+    "created_at": "2025-06-01T17:15:21.147Z"
+  }
+}
+]

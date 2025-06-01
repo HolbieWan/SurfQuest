@@ -1,0 +1,238 @@
+PYTHONPATH: ['/app', '/app', '/usr/local/lib/python312.zip', '/usr/local/lib/python3.12', '/usr/local/lib/python3.12/lib-dynload', '/usr/local/lib/python3.12/site-packages', '/app']
+DJANGO_SETTINGS_MODULE: surfquest.settings.dev
+[
+{
+  "model": "users.review",
+  "pk": "038ee863-1099-417c-8b71-29c947d377fb",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
+    "surf_spot": null,
+    "rating": 5,
+    "comment": "Who can disagre with king Kelly...?",
+    "created_at": "2025-05-10T10:10:57.433Z",
+    "updated_at": "2025-05-28T13:19:41.231Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "0c9a4b89-a942-49b8-9815-17964308b81c",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
+    "surf_spot": null,
+    "rating": 4,
+    "comment": "Nice chilling jungle vibes!!!",
+    "created_at": "2025-05-29T06:07:21.234Z",
+    "updated_at": "2025-05-29T06:29:11.003Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "1f7d5c2b-3499-42df-97a8-071a5ba83443",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
+    "surf_spot": null,
+    "rating": 5,
+    "comment": "Amazing!",
+    "created_at": "2025-05-28T12:40:23.697Z",
+    "updated_at": "2025-05-28T12:40:23.697Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "24077aa1-2ad0-43e2-89df-a251f7f19ad0",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": null,
+    "surf_spot": "04c10df8-bf60-4349-9ac3-3dc47b837c68",
+    "rating": 4,
+    "comment": "cool",
+    "created_at": "2025-05-31T17:53:13.420Z",
+    "updated_at": "2025-05-31T17:53:13.420Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "3a7c98e0-e448-48ac-9353-96122abd2d82",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": null,
+    "surf_spot": "2a557ec6-640f-4d3f-b36d-5c1fa5a2d17c",
+    "rating": 5,
+    "comment": "Another legendary spot!",
+    "created_at": "2025-05-30T18:51:15.006Z",
+    "updated_at": "2025-05-30T18:51:15.006Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "4b370498-febc-4e26-b93b-3d976736c0fc",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": null,
+    "surf_spot": "21dbf864-5c52-4e99-91b5-4811f64c8259",
+    "rating": 5,
+    "comment": "Words are not enough... but not for average humans!",
+    "created_at": "2025-05-28T09:23:55.305Z",
+    "updated_at": "2025-05-28T14:02:01.172Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "573a45dd-c721-49ca-88a1-fd0bfb47ff13",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
+    "surf_spot": null,
+    "rating": 4,
+    "comment": "Dingo!",
+    "created_at": "2025-05-31T06:31:21.837Z",
+    "updated_at": "2025-05-31T06:31:58.860Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "58fd706a-4c04-4f04-8a3e-9b46b061b964",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": "08ebe695-f437-4f53-bee5-6a17b5ec1a22",
+    "surf_spot": null,
+    "rating": 5,
+    "comment": "The paradise on earth...",
+    "created_at": "2025-05-28T09:23:27.206Z",
+    "updated_at": "2025-05-28T09:23:27.206Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "647b06b5-27ec-4d38-ac33-22e4588a17cd",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": null,
+    "surf_spot": "f3544237-30c1-4cc9-89a0-e3f668f24a54",
+    "rating": 5,
+    "comment": "Perfect!",
+    "created_at": "2025-05-31T06:43:26.662Z",
+    "updated_at": "2025-05-31T06:43:26.662Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "6a83104c-820f-4f3d-9ec5-f6c9b49bdec5",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": null,
+    "surf_spot": "ab93979b-c043-4ad0-a129-672380284bb3",
+    "rating": 5,
+    "comment": "Just another gem...",
+    "created_at": "2025-05-31T06:57:42.120Z",
+    "updated_at": "2025-05-31T06:58:10.252Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "728c1b06-4c56-41f1-8325-7770d5b9ea41",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": null,
+    "surf_spot": "7cf28b25-3f41-4257-9243-c9159a2924f8",
+    "rating": 4,
+    "comment": "Great but lot of current",
+    "created_at": "2025-05-31T07:07:11.717Z",
+    "updated_at": "2025-05-31T07:07:11.717Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "833cdf63-9fad-4fc2-b22a-037c49628fb3",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": null,
+    "surf_spot": "3bdf94e5-d8f0-49fe-a647-34b9cc2d1033",
+    "rating": 5,
+    "comment": "Le mythique spot de guéthary!!!!!!",
+    "created_at": "2025-05-28T17:39:55.619Z",
+    "updated_at": "2025-05-31T07:06:13.898Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "98f92a45-ba60-464a-bc76-a1cddea20774",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
+    "surf_spot": null,
+    "rating": 5,
+    "comment": "Just kidding... deserves 10 stars!",
+    "created_at": "2025-05-31T06:54:06.625Z",
+    "updated_at": "2025-05-31T20:26:56.583Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "9e1f44c6-44ae-45ed-955e-e5da24d11aad",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": null,
+    "surf_spot": "73500a84-4e63-4981-b0c2-17a4bbe6f9fe",
+    "rating": 3,
+    "comment": "Quite good",
+    "created_at": "2025-05-30T18:28:39.748Z",
+    "updated_at": "2025-05-30T18:28:39.748Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "c589bf86-fd68-4b0d-8dd3-51cd1b0955dd",
+  "fields": {
+    "user": "61bdfb38-8a2e-4515-a551-0f530e3a2d8d",
+    "surf_zone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
+    "surf_spot": null,
+    "rating": 5,
+    "comment": "Really amazing!!!",
+    "created_at": "2025-03-09T12:33:11.642Z",
+    "updated_at": "2025-05-04T13:43:33.074Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "d0d651de-ed59-4904-b64d-cdcd5b644277",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
+    "surf_spot": null,
+    "rating": 5,
+    "comment": "Top la classe!",
+    "created_at": "2025-05-30T14:21:45.793Z",
+    "updated_at": "2025-05-30T14:21:45.793Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "d2ba3b1b-ce86-4136-9dfc-e3d914ee24f5",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
+    "surf_spot": null,
+    "rating": 4,
+    "comment": "Crazy heavy barrels!",
+    "created_at": "2025-05-31T06:20:42.214Z",
+    "updated_at": "2025-05-31T06:25:17.963Z"
+  }
+},
+{
+  "model": "users.review",
+  "pk": "e40c26c5-fe1c-4efc-9c56-9cf3a22496b8",
+  "fields": {
+    "user": "4ac780d4-8be7-43c2-94c0-671e0532e478",
+    "surf_zone": "8876d299-9164-4338-b630-385964d5d88c",
+    "surf_spot": null,
+    "rating": 4,
+    "comment": "Crazy big...",
+    "created_at": "2025-05-30T13:58:53.266Z",
+    "updated_at": "2025-05-31T07:05:33.859Z"
+  }
+}
+]

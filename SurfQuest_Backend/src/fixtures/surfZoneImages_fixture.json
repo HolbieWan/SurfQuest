@@ -1,0 +1,488 @@
+PYTHONPATH: ['/app', '/app', '/usr/local/lib/python312.zip', '/usr/local/lib/python3.12', '/usr/local/lib/python3.12/lib-dynload', '/usr/local/lib/python3.12/site-packages', '/app']
+DJANGO_SETTINGS_MODULE: surfquest.settings.dev
+[
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "026e377a-ea7b-46bb-bf2b-291162ee18c6",
+  "fields": {
+    "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
+    "image": "surfzones/surf_zones_images/Bali_uluwatu_tyenPAZ.jpg",
+    "description": "Bali_uluwatu surfzone",
+    "slug": "bali-bukit-peninsula-20250215220528542483",
+    "created_at": "2025-02-13T22:59:40.751Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "04ede627-51c0-4a46-92c8-57fc6c348e99",
+  "fields": {
+    "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
+    "image": "surfzones/surf_zones_images/Taghazout_5kCTYmu.jpg",
+    "description": "Surf Taghazout",
+    "slug": "taghazout-20250215220528558649",
+    "created_at": "2025-02-13T23:12:11.906Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "0ba496d7-9824-4aeb-ad35-36bf9b633284",
+  "fields": {
+    "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
+    "image": "surfzones/surf_zones_images/Popoyo_SGFkRmn.jpg",
+    "description": "Surf Popoyo",
+    "slug": "popoyo-20250215220528554834",
+    "created_at": "2025-02-13T23:09:44.062Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "13daa85c-5047-4dc7-b643-510a8c30f655",
+  "fields": {
+    "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
+    "image": "surfzones/surf_zones_images/Cloudbreak_784ovm0.jpg",
+    "description": "Surf Cloudbreak",
+    "slug": "cloudbreak-20250215220528546730",
+    "created_at": "2025-02-13T23:02:48.481Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "1b5335e6-0868-4fe6-8b3a-de5ebe67af04",
+  "fields": {
+    "surfzone": "72fb4e9d-ec8a-4643-a96d-9e7050237312",
+    "image": "surfzones/surf_zones_images/Popoyo_2_8yI6JVp.JPG",
+    "description": "",
+    "slug": "popoyo-20250601134609480791",
+    "created_at": "2025-06-01T13:46:09.483Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "1ffb3015-3709-4d4b-9bf2-d01746f3cbdf",
+  "fields": {
+    "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
+    "image": "surfzones/surf_zones_images/Nazare_SsxiIIY.jpeg",
+    "description": "Surf Nazare",
+    "slug": "nazare-20250215220528552716",
+    "created_at": "2025-02-13T23:06:37.873Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "2136e82f-8ab9-44ce-86d7-85d32f7f8fb9",
+  "fields": {
+    "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
+    "image": "surfzones/surf_zones_images/Jeffreys-Bay_2_9RyDKbg.jpg",
+    "description": "",
+    "slug": "jeffreys-bay-20250601134315906600",
+    "created_at": "2025-06-01T13:43:15.911Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "3d1451a0-695c-4915-8f0a-b64005618943",
+  "fields": {
+    "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
+    "image": "surfzones/surf_zones_images/Puerto-Escondido_QsraNo1.webp",
+    "description": "Surf Puerto Escondido",
+    "slug": "puerto-escondido-20250215220528555559",
+    "created_at": "2025-02-13T23:10:21.205Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "3d178f34-33b4-4d6a-a7c0-9edf2978f8ed",
+  "fields": {
+    "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
+    "image": "surfzones/surf_zones_images/Florianopolis_xuXaBML.jpg",
+    "description": "Surf Florianopolis",
+    "slug": "florianopolis-20250215220528548335",
+    "created_at": "2025-02-13T23:03:49.006Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "3dc9095b-7e45-41c4-96d5-e7f8db82591e",
+  "fields": {
+    "surfzone": "08ebe695-f437-4f53-bee5-6a17b5ec1a22",
+    "image": "surfzones/surf_zones_images/Tahiti_2_D8CbUH0.webp",
+    "description": "",
+    "slug": "tahiti-20250523090154175255",
+    "created_at": "2025-05-23T09:01:54.178Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "3f995b5e-50de-4e69-88f9-4dee29414ec0",
+  "fields": {
+    "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
+    "image": "surfzones/surf_zones_images/Tokyo_ai9kFhk.jpeg",
+    "description": "Surf Shonan Kamakura",
+    "slug": "shonan-kamakura-20250215220528557880",
+    "created_at": "2025-02-13T23:11:49.534Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "43959d15-d9f6-4319-a223-ce963f1a3192",
+  "fields": {
+    "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
+    "image": "surfzones/surf_zones_images/Mentawai_2_4uIUYiR.jpeg",
+    "description": "",
+    "slug": "mentawai-20250601134339946127",
+    "created_at": "2025-06-01T13:43:39.949Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "44c4d1d4-a9e7-4275-863b-a26bceaa5af5",
+  "fields": {
+    "surfzone": "335aba22-4c2a-48ab-b8e2-9efd3b68486c",
+    "image": "surfzones/surf_zones_images/Jeffreys-Bay_AmZPAFl.webp",
+    "description": "Surf Jeffrey's bay",
+    "slug": "jeffreys-bay-20250215220528550746",
+    "created_at": "2025-02-13T23:05:01.576Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "49a0a96d-c77c-423b-8e46-a63cb23208dc",
+  "fields": {
+    "surfzone": "38770dca-2096-4499-b03f-eda6f3d3a3c7",
+    "image": "surfzones/surf_zones_images/Taghazout-2_S2Y0Wrd.jpg",
+    "description": "",
+    "slug": "taghazout-20250601140200499621",
+    "created_at": "2025-06-01T14:02:00.502Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "4a2a5da2-5fd3-4723-84da-bcc2fa7b9a24",
+  "fields": {
+    "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
+    "image": "surfzones/surf_zones_images/Cloudbreak-2_1AIjgLd.webp",
+    "description": "",
+    "slug": "cloudbreak-20250527062047000643",
+    "created_at": "2025-05-27T06:20:47.003Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "4bb393cf-510a-43ce-8b08-5bb49391c311",
+  "fields": {
+    "surfzone": "f7c28869-ef0b-4a3d-b5aa-c62bc2159012",
+    "image": "surfzones/surf_zones_images/Bali_Bukit_Peninsula_2_w8WdfzO.png",
+    "description": "",
+    "slug": "bali-bukit-peninsula-20250529071324353501",
+    "created_at": "2025-05-29T07:13:24.357Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "50aebd88-d79a-4aee-8291-b15795110ee7",
+  "fields": {
+    "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
+    "image": "surfzones/surf_zones_images/North-shore_2_aOtKPjN.jpg",
+    "description": "",
+    "slug": "oahu-north-shore-20250601135749311266",
+    "created_at": "2025-06-01T13:57:49.314Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "681dcd07-850e-40cd-bbf0-03e446b80e29",
+  "fields": {
+    "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
+    "image": "surfzones/surf_zones_images/Maldives-1_n4jMBEW.jpg",
+    "description": "",
+    "slug": "north-male-atolls-20250601134452059834",
+    "created_at": "2025-06-01T13:44:52.062Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "70b640a8-5d71-42b5-82c9-2b2312a02e3e",
+  "fields": {
+    "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
+    "image": "surfzones/surf_zones_images/Gold-Coast_2_kCV5C3x.jpg",
+    "description": "",
+    "slug": "gold-coast-20250601134250455264",
+    "created_at": "2025-06-01T13:42:50.462Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "756ae87e-6f8a-47f7-81a7-cc88b91ab4cf",
+  "fields": {
+    "surfzone": "08ebe695-f437-4f53-bee5-6a17b5ec1a22",
+    "image": "surfzones/surf_zones_images/Tahiti_4_ds1sbLe.webp",
+    "description": "",
+    "slug": "tahiti-20250601134828140200",
+    "created_at": "2025-06-01T13:48:28.142Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "7b3ce8ed-be7a-45c6-aaba-e8a6527bb89d",
+  "fields": {
+    "surfzone": "08ebe695-f437-4f53-bee5-6a17b5ec1a22",
+    "image": "surfzones/surf_zones_images/Tahiti_ri1RRRc.jpg",
+    "description": "Surf Tahiti",
+    "slug": "tahiti-20250215220528559432",
+    "created_at": "2025-02-13T23:17:42.345Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "83d4e201-3279-4eb6-a811-585ebfeacbe5",
+  "fields": {
+    "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
+    "image": "surfzones/surf_zones_images/Biarritz_SLCQXfl.jpg",
+    "description": "Surf Biarritz",
+    "slug": "basque-country-biarritz-20250215220528545038",
+    "created_at": "2025-02-13T23:02:07.982Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "84fc7490-3156-4178-bc2d-60bb3b5bc714",
+  "fields": {
+    "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
+    "image": "surfzones/surf_zones_images/Hossegor_2_rJSnsgr.jpg",
+    "description": "",
+    "slug": "hossegor-20250215232535898141",
+    "created_at": "2025-02-15T23:25:35.898Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "87a53a24-dddb-473b-b8f2-9a2e0062b1a7",
+  "fields": {
+    "surfzone": "66b2ee47-11e3-40a1-b2dc-48e50710906e",
+    "image": "surfzones/surf_zones_images/Shonan_jm3uhhk.jpg",
+    "description": "",
+    "slug": "shonan-kamakura-20250601134742571960",
+    "created_at": "2025-06-01T13:47:42.574Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "8b0277de-930b-48d6-8faf-8728d955d3c8",
+  "fields": {
+    "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
+    "image": "surfzones/surf_zones_images/Raglan_3_XG0zEnG.jpeg",
+    "description": "",
+    "slug": "raglan-20250601134719823754",
+    "created_at": "2025-06-01T13:47:19.826Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "930aa223-49c7-4d21-9a43-1cea57cc256e",
+  "fields": {
+    "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
+    "image": "surfzones/surf_zones_images/Bundoran_2_zvetKaw.webp",
+    "description": "",
+    "slug": "bundoran-20250601134048465892",
+    "created_at": "2025-06-01T13:40:48.467Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "94c23620-934b-4ff1-af8c-fd1b53add674",
+  "fields": {
+    "surfzone": "ed5514de-9424-41c0-bbed-684e12f2bf36",
+    "image": "surfzones/surf_zones_images/Maldives-2_Zs9UnHH.jpg",
+    "description": "",
+    "slug": "north-male-atolls-20250601134429951350",
+    "created_at": "2025-06-01T13:44:29.953Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "983e5918-30cc-4a5e-ad7d-6af53a4dc213",
+  "fields": {
+    "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
+    "image": "surfzones/surf_zones_images/El-Tunco_2_cn2vKRZ.jpg",
+    "description": "",
+    "slug": "el-tunco-20250601134106943952",
+    "created_at": "2025-06-01T13:41:06.946Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "992933a8-7ad2-4917-9860-23baf7128704",
+  "fields": {
+    "surfzone": "9a5ba8da-0c7d-469c-958c-9bfe6b19f182",
+    "image": "surfzones/surf_zones_images/Florianopolis_2_hDkudZX.jpg",
+    "description": "",
+    "slug": "florianopolis-20250601134201775157",
+    "created_at": "2025-06-01T13:42:01.777Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "99fad545-c2cb-4da8-8969-bc699b4c14ed",
+  "fields": {
+    "surfzone": "a9d19a8f-ad93-499c-96f0-4864697712ae",
+    "image": "surfzones/surf_zones_images/North-shore_3_9dznGRr.jpg",
+    "description": "",
+    "slug": "oahu-north-shore-20250601134545883176",
+    "created_at": "2025-06-01T13:45:45.885Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "9c4bce07-4c7c-4b95-a1e3-45a02b504645",
+  "fields": {
+    "surfzone": "02f3f67f-a356-4395-b3c5-70c14c2b5387",
+    "image": "surfzones/surf_zones_images/Puerto-escondido_2_vQQ2SKh.jpg",
+    "description": "",
+    "slug": "puerto-escondido-20250601134638337417",
+    "created_at": "2025-06-01T13:46:38.340Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "9ecad49e-3c9d-4a85-935a-3b28a4ccd54f",
+  "fields": {
+    "surfzone": "0e9ba66b-bf44-4c6f-a878-295f15beddc5",
+    "image": "surfzones/surf_zones_images/Bundoran_N8M4n5E.jpg",
+    "description": "Surf Bundoran",
+    "slug": "bundoran-20250215220528545969",
+    "created_at": "2025-02-13T23:02:25.300Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "a3219604-9294-48a3-abeb-e1f3e2c102d5",
+  "fields": {
+    "surfzone": "6eb87079-b3ba-4a33-83ef-86ab7c985541",
+    "image": "surfzones/surf_zones_images/Mentawai_Lhqzyku.jpg",
+    "description": "Surf Mentawaï",
+    "slug": "mentawai-20250215220528551989",
+    "created_at": "2025-02-13T23:05:58.935Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "a6432594-457f-4266-9205-496f7c18ceab",
+  "fields": {
+    "surfzone": "8876d299-9164-4338-b630-385964d5d88c",
+    "image": "surfzones/surf_zones_images/Nazare_3_y0Vys3d.jpg",
+    "description": "",
+    "slug": "nazare-20250601134405524986",
+    "created_at": "2025-06-01T13:44:05.528Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "b044ab29-74c5-466b-a727-b33a6e98090a",
+  "fields": {
+    "surfzone": "413d30d4-51a9-4a42-bb9f-fe6d5867eca7",
+    "image": "surfzones/surf_zones_images/Cloudbreak_2_vfNsPif.jpg",
+    "description": "",
+    "slug": "cloudbreak-20250601134233839926",
+    "created_at": "2025-06-01T13:42:33.842Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "ca586276-2bd6-4664-b635-b94712c7bacc",
+  "fields": {
+    "surfzone": "b87480e3-d1ff-495e-b34b-31c7142e8177",
+    "image": "surfzones/surf_zones_images/Raglan_KTkgaic.jpg",
+    "description": "Surf Raglan",
+    "slug": "raglan-20250215220528557181",
+    "created_at": "2025-02-13T23:11:17.662Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "ceb6712f-8b62-4342-bcd3-5772da9925d1",
+  "fields": {
+    "surfzone": "871b3a37-a10d-4009-81b7-aedb830de6f5",
+    "image": "surfzones/surf_zones_images/Hossegor_x5mZUpg.jpg",
+    "description": "",
+    "slug": "hossegor-20250601135148472530",
+    "created_at": "2025-06-01T13:51:48.476Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "db2aee4b-e46d-4f96-84af-fdd04ee9828d",
+  "fields": {
+    "surfzone": "fd917a26-63ca-436e-a677-db97e6005c3d",
+    "image": "surfzones/surf_zones_images/El-Tunco_gccssp3.jpg",
+    "description": "Surf El-Tunco",
+    "slug": "el-tunco-20250215220528547535",
+    "created_at": "2025-02-13T23:03:24.015Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "e03cc961-42d3-4e8c-8505-ed8ad789e391",
+  "fields": {
+    "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
+    "image": "surfzones/surf_zones_images/Punta_de_lobos_2.jpg",
+    "description": "",
+    "slug": "punta-de-lobos-20250601134657089554",
+    "created_at": "2025-06-01T13:46:57.092Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "e424c38d-c3ae-4f3f-bdc9-baaf3ae0f0b1",
+  "fields": {
+    "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
+    "image": "surfzones/surf_zones_images/Tamarindo_mRN9VxZ.jpg",
+    "description": "Surf Tamarindo",
+    "slug": "tamarindo-20250215220528560105",
+    "created_at": "2025-02-13T23:13:02.615Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "e825ab1c-9376-4d9f-a3cb-2fee09d2b406",
+  "fields": {
+    "surfzone": "0c798abc-0067-48f9-8fec-aa765c83c62d",
+    "image": "surfzones/surf_zones_images/Tamarindo_4_0qamhaR.webp",
+    "description": "",
+    "slug": "tamarindo-20250601134848004337",
+    "created_at": "2025-06-01T13:48:48.006Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "ea474e0c-c2e7-4df7-bf9b-b0df211dc78e",
+  "fields": {
+    "surfzone": "b69e610b-0b0d-4d83-a5e6-fbca818623fb",
+    "image": "surfzones/surf_zones_images/Punta-de-Lobos_bKupfz3.webp",
+    "description": "Surf Punta do Lobos",
+    "slug": "punta-de-lobos-20250215220528556400",
+    "created_at": "2025-02-13T23:10:47.554Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "eaa1b9af-c354-48e0-bc44-70636205138a",
+  "fields": {
+    "surfzone": "1b77ab4d-b119-4ae7-a9bb-f9afe1f516bd",
+    "image": "surfzones/surf_zones_images/Biarritz_2_r34iDGl.jpg",
+    "description": "",
+    "slug": "basque-country-biarritz-20250523085612087703",
+    "created_at": "2025-05-23T08:56:12.090Z"
+  }
+},
+{
+  "model": "surfzones.surfzoneimage",
+  "pk": "f9478de4-49c2-40ef-a3ae-2123588003c8",
+  "fields": {
+    "surfzone": "953258df-c528-44c9-9998-0d23d67e4da7",
+    "image": "surfzones/surf_zones_images/Gold-Coast_jAPo4Xn.webp",
+    "description": "Surf Gold-Coast",
+    "slug": "gold-coast-20250215220528549060",
+    "created_at": "2025-02-13T23:04:16.526Z"
+  }
+}
+]
