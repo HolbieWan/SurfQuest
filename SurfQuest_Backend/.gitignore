@@ -16,8 +16,8 @@ local_settings.py  # Ignore local settings file (if used)
 
 # Media/Static files
 media/
-staticfiles/
-static/
+# staticfiles/
+# static/
 
 # Environment variables and secrets
 .env
