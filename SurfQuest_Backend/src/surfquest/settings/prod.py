@@ -140,8 +140,8 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
-            'level': 'ERROR',                      # Only log errors
+            'handlers': ['console'],
+            'level': 'INFO',                      # Only log errors
             'propagate': True,                     # Propagate logs to parent loggers
         },
     },
