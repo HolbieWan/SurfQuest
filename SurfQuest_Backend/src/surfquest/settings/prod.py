@@ -46,8 +46,8 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [
     "https://www.surfquest-trip-planner.com",   # Main domain
     "https://surfquest-trip-planner.com",       # Main domain without www
-    "https://www.surfquestfrontendapp.vercel.app", # Frontend on Vercel
-    "https://surfquestfrontendapp.vercel.app", # Frontend on Vercel
+    "https://www.surfquest_frontend_app.vercel.app", # Frontend on Vercel
+    "https://surfquest_frontend_app.vercel.app", # Frontend on Vercel
     "https://surfquest-backend.onrender.com",    # Backend on Render
     "https://www.surfquest-backend.onrender.com",    # Backend on Render
 
@@ -55,8 +55,8 @@ CSRF_TRUSTED_ORIGINS = [
     "http://surfquest-backend.onrender.com",    # Backend on Render
     "http://www.surfquest-trip-planner.com",   # Main domain
     "http://surfquest-trip-planner.com",       # Main domain without www
-    "http://www.surfquestfrontendapp.vercel.app", # Frontend on Vercel
-    "http://surfquestfrontendapp.vercel.app", # Frontend on Vercel
+    "http://www.surfquest_frontend_app.vercel.app", # Frontend on Vercel
+    "http://surfquest_frontend_app.vercel.app", # Frontend on Vercel
 
     "http://localhost",               # Local development
     "http://127.0.0.1",               # Loopback address
@@ -73,8 +73,8 @@ CSRF_TRUSTED_ORIGINS = [
 CORS_ALLOWED_ORIGINS = [
     "https://www.surfquest-trip-planner.com",   # Main domain
     "https://surfquest-trip-planner.com",       # Main domain without www
-    "https://www.surfquestfrontendapp.vercel.app", # Frontend on Vercel
-    "https://surfquestfrontendapp.vercel.app", # Frontend on Vercel
+    "https://www.surfquest_frontend_app.vercel.app", # Frontend on Vercel
+    "https://surfquest_frontend_app.vercel.app", # Frontend on Vercel
     "https://surfquest-backend.onrender.com",    # Backend on Render
     "https://www.surfquest-backend.onrender.com",    # Backend on Render
 
@@ -82,8 +82,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://surfquest-backend.onrender.com",    # Backend on Render
     "http://www.surfquest-trip-planner.com",   # Main domain
     "http://surfquest-trip-planner.com",       # Main domain without www
-    "http://www.surfquestfrontendapp.vercel.app", # Frontend on Vercel
-    "http://surfquestfrontendapp.vercel.app", # Frontend on Vercel
+    "http://www.surfquest_frontend_app.vercel.app", # Frontend on Vercel
+    "http://surfquest_frontend_app.vercel.app", # Frontend on Vercel
 
     "http://localhost",               # Local development
     "http://127.0.0.1",               # Loopback address
