@@ -15,7 +15,7 @@ db.sqlite3  # Ignore the SQLite database (if using SQLite for development)
 local_settings.py  # Ignore local settings file (if used)
 
 # Media/Static files
-media/
+# media/
 # staticfiles/
 # static/
 
