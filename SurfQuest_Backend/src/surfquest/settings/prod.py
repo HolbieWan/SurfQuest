@@ -129,11 +129,11 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
-        'file': {
-            'level': 'ERROR',                      # Log only errors
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logs', 'django_errors.log'),  # Log file path inside Docker container
-        },
+        # 'file': {
+        #     'level': 'ERROR',                      
+        #     'class': 'logging.FileHandler',
+        #     'filename': os.path.join(BASE_DIR, 'logs', 'django_errors.log'),  
+        # },
         'console': {
             'class': 'logging.StreamHandler',
         },
