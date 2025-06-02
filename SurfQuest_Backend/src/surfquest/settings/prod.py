@@ -17,7 +17,8 @@ import os
 # ============================
 
 # Disable debugging mode for production
-DEBUG = False
+# DEBUG = False
+DEBUG = True
 
 # Define allowed hosts for production environment
 ALLOWED_HOSTS = [
@@ -92,7 +93,8 @@ DATABASES = {
 # Static files (CSS, JavaScript, Images)
 STATICFILES_DIRS = []
 STATIC_URL = '/static/'                 # URL to access static files
-STATIC_ROOT = '/app/staticfiles'             # Path inside the Docker container for static files
+# STATIC_ROOT = '/app/staticfiles'             # Path inside the Docker container for static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For render deployment
 
 # Media files (User uploads)
 MEDIA_URL = '/media/'                   # URL to access media files
