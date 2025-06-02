@@ -10,6 +10,7 @@ optimized for deployment, performance, and security.
 # ============================
 
 from .base import *
+import os
 
 # ============================
 # Production Environment Settings
@@ -131,7 +132,7 @@ LOGGING = {
         'file': {
             'level': 'ERROR',                      # Log only errors
             'class': 'logging.FileHandler',
-            'filename': '/app/logs/django_errors.log',  # Log file path inside Docker container
+            'filename': os.path.join(BASE_DIR, 'logs', 'django_errors.log'),  # Log file path inside Docker container
         },
         'console': {
             'class': 'logging.StreamHandler',
