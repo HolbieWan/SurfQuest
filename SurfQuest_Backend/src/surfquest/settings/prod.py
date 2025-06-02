@@ -44,8 +44,20 @@ ALLOWED_HOSTS = [
 
 # Define trusted origins for CSRF protection
 CSRF_TRUSTED_ORIGINS = [
-    "https://yourdomain.com",         # Secure HTTPS access
-    "http://yourdomain.com",          # Standard HTTP access
+    "https://www.surfquest-trip-planner.com",   # Main domain
+    "https://surfquest-trip-planner.com",       # Main domain without www
+    "https://www.surfquestfrontendapp.vercel.app", # Frontend on Vercel
+    "https://surfquestfrontendapp.vercel.app", # Frontend on Vercel
+    "https://surfquest-backend.onrender.com",    # Backend on Render
+    "https://www.surfquest-backend.onrender.com",    # Backend on Render
+
+    "http://www.surfquest-backend.onrender.com",    # Backend on Render
+    "http://surfquest-backend.onrender.com",    # Backend on Render
+    "http://www.surfquest-trip-planner.com",   # Main domain
+    "http://surfquest-trip-planner.com",       # Main domain without www
+    "http://www.surfquestfrontendapp.vercel.app", # Frontend on Vercel
+    "http://surfquestfrontendapp.vercel.app", # Frontend on Vercel
+
     "http://localhost",               # Local development
     "http://127.0.0.1",               # Loopback address
     "http://backend:8000",            # Docker backend service
@@ -59,8 +71,20 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Allowed origins for Cross-Origin Resource Sharing (CORS)
 CORS_ALLOWED_ORIGINS = [
-    "https://yourdomain.com",         # Secure HTTPS access
-    "http://yourdomain.com",          # Standard HTTP access
+    "https://www.surfquest-trip-planner.com",   # Main domain
+    "https://surfquest-trip-planner.com",       # Main domain without www
+    "https://www.surfquestfrontendapp.vercel.app", # Frontend on Vercel
+    "https://surfquestfrontendapp.vercel.app", # Frontend on Vercel
+    "https://surfquest-backend.onrender.com",    # Backend on Render
+    "https://www.surfquest-backend.onrender.com",    # Backend on Render
+
+    "http://www.surfquest-backend.onrender.com",    # Backend on Render
+    "http://surfquest-backend.onrender.com",    # Backend on Render
+    "http://www.surfquest-trip-planner.com",   # Main domain
+    "http://surfquest-trip-planner.com",       # Main domain without www
+    "http://www.surfquestfrontendapp.vercel.app", # Frontend on Vercel
+    "http://surfquestfrontendapp.vercel.app", # Frontend on Vercel
+
     "http://localhost",               # Local development
     "http://127.0.0.1",               # Loopback address
     "http://backend:8000",            # Docker backend service
