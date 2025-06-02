@@ -135,7 +135,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For render deployment
 
 # Media files (User uploads)
 MEDIA_URL = '/media/'                   # URL to access media files
-MEDIA_ROOT = '/app/media'               # Path inside the Docker container for media files
+# MEDIA_ROOT = '/app/media'               # Path inside the Docker container for media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
 # ============================
 # Security Headers Configuration
