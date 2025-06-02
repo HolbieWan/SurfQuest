@@ -7,6 +7,7 @@ This defines the top-level routing for Django, mapping URLs to views.
 #===========================================
 # Django Imports
 #===========================================
+from django.conf import settings
 from django.contrib import admin   # Admin interface for managing the application
 from django.conf.urls.static import static   # Static file serving utility
 from django.urls import path, include   # URL routing utilities
@@ -37,4 +38,4 @@ urlpatterns = [
 # ============================
 
 # Serve user-uploaded media files through Django when DEBUG is True
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
