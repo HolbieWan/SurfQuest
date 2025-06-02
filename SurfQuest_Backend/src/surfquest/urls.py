@@ -38,4 +38,19 @@ urlpatterns = [
 # ============================
 
 # Serve user-uploaded media files through Django when DEBUG is True
+import logging
+logger = logging.getLogger(__name__)
+logger.info(f"STATIC_ROOT is: {settings.STATIC_ROOT}")
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Serve static files in production
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+else:
+    from django.views.static import serve
+    from django.urls import re_path
+
+    urlpatterns += [
+        re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+    ]

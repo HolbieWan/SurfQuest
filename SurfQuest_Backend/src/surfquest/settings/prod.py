@@ -103,7 +103,8 @@ DATABASES = {
 # ============================
 
 # Static files (CSS, JavaScript, Images)
-STATICFILES_DIRS = []
+# STATICFILES_DIRS = []
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_URL = '/static/'                 # URL to access static files
 # STATIC_ROOT = '/app/staticfiles'             # Path inside the Docker container for static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # For render deployment
