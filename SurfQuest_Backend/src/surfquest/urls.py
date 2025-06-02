@@ -8,7 +8,6 @@ This defines the top-level routing for Django, mapping URLs to views.
 # Django Imports
 #===========================================
 from django.contrib import admin   # Admin interface for managing the application
-from django.conf import settings   # Settings for the Django project
 from django.conf.urls.static import static   # Static file serving utility
 from django.urls import path, include   # URL routing utilities
 

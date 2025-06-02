@@ -30,7 +30,7 @@ import { applySurfSpotFilters } from '@/utils/spotFilters';
 import * as opts from '@/utils/spotsFilterOption';
 import FiltersGrid from '@/components/SurfSpots/FiltersGrid';
 
-export default function SearchSurfSpotsPage() {
+function SearchSurfSpotsPage() {
   // ============================
   // Router Hook & Search Params
   // ============================
@@ -213,7 +213,7 @@ export default function SearchSurfSpotsPage() {
 }
 
 // Wrap in Suspense for safety
-export function Page() {
+export default function Page() {
   return (
     <Suspense fallback={<div>Loading…</div>}>
       <SearchSurfSpotsPage />

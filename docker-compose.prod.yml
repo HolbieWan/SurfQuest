@@ -47,7 +47,7 @@ services:
       - "8000"
     volumes:
       - ./SurfQuest_Backend/src:/app 
-      - ./SurfQuest_Backend/src/media:/app/media
+      - media_volume_2:/app/media
       - ./logs:/app/logs
       - static_volume:/app/staticfiles 
     networks:
@@ -101,7 +101,7 @@ services:
       - frontend
     volumes:
       - ./nginx.prod.conf:/etc/nginx/conf.d/default.conf
-      - ./SurfQuest_Backend/src/media:/app/media  # Serve media files directly
+      - media_volume_2:/app/media
       - static_volume:/app/staticfiles 
 
 # ============================
@@ -110,7 +110,7 @@ services:
 volumes:
   pgdata:
     external: true
-  media_volume:
+  media_volume_2:
     external: true
   django_app:
   static_volume:
