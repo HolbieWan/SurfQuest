@@ -17,8 +17,8 @@ import os
 # ============================
 
 # Disable debugging mode for production
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 # Define allowed hosts for production environment
 ALLOWED_HOSTS = [
