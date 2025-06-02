@@ -74,14 +74,26 @@ CORS_ALLOWED_ORIGINS = [
 # Database Configuration
 # ============================
 
-# PostgreSQL database configuration for production
+# PostgreSQL database configuration for production in Docker
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',             # PostgreSQL as database engine
+#         'NAME': os.getenv('DATABASE_NAME', 'surfquest-db'),    # Database name
+#         'USER': os.getenv('DATABASE_USER', 'Admin44'),         # Database user
+#         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'Admin44'), # Database password
+#         'HOST': os.getenv('DATABASE_HOST', 'db'),              # Docker service name for PostgreSQL
+#         'PORT': os.getenv('DATABASE_PORT', '5432'),            # Default PostgreSQL port
+#     }
+# }
+
+# PostgreSQL database configuration for production in Render
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',             # PostgreSQL as database engine
         'NAME': os.getenv('DATABASE_NAME', 'surfquest-db'),    # Database name
         'USER': os.getenv('DATABASE_USER', 'Admin44'),         # Database user
         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'Admin44'), # Database password
-        'HOST': os.getenv('DATABASE_HOST', 'db'),              # Docker service name for PostgreSQL
+        'HOST': os.getenv('DATABASE_HOST', 'dpg-d0umfojipnbc73ehnekg-a.onrender.com'),              # Docker service name for PostgreSQL
         'PORT': os.getenv('DATABASE_PORT', '5432'),            # Default PostgreSQL port
     }
 }
