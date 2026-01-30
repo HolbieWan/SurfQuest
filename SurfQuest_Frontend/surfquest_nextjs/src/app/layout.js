@@ -33,7 +33,6 @@ export const metadata = {
 // ============================
 export default function RootLayout({ children }) {
   const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
-  console.log(`Environment: ${environment}`);  // Log the current environment (dev, staging, prod)
 
   return (
     <html lang="en">

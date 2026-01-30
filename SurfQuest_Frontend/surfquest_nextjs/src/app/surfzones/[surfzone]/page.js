@@ -1,32 +1,71 @@
-'use client';
+// """Page component for displaying surf zone details with SSR data fetching."""
+// ============================
+// External Dependencies
+// ============================
+import React from "react";
 
-import React, {use} from 'react';
-// import { useRouter } from "next/navigation"; // Optional router if redirection is needed
-import SurfZoneDetails from '@/components/SurfZones/SurfZoneDetails';
+import SurfZoneDetails from "@/components/SurfZones/SurfZoneDetails";
+import { API } from "@/config/api";
 
 /**
- * Page component to display details for a selected surf zone.
- * Receives zone data via `params`, typically passed through routing context.
- *
- * @param {Object} params - Route parameters containing surfzone data.
- * @returns {JSX.Element} - The Surf Zone detail page.
+ * SSR fetch surfzone detail
+ * - In Docker SSR: use INTERNAL url (backend:8000)
+ * - In browser/client: use PUBLIC url (localhost:8000 or deployed domain)
  */
-export default function SurfZonePage({ params }) {
-  // Extract the surfzone data from params (passed via dynamic route)
-  const surfzone =  use(params)?.surfzone;
+async function fetchSurfZoneDetail(id) {
+  // Supporte plusieurs noms selon ton config actuel
+  const baseUrl = API.server.surfzonesDetail;
 
-  // Debug: Log the currently selected surf zone (optional in development)
-  console.log('Selected Surf Zone:', surfzone);
-
-  // If no valid surf zone is found, show a user-friendly error
-  if (!surfzone) {
-    return <p className="text-red-500 text-sm">Invalid Surf Zone</p>;
+  if (!baseUrl) {
+    throw new Error(
+      "Missing SURFZONES_DETAIL base URL. Define it in config/api.js env vars.",
+    );
   }
 
-  // Display the surf zone details using the SurfZoneDetails component
+  const url = `${baseUrl}${id}/`;
+
+  const res = await fetch(url, {
+    cache: "no-store",
+    headers: { Accept: "application/json" },
+  });
+
+  if (!res.ok) {
+    console.error("Surfzone detail fetch failed", res.status, url);
+    return null;
+  }
+  return res.json();
+}
+
+// (optionnel mais utile SEO) : metadata dynamique par surfzone
+export async function generateMetadata({ params }) {
+  const id = params.surfzone;
+  const surfzone = await fetchSurfZoneDetail(id);
+
+  if (!surfzone) {
+    return {
+      title: "Surf zone not found - SurfQuest",
+      description: "Surf zone not found.",
+    };
+  }
+
+  return {
+    title: `${surfzone.name} - SurfQuest`,
+    description:
+      surfzone.description || `Surf zone details for ${surfzone.name}`,
+  };
+}
+
+export default async function SurfZonePage({ params }) {
+  const id = params.surfzone;
+  const surfzone = await fetchSurfZoneDetail(id);
+
+  if (!surfzone) {
+    return <p className="text-red-500 text-sm">Surf zone not found</p>;
+  }
+
   return (
     <div className="flex flex-col items-center justify-start pt-10 min-h-screen bg-black text-white">
-      <SurfZoneDetails selectedSurfZone={surfzone} />
+      <SurfZoneDetails surfzone={surfzone} />
     </div>
   );
 }

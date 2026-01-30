@@ -35,7 +35,7 @@ export default function SurfSpotsList({ spots, zoneName }) {
 
       {/* Surf Spot Cards */}
       {spots.map((spot) => (
-        <SurfSpotCard key={spot.id} surfspot={spot} />
+        <SurfSpotCard key={spot.id} surfspot={spot} zoneName={zoneName} />
       ))}
     </div>
   );
