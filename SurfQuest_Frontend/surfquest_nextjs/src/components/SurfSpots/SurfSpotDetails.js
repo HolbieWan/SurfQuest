@@ -25,8 +25,7 @@ import React from 'react';
 // Local Dependencies
 // ============================
 import SurfSpotCard from '@/components/SurfSpots/SurfSpotCard';
-import Reviews from '@/components/Reviews/Reviews';
-import Link from 'next/link';
+// import Reviews from '@/components/Reviews/Reviews';
 
 export default function SurfSpotDetails({ surfSpotData }) {
   return (
@@ -44,10 +43,10 @@ export default function SurfSpotDetails({ surfSpotData }) {
 
       {/* Reviews Section */}
       <div className="group grid grid-cols-1 rounded-md items-center justify-center mt-8">
-        <Reviews
+        {/* <Reviews
           selectedSurfSpot={surfSpotData.name}
           surfSpotId={surfSpotData.id}
-        />
+        /> */}
       </div>
     </div>
   );
