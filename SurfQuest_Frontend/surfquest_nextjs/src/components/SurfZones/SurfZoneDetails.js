@@ -14,7 +14,7 @@ import Link from "next/link";
 import InfoCard from "@/components/SurfZones/InfoCard";
 import ImageGallery from "@/components/SurfZones/ImageGallery";
 import ConditionsSection from "@/components/SurfZones/ConditionsSection";
-import SurfZoneForecast from "@/components/SurfZones/SurfZoneForecast/SurfZoneForecastCardWindy";
+import SurfZoneForecastCard from "@/components/SurfZones/SurfZoneForecast/SurfZoneForecastCardWindy";
 import SurfSpotsList from "@/components/SurfZones/ZoneSurfSpotsList";
 import ReviewsSection from "@/components/SurfZones/ReviewsSection";
 
@@ -36,7 +36,7 @@ export default function SurfZoneDetails({ surfzone }) {
 
   return (
     <>
-      <div className="w-full flex justify-start mb-6">
+      <div className="w-full flex justify-start">
         <div className="ml-20">
           <Link href="/surfzones">
             <h2 className="text-gray-500 text-lg hover:text-gray-300 hover:scale-105">
@@ -46,9 +46,16 @@ export default function SurfZoneDetails({ surfzone }) {
         </div>
       </div>
 
-      <div className="flex flex-col items-center pt-10 min-h-screen bg-black text-white">
+      <div className="flex flex-col items-center min-h-screen mt-5 bg-black text-white">
+        <div>
+          <SurfZoneForecastCard
+            zoneName={surfzone.name}
+            lat={surfzone.latitude}
+            lon={surfzone.longitude}
+          />
+        </div>
         <h1 className="text-white text-4xl font-bold text-center my-6">
-          <span className="text-pink-400">{surfzone.name}</span> Informations
+          <span className="text-pink-400">{surfzone.name}</span> Information
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
@@ -62,11 +69,6 @@ export default function SurfZoneDetails({ surfzone }) {
           condition={cond}
           zoneName={surfzone.name}
         />
-
-        <h2 className="text-white text-4xl font-bold text-center my-6">
-          <span className="text-pink-400">{surfzone.name}</span> Surf Forecast
-        </h2>
-        <SurfZoneForecast selectedSurfZone={surfzone.name} />
 
         {/* Ici spots ont spot_images normalisés => Carousel OK */}
         <SurfSpotsList spots={spots} zoneName={surfzone.name} />
