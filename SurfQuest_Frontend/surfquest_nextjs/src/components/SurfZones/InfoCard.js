@@ -36,7 +36,7 @@ import React from 'react';
 // ============================
 // Component Definition
 // ============================
-export default function InfoCard({ spot }) {
+export default function InfoCard({ surfzone }) {
   // Destructure surfzone properties for clarity
   const {
     name,
@@ -55,7 +55,7 @@ export default function InfoCard({ spot }) {
     religion,
     surroundings,
     main_wave_direction,
-  } = spot.surfzone;
+  } = surfzone;
 
   // Prepare detail rows as [label, value] pairs
   const details = [

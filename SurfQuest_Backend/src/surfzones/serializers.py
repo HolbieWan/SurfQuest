@@ -79,3 +79,554 @@ class SurfSpotSerializer(serializers.ModelSerializer):
     class Meta:
         model = SurfSpot
         fields = '__all__'
+
+
+
+# # ===============================================================================================================================================================
+# # V2 / Optimized serializers
+# # ===============================================================================================================================================================
+# class CountryLiteSerializer(serializers.ModelSerializer):
+#     """Small country payload for list/detail screens."""
+#     class Meta:
+#         model = Country
+#         fields = ("id", "name", "code", "slug")
+
+
+# class SurfZoneImageLiteSerializer(serializers.ModelSerializer):
+#     """Light SurfZone image payload (only what the frontend usually needs)."""
+#     image_url = serializers.SerializerMethodField()
+
+#     class Meta:
+#         model = SurfZoneImage
+#         fields = ("id", "image_url", "description")
+
+#     def get_image_url(self, obj):
+#         request = self.context.get("request")
+#         if not obj.image:
+#             return None
+#         url = obj.image.url
+#         return request.build_absolute_uri(url) if request else url
+
+
+# class SurfSpotImageLiteSerializer(serializers.ModelSerializer):
+#     """Light SurfSpot image payload."""
+#     image_url = serializers.SerializerMethodField()
+
+#     class Meta:
+#         model = SurfSpotImage
+#         fields = ("id", "image_url", "description")
+
+#     def get_image_url(self, obj):
+#         request = self.context.get("request")
+#         if not obj.image:
+#             return None
+#         url = obj.image.url
+#         return request.build_absolute_uri(url) if request else url
+
+
+# class SurfZoneLiteSerializer(serializers.ModelSerializer):
+#     """
+#     SurfZone list serializer (lite).
+#     - No full images list
+#     - No conditions
+#     - Provides a single main image URL for cards
+#     """
+#     country = CountryLiteSerializer(read_only=True)
+#     main_image_url = serializers.SerializerMethodField()
+
+#     class Meta:
+#         model = SurfZone
+#         fields = (
+#             "id",
+#             "name",
+#             "slug",
+#             "country",
+#             "latitude",
+#             "longitude",
+#             "nearest_city",
+#             "nearest_airport",
+#             "traveler_type",
+#             "safety",
+#             "health_hazards",
+#             "surf_hazards",
+#             "best_months",
+#             "confort",
+#             "cost",
+#             "language",
+#             "currency",
+#             "religion",
+#             "surroundings",
+#             "description",
+#             "main_wave_direction",
+#             "main_image_url",
+#         )
+
+#     def get_main_image_url(self, obj):
+#         """Method to get the main image URL for the surf zone, using cash from prefetched data if available."""
+#         request = self.context.get("request")
+
+#         # 1) Use prefetched cache if available (no DB query)
+#         cache = getattr(obj, "_prefetched_objects_cache", {})
+#         if "zone_images" in cache:
+#             images = cache["zone_images"]
+#             first = images[0] if images else None
+#         else:
+#             # 2) fallback: single DB query
+#             first = obj.zone_images.all().order_by("created_at").first()
+
+#         if not first or not first.image:
+#             return None
+
+#         url = first.image.url
+#         return request.build_absolute_uri(url) if request else url
+
+
+# class SurfSpotLiteSerializer(serializers.ModelSerializer):
+#     """
+#     Surfspot serializer embedded in SurfZone detail with all surfspot images (light).
+#     """
+#     surfzone_name = serializers.CharField(source="surfzone.name", read_only=True)
+#     surfzone_slug = serializers.CharField(source="surfzone.slug", read_only=True)
+#     main_image_url = serializers.SerializerMethodField()
+
+#     class Meta:
+#         model = SurfSpot
+#         fields = (
+#             "id",
+#             "name",
+#             "slug",
+#             "surfzone",        # FK -> id seulement
+#             "surfzone_name",   # ajouté (pratique pour l'UI)
+#             "surfzone_slug",   # ajouté (pratique pour routing)
+#             "latitude",
+#             "longitude",
+#             "break_type",
+#             "wave_direction",
+#             "best_wind_direction",
+#             "best_swell_direction",
+#             "best_swell_size_feet",
+#             "best_swell_size_meter",
+#             "best_tide",
+#             "surf_level",
+#             "surf_hazards",
+#             "best_months",
+#             "description",
+#             "main_image_url",
+#         )
+    
+#     def get_main_image_url(self, obj):
+#         """Method to get the main image URL for the surf spot, using cash from prefetched data if available."""
+#         request = self.context.get("request")
+
+#         # 1) If prefetched, use the cached list (no DB query)
+#         cache = getattr(obj, "_prefetched_objects_cache", {})
+#         if "spot_images" in cache:
+#             images = cache["spot_images"]
+#             first = images[0] if images else None
+#         else:
+#             # 2) fallback: single DB query for this spot
+#             first = obj.spot_images.all().order_by("created_at").first()
+
+#         if not first or not first.image:
+#             return None
+
+#         url = first.image.url
+#         return request.build_absolute_uri(url) if request else url
+
+
+# class SurfSpotForZoneDetailSerializer(serializers.ModelSerializer):
+#     """Complete SurfSpot serializer embedded in SurfZone detail with 5 surfspot images (light)."""
+#     images = serializers.SerializerMethodField()
+
+#     class Meta:
+#         model = SurfSpot
+#         fields = (
+#             "id",
+#             "name",
+#             "slug",
+#             "latitude",
+#             "longitude",
+#             "break_type",
+#             "wave_direction",
+#             "best_wind_direction",
+#             "best_swell_direction",
+#             "best_swell_size_feet",
+#             "best_swell_size_meter",
+#             "best_tide",
+#             "surf_level",
+#             "surf_hazards",
+#             "best_months",
+#             "description",
+#             "images",  # 5 images max for carousel
+#         )
+
+#     def get_images(self, obj):
+#         """Method to get up to 5 image URLs for the surf spot."""
+#         request = self.context.get("request")
+#         imgs = obj.spot_images.all()[:5]  # 5 max
+#         return [
+#             request.build_absolute_uri(img.image.url) if request else img.image.url
+#             for img in imgs
+#             if img.image
+#         ]
+
+
+# class SurfZoneDetailSerializer(serializers.ModelSerializer):
+#     """
+#     SurfZone detail serializer (full).
+#     - Includes images + conditions + surf spots (lite)
+#     """
+#     country = CountryLiteSerializer(read_only=True)
+#     zone_images = serializers.SerializerMethodField()
+#     conditions = ConditionSerializer(many=True, read_only=True)
+#     surf_spots = SurfSpotForZoneDetailSerializer(many=True, read_only=True)
+
+#     class Meta:
+#         model = SurfZone
+#         fields = (
+#             "id",
+#             "name",
+#             "slug",
+#             "country",
+#             "latitude",
+#             "longitude",
+#             "nearest_city",
+#             "nearest_airport",
+#             "traveler_type",
+#             "safety",
+#             "health_hazards",
+#             "surf_hazards",
+#             "best_months",
+#             "confort",
+#             "cost",
+#             "language",
+#             "currency",
+#             "religion",
+#             "surroundings",
+#             "description",
+#             "main_wave_direction",
+#             "zone_images",    # 2 premieres images
+#             "conditions",     # toutes les conditions
+#             "surf_spots",     # tous les surf spots (lite)
+#         )
+    
+#     def get_zone_images(self, obj):
+#         """Method to get up to 2 image URLs for the surf zone."""
+#         request = self.context.get("request")
+#         images = obj.zone_images.all()[:2]  # Limit to first 2 images
+#         return [
+#             request.build_absolute_uri(img.image.url) if request else img.image.url
+#             for img in images
+#             if img.image
+#         ]
+
+
+# class SurfSpotDetailSerializer(serializers.ModelSerializer):
+#     """
+#     SurfSpot detail serializer (full):
+#     - surfzone light
+#     - spot images (light)
+#     """
+#     surfzone_name = serializers.CharField(source="surfzone.name", read_only=True)
+#     surfzone_slug = serializers.CharField(source="surfzone.slug", read_only=True)
+#     images = serializers.SerializerMethodField()
+
+#     class Meta:
+#         model = SurfSpot
+#         fields = (
+#             "id",
+#             "name",
+#             "slug",
+#             "surfzone",        # FK id (pratique)
+#             "surfzone_name",
+#             "surfzone_slug",
+#             "latitude",
+#             "longitude",
+#             "break_type",
+#             "wave_direction",
+#             "best_wind_direction",
+#             "best_swell_direction",
+#             "best_swell_size_feet",
+#             "best_swell_size_meter",
+#             "best_tide",
+#             "surf_level",
+#             "surf_hazards",
+#             "best_months",
+#             "description",
+#             "images",          # toutes les images
+#         )
+    
+#     def get_images(self, obj):
+#         """Method to get all image URLs for the surf spot."""
+#         request = self.context.get("request")
+#         imgs = obj.spot_images.all()  # toutes les images
+#         return [
+#             request.build_absolute_uri(img.image.url) if request else img.image.url
+#             for img in imgs
+#             if img.image
+#         ]
+
+# ===============================================================================================================================================================
+# # V3 / Optimized serializers
+# ================================================================================================================================================================
+
+# ======================================================================
+# Country
+# ======================================================================
+class CountryLiteSerializer(serializers.ModelSerializer):
+    """Small country payload for list/detail screens."""
+
+    class Meta:
+        model = Country
+        fields = ("id", "name", "code", "slug")
+
+
+# ======================================================================
+# Shared helper (images -> list[str])
+# ======================================================================
+def build_image_urls(queryset, request=None, limit=None):
+    """
+    Returns a list of image URLs.
+    - limit: optional max number of images
+    """
+    if limit:
+        queryset = queryset[:limit]
+
+    urls = []
+    for img in queryset:
+        if img.image:
+            url = img.image.url
+            urls.append(request.build_absolute_uri(url) if request else url)
+    return urls
+
+
+# ======================================================================
+# SurfZone - Lite Serializer (list/cards)
+# ======================================================================
+class SurfZoneLiteSerializer(serializers.ModelSerializer):
+    """
+    SurfZone list serializer (lite).
+    - images: max 1 image (card usage)
+    """
+    country = CountryLiteSerializer(read_only=True)
+    images = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SurfZone
+        fields = (
+            "id",
+            "name",
+            "slug",
+            "country",
+            "latitude",
+            "longitude",
+            "nearest_city",
+            "nearest_airport",
+            "traveler_type",
+            "safety",
+            "health_hazards",
+            "surf_hazards",
+            "best_months",
+            "confort",
+            "cost",
+            "language",
+            "currency",
+            "religion",
+            "surroundings",
+            "description",
+            "main_wave_direction",
+            "images",
+        )
+
+    def get_images(self, obj):
+        request = self.context.get("request")
+
+        cache = getattr(obj, "_prefetched_objects_cache", {})
+        if "zone_images" in cache:
+            images_qs = cache["zone_images"]
+        else:
+            images_qs = obj.zone_images.all().order_by("created_at")
+
+        return build_image_urls(images_qs, request=request, limit=1)
+
+
+# ======================================================================
+# SurfSpot - Lite Serializer (embedded or list)
+# ======================================================================
+class SurfSpotLiteSerializer(serializers.ModelSerializer):
+    """
+    SurfSpot lite serializer.
+    - images: max 1 image
+    - surfzone_name & slug for UI/routing
+    """
+    surfzone_name = serializers.CharField(source="surfzone.name", read_only=True)
+    surfzone_slug = serializers.CharField(source="surfzone.slug", read_only=True)
+    images = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SurfSpot
+        fields = (
+            "id",
+            "name",
+            "slug",
+            "surfzone",
+            "surfzone_name",
+            "surfzone_slug",
+            "latitude",
+            "longitude",
+            "break_type",
+            "wave_direction",
+            "best_wind_direction",
+            "best_swell_direction",
+            "best_swell_size_feet",
+            "best_swell_size_meter",
+            "best_tide",
+            "surf_level",
+            "surf_hazards",
+            "best_months",
+            "description",
+            "images",
+        )
+
+    def get_images(self, obj):
+        request = self.context.get("request")
+
+        cache = getattr(obj, "_prefetched_objects_cache", {})
+        if "spot_images" in cache:
+            images_qs = cache["spot_images"]
+        else:
+            images_qs = obj.spot_images.all().order_by("created_at")
+
+        return build_image_urls(images_qs, request=request, limit=1)
+
+
+# ======================================================================
+# SurfSpot - For SurfZone Detail (carousel)
+# ======================================================================
+class SurfSpotForZoneDetailSerializer(serializers.ModelSerializer):
+    """
+    SurfSpot serializer embedded in SurfZone detail.
+    - images: max 5 images (carousel)
+    """
+    images = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SurfSpot
+        fields = (
+            "id",
+            "name",
+            "slug",
+            "latitude",
+            "longitude",
+            "break_type",
+            "wave_direction",
+            "best_wind_direction",
+            "best_swell_direction",
+            "best_swell_size_feet",
+            "best_swell_size_meter",
+            "best_tide",
+            "surf_level",
+            "surf_hazards",
+            "best_months",
+            "description",
+            "images",
+        )
+
+    def get_images(self, obj):
+        request = self.context.get("request")
+        imgs = obj.spot_images.all().order_by("created_at")
+        return build_image_urls(imgs, request=request, limit=5)
+
+
+# ======================================================================
+# SurfZone - Detail Serializer (full)
+# ======================================================================
+class SurfZoneDetailSerializer(serializers.ModelSerializer):
+    """
+    SurfZone detail serializer.
+    - images: max 2 images
+    - conditions
+    - surf spots (lite with carousel images)
+    """
+    country = CountryLiteSerializer(read_only=True)
+    images = serializers.SerializerMethodField()
+    conditions = ConditionSerializer(many=True, read_only=True)
+    surf_spots = SurfSpotForZoneDetailSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = SurfZone
+        fields = (
+            "id",
+            "name",
+            "slug",
+            "country",
+            "latitude",
+            "longitude",
+            "nearest_city",
+            "nearest_airport",
+            "traveler_type",
+            "safety",
+            "health_hazards",
+            "surf_hazards",
+            "best_months",
+            "confort",
+            "cost",
+            "language",
+            "currency",
+            "religion",
+            "surroundings",
+            "description",
+            "main_wave_direction",
+            "images",
+            "conditions",
+            "surf_spots",
+        )
+
+    def get_images(self, obj):
+        request = self.context.get("request")
+        imgs = obj.zone_images.all().order_by("created_at")
+        return build_image_urls(imgs, request=request, limit=2)
+
+
+# ======================================================================
+# SurfSpot - Detail Serializer (full)
+# ======================================================================
+class SurfSpotDetailSerializer(serializers.ModelSerializer):
+    """
+    SurfSpot detail serializer.
+    - images: all images
+    - surfzone name + slug
+    """
+    surfzone_name = serializers.CharField(source="surfzone.name", read_only=True)
+    surfzone_slug = serializers.CharField(source="surfzone.slug", read_only=True)
+    images = serializers.SerializerMethodField()
+
+    class Meta:
+        model = SurfSpot
+        fields = (
+            "id",
+            "name",
+            "slug",
+            "surfzone",
+            "surfzone_name",
+            "surfzone_slug",
+            "latitude",
+            "longitude",
+            "break_type",
+            "wave_direction",
+            "best_wind_direction",
+            "best_swell_direction",
+            "best_swell_size_feet",
+            "best_swell_size_meter",
+            "best_tide",
+            "surf_level",
+            "surf_hazards",
+            "best_months",
+            "description",
+            "images",
+        )
+
+    def get_images(self, obj):
+        request = self.context.get("request")
+        imgs = obj.spot_images.all().order_by("created_at")
+        return build_image_urls(imgs, request=request)

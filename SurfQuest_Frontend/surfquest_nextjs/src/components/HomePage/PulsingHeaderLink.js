@@ -40,7 +40,7 @@ export default function PulsingHeaderLink() {
         <span
           className="customPulse mx-2 inline-block transform transition-transform group-hover:scale-105 duration-4000 mr-2 group-hover:animate-none"
         >
-          Find the best surfing destinations for you
+          Find the best surfing destinations for you!
         </span>
 
         {/* Left-pointing arrow with pulsing animation */}

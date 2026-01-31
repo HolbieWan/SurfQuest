@@ -19,8 +19,14 @@ from rest_framework.routers import DefaultRouter   # Import DRF's router to auto
 # ============================
 # Local Application Imports
 # ============================
-from .views import surfZoneViewSet, surfSpotViewSet   # Import ViewSets for surf zones and surf spots
-
+from .views import (
+    surfZoneViewSet,
+    surfSpotViewSet,
+    SurfZoneLiteListAPIView,
+    SurfZoneDetailAPIView,
+    SurfSpotLiteListAPIView,
+    SurfSpotDetailAPIView,  # Import ViewSets for surf zones and surf spots
+)
 
 # ============================
 # DRF Router Setup
@@ -33,7 +39,14 @@ router.register(r'surfspots', surfSpotViewSet)   # Register the surf spot endpoi
 # URL Patterns
 # ============================
 urlpatterns = [
+    # Legacy ViewSet endpoints
     path('', include(router.urls)),  # Include all ViewSet-generated routes
+
+    # V2 optimized endpoints
+    path("surfzones-lite/", SurfZoneLiteListAPIView.as_view(), name="surfzones-lite"),
+    path("surfzones-detail/<uuid:id>/", SurfZoneDetailAPIView.as_view(), name="surfzones-detail"),
+    path("surfspots-lite/", SurfSpotLiteListAPIView.as_view(), name="surfspots-lite"),
+    path("surfspots-detail/<uuid:id>/", SurfSpotDetailAPIView.as_view(), name="surfspots-detail"),
 ]
 
 # ============================

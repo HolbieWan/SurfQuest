@@ -1,55 +1,30 @@
-'use client';
+// """
+// SurfSpotCard.js
+// --------------------------
+// Card component to display detailed information about a surf spot,
+// including an image carousel and key attributes.
+// --------------------------
+//"
 
-/**
- * SurfSpotCard Component
- * ----------------------
- * Displays a summary card for a surf spot, featuring:
- * - An image carousel of the spot's photos
- * - Key spot details: name, surf zone, description, best months,
- *   wave direction, swell direction & size, tide, wind direction,
- *   hazards, and recommended surf level
- * - When `selectedSurfSpot` is falsy, the entire card is wrapped
- *   in a Next.js Link to navigate to the spot's detail page
- *
- * @param {Object} props
- * @param {Object} props.surfspot              - The surf spot data object
- * @param {string} props.surfspot.name         - Name of the surf spot
- * @param {string[]} props.surfspot.best_months- Array of best months
- * @param {string} props.surfspot.wave_direction       - Preferred wave direction
- * @param {string} props.surfspot.best_swell_direction - Preferred swell direction
- * @param {number} props.surfspot.best_swell_size_meter- Preferred swell size in meters
- * @param {string[]} props.surfspot.best_tide          - Preferred tide conditions
- * @param {string} props.surfspot.best_wind_direction  - Preferred wind direction
- * @param {string[]} props.surfspot.surf_hazards       - List of surf hazards
- * @param {string[]} props.surfspot.surf_level         - Recommended skill levels
- * @param {Object[]} props.surfspot.spot_images        - Array of image objects { image: string }
- * @param {string|null} [props.selectedSurfSpot]       - If truthy, disables the link wrapper
- */
+"use client";
 
-// ============================
-// External Dependencies
-// ============================
-import React from 'react';
-import Link from 'next/link';
+import Link from "next/link";
+import ImageCarousel from "@/components/SurfSpots/Carousel";
 
-// ============================
-// Local Dependencies
-// ============================
-import ImageCarousel from '@/components/SurfSpots/Carousel';
-
-export default function SurfSpotCard({ surfspot, index, selectedSurfSpot = null }) {
+export default function SurfSpotCard({
+  surfspot,
+  zoneName,
+  index,
+  selectedSurfSpot = null,
+}) {
   if (!surfspot) {
-    return (
-      <div className="text-red-500">
-        Surf spot data is unavailable.
-      </div>
-    );
+    return <div className="text-red-500">Surf spot data is unavailable.</div>;
   }
 
-  // Destructure frequently used fields
   const {
     name,
     surfzone,
+    surfzone_name,
     description,
     best_months,
     wave_direction,
@@ -59,48 +34,95 @@ export default function SurfSpotCard({ surfspot, index, selectedSurfSpot = null 
     best_wind_direction,
     surf_hazards,
     surf_level,
-    spot_images
+    // ✅ selon endpoint:
+    // - surfzones-detail: images: ["url", "url"]
+    // - surfspots-detail: images: ["url", ...] (d'après ton exemple)
+    // - ancien: spot_images: [...]
+    images,
+    spot_images,
   } = surfspot;
+
+  // const zoneName =
+  //   (surfzone && typeof surfzone === "object" && surfzone.name) ||
+  //   surfzone_name ||
+  //   "Unknown surf zone";
+
+  const safeJoin = (arr) => (Array.isArray(arr) ? arr.join(", ") : "—");
+
+  // ✅ normalize images for carousel: allow strings or objects with "image"
+  const rawImages =
+    Array.isArray(spot_images) && spot_images.length ? spot_images : images;
+  const normalizedImages = Array.isArray(rawImages)
+    ? rawImages
+        .map((img) => {
+          if (typeof img === "string") return img;
+          if (img && typeof img === "object" && typeof img.image === "string")
+            return img.image;
+          return null;
+        })
+        .filter(Boolean)
+    : [];
 
   const content = (
     <>
-      {/* Spot Name & Zone */}
       <h2 className="text-pink-400 text-2xl font-bold text-center md:text-left">
-        {name}
+        {name || "Unnamed spot"}
       </h2>
+
       <div className="mt-2 text-sm text-blue-500 text-center md:text-left font-semibold">
-        {surfzone.name}
+        {zoneName}
       </div>
 
-      {/* Description */}
       <p className="mt-2 text-sm text-gray-700 text-center md:text-left">
-        {description}
+        {description || "—"}
       </p>
 
-      {/* Key Details */}
       <div className="mt-2 text-sm text-gray-700 text-center md:text-left">
-        Best months: <span className="text-cyan-500 font-bold">{best_months.join(', ')}</span>
+        Best months:{" "}
+        <span className="text-cyan-500 font-bold">{safeJoin(best_months)}</span>
       </div>
+
       <div className="mt-2 text-sm text-gray-700 text-center md:text-left">
-        Wave direction: <span className="text-cyan-500 font-bold">{wave_direction}</span>
+        Wave direction:{" "}
+        <span className="text-cyan-500 font-bold">{wave_direction || "—"}</span>
       </div>
+
       <div className="mt-2 text-sm text-gray-700 text-center md:text-left">
-        Best swell direction: <span className="text-cyan-500 font-bold">{best_swell_direction}</span>
+        Best swell direction:{" "}
+        <span className="text-cyan-500 font-bold">
+          {best_swell_direction || "—"}
+        </span>
       </div>
+
       <div className="mt-2 text-sm text-gray-700 text-center md:text-left">
-        Best swell size: <span className="text-cyan-500 font-bold">{best_swell_size_meter} m</span>
+        Best swell size:{" "}
+        <span className="text-cyan-500 font-bold">
+          {best_swell_size_meter != null ? `${best_swell_size_meter} m` : "—"}
+        </span>
       </div>
+
       <div className="mt-2 text-sm text-gray-700 text-center md:text-left">
-        Best tide: <span className="text-cyan-500 font-bold">{best_tide.join(', ')}</span>
+        Best tide:{" "}
+        <span className="text-cyan-500 font-bold">{safeJoin(best_tide)}</span>
       </div>
+
       <div className="mt-2 text-sm text-gray-700 text-center md:text-left">
-        Best wind direction: <span className="text-cyan-500 font-bold">{best_wind_direction}</span>
+        Best wind direction:{" "}
+        <span className="text-cyan-500 font-bold">
+          {best_wind_direction || "—"}
+        </span>
       </div>
+
       <div className="mt-2 text-sm text-gray-700 text-center md:text-left">
-        Surf hazards: <span className="text-cyan-500 font-bold">{surf_hazards.join(', ')}</span>
+        Surf hazards:{" "}
+        <span className="text-cyan-500 font-bold">
+          {safeJoin(surf_hazards)}
+        </span>
       </div>
+
       <div className="mt-2 text-sm text-gray-700 text-center md:text-left">
-        Surf level: <span className="text-cyan-500 font-bold">{surf_level.join(', ')}</span>
+        Surf level:{" "}
+        <span className="text-cyan-500 font-bold">{safeJoin(surf_level)}</span>
       </div>
     </>
   );
@@ -113,11 +135,15 @@ export default function SurfSpotCard({ surfspot, index, selectedSurfSpot = null 
       {/* Image Section */}
       <div
         className="bg-black rounded-md group flex-shrink-0 w-full md:w-1/2 lg:w-2/4"
-        style={{ height: '400px' }}
+        style={{ height: "400px" }}
       >
-        {spot_images?.length > 0 && (
+        {normalizedImages.length > 0 ? (
           <div className="w-full h-full">
-            <ImageCarousel images={spot_images} />
+            <ImageCarousel images={normalizedImages} />
+          </div>
+        ) : (
+          <div className="w-full h-full flex items-center justify-center border border-gray-700 rounded-md">
+            <p className="text-gray-400 text-sm">No spot images.</p>
           </div>
         )}
       </div>
@@ -126,12 +152,12 @@ export default function SurfSpotCard({ surfspot, index, selectedSurfSpot = null 
       <div
         className="group bg-white rounded-md p-4 flex flex-col justify-center border border-gray-300 overflow-hidden w-full md:w-1/2 lg:w-1/3
                    transform transition-transform duration-500 hover:scale-110"
-        style={{ height: '400px' }}
+        style={{ height: "400px" }}
       >
         {selectedSurfSpot ? (
           content
         ) : (
-          <Link href={`/surfspots/${encodeURIComponent(name)}`}>
+          <Link href={`/surfspots/${encodeURIComponent(name || surfspot.id)}`}>
             {content}
           </Link>
         )}
