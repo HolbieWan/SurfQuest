@@ -1,236 +1,193 @@
 "use client";
 
-/**
- * SurfZoneForecastCard Component
- * ------------------------------
- * Fetches and displays a multi-day surf forecast for a given surf zone
- * using the Windy.com point-forecast API. First retrieves the geographic
- * coordinates for the selected surf zone from the backend, then queries
- * Windy’s “gfs” and “gfsWave” models for weather and wave data.
- * Presents 6 unique daily summaries (temperature, wind, cloud cover,
- * swell height, swell period, and arrow direction) in a responsive grid.
- *
- * @param {Object} props
- * @param {string} props.selectedSurfZone - Name of the surf zone for which to fetch the forecast.
- * @returns {JSX.Element|null} A grid of daily forecasts, or loading/error indicators.
- */
+import React, { useEffect, useMemo, useState } from "react";
 
-// ============================
-// External Dependencies
-// ============================
-import React, { useState, useEffect, Suspense } from 'react';
-import Cookies from 'js-cookie';
+const WINDY_API_URL = "https://api.windy.com/api/point-forecast/v2";
+// ⚠️ In production, prefer moving this key to a server route.
+// For now, keep it in env (NEXT_PUBLIC_...) if you must expose it.
+const WINDY_KEY = process.env.NEXT_PUBLIC_WINDY_API_KEY;
 
-// ============================
-// Configuration Constants
-// ============================
-// API key for Windy.com point-forecast service
-const APIKey = 'UmpC41QE7vcwtTKhlLLI9DhpkVqA1hoG';
-// Windy.com forecast endpoint (point-forecast v2)
-const surfForecastApiUrl = 'https://api.windy.com/api/point-forecast/v2';
-// Base URL for surf zone metadata (to fetch latitude/longitude)
-const surfZonesApiUrl = process.env.NEXT_PUBLIC_SURFZONES_API_URL;
-// JWT access token from cookies for authenticating surf zone metadata requests
-const token = Cookies.get('access_token');
-
-// ============================
-// Helper Functions
-// ============================
-/**
- * Converts a wind/swell degree (0–360) to a compass arrow symbol.
- *
- * @param {number} deg - Wind or swell direction in degrees.
- * @returns {string} A unicode arrow representing one of 8 principal directions.
- */
-function getDirectionArrow(deg) {
-  const directions = ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖'];
-  const index = Math.round(deg / 45) % 8;
-  return directions[index];
+function degToArrow(deg) {
+  if (deg == null || Number.isNaN(deg)) return "•";
+  const directions = ["↑", "↗", "→", "↘", "↓", "↙", "←", "↖"];
+  const normalized = ((deg % 360) + 360) % 360;
+  return directions[Math.round(normalized / 45) % 8];
 }
 
-/**
- * SurfZoneForecast Component
- * --------------------------
- * Orchestrates fetching surf zone coordinates, querying Windy’s API,
- * and transforming the raw data into a daily summary for rendering.
- *
- * @param {Object} props
- * @param {string} props.selectedSurfZone - The surf zone name selected by the user.
- * @returns {JSX.Element|null} A grid of daily forecast cards, or loading/error messages.
- */
-function SurfZoneForecast({ selectedSurfZone }) {
-  // ============================
-  // Component State
-  // ============================
-  const [forecast, setForecast] = useState(null);     // Holds combined weather + waves data
-  const [surfZone, setSurfZone] = useState(null);     // Holds the fetched surf zone metadata (including coords)
-  const [error, setError] = useState('');             // Error message if any fetch fails
-  const [loading, setLoading] = useState(false);      // Loading indicator for API calls
+function pickFirstIndexPerDay(ts) {
+  // returns array of indices in ts[] (keeps correct alignment with data arrays)
+  const seen = new Set();
+  const picked = [];
+  for (let i = 0; i < ts.length; i++) {
+    const day = new Date(ts[i]).toLocaleDateString();
+    if (!seen.has(day)) {
+      seen.add(day);
+      picked.push(i);
+    }
+    if (picked.length >= 6) break;
+  }
+  return picked;
+}
 
-  // ============================
-  // Fetch Surf Zone Metadata
-  // ============================
+export default function SurfZoneForecastCard({ zoneName, lat, lon }) {
+  const [forecast, setForecast] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
   useEffect(() => {
-    if (!selectedSurfZone) return;
+    if (!lat || !lon) return;
+    if (!WINDY_KEY) {
+      setError("Missing Windy API key (NEXT_PUBLIC_WINDY_API_KEY).");
+      return;
+    }
 
-    const fetchSurfZoneData = async () => {
+    const fetchForecast = async () => {
       setLoading(true);
+      setError("");
+
       try {
-        // Retrieve all surf zones from backend; filter by exact match on name
-        const response = await fetch(`${surfZonesApiUrl}`, {
-          headers: { 'Authorization': `Bearer ${token}` },
-        });
-        const data = await response.json();
-        const zone = data.find((z) => z.name === selectedSurfZone);
-        setSurfZone(zone);
-      } catch (err) {
-        setError(err.message);
+        const weatherBody = {
+          lat,
+          lon,
+          model: "gfs",
+          parameters: ["temp", "wind", "lclouds", "mclouds", "hclouds"],
+          levels: ["surface"],
+          key: WINDY_KEY,
+        };
+
+        const waveBody = {
+          lat,
+          lon,
+          model: "gfsWave",
+          parameters: ["waves", "swell1"],
+          levels: ["surface"],
+          key: WINDY_KEY,
+        };
+
+        const [weatherRes, waveRes] = await Promise.all([
+          fetch(WINDY_API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(weatherBody),
+          }),
+          fetch(WINDY_API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(waveBody),
+          }),
+        ]);
+
+        if (!weatherRes.ok || !waveRes.ok) {
+          throw new Error(`Windy API error (${weatherRes.status}/${waveRes.status})`);
+        }
+
+        const [weather, waves] = await Promise.all([
+          weatherRes.json(),
+          waveRes.json(),
+        ]);
+
+        setForecast({ weather, waves });
+      } catch (e) {
+        setError(e?.message || "Failed to load surf forecast.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchSurfZoneData();
-  }, [selectedSurfZone]);
+    fetchForecast();
+  }, [lat, lon]);
 
-  // ============================
-  // Fetch Weather & Wave Forecast
-  // ============================
-  useEffect(() => {
-    if (!surfZone) return;
+  const days = useMemo(() => {
+    if (!forecast?.weather?.ts) return [];
 
-    const fetchForecastData = async () => {
-      setLoading(true);
-      try {
-        // Build POST payload for weather (gfs model)
-        const weatherBody = JSON.stringify({
-          lat: surfZone.latitude,
-          lon: surfZone.longitude,
-          model: 'gfs',
-          parameters: ['temp', 'wind', 'lclouds', 'mclouds', 'hclouds'],
-          levels: ['surface'],
-          key: APIKey,
-        });
+    const { weather, waves } = forecast;
 
-        // Query Windy.com for weather data
-        const weatherResponse = await fetch(surfForecastApiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: weatherBody,
-        });
-        const weatherData = await weatherResponse.json();
+    const idxs = pickFirstIndexPerDay(weather.ts);
 
-        // Build POST payload for waves (gfsWave model)
-        const waveBody = JSON.stringify({
-          lat: surfZone.latitude,
-          lon: surfZone.longitude,
-          model: 'gfsWave',
-          parameters: ['waves', 'swell1'],
-          levels: ['surface'],
-          key: APIKey,
-        });
+    return idxs.map((i) => {
+      const dateLabel = new Date(weather.ts[i]).toLocaleDateString("en-US", {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+      });
 
-        // Query Windy.com for wave data
-        const waveResponse = await fetch(surfForecastApiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: waveBody,
-        });
-        const waveData = await waveResponse.json();
+      const tempK = weather["temp-surface"]?.[i];
+      const tempC = tempK != null ? Math.round((tempK - 273.15) * 10) / 10 : null;
 
-        // Combine into single forecast object
-        setForecast({ weather: weatherData, waves: waveData });
-      } catch (err) {
-        setError('Failed to load surf forecast.');
-      } finally {
-        setLoading(false);
-      }
-    };
+      const u = weather["wind_u-surface"]?.[i];
+      const v = weather["wind_v-surface"]?.[i];
+      const windSpeedKmh =
+        u != null && v != null ? Math.round(Math.hypot(u, v) * 3.6) : null;
 
-    fetchForecastData();
-  }, [surfZone]);
+      // Convert atan2 result to degrees 0..360
+      const windDeg =
+        u != null && v != null
+          ? ((Math.atan2(v, u) * 180) / Math.PI + 360) % 360
+          : null;
 
-  // ============================
-  // Conditional Rendering: Loading / Error / No Data
-  // ============================
-  if (loading) return <p className="text-blue-500">Loading Surf Forecast...</p>;
-  if (error)   return <p className="text-red-500">{error}</p>;
-  if (!forecast) return null;
+      // Cloud cover: prefer lclouds else mclouds else hclouds, but keep 0 values
+      const cloud =
+        weather["lclouds-surface"]?.[i] ??
+        weather["mclouds-surface"]?.[i] ??
+        weather["hclouds-surface"]?.[i] ??
+        null;
 
-  // ============================
-  // Transform Raw Forecast into Daily Summaries
-  // ============================
-  const { weather, waves } = forecast;
-  const uniqueDates = [];
-  const days = weather.ts
-    .filter((timestamp) => {
-      // Only keep one entry per calendar day, up to 6 days
-      const dateStr = new Date(timestamp).toLocaleDateString();
-      if (!uniqueDates.includes(dateStr)) {
-        uniqueDates.push(dateStr);
-        return true;
-      }
-      return false;
-    })
-    .slice(0, 6)
-    .map((timestamp, i) => ({
-      date: new Date(timestamp).toLocaleDateString('en-US', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-      }),
-      temp: (Math.round(weather['temp-surface'][i] - 273.15)).toFixed(1), // Convert K→°C
-      windSpeed: (Math.round(
-        Math.hypot(weather['wind_u-surface'][i], weather['wind_v-surface'][i]) * 3.6
-      )).toFixed(1), // m/s → km/h
-      windDir: getDirectionArrow(
-        Math.atan2(weather['wind_v-surface'][i], weather['wind_u-surface'][i]) * (180 / Math.PI)
-      ),
-      cloudCover: Math.round(
-        weather['lclouds-surface'][i] ||
-        weather['mclouds-surface'][i] ||
-        weather['hclouds-surface'][i]
-      ),
-      swellHeight: waves['waves_height-surface'][i]?.toFixed(1),
-      swellPeriod: waves['waves_period-surface'][i]?.toFixed(1),
-      swellDir: getDirectionArrow(waves['waves_direction-surface'][i]),
-    }));
+      // Waves fields can differ depending on Windy response; keep defensive
+      const swellHeight = waves["waves_height-surface"]?.[i] ?? null;
+      const swellPeriod = waves["waves_period-surface"]?.[i] ?? null;
+      const swellDeg = waves["waves_direction-surface"]?.[i] ?? null;
 
-  // ============================
-  // Render Forecast Grid
-  // ============================
+      return {
+        dateLabel,
+        tempC,
+        windSpeedKmh,
+        windArrow: degToArrow(windDeg),
+        cloud: cloud != null ? Math.round(cloud) : null,
+        swellHeight: swellHeight != null ? Math.round(swellHeight * 10) / 10 : null,
+        swellPeriod: swellPeriod != null ? Math.round(swellPeriod * 10) / 10 : null,
+        swellArrow: degToArrow(swellDeg),
+      };
+    });
+  }, [forecast]);
+
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-10 items-center justify-items-center">
-      {days.map((day, idx) => (
-        <div
-          key={idx}
-          className="bg-blue-500 p-4 rounded-lg text-center w-[160px] transform transition-transform duration-500 hover:scale-110"
-        >
-          <p className="font-semibold mb-2">{day.date}</p>
-          <p>🌡️ {day.temp}°C</p>
-          <p>💨 {day.windSpeed} km/h {day.windDir}</p>
-          <p>☁️ {day.cloudCover}%</p>
-          <p>🌊 {day.swellHeight} m {day.swellDir}</p>
-          <p>⏱️ {day.swellPeriod} s</p>
+    <div className="w-full px-4">
+      <div className="flex flex-col items-center justify-center my-6">
+        <h2 className="text-white text-4xl font-bold text-center">
+          {/* <span className="text-pink-400">{zoneName}</span> Surf Forecast */}
+        </h2>
+        <p className="text-gray-400 text-sm mt-2">
+          Windy point surf forecast (GFS + GFSWave)
+        </p>
+      </div>
+
+      {loading && <p className="text-blue-300 text-center">Loading forecast…</p>}
+      {error && <p className="text-red-400 text-center">{error}</p>}
+
+      {!loading && !error && days.length > 0 && (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
+          {days.map((d, idx) => (
+            <div
+              key={idx}
+              className="bg-white/10 border border-white/10 rounded-xl p-4 text-center backdrop-blur-sm hover:scale-[1.02] transition-transform"
+            >
+              <p className="font-semibold text-pink-400 mb-2">{d.dateLabel}</p>
+
+              <div className="space-y-1 text-sm text-gray-100">
+                <p className="text-orange-300">🌡️ {d.tempC ?? "—"}°C</p>
+                <p className="text-green-300">💨 {d.windSpeedKmh ?? "—"} km/h {d.windArrow}</p>
+                <p className="text-gray-300">☁️ {d.cloud ?? "—"}%</p>
+                <p className="text-blue-300">🌊 {d.swellHeight ?? "—"} m {d.swellArrow}</p>
+                <p className="text-purple-300">⏱️ {d.swellPeriod ?? "—"} s</p>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  );
-}
+      )}
 
-/**
- * SurfZoneForecastCard Component
- * ------------------------------
- * Wraps SurfZoneForecast in React.Suspense to show a fallback while loading.
- *
- * @param {Object} props
- * @param {string} props.selectedSurfZone - The surf zone name passed down to fetch data.
- * @returns {JSX.Element}
- */
-export default function SurfZoneForecastCard({ selectedSurfZone }) {
-  return (
-    <Suspense fallback={<p className="text-blue-500">Loading Surf Forecast...</p>}>
-      <SurfZoneForecast selectedSurfZone={selectedSurfZone} />
-    </Suspense>
+      {!loading && !error && days.length === 0 && (
+        <p className="text-gray-400 text-center">No forecast data.</p>
+      )}
+    </div>
   );
 }
