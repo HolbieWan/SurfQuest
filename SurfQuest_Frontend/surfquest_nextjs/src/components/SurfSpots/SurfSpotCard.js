@@ -65,7 +65,7 @@ export default function SurfSpotCard({
 
   const content = (
     <>
-      <h2 className="text-pink-400 text-2xl font-bold text-center md:text-left">
+      <h2 className="mt-2 text-pink-400 text-2xl font-bold text-center md:text-left">
         {name || "Unnamed spot"}
       </h2>
 
@@ -120,7 +120,7 @@ export default function SurfSpotCard({
         </span>
       </div>
 
-      <div className="mt-2 text-sm text-gray-700 text-center md:text-left">
+      <div className="mt- mb-6 text-sm text-gray-700 text-center md:text-left">
         Surf level:{" "}
         <span className="text-cyan-500 font-bold">{safeJoin(surf_level)}</span>
       </div>
@@ -157,7 +157,9 @@ export default function SurfSpotCard({
         {selectedSurfSpot ? (
           content
         ) : (
-          <Link href={`/surfspots/${encodeURIComponent(name || surfspot.id)}`}>
+          <Link
+            href={`/surfspots/${encodeURIComponent(surfspot.slug || name || surfspot.id)}`}
+          >
             {content}
           </Link>
         )}
