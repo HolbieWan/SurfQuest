@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 // /**
 //  * SurfQuest - SearchSurfZonePage
@@ -367,382 +367,441 @@
 // ===========================================================================================================================================================================
 // ==========================================================================================================================================================================
 
-import React, { useState, useEffect, useRef, useMemo } from "react";
-import { useRouter } from "next/navigation";
+// import React, { useState, useEffect, useRef, useMemo } from "react";
+// import { useRouter } from "next/navigation";
 
-// ============================
-// Local Dependencies
-// ============================
+// // ============================
+// // Local Dependencies
+// // ============================
+// import { API } from "@/config/api";
+// import { fetchSurfZones } from "@/services/surfzoneService";
+// import { buildSurfZoneQuery } from "@/utils/surfzoneQuery";
+
+// import SurfZoneCard from "@/components/SurfZones/SurfZoneCard";
+// import BasicFiltersGrid from "@/components/SurfZones/BasicFiltersGrid";
+// import AdvancedFiltersGrid from "@/components/SurfZones/AdvancedFiltersGrid";
+
+// import {
+//   months,
+//   travelerType,
+//   safety,
+//   comfort,
+//   mainWaveDirection,
+//   cost,
+//   waterTempRanges,
+//   swellSizeRanges,
+//   crowdFactorRanges,
+//   sunnyDaysRanges,
+//   rainyDaysRanges,
+// } from "@/utils/filterOptions";
+
+// // ============================
+// // Main SearchSurfZonePage Component
+// // ============================
+// export default function SearchSurfZonePage() {
+//   // ============================
+//   // Hydration State (Avoid SSR Mismatch)
+//   // ============================
+//   const [hydrated, setHydrated] = useState(false);
+
+//   // ============================
+//   // Surf Zone Data & UI State
+//   // ============================
+//   const [surfZones, setSurfZones] = useState([]);
+//   const [zone, setZone] = useState(""); // selected zone (for navigation)
+//   const [countries, setCountries] = useState([]); // [{label, value}]
+//   const [error, setError] = useState("");
+//   const [loading, setLoading] = useState(false);
+
+//   // ============================
+//   // Filter State for User Input
+//   // ============================
+//   const [selectedFilters, setSelectedFilters] = useState({
+//     country: "",
+//     month: "",
+//     travelerType: "",
+//     safety: "",
+//     comfort: "",
+//     mainWaveDirection: "",
+//     surfLevel: "",
+//     cost: "",
+//     waterTemp: "",
+//     surfRating: "",
+//     swellSize: "",
+//     crowdFactor: "",
+//     sunnyDays: "",
+//     rainyDays: "",
+//     bestMonths: "",
+//   });
+
+//   // ============================
+//   // Advanced Filters Toggle State
+//   // ============================
+//   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+
+//   // ============================
+//   // Refs for Scrolling
+//   // ============================
+//   const resultsRef = useRef(null);
+//   const monthSelectorsRef = useRef(null);
+
+//   // ============================
+//   // Router Hook (Programmatic Navigation)
+//   // ============================
+//   const router = useRouter();
+
+//   // ============================
+//   // Ranges map used by query builder
+//   // ============================
+//   const conditionRanges = useMemo(
+//     () => ({
+//       waterTemp: waterTempRanges,
+//       swellSize: swellSizeRanges,
+//       crowdFactor: crowdFactorRanges,
+//       sunnyDays: sunnyDaysRanges,
+//       rainyDays: rainyDaysRanges,
+//     }),
+//     [],
+//   );
+
+//   // ============================
+//   // Helpers
+//   // ============================
+//   const scrollToResults = () => {
+//     setTimeout(
+//       () => resultsRef.current?.scrollIntoView({ behavior: "smooth" }),
+//       100,
+//     );
+//   };
+
+//   const scrollToMonthFilters = () => {
+//     setTimeout(
+//       () => monthSelectorsRef.current?.scrollIntoView({ behavior: "smooth" }),
+//       100,
+//     );
+//   };
+
+//   const handleFilterChange = (key, value) => {
+//     setSelectedFilters((prev) => ({ ...prev, [key]: value }));
+//     key === "month" ? scrollToMonthFilters() : scrollToResults();
+//   };
+
+//   const handleReset = () => {
+//     setSelectedFilters({
+//       country: "",
+//       month: "",
+//       travelerType: "",
+//       safety: "",
+//       comfort: "",
+//       mainWaveDirection: "",
+//       surfLevel: "",
+//       cost: "",
+//       waterTemp: "",
+//       surfRating: "",
+//       swellSize: "",
+//       crowdFactor: "",
+//       sunnyDays: "",
+//       rainyDays: "",
+//       bestMonths: "",
+//     });
+//   };
+
+//   function extractCountries(zones) {
+//     const map = new Map();
+
+//     (Array.isArray(zones) ? zones : []).forEach((z) => {
+//       const c = z?.country;
+//       if (!c) return;
+
+//       const label = c?.name || "Unknown";
+//       const value = c?.slug || c?.code || ""; // prefer slug; fallback to code
+//       if (!value) return;
+
+//       if (!map.has(value)) map.set(value, { label, value });
+//     });
+
+//     return Array.from(map.values()).sort((a, b) =>
+//       a.label.localeCompare(b.label),
+//     );
+//   }
+
+//   // ============================
+//   // Effect: Initial load (unfiltered) — also populates countries list
+//   // ============================
+//   useEffect(() => {
+//     setHydrated(true);
+
+//     const loadInitial = async () => {
+//       setLoading(true);
+//       setError("");
+
+//       try {
+//         const url = API.public.surfzones;
+//         if (!url) throw new Error("Missing API base URL...");
+
+//         const data = await fetchSurfZones(url, { cache: "no-store" });
+//         setSurfZones(Array.isArray(data) ? data : []);
+//         setCountries(extractCountries(data));
+//       } catch (err) {
+//         setError(err?.message || "Failed to load surf zones.");
+//         setSurfZones([]);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     loadInitial();
+//   }, []);
+
+//   // ============================
+//   // Effect: Fetch filtered results when filters change (debounced)
+//   // ============================
+//   useEffect(() => {
+//     if (!hydrated) return;
+
+//     const urlBase = API.public.surfzones;
+//     if (!urlBase) return;
+
+//     const params = buildSurfZoneQuery(selectedFilters, conditionRanges);
+//     const url = params.toString() ? `${urlBase}?${params.toString()}` : urlBase;
+
+//     const t = setTimeout(async () => {
+//       setLoading(true);
+//       setError("");
+
+//       try {
+//         const data = await fetchSurfZones(url, { cache: "no-store" });
+
+//         // Keep your "bestMonths" button behavior as a small client-side filter
+//         const bestOnly =
+//           selectedFilters.bestMonths &&
+//           selectedFilters.bestMonths === selectedFilters.month;
+
+//         const finalData = bestOnly
+//           ? Array.isArray(data)
+//             ? data.filter(
+//                 (z) =>
+//                   Array.isArray(z.best_months) &&
+//                   z.best_months.includes(selectedFilters.month),
+//               )
+//             : []
+//           : Array.isArray(data)
+//             ? data
+//             : [];
+
+//         setSurfZones(finalData);
+//       } catch (err) {
+//         setError(err?.message || "Failed to load filtered surf zones.");
+//         setSurfZones([]);
+//       } finally {
+//         setLoading(false);
+//       }
+//     }, 300);
+
+//     return () => clearTimeout(t);
+//   }, [selectedFilters, hydrated, conditionRanges]);
+
+//   // ============================
+//   // Avoid SSR mismatch
+//   // ============================
+//   if (!hydrated) return null;
+
+//   // ============================
+//   // Unique zone names for selector (current results set)
+//   // ============================
+//   const zones = (Array.isArray(surfZones) ? surfZones : [])
+//     .map((z) => ({ id: z.id, name: z.name }))
+//     .filter((z) => z.id && z.name)
+//     .sort((a, b) => a.name.localeCompare(b.name));
+
+//   // Grid columns based on result count
+//   const gridColsClass =
+//     surfZones.length === 1
+//       ? "grid-cols-1"
+//       : surfZones.length === 2
+//         ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-2"
+//         : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
+
+//   // ============================
+//   // JSX Output
+//   // ============================
+//   return (
+//     <div className="flex flex-col items-center justify-start pt-20 min-h-screen bg-black text-white rounded-lg">
+//       <h1 className="text-4xl text-center font-bold mb-8">
+//         Find the best destination for <span className="text-blue-500">you</span>{" "}
+//         😎
+//       </h1>
+
+//       <>
+//         {/* Error / Loading Feedback */}
+//         {error && <p className="text-red-500 text-sm">{error}</p>}
+//         {loading && <p className="text-blue-500 text-sm">Loading...</p>}
+
+//         {/* Zone Selector → NOTE: currently uses zone.name (legacy behavior) */}
+//         <select
+//           className="p-2 mb-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] hover:scale-105"
+//           value={zone}
+//           onChange={(e) => {
+//             const selectedId = e.target.value;
+//             setZone(selectedId);
+//             if (selectedId)
+//               router.push(`/surfzones/${encodeURIComponent(selectedId)}`);
+//           }}
+//         >
+//           <option value="">Choose a Surf Place</option>
+//           {zones.map((z) => (
+//             <option key={z.id} value={z.id}>
+//               {z.name}
+//             </option>
+//           ))}
+//         </select>
+
+//         <p className="text-gray-500 text-sm mb-2">or</p>
+
+//         <h2 className="text-2xl font-bold text-center col-span-full">
+//           Filter Surf Places by
+//         </h2>
+
+//         {/* Basic Filter Options */}
+//         <BasicFiltersGrid
+//           selectedFilters={selectedFilters}
+//           countries={countries} // ✅ now expects [{label,value}]
+//           travelerType={travelerType}
+//           safety={safety}
+//           comfort={comfort}
+//           cost={cost}
+//           mainWaveDirection={mainWaveDirection}
+//           handleFilterChange={handleFilterChange}
+//           scrollToResults={scrollToResults}
+//         />
+
+//         {/* Seasonal Filter Toggles and Selectors */}
+//         <div
+//           ref={monthSelectorsRef}
+//           className="grid grid-cols-1 gap-3 place-items-center justify-center"
+//         >
+//           <button
+//             className="p-2 text-gray-500 hover:text-gray-400"
+//             onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+//           >
+//             {showAdvancedFilters
+//               ? "Hide seasonal Filters ▲"
+//               : "Show seasonal Filters ▼"}
+//           </button>
+
+//           {showAdvancedFilters && (
+//             <>
+//               <select
+//                 className="p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
+//                 value={selectedFilters.month}
+//                 onChange={(e) => handleFilterChange("month", e.target.value)}
+//               >
+//                 <option value="">Month</option>
+//                 {months.map((month, index) => (
+//                   <option key={index} value={month}>
+//                     {month}
+//                   </option>
+//                 ))}
+//               </select>
+//               <p className="text-gray-500 text-sm">
+//                 (Select a month to apply below filters)
+//               </p>
+//             </>
+//           )}
+//         </div>
+
+//         {/* Advanced Filter Section */}
+//         {showAdvancedFilters && (
+//           <AdvancedFiltersGrid
+//             selectedFilters={selectedFilters}
+//             handleFilterChange={handleFilterChange}
+//             showAdvancedFilters={showAdvancedFilters}
+//             setShowAdvancedFilters={setShowAdvancedFilters}
+//             monthSelectorsRef={monthSelectorsRef}
+//           />
+//         )}
+
+//         {/* Reset Filter Button */}
+//         <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
+//           <button
+//             className="p-2 border border-red-500 rounded text-red-500 text-center w-[200px] cursor-pointer transform transition-transform duration-200 hover:text-red-600 hover:scale-105"
+//             onClick={handleReset}
+//           >
+//             Reset Selection
+//           </button>
+//         </div>
+
+//         {/* Filtered Surf Zone Cards */}
+//         <div
+//           ref={resultsRef}
+//           className="flex flex-col items-center justify-start pt-16 w-full"
+//         >
+//           <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md mb-20`}>
+//             {surfZones.map((surfzone, index) => (
+//               <SurfZoneCard key={index} surfzone={surfzone} />
+//             ))}
+//           </div>
+//         </div>
+//       </>
+//     </div>
+//   );
+// }
+
+// ===========================================================================================================================================================================
+// ==========================================================================================================================================================================
+
+/**
+ * SurfZones Search Page (SSR + Client filters)
+ * -------------------------------------------
+ * - SSR: fetch initial surfzones-lite list for fast first paint + SEO
+ * - Client: interactive filters with debounced refetch
+ */
+
 import { API } from "@/config/api";
 import { fetchSurfZones } from "@/services/surfzoneService";
-import { buildSurfZoneQuery } from "@/utils/surfzoneQuery";
+// import SearchSurfZoneClient from "@/components/SurfZones/SearchSurfZoneClient";
+import SearchSurfZoneClient from "@/components/SurfZones/SearchSurfZoneClient";
 
-import SurfZoneCard from "@/components/SurfZones/SurfZoneCard";
-import BasicFiltersGrid from "@/components/SurfZones/BasicFiltersGrid";
-import AdvancedFiltersGrid from "@/components/SurfZones/AdvancedFiltersGrid";
+function extractCountries(zones) {
+  const map = new Map();
 
-import {
-  months,
-  travelerType,
-  safety,
-  comfort,
-  mainWaveDirection,
-  cost,
-  waterTempRanges,
-  swellSizeRanges,
-  crowdFactorRanges,
-  sunnyDaysRanges,
-  rainyDaysRanges,
-} from "@/utils/filterOptions";
+  (Array.isArray(zones) ? zones : []).forEach((z) => {
+    const c = z?.country;
+    if (!c) return;
 
-// ============================
-// Main SearchSurfZonePage Component
-// ============================
-export default function SearchSurfZonePage() {
-  // ============================
-  // Hydration State (Avoid SSR Mismatch)
-  // ============================
-  const [hydrated, setHydrated] = useState(false);
+    const label = c?.name || "Unknown";
+    const value = c?.slug || c?.code || "";
+    if (!value) return;
 
-  // ============================
-  // Surf Zone Data & UI State
-  // ============================
-  const [surfZones, setSurfZones] = useState([]);
-  const [zone, setZone] = useState(""); // selected zone (for navigation)
-  const [countries, setCountries] = useState([]); // [{label, value}]
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  // ============================
-  // Filter State for User Input
-  // ============================
-  const [selectedFilters, setSelectedFilters] = useState({
-    country: "",
-    month: "",
-    travelerType: "",
-    safety: "",
-    comfort: "",
-    mainWaveDirection: "",
-    surfLevel: "",
-    cost: "",
-    waterTemp: "",
-    surfRating: "",
-    swellSize: "",
-    crowdFactor: "",
-    sunnyDays: "",
-    rainyDays: "",
-    bestMonths: "",
+    if (!map.has(value)) map.set(value, { label, value });
   });
 
-  // ============================
-  // Advanced Filters Toggle State
-  // ============================
-  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+  return Array.from(map.values()).sort((a, b) => a.label.localeCompare(b.label));
+}
 
-  // ============================
-  // Refs for Scrolling
-  // ============================
-  const resultsRef = useRef(null);
-  const monthSelectorsRef = useRef(null);
-
-  // ============================
-  // Router Hook (Programmatic Navigation)
-  // ============================
-  const router = useRouter();
-
-  // ============================
-  // Ranges map used by query builder
-  // ============================
-  const conditionRanges = useMemo(
-    () => ({
-      waterTemp: waterTempRanges,
-      swellSize: swellSizeRanges,
-      crowdFactor: crowdFactorRanges,
-      sunnyDays: sunnyDaysRanges,
-      rainyDays: rainyDaysRanges,
-    }),
-    [],
-  );
-
-  // ============================
-  // Helpers
-  // ============================
-  const scrollToResults = () => {
-    setTimeout(
-      () => resultsRef.current?.scrollIntoView({ behavior: "smooth" }),
-      100,
-    );
-  };
-
-  const scrollToMonthFilters = () => {
-    setTimeout(
-      () => monthSelectorsRef.current?.scrollIntoView({ behavior: "smooth" }),
-      100,
-    );
-  };
-
-  const handleFilterChange = (key, value) => {
-    setSelectedFilters((prev) => ({ ...prev, [key]: value }));
-    key === "month" ? scrollToMonthFilters() : scrollToResults();
-  };
-
-  const handleReset = () => {
-    setSelectedFilters({
-      country: "",
-      month: "",
-      travelerType: "",
-      safety: "",
-      comfort: "",
-      mainWaveDirection: "",
-      surfLevel: "",
-      cost: "",
-      waterTemp: "",
-      surfRating: "",
-      swellSize: "",
-      crowdFactor: "",
-      sunnyDays: "",
-      rainyDays: "",
-      bestMonths: "",
-    });
-  };
-
-  function extractCountries(zones) {
-    const map = new Map();
-
-    (Array.isArray(zones) ? zones : []).forEach((z) => {
-      const c = z?.country;
-      if (!c) return;
-
-      const label = c?.name || "Unknown";
-      const value = c?.slug || c?.code || ""; // prefer slug; fallback to code
-      if (!value) return;
-
-      if (!map.has(value)) map.set(value, { label, value });
-    });
-
-    return Array.from(map.values()).sort((a, b) =>
-      a.label.localeCompare(b.label),
+export default async function SurfZonesPage() {
+  const url = API.server.surfzones; // /api/v1/surfzones-lite/
+  if (!url) {
+    throw new Error(
+      "Missing API base URL (NEXT_PUBLIC_API_BASE_URL / API_INTERNAL_BASE_URL)."
     );
   }
 
-  // ============================
-  // Effect: Initial load (unfiltered) — also populates countries list
-  // ============================
-  useEffect(() => {
-    setHydrated(true);
+  // SSR: initial list, no-store for dev freshness
+  let initialZones = [];
+  try {
+    const data = await fetchSurfZones(url, { cache: "no-store" });
+    initialZones = Array.isArray(data) ? data : [];
+  } catch {
+    initialZones = [];
+  }
 
-    const loadInitial = async () => {
-      setLoading(true);
-      setError("");
+  const initialCountries = extractCountries(initialZones);
 
-      try {
-        const url = API.public.surfzones;
-        if (!url) throw new Error("Missing API base URL...");
-
-        const data = await fetchSurfZones(url, { cache: "no-store" });
-        setSurfZones(Array.isArray(data) ? data : []);
-        setCountries(extractCountries(data));
-      } catch (err) {
-        setError(err?.message || "Failed to load surf zones.");
-        setSurfZones([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadInitial();
-  }, []);
-
-  // ============================
-  // Effect: Fetch filtered results when filters change (debounced)
-  // ============================
-  useEffect(() => {
-    if (!hydrated) return;
-
-    const urlBase = API.public.surfzones;
-    if (!urlBase) return;
-
-    const params = buildSurfZoneQuery(selectedFilters, conditionRanges);
-    const url = params.toString() ? `${urlBase}?${params.toString()}` : urlBase;
-
-    const t = setTimeout(async () => {
-      setLoading(true);
-      setError("");
-
-      try {
-        const data = await fetchSurfZones(url, { cache: "no-store" });
-
-        // Keep your "bestMonths" button behavior as a small client-side filter
-        const bestOnly =
-          selectedFilters.bestMonths &&
-          selectedFilters.bestMonths === selectedFilters.month;
-
-        const finalData = bestOnly
-          ? Array.isArray(data)
-            ? data.filter(
-                (z) =>
-                  Array.isArray(z.best_months) &&
-                  z.best_months.includes(selectedFilters.month),
-              )
-            : []
-          : Array.isArray(data)
-            ? data
-            : [];
-
-        setSurfZones(finalData);
-      } catch (err) {
-        setError(err?.message || "Failed to load filtered surf zones.");
-        setSurfZones([]);
-      } finally {
-        setLoading(false);
-      }
-    }, 300);
-
-    return () => clearTimeout(t);
-  }, [selectedFilters, hydrated, conditionRanges]);
-
-  // ============================
-  // Avoid SSR mismatch
-  // ============================
-  if (!hydrated) return null;
-
-  // ============================
-  // Unique zone names for selector (current results set)
-  // ============================
-  const zones = (Array.isArray(surfZones) ? surfZones : [])
-    .map((z) => ({ id: z.id, name: z.name }))
-    .filter((z) => z.id && z.name)
-    .sort((a, b) => a.name.localeCompare(b.name));
-
-  // Grid columns based on result count
-  const gridColsClass =
-    surfZones.length === 1
-      ? "grid-cols-1"
-      : surfZones.length === 2
-        ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-2"
-        : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
-
-  // ============================
-  // JSX Output
-  // ============================
   return (
-    <div className="flex flex-col items-center justify-start pt-20 min-h-screen bg-black text-white rounded-lg">
-      <h1 className="text-4xl text-center font-bold mb-8">
-        Find the best destination for <span className="text-blue-500">you</span>{" "}
-        😎
-      </h1>
-
-      <>
-        {/* Error / Loading Feedback */}
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-        {loading && <p className="text-blue-500 text-sm">Loading...</p>}
-
-        {/* Zone Selector → NOTE: currently uses zone.name (legacy behavior) */}
-        <select
-          className="p-2 mb-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] hover:scale-105"
-          value={zone}
-          onChange={(e) => {
-            const selectedId = e.target.value;
-            setZone(selectedId);
-            if (selectedId)
-              router.push(`/surfzones/${encodeURIComponent(selectedId)}`);
-          }}
-        >
-          <option value="">Choose a Surf Place</option>
-          {zones.map((z) => (
-            <option key={z.id} value={z.id}>
-              {z.name}
-            </option>
-          ))}
-        </select>
-
-        <p className="text-gray-500 text-sm mb-2">or</p>
-
-        <h2 className="text-2xl font-bold text-center col-span-full">
-          Filter Surf Places by
-        </h2>
-
-        {/* Basic Filter Options */}
-        <BasicFiltersGrid
-          selectedFilters={selectedFilters}
-          countries={countries} // ✅ now expects [{label,value}]
-          travelerType={travelerType}
-          safety={safety}
-          comfort={comfort}
-          cost={cost}
-          mainWaveDirection={mainWaveDirection}
-          handleFilterChange={handleFilterChange}
-          scrollToResults={scrollToResults}
-        />
-
-        {/* Seasonal Filter Toggles and Selectors */}
-        <div
-          ref={monthSelectorsRef}
-          className="grid grid-cols-1 gap-3 place-items-center justify-center"
-        >
-          <button
-            className="p-2 text-gray-500 hover:text-gray-400"
-            onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
-          >
-            {showAdvancedFilters
-              ? "Hide seasonal Filters ▲"
-              : "Show seasonal Filters ▼"}
-          </button>
-
-          {showAdvancedFilters && (
-            <>
-              <select
-                className="p-2 border border-black rounded bg-pink-500 text-white text-center w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
-                value={selectedFilters.month}
-                onChange={(e) => handleFilterChange("month", e.target.value)}
-              >
-                <option value="">Month</option>
-                {months.map((month, index) => (
-                  <option key={index} value={month}>
-                    {month}
-                  </option>
-                ))}
-              </select>
-              <p className="text-gray-500 text-sm">
-                (Select a month to apply below filters)
-              </p>
-            </>
-          )}
-        </div>
-
-        {/* Advanced Filter Section */}
-        {showAdvancedFilters && (
-          <AdvancedFiltersGrid
-            selectedFilters={selectedFilters}
-            handleFilterChange={handleFilterChange}
-            showAdvancedFilters={showAdvancedFilters}
-            setShowAdvancedFilters={setShowAdvancedFilters}
-            monthSelectorsRef={monthSelectorsRef}
-          />
-        )}
-
-        {/* Reset Filter Button */}
-        <div className="grid grid-cols-1 gap-3 place-items-center justify-center mt-8">
-          <button
-            className="p-2 border border-red-500 rounded text-red-500 text-center w-[200px] cursor-pointer transform transition-transform duration-200 hover:text-red-600 hover:scale-105"
-            onClick={handleReset}
-          >
-            Reset Selection
-          </button>
-        </div>
-
-        {/* Filtered Surf Zone Cards */}
-        <div
-          ref={resultsRef}
-          className="flex flex-col items-center justify-start pt-16 w-full"
-        >
-          <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md mb-20`}>
-            {surfZones.map((surfzone, index) => (
-              <SurfZoneCard key={index} surfzone={surfzone} />
-            ))}
-          </div>
-        </div>
-      </>
-    </div>
+    <SearchSurfZoneClient
+      initialZones={initialZones}
+      initialCountries={initialCountries}
+    />
   );
 }
