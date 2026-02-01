@@ -93,7 +93,7 @@ export default function SearchSurfSpotsClient({
     const base = API.public.surfspots;
     if (!base) return;
 
-     // ✅ Skip first run to avoid refetch "flash" (SSR already gave us initialSpots)
+     // Skip first run to avoid refetch "flash" (SSR already gave us initialSpots)
   const hasAnyFilter =
     Object.entries(filters).some(([k, v]) => k !== "surfSpot" && v) ||
     Boolean(filters.surfSpot);

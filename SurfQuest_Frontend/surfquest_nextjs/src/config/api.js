@@ -25,35 +25,6 @@
 //   // ⚠️ côté client: NEXT_PUBLIC_...
 //   // ⚠️ côté serveur (SSR): API_INTERNAL_BASE_URL (sans NEXT_PUBLIC)
 
-//   BASE_PUBLIC: process.env.NEXT_PUBLIC_API_BASE_URL, // ex: http://localhost:8000
-//   BASE_INTERNAL: process.env.API_INTERNAL_BASE_URL, // ex: http://backend:8000
-
-//   // Endpoints "public" (utilisables dans le browser)
-//   SURFZONES_PUBLIC: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/surfzones-lite/`,
-//   SURFZONES_DETAIL_PUBLIC: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/surfzones-detail/`,
-//   SURFSPOTS_PUBLIC: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/surfspots-lite/`,
-//   SURFSPOT_DETAIL_PUBLIC: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/surfspots-detail/`,
-
-//   // Endpoints "internal" (SSR dans Docker)
-//   SURFZONES_INTERNAL: `${process.env.API_INTERNAL_BASE_URL}/api/v1/surfzones-lite/`,
-//   SURFZONES_DETAIL_INTERNAL: `${process.env.API_INTERNAL_BASE_URL}/api/v1/surfzones-detail/`,
-//   SURFSPOTS_INTERNAL: `${process.env.API_INTERNAL_BASE_URL}/api/v1/surfspots-lite/`,
-//   SURFSPOT_DETAIL_INTERNAL: `${process.env.API_INTERNAL_BASE_URL}/api/v1/surfspots-detail/`,
-
-//   // TOKENS: process.env.NEXT_PUBLIC_TOKENS_API_URL,
-//   // USERS: process.env.NEXT_PUBLIC_USERS_API_URL,
-//   // SURFZONES: process.env.NEXT_PUBLIC_SURFZONES_API_URL,
-//   // SURFZONES_DETAIL: process.env.NEXT_PUBLIC_SURFZONES_DETAIL_API_URL,
-//   // SURFSPOTS: process.env.NEXT_PUBLIC_SURFSPOTS_API_URL,
-//   // SURFSPOTS_DETAIL: process.env.NEXT_PUBLIC_SURFSPOTS_DETAIL_API_URL,
-//   // REVIEWS: process.env.NEXT_PUBLIC_REVIEWS_API_URL,
-//   // USER_REVIEWS: process.env.NEXT_PUBLIC_USER_REVIEWS_API_URL,
-// };
-
-// export default API_BASE_URLS;
-
-// src/config/api.js
-
 const PUBLIC_BASE = process.env.NEXT_PUBLIC_API_BASE_URL;
 const INTERNAL_BASE = process.env.API_INTERNAL_BASE_URL;
 
@@ -68,7 +39,7 @@ export function getServerBaseUrl() {
   return INTERNAL_BASE || PUBLIC_BASE;
 }
 
-// ✅ Client: toujours PUBLIC
+// Client: toujours PUBLIC
 export function getPublicBaseUrl() {
   return PUBLIC_BASE;
 }

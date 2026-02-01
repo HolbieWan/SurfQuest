@@ -34,7 +34,7 @@ export default function SurfSpotCard({
     best_wind_direction,
     surf_hazards,
     surf_level,
-    // ✅ selon endpoint:
+    // selon endpoint:
     // - surfzones-detail: images: ["url", "url"]
     // - surfspots-detail: images: ["url", ...] (d'après ton exemple)
     // - ancien: spot_images: [...]
@@ -49,7 +49,7 @@ export default function SurfSpotCard({
 
   const safeJoin = (arr) => (Array.isArray(arr) ? arr.join(", ") : "—");
 
-  // ✅ normalize images for carousel: allow strings or objects with "image"
+  // normalize images for carousel: allow strings or objects with "image"
   const rawImages =
     Array.isArray(spot_images) && spot_images.length ? spot_images : images;
   const normalizedImages = Array.isArray(rawImages)
