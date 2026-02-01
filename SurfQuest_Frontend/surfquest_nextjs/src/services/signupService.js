@@ -11,7 +11,7 @@
 // ============================
 // Imports
 // ============================
-import API_BASE_URLS from "@/config/api"; // Centralized API endpoint configuration
+import { API } from "@/config/api"; // Centralized API endpoint configuration
 import Cookies from "js-cookie";          // For storing JWT tokens securely in cookies
 
 /**
@@ -34,7 +34,9 @@ export async function registerUser(userData) {
   formData.append("password", userData.password);
   if (userData.avatar) formData.append("avatar", userData.avatar); // Add file only if exists
 
-  const response = await fetch(API_BASE_URLS.USERS, {
+  const url = API.USERS;
+
+  const response = await fetch(url, {
     method: "POST",
     headers: { Accept: "application/json" },
     body: formData,

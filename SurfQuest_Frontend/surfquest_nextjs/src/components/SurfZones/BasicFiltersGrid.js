@@ -53,16 +53,18 @@ export default function FiltersGrid({
         className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
         value={selectedFilters.country}
         onChange={(e) => {
-          handleFilterChange('country', e.target.value);
+          handleFilterChange("country", e.target.value);
           scrollToResults();
         }}
       >
         <option value="">Country</option>
-        {countries.sort().map((country, index) => (
-          <option key={index} value={country}>
-            {country}
-          </option>
-        ))}
+        {countries
+          .sort((a, b) => a.label.localeCompare(b.label))
+          .map((country) => (
+            <option key={country.value} value={country.value}>
+              {country.label}
+            </option>
+          ))}
       </select>
 
       {/* Traveler Type Selector */}
@@ -70,7 +72,7 @@ export default function FiltersGrid({
         className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
         value={selectedFilters.travelerType}
         onChange={(e) => {
-          handleFilterChange('travelerType', e.target.value);
+          handleFilterChange("travelerType", e.target.value);
           scrollToResults();
         }}
       >
@@ -87,7 +89,7 @@ export default function FiltersGrid({
         className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
         value={selectedFilters.safety}
         onChange={(e) => {
-          handleFilterChange('safety', e.target.value);
+          handleFilterChange("safety", e.target.value);
           scrollToResults();
         }}
       >
@@ -104,7 +106,7 @@ export default function FiltersGrid({
         className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
         value={selectedFilters.comfort}
         onChange={(e) => {
-          handleFilterChange('comfort', e.target.value);
+          handleFilterChange("comfort", e.target.value);
           scrollToResults();
         }}
       >
@@ -121,7 +123,7 @@ export default function FiltersGrid({
         className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
         value={selectedFilters.cost}
         onChange={(e) => {
-          handleFilterChange('cost', e.target.value);
+          handleFilterChange("cost", e.target.value);
           scrollToResults();
         }}
       >
@@ -138,7 +140,7 @@ export default function FiltersGrid({
         className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[200px] transform transition-transform duration-200 hover:border-white hover:scale-105"
         value={selectedFilters.mainWaveDirection}
         onChange={(e) => {
-          handleFilterChange('mainWaveDirection', e.target.value);
+          handleFilterChange("mainWaveDirection", e.target.value);
           scrollToResults();
         }}
       >

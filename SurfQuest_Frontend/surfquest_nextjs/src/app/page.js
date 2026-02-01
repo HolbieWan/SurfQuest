@@ -56,6 +56,7 @@
  * better performance and SEO.
  */
 import { API } from "@/config/api";
+import { fetchSurfZones } from "@/services/surfzoneService";
 import MonthBestDestinations from "@/components/SurfZones/MonthBestDestinations";
 
 const monthNames = [
@@ -73,25 +74,31 @@ const monthNames = [
   "December",
 ];
 
-async function fetchSurfZones() {
+// async function fetchSurfZones() {
+//   const url = API.server.surfzones;
+
+//   if (!url)
+//     throw new Error(
+//       "Missing API base URL (NEXT_PUBLIC_API_BASE_URL / API_INTERNAL_BASE_URL).",
+//     );
+
+//   const res = await fetch(url, {
+//     cache: "no-store",
+//     headers: { Accept: "application/json" },
+//   });
+//   if (!res.ok) return [];
+//   return res.json();
+// }
+
+async function fetchSurfZonesLite() {
   const url = API.server.surfzones;
-
-  if (!url)
-    throw new Error(
-      "Missing API base URL (NEXT_PUBLIC_API_BASE_URL / API_INTERNAL_BASE_URL).",
-    );
-
-  const res = await fetch(url, {
-    cache: "no-store",
-    headers: { Accept: "application/json" },
-  });
-  if (!res.ok) return [];
-  return res.json();
+  if (!url) throw new Error("Missing API base URL...");
+  return fetchSurfZones(url, { cache: "no-store" });
 }
 
 export default async function HomePage() {
   const currentMonth = monthNames[new Date().getMonth()];
-  const zones = await fetchSurfZones();
+  const zones = await fetchSurfZonesLite();
 
   const monthlyZones = Array.isArray(zones)
     ? zones.filter(
