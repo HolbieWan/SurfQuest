@@ -221,7 +221,7 @@ export default function SearchSurfZoneClient({
         ))}
       </select>
 
-      <p className="text-gray-500 text-sm mb-2">or</p>
+      <p className="text-gray-500 text-sm">or</p>
 
       <h2 className="text-2xl font-bold text-center col-span-full">
         Filter Surf Places by

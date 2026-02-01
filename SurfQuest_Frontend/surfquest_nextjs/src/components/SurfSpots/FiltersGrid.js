@@ -26,7 +26,7 @@ export default function FiltersGrid({
 
   return (
     <div>
-      <div className="grid grid-cols-1 p-4 gap-4">
+      <div className="flex flex-col items-center gap-2">
         {/* Surf Spot Selector (slug) */}
         <select
           className="p-2 bg-blue-500 text-white text-center rounded hover:scale-105 max-w-[210px] w-full mx-auto"
@@ -40,9 +40,10 @@ export default function FiltersGrid({
             </option>
           ))}
         </select>
+        <p className="text-gray-500 text-center text-sm">or</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 p-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
         <h2 className="text-2xl font-bold text-center col-span-full">
           Filter Spots by
         </h2>
