@@ -138,197 +138,264 @@
 //   );
 // }
 
-"use client";
+// "use client";
+
+// /**
+//  * SurfSpotDetailsPage
+//  * -------------------
+//  * Client-side page using:
+//  * - GET /surfspots-lite/  → dropdown + slug → id mapping
+//  * - GET /surfspots-detail/<id>/ → full detail
+//  */
+
+// import React, { useEffect, useMemo, useState } from "react";
+// import { useParams, useRouter } from "next/navigation";
+// import Link from "next/link";
+
+// import SurfSpotDetails from "@/components/SurfSpots/SurfSpotDetails";
+// import { fetchSurfSpots } from "@/services/surfspotService";
+// import { API } from "@/config/api";
+
+// export default function SurfSpotDetailsPage() {
+//   const { surfspot } = useParams();
+//   const router = useRouter();
+
+//   // URL param = slug
+//   const currentSlug = useMemo(
+//     () => decodeURIComponent(surfspot || ""),
+//     [surfspot],
+//   );
+
+//   const [liteSpots, setLiteSpots] = useState([]);
+//   const [selectedSlug, setSelectedSlug] = useState(currentSlug);
+
+//   const [spotData, setSpotData] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState("");
+
+//   // ------------------------------------------------
+//   // 1) Fetch surfspots-lite (dropdown)
+//   // ------------------------------------------------
+//   useEffect(() => {
+//     const loadLiteSpots = async () => {
+//       try {
+//         // const token = Cookies.get("access_token");
+
+//         const spots = await fetchSurfSpots(API.public.surfspots /*, token*/);
+
+//         const sorted = Array.isArray(spots)
+//           ? [...spots].sort((a, b) =>
+//               (a?.name || "").localeCompare(b?.name || ""),
+//             )
+//           : [];
+
+//         setLiteSpots(sorted);
+//       } catch (err) {
+//         setError(err?.message || "Failed to load surf spots list.");
+//       }
+//     };
+
+//     loadLiteSpots();
+//   }, []);
+
+//   // Keep select synced with route
+//   useEffect(() => {
+//     setSelectedSlug(currentSlug);
+//   }, [currentSlug]);
+
+//   // ------------------------------------------------
+//   // 2) Fetch surfspot detail by ID
+//   // ------------------------------------------------
+// useEffect(() => {
+//   // ✅ Do not start detail loading until lite list is available
+//   if (!currentSlug) return;
+//   if (liteSpots.length === 0) return;
+
+//   const loadSpotDetail = async () => {
+//     setLoading(true);
+//     setError("");
+//     // setSpotData(null);
+
+//     try {
+//       const match = liteSpots.find((spot) => spot.slug === currentSlug);
+
+//       if (!match) {
+//         setError("Surf spot not found.");
+//         return;
+//       }
+
+//       const detailUrl = `${API.public.surfspotsDetail}${match.id}/`;
+//       const detail = await fetchSurfSpots(detailUrl);
+//       setSpotData(detail);
+//     } catch (err) {
+//       setError(err?.message || "Failed to load surf spot details.");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   loadSpotDetail();
+// }, [currentSlug, liteSpots]);
+
+//   // ------------------------------------------------
+//   // Dropdown change
+//   // ------------------------------------------------
+//   const handleSpotChange = (e) => {
+//     const newSlug = e.target.value;
+//     setSelectedSlug(newSlug);
+//     router.push(`/surfspots/${encodeURIComponent(newSlug)}`);
+//   };
+
+//   // ------------------------------------------------
+//   // Render states
+//   // ------------------------------------------------
+//   // if (loading) {
+//   //   return (
+//   //     <div className="text-white text-center mt-10">Loading surf spot...</div>
+//   //   );
+//   // }
+
+//   if (error) {
+//     return <div className="text-red-500 text-center mt-10">Error: {error}</div>;
+//   }
+
+//   // // ✅ Pendant le chargement, on garde la page (pas de swap complet)
+//   // if (loading || !spotData) {
+//   //   return (
+//   //     <div className="flex flex-col items-center pt-10 min-h-screen bg-black text-white">
+//   //       {/* Back link */}
+//   //       <div className="w-full flex justify-start mb-6">
+//   //         <div className="ml-10">
+//   //           <Link href="/surfspots">
+//   //             <h2 className="text-gray-500 text-lg hover:text-gray-300 hover:scale-105">
+//   //               👈🏻 Back to surf-spot search page
+//   //             </h2>
+//   //           </Link>
+//   //         </div>
+//   //       </div>
+
+//   //       Surf spot selector
+//   //       <div className="w-full flex justify-center mb-8">
+//   //         <select
+//   //           className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[240px] hover:scale-105"
+//   //           value={selectedSlug}
+//   //           onChange={handleSpotChange}
+//   //           disabled={liteSpots.length === 0}
+//   //         >
+//   //           {liteSpots.map((spot) => (
+//   //             <option key={spot.id} value={spot.slug}>
+//   //               {spot.name}
+//   //             </option>
+//   //           ))}
+//   //         </select>
+//   //       </div>
+
+//   //       {/* ✅ Loading placeholder (ne casse pas le layout) */}
+//   //       <div className="text-gray-400 mt-10">Loading surf spot…</div>
+//   //     </div>
+//   //   );
+//   // }
+
+//   // ------------------------------------------------
+//   // JSX
+//   // ------------------------------------------------
+//   return (
+//     <div className="flex flex-col items-center pt-10 min-h-screen bg-black text-white">
+//       {/* Back link */}
+//       <div className="w-full flex justify-start mb-6">
+//         <div className="ml-10">
+//           <Link href="/surfspots">
+//             <h2 className="text-gray-500 text-lg hover:text-gray-300 hover:scale-105">
+//               👈🏻 Back to surf-spot search page
+//             </h2>
+//           </Link>
+//         </div>
+//       </div>
+
+//       {/* Surf spot selector */}
+//       <div className="w-full flex justify-center mb-8">
+//         <select
+//           className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[240px] hover:scale-105"
+//           value={selectedSlug}
+//           onChange={handleSpotChange}
+//         >
+//           {liteSpots.map((spot) => (
+//             <option key={spot.id} value={spot.slug}>
+//               {spot.name}
+//             </option>
+//           ))}
+//         </select>
+//       </div>
+
+//       {/* Spot details */}
+//       <SurfSpotDetails surfSpotData={spotData} />
+//     </div>
+//   );
+// }
+
+// ===========================================================================================================================================
 
 /**
- * SurfSpotDetailsPage
- * -------------------
- * Client-side page using:
- * - GET /surfspots-lite/  → dropdown + slug → id mapping
- * - GET /surfspots-detail/<id>/ → full detail
+ * SurfSpot Details Page (SSR)
+ * - Fetch /surfspots-lite/ to build dropdown + slug->id
+ * - Fetch /surfspots-detail/<id>/ for the selected spot
  */
 
-import React, { useEffect, useMemo, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import Link from "next/link";
-
-import SurfSpotDetails from "@/components/SurfSpots/SurfSpotDetails";
-import { fetchSurfSpots } from "@/services/surfspotService";
+import { notFound } from "next/navigation";
 import { API } from "@/config/api";
+import SurfSpotDetailsClient from "@/components/SurfSpots/SurfSpotDetailsClient";
 
-export default function SurfSpotDetailsPage() {
-  const { surfspot } = useParams();
-  const router = useRouter();
+async function fetchLiteSpots() {
+  const url = API.server.surfspots;
+  if (!url) throw new Error("Missing API base URL.");
 
-  // URL param = slug
-  const currentSlug = useMemo(
-    () => decodeURIComponent(surfspot || ""),
-    [surfspot],
-  );
+  const res = await fetch(url, {
+    cache: "no-store",
+    headers: { Accept: "application/json" },
+  });
 
-  const [liteSpots, setLiteSpots] = useState([]);
-  const [selectedSlug, setSelectedSlug] = useState(currentSlug);
+  if (!res.ok) return [];
+  return res.json();
+}
 
-  const [spotData, setSpotData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+async function fetchSpotDetail(id) {
+  const base = API.server.surfspotsDetail;
+  if (!base) throw new Error("Missing API base URL.");
 
-  // ------------------------------------------------
-  // 1) Fetch surfspots-lite (dropdown)
-  // ------------------------------------------------
-  useEffect(() => {
-    const loadLiteSpots = async () => {
-      try {
-        // const token = Cookies.get("access_token");
+  const res = await fetch(`${base}${id}/`, {
+    cache: "no-store",
+    headers: { Accept: "application/json" },
+  });
 
-        const spots = await fetchSurfSpots(API.public.surfspots /*, token*/);
+  if (!res.ok) return null;
+  return res.json();
+}
 
-        const sorted = Array.isArray(spots)
-          ? [...spots].sort((a, b) =>
-              (a?.name || "").localeCompare(b?.name || ""),
-            )
-          : [];
+export default async function Page({ params }) {
+  const slug = decodeURIComponent(params.surfspot || "");
 
-        setLiteSpots(sorted);
-      } catch (err) {
-        setError(err?.message || "Failed to load surf spots list.");
-      }
-    };
+  const liteSpots = await fetchLiteSpots();
+  const match = Array.isArray(liteSpots)
+    ? liteSpots.find((s) => s.slug === slug)
+    : null;
 
-    loadLiteSpots();
-  }, []);
+  if (!match) notFound();
 
-  // Keep select synced with route
-  useEffect(() => {
-    setSelectedSlug(currentSlug);
-  }, [currentSlug]);
+  const spotData = await fetchSpotDetail(match.id);
+  if (!spotData) notFound();
 
-  // ------------------------------------------------
-  // 2) Fetch surfspot detail by ID
-  // ------------------------------------------------
-useEffect(() => {
-  // ✅ Do not start detail loading until lite list is available
-  if (!currentSlug) return;
-  if (liteSpots.length === 0) return;
+  // sort dropdown once on the server
+  const sortedLite = Array.isArray(liteSpots)
+    ? [...liteSpots].sort((a, b) => (a?.name || "").localeCompare(b?.name || ""))
+    : [];
 
-  const loadSpotDetail = async () => {
-    setLoading(true);
-    setError("");
-    // setSpotData(null);
-
-    try {
-      const match = liteSpots.find((spot) => spot.slug === currentSlug);
-
-      if (!match) {
-        setError("Surf spot not found.");
-        return;
-      }
-
-      const detailUrl = `${API.public.surfspotsDetail}${match.id}/`;
-      const detail = await fetchSurfSpots(detailUrl);
-      setSpotData(detail);
-    } catch (err) {
-      setError(err?.message || "Failed to load surf spot details.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  loadSpotDetail();
-}, [currentSlug, liteSpots]);
-
-  // ------------------------------------------------
-  // Dropdown change
-  // ------------------------------------------------
-  const handleSpotChange = (e) => {
-    const newSlug = e.target.value;
-    setSelectedSlug(newSlug);
-    router.push(`/surfspots/${encodeURIComponent(newSlug)}`);
-  };
-
-  // ------------------------------------------------
-  // Render states
-  // ------------------------------------------------
-  // if (loading) {
-  //   return (
-  //     <div className="text-white text-center mt-10">Loading surf spot...</div>
-  //   );
-  // }
-
-  if (error) {
-    return <div className="text-red-500 text-center mt-10">Error: {error}</div>;
-  }
-
-  // // ✅ Pendant le chargement, on garde la page (pas de swap complet)
-  // if (loading || !spotData) {
-  //   return (
-  //     <div className="flex flex-col items-center pt-10 min-h-screen bg-black text-white">
-  //       {/* Back link */}
-  //       <div className="w-full flex justify-start mb-6">
-  //         <div className="ml-10">
-  //           <Link href="/surfspots">
-  //             <h2 className="text-gray-500 text-lg hover:text-gray-300 hover:scale-105">
-  //               👈🏻 Back to surf-spot search page
-  //             </h2>
-  //           </Link>
-  //         </div>
-  //       </div>
-
-  //       Surf spot selector
-  //       <div className="w-full flex justify-center mb-8">
-  //         <select
-  //           className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[240px] hover:scale-105"
-  //           value={selectedSlug}
-  //           onChange={handleSpotChange}
-  //           disabled={liteSpots.length === 0}
-  //         >
-  //           {liteSpots.map((spot) => (
-  //             <option key={spot.id} value={spot.slug}>
-  //               {spot.name}
-  //             </option>
-  //           ))}
-  //         </select>
-  //       </div>
-
-  //       {/* ✅ Loading placeholder (ne casse pas le layout) */}
-  //       <div className="text-gray-400 mt-10">Loading surf spot…</div>
-  //     </div>
-  //   );
-  // }
-
-  // ------------------------------------------------
-  // JSX
-  // ------------------------------------------------
   return (
     <div className="flex flex-col items-center pt-10 min-h-screen bg-black text-white">
-      {/* Back link */}
-      <div className="w-full flex justify-start mb-6">
-        <div className="ml-10">
-          <Link href="/surfspots">
-            <h2 className="text-gray-500 text-lg hover:text-gray-300 hover:scale-105">
-              👈🏻 Back to surf-spot search page
-            </h2>
-          </Link>
-        </div>
-      </div>
-
-      {/* Surf spot selector */}
-      <div className="w-full flex justify-center mb-8">
-        <select
-          className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[240px] hover:scale-105"
-          value={selectedSlug}
-          onChange={handleSpotChange}
-        >
-          {liteSpots.map((spot) => (
-            <option key={spot.id} value={spot.slug}>
-              {spot.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Spot details */}
-      <SurfSpotDetails surfSpotData={spotData} />
+      <SurfSpotDetailsClient
+        initialLiteSpots={sortedLite}
+        initialSpot={spotData}
+        initialSlug={slug}
+      />
     </div>
   );
 }
