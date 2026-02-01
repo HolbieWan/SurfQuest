@@ -15,7 +15,7 @@ import { jwtDecode } from 'jwt-decode';      // Decodes JWT token to extract use
 // ============================
 // Local Application Imports
 // ============================
-import API_BASE_URLS from '@/config/api';    // Centralized API endpoint configuration
+import { API } from '@/config/api';    // Centralized API endpoint configuration
 
 // ============================
 // Public Service Functions
@@ -41,10 +41,12 @@ export async function loginUser(username, password) {
   localStorage.removeItem('userId');
   localStorage.removeItem('username');
 
+  const url = API.public.tokens;
+
   // ============================
   // Send credentials to API
   // ============================
-  const response = await fetch(API_BASE_URLS.TOKENS, {
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -25,7 +25,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import SurfSpotCard from '@/components/SurfSpots/SurfSpotCard';
 import { fetchSurfSpots } from '@/services/surfspotService';
 import { getUniqueSurfZones, getUniqueSurfSpots } from '@/utils/surfspotUtils';
-import API_BASE_URLS from '@/config/api';
+import { API } from "@/config/api";
 import { applySurfSpotFilters } from '@/utils/spotFilters';
 import * as opts from '@/utils/spotsFilterOption';
 import FiltersGrid from '@/components/SurfSpots/FiltersGrid';
@@ -74,7 +74,7 @@ function SearchSurfSpotsPage() {
       setError('');
       try {
         const token = Cookies.get('access_token');
-        const data = await fetchSurfSpots(API_BASE_URLS.SURFSPOTS, token);
+        const data = await fetchSurfSpots(API.SURFSPOTS, token);
         setSpots(data);
         setUniqueZones(getUniqueSurfZones(data));
         setUniqueSpots(getUniqueSurfSpots(data));

@@ -9,7 +9,7 @@
 // ============================
 // External Dependencies
 // ============================
-import API_BASE_URLS from '@/config/api';
+import { API } from '@/config/api';
 
 /**
  * Fetches all reviews belonging to the currently authenticated user.
@@ -18,8 +18,9 @@ import API_BASE_URLS from '@/config/api';
  * @returns {Promise<Array>} - Resolves to an array of the user's review objects.
  * @throws {Error} - If the fetch fails or returns a non-OK status.
  */
+
 export async function fetchUserReviews(token) {
-  const response = await fetch(API_BASE_URLS.USER_REVIEWS, {
+  const response = await fetch(`${API.server.userReviews}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -36,6 +37,27 @@ export async function fetchUserReviews(token) {
 
   return await response.json();
 }
+
+export async function postNewReview(token, reviewData) {
+  const response = await fetch(`${API.server.userReviews}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    mode: "cors",
+    credentials: "include",
+    body: JSON.stringify(reviewData),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.detail || "Failed to fetch user reviews.");
+  }
+
+  return await response.json();
+}
+
 
 /**
  * Updates an existing review for the user.
@@ -54,7 +76,7 @@ export async function updateUserReview(
   token,
   { id, rating, comment, surfZoneId = null, surfSpotId = null }
 ) {
-  const response = await fetch(`${API_BASE_URLS.USER_REVIEWS}${id}/`, {
+  const response = await fetch(`${API.server.userReviews}${id}/`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -87,7 +109,7 @@ export async function updateUserReview(
  * @throws {Error} - If the DELETE request fails or returns a non-OK status.
  */
 export async function deleteUserReview(token, reviewId) {
-  const response = await fetch(`${API_BASE_URLS.USER_REVIEWS}${reviewId}/`, {
+  const response = await fetch(`${API.server.userReviews}${reviewId}/`, {
     method: 'DELETE',
     headers: {
       'Authorization': `Bearer ${token}`,

@@ -25,7 +25,8 @@ import Cookies from 'js-cookie';
 // ============================
 import ReviewCard from '@/components/Reviews/ReviewCard';
 import ReviewForm from '@/components/Reviews/ReviewForm';
-import { fetchAllReviews, postNewReview } from '@/services/reviewService';
+import { fetchReviewsBySurfSpotId } from '@/services/reviewService';
+import { postNewReview } from '@/services/userReviewService';
 import { filterReviewsByContext, findUserReview } from '@/utils/reviewUtils';
 
 export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId, surfSpotId }) {
@@ -61,7 +62,7 @@ export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId
       setError('');
       try {
         const token = Cookies.get('access_token');
-        const allReviews = await fetchAllReviews(token);
+        const allReviews = await fetchReviewsBySurfSpotId(token, surfSpotId);
 
         // Filter by selected surf zone or surf spot
         const filtered = filterReviewsByContext(allReviews, selectedSurfZone, selectedSurfSpot);
