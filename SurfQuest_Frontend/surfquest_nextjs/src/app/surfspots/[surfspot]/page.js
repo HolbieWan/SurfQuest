@@ -214,7 +214,7 @@ useEffect(() => {
   const loadSpotDetail = async () => {
     setLoading(true);
     setError("");
-    setSpotData(null);
+    // setSpotData(null);
 
     try {
       const match = liteSpots.find((spot) => spot.slug === currentSlug);
@@ -249,19 +249,52 @@ useEffect(() => {
   // ------------------------------------------------
   // Render states
   // ------------------------------------------------
-  if (loading) {
-    return (
-      <div className="text-white text-center mt-10">Loading surf spot...</div>
-    );
+  // if (loading) {
+  //   return (
+  //     <div className="text-white text-center mt-10">Loading surf spot...</div>
+  //   );
+  // }
+
+  if (error) {
+    return <div className="text-red-500 text-center mt-10">Error: {error}</div>;
   }
 
-  if (error || !spotData) {
-    return (
-      <div className="text-red-500 text-center mt-10">
-        Error: {error || "Surf spot not found."}
-      </div>
-    );
-  }
+  // // ✅ Pendant le chargement, on garde la page (pas de swap complet)
+  // if (loading || !spotData) {
+  //   return (
+  //     <div className="flex flex-col items-center pt-10 min-h-screen bg-black text-white">
+  //       {/* Back link */}
+  //       <div className="w-full flex justify-start mb-6">
+  //         <div className="ml-10">
+  //           <Link href="/surfspots">
+  //             <h2 className="text-gray-500 text-lg hover:text-gray-300 hover:scale-105">
+  //               👈🏻 Back to surf-spot search page
+  //             </h2>
+  //           </Link>
+  //         </div>
+  //       </div>
+
+  //       Surf spot selector
+  //       <div className="w-full flex justify-center mb-8">
+  //         <select
+  //           className="p-2 border border-black rounded bg-blue-500 text-white text-center min-w-[240px] hover:scale-105"
+  //           value={selectedSlug}
+  //           onChange={handleSpotChange}
+  //           disabled={liteSpots.length === 0}
+  //         >
+  //           {liteSpots.map((spot) => (
+  //             <option key={spot.id} value={spot.slug}>
+  //               {spot.name}
+  //             </option>
+  //           ))}
+  //         </select>
+  //       </div>
+
+  //       {/* ✅ Loading placeholder (ne casse pas le layout) */}
+  //       <div className="text-gray-400 mt-10">Loading surf spot…</div>
+  //     </div>
+  //   );
+  // }
 
   // ------------------------------------------------
   // JSX

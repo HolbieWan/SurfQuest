@@ -28,6 +28,9 @@ import SurfSpotCard from '@/components/SurfSpots/SurfSpotCard';
 // import Reviews from '@/components/Reviews/Reviews';
 
 export default function SurfSpotDetails({ surfSpotData }) {
+  if (!surfSpotData) {
+    return <div className="text-gray-400 mt-10">Loading surf spot…</div>;
+  }
   return (
     <div className="flex flex-col items-center justify-start pt-10 min-h-screen bg-black text-white">
       {/* Spot Name */}
