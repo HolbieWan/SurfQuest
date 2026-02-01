@@ -1,5 +1,5 @@
 /**
- * src/utils/spotFilterOptions.js
+ * src/utils/spotFilterOption.js
  *
  * Centralized constant values and ranges for surf spot filtering.
  * These arrays and range maps drive the UI dropdown options and

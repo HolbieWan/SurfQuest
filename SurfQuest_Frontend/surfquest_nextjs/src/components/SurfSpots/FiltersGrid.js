@@ -246,7 +246,7 @@ export default function FiltersGrid({
           value={filters.bestMonth}
           onChange={onFilterChange("bestMonth")}
         >
-          <option value="">Best Month</option>
+          <option value="">Best Spots of the Month</option>
           {options.monthList.map((m) => (
             <option key={m} value={m}>
               {m}
