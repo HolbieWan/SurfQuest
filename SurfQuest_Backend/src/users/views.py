@@ -18,6 +18,7 @@ from rest_framework.views import APIView   # Generic class-based API view
 from rest_framework.response import Response   # Used to return API responses
 from rest_framework.permissions import IsAuthenticated, AllowAny   # Access control
 from rest_framework.generics import RetrieveAPIView   # Add at the top with DRF imports
+from rest_framework import status   # HTTP status codes
 
 # ============================
 # Local Application Imports
@@ -113,3 +114,20 @@ class UserReviewsViewSet(viewsets.ModelViewSet):
         if self.request.method in ["POST", "PUT", "PATCH"]:
             return ReviewWriteSerializer
         return ReviewReadLiteSerializer
+    
+    def create(self, request, *args, **kwargs):
+        write_serializer = self.get_serializer(data=request.data)
+        write_serializer.is_valid(raise_exception=True)
+        review = write_serializer.save()
+
+        read_serializer = ReviewReadLiteSerializer(review, context={"request": request})
+        return Response(read_serializer.data, status=status.HTTP_201_CREATED)
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        write_serializer = self.get_serializer(instance, data=request.data)
+        write_serializer.is_valid(raise_exception=True)
+        review = write_serializer.save()
+
+        read_serializer = ReviewReadLiteSerializer(review, context={"request": request})
+        return Response(read_serializer.data, status=status.HTTP_200_OK)
