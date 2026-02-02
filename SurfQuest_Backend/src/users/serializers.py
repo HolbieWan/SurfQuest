@@ -25,7 +25,7 @@ from surfzones.serializers import SurfZoneSerializer, SurfSpotSerializer
 
 
 # ============================
-# Serializers:
+# Ancien Serializers:
 # ============================
 class UserSerializer(serializers.ModelSerializer):
     """
@@ -101,6 +101,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+
+
+
     """
     Serializer for Review model.
 
@@ -177,3 +180,73 @@ class ReviewSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
+
+
+# ============================
+# Nouveaux Serializers (lite):
+# ============================
+
+class UserLiteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("id", "username", "avatar")
+
+
+class ReviewReadLiteSerializer(serializers.ModelSerializer):
+    user = UserLiteSerializer(read_only=True)
+
+    # Optionnel: noms pour afficher sans gros nested
+    surf_zone_name = serializers.CharField(source="surf_zone.name", read_only=True)
+    surf_spot_name = serializers.CharField(source="surf_spot.name", read_only=True)
+
+    class Meta:
+        model = Review
+        fields = (
+            "id",
+            "user",
+            "surf_zone",
+            "surf_zone_name",
+            "surf_spot",
+            "surf_spot_name",
+            "rating",
+            "comment",
+            "created_at",
+            "updated_at",
+        )
+
+
+class ReviewWriteSerializer(serializers.ModelSerializer):
+    # on accepte les ids
+    surf_zone = serializers.PrimaryKeyRelatedField(
+        queryset=SurfZone.objects.all(), required=False, allow_null=True
+    )
+    surf_spot = serializers.PrimaryKeyRelatedField(
+        queryset=SurfSpot.objects.all(), required=False, allow_null=True
+    )
+
+    class Meta:
+        model = Review
+        fields = ("id", "surf_zone", "surf_spot", "rating", "comment")
+
+    def validate(self, data):
+        request = self.context.get("request")
+        user = request.user if request else None
+
+        surf_zone = data.get("surf_zone") or getattr(self.instance, "surf_zone", None)
+        surf_spot = data.get("surf_spot") or getattr(self.instance, "surf_spot", None)
+
+        if not surf_zone and not surf_spot:
+            raise serializers.ValidationError("You must provide either a surf zone or a surf spot.")
+
+        # Unicité par user + target
+        qs = Review.objects.filter(user=user, surf_zone=surf_zone, surf_spot=surf_spot)
+        if self.instance:
+            qs = qs.exclude(id=self.instance.id)
+        if qs.exists():
+            raise serializers.ValidationError("You have already reviewed this surf-zone or surf-spot.")
+
+        return data
+
+    def create(self, validated_data):
+        request = self.context.get("request")
+        return Review.objects.create(user=request.user, **validated_data)

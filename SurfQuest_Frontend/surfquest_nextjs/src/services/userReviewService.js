@@ -1,123 +1,137 @@
 /**
  * userReviewService.js
  * --------------------
- * Provides functions to interact with the User Reviews API endpoint,
- * including fetching the logged-in user’s reviews, updating a review,
- * and deleting a review. All requests are token-authenticated.
+ * Authenticated user reviews endpoint.
+ * - GET    /user-reviews/      -> list my reviews
+ * - POST   /user-reviews/      -> create my review
+ * - PUT    /user-reviews/<id>/ -> update my review (optional later)
+ * - DELETE /user-reviews/<id>/ -> delete my review (optional later)
  */
 
-// ============================
-// External Dependencies
-// ============================
-import { API } from '@/config/api';
-
-/**
- * Fetches all reviews belonging to the currently authenticated user.
- *
- * @param {string} token - The JWT access token for authorization.
- * @returns {Promise<Array>} - Resolves to an array of the user's review objects.
- * @throws {Error} - If the fetch fails or returns a non-OK status.
- */
+import { API } from "@/config/api";
 
 export async function fetchUserReviews(token) {
-  const response = await fetch(`${API.server.userReviews}`, {
-    method: 'GET',
+  const url = API.public.userReviews;
+  if (!url) throw new Error("Missing userReviews API base URL.");
+  if (!token) throw new Error("Missing auth token.");
+
+  const res = await fetch(url, {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
     },
-    mode: 'cors',
-    credentials: 'include',
+    cache: "no-store",
+    mode: "cors",
+    credentials: "include",
   });
 
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.detail || 'Failed to fetch user reviews.');
+  if (!res.ok) {
+    let msg = "Failed to fetch user reviews.";
+    try {
+      const data = await res.json();
+      msg = data?.detail || data?.message || msg;
+    } catch {}
+    throw new Error(msg);
   }
 
-  return await response.json();
+  return res.json();
 }
 
-export async function postNewReview(token, reviewData) {
-  const response = await fetch(`${API.server.userReviews}`, {
+export async function postNewReview(
+  token,
+  { surfZoneId, surfSpotId, rating, comment },
+) {
+  const url = API.public.userReviews;
+  if (!url) throw new Error("Missing userReviews API base URL.");
+  if (!token) throw new Error("Missing auth token.");
+
+  const payload = {
+    rating: Number(rating),
+    comment: comment || "",
+    // Backend write serializer expects surf_zone / surf_spot keys (UUIDs)
+    surf_zone: surfZoneId || null,
+    surf_spot: surfSpotId || null,
+  };
+
+  const res = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+    mode: "cors",
+    credentials: "include",
+  });
+
+  if (!res.ok) {
+    let msg = "Failed to post review.";
+    try {
+      const data = await res.json();
+      msg = data?.detail || data?.message || msg;
+    } catch {}
+    throw new Error(msg);
+  }
+
+  return res.json();
+}
+
+/**
+ * Update an existing review (authenticated)
+ */
+export async function updateUserReview(token, { id, rating, comment, surf_zone = null, surf_spot = null }) {
+  if (!id) throw new Error("Missing review id.");
+
+  const res = await fetch(`${API.public.userReviews}${id}/`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
       Authorization: `Bearer ${token}`,
     },
     mode: "cors",
     credentials: "include",
-    body: JSON.stringify(reviewData),
+    body: JSON.stringify({ surf_zone, surf_spot, rating, comment }),
   });
 
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.detail || "Failed to fetch user reviews.");
+  if (!res.ok) {
+    let msg = "Failed to update review.";
+    try {
+      const data = await res.json();
+      msg = data?.detail || msg;
+    } catch {}
+    throw new Error(msg);
   }
 
-  return await response.json();
-}
-
-
-/**
- * Updates an existing review for the user.
- *
- * @param {string} token - The JWT access token for authorization.
- * @param {Object} reviewPayload - Data needed to update the review.
- * @param {number|string} reviewPayload.id - The ID of the review to update.
- * @param {number|string} reviewPayload.rating - The new rating value.
- * @param {string} reviewPayload.comment - The new comment text.
- * @param {string|null} reviewPayload.surfZoneId - The ID of the surf zone (if applicable).
- * @param {string|null} reviewPayload.surfSpotId - The ID of the surf spot (if applicable).
- * @returns {Promise<Object>} - Resolves to the updated review object.
- * @throws {Error} - If the PUT request fails or returns a non-OK status.
- */
-export async function updateUserReview(
-  token,
-  { id, rating, comment, surfZoneId = null, surfSpotId = null }
-) {
-  const response = await fetch(`${API.server.userReviews}${id}/`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-    },
-    body: JSON.stringify({
-      id,
-      // Only include these if non-null; backend accepts null for the other
-      surf_zone: surfZoneId,
-      surf_spot: surfSpotId,
-      rating,
-      comment,
-    }),
-  });
-
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.detail || 'Failed to update review.');
-  }
-
-  return await response.json();
+  return res.json();
 }
 
 /**
- * Deletes an existing review belonging to the user.
- *
- * @param {string} token - The JWT access token for authorization.
- * @param {number|string} reviewId - The ID of the review to delete.
- * @returns {Promise<void>} - Resolves when deletion succeeds.
- * @throws {Error} - If the DELETE request fails or returns a non-OK status.
+ * Delete an existing review (authenticated)
  */
 export async function deleteUserReview(token, reviewId) {
-  const response = await fetch(`${API.server.userReviews}${reviewId}/`, {
-    method: 'DELETE',
+  if (!reviewId) throw new Error("Missing review id.");
+
+  const res = await fetch(`${API.public.userReviews}${reviewId}/`, {
+    method: "DELETE",
     headers: {
-      'Authorization': `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
+    mode: "cors",
+    credentials: "include",
   });
 
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.detail || 'Failed to delete review.');
+  if (!res.ok) {
+    let msg = "Failed to delete review.";
+    try {
+      const data = await res.json();
+      msg = data?.detail || msg;
+    } catch {}
+    throw new Error(msg);
   }
+
+  // No JSON expected on DELETE
+  return true;
 }
