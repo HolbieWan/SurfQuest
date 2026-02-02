@@ -37,7 +37,7 @@ export default function Reviews({
   surfZoneId,
   surfSpotId,
 }) {
-  const token = useMemo(() => Cookies.get("access_token") || "", []);
+  const [token, setToken] = useState("");
   const isAuthenticated = Boolean(token);
 
   const [reviews, setReviews] = useState([]);
@@ -55,6 +55,11 @@ export default function Reviews({
   // target guard: must have at least one id
   const hasTarget = Boolean(surfZoneId || surfSpotId);
 
+  // Load token from cookies (client)
+  useEffect(() => {
+    setToken(Cookies.get("access_token") || "");
+  }, []);
+
   // 1) read userId once (client)
   useEffect(() => {
     setUserId(getLocalUserId());
@@ -64,7 +69,7 @@ export default function Reviews({
   useEffect(() => {
     if (!hasTarget) return;
 
-    const run = async () => {
+    const getReviews = async () => {
       setLoadingList(true);
       setError("");
 
@@ -79,7 +84,7 @@ export default function Reviews({
       }
     };
 
-    run();
+    getReviews();
   }, [surfZoneId, surfSpotId, hasTarget]);
 
   // 3) fetch MY reviews (only if authenticated) to know if I already reviewed this target
@@ -90,7 +95,7 @@ export default function Reviews({
       return;
     }
 
-    const run = async () => {
+    const getReviews = async () => {
       setError("");
 
       try {
@@ -103,7 +108,7 @@ export default function Reviews({
       }
     };
 
-    run();
+    getReviews();
   }, [surfZoneId, surfSpotId, hasTarget, isAuthenticated, token]);
 
   // Form handlers
