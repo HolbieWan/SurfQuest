@@ -111,7 +111,8 @@ def build_image_urls(queryset, request=None, limit=None):
     for img in queryset:
         if img.image:
             url = img.image.url
-            urls.append(request.build_absolute_uri(url) if request else url)
+            # urls.append(request.build_absolute_uri(url) if request else url)
+            urls.append(url)  # /media/...
     return urls
 
 
