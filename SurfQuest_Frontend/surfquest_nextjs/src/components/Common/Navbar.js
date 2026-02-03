@@ -31,7 +31,7 @@ export default function Navbar() {
   // Router Pathname
   // ============================
   const pathname = usePathname();
-  console.log("Current pathname:", pathname);
+  // console.log("Current pathname:", pathname);
 
   // ============================
   // Authentication State
