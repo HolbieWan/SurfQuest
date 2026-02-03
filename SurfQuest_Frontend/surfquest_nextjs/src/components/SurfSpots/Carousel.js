@@ -1,53 +1,86 @@
+// """
+// ImageCarousel Component
+// ------------------------
+// A robust image carousel that handles various input formats.
+// Accepts an array of image URLs (strings) or an array of objects with an 'image' property.
+// """
+
+"use client";
+
 // ============================
 // External Dependencies
 // ============================
-import React, { useState } from 'react';
+import React, { useMemo, useState } from "react";
 
 /**
- * ImageCarousel Component
+ * ImageCarousel Component (robust)
  *
- * Renders an image carousel that allows users to navigate through a list of images.
- * 
- * @param {Object} props - Component props
- * @param {Array} props.images - Array of image objects to display in the carousel
- * 
- * The component manages the current image index in state, provides next and previous
- * navigation handlers, and displays the current image with navigation buttons.
+ * Accepts:
+ * - ["http://...","http://..."]
+ * - [{ image: "http://..." }, ...]
  */
-// ============================
-// ImageCarousel Component
-// ============================
-export default function ImageCarousel({ images }) {
-  // State initialization for current image index
-  const [current, setCurrent] = useState(0); // Tracks the index of the currently displayed image
+export default function ImageCarousel({ images = [] }) {
+  const normalized = useMemo(() => {
+    if (!Array.isArray(images)) return [];
 
-  // Length of the images array
-  const length = images.length; // Total number of images in the carousel
+    // Case A: array of strings
+    if (images.length > 0 && typeof images[0] === "string") {
+      return images.filter((u) => typeof u === "string" && u.length);
+    }
 
-  // Handlers to navigate to next and previous slides
-  const nextSlide = () => setCurrent((current + 1) % length); // Advances to next image, loops to start
-  const prevSlide = () => setCurrent((current - 1 + length) % length); // Goes to previous image, loops to end
+    // Case B: array of objects { image: "..." }
+    if (images.length > 0 && typeof images[0] === "object") {
+      return images.map((img) => img?.image).filter(Boolean);
+    }
 
-  // Early return if images prop is not a non-empty array
-  if (!Array.isArray(images) || images.length <= 0) {
-    return null; // Do not render carousel if no images are provided
-  }
+    return [];
+  }, [images]);
 
-  // JSX structure: container div, previous/next buttons, and image element
+  const [current, setCurrent] = useState(0);
+  const length = normalized.length;
+
+  if (length === 0) return null;
+
+  const nextSlide = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
+    setCurrent((prev) => (prev + 1) % length);
+  };
+
+  const prevSlide = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
+    setCurrent((prev) => (prev - 1 + length) % length);
+  };
+
   return (
-    <div className="relative flex items-center justify-center w-full rounded-lg transform transition-transform duration-500 group-hover:scale-110">
-      {/* Previous slide button */}
-      <button className="absolute left-4 bg-black bg-opacity-50 p-2 rounded-full text-white" onClick={prevSlide}>&#8592;</button>
-      
-      {/* Current image */}
+    <div className="relative flex items-center justify-center w-full h-[400px] rounded-lg overflow-hidden">
+      {length > 1 && (
+        <button
+          className="absolute left-4 z-10 bg-black/50 p-2 rounded-full text-white"
+          onClick={prevSlide}
+          aria-label="Previous image"
+        >
+          &#8592;
+        </button>
+      )}
+
       <img
-        src={images[current].image} // Source of the current image
-        alt={`Slide ${current}`} // Alt text indicating current slide index
-        className="w-full h-[400px] object-cover rounded-lg" // Styling for the image
+        src={normalized[current]}
+        alt={`Slide ${current + 1}`}
+        className="w-full h-full object-cover rounded-lg"
+        loading="lazy"
       />
-      
-      {/* Next slide button */}
-      <button className="absolute right-4 bg-black bg-opacity-50 p-2 rounded-full text-white" onClick={nextSlide}>&#8594;</button>
+
+      {length > 1 && (
+        <button
+          className="absolute right-4 z-10 bg-black/50 p-2 rounded-full text-white"
+          onClick={nextSlide}
+          aria-label="Next image"
+        >
+          &#8594;
+        </button>
+      )}
     </div>
   );
 }

@@ -100,6 +100,7 @@ services:
     # Hot-reloading enabled by mounting the source code
     volumes:
       - ./SurfQuest_Frontend/surfquest_nextjs:/app
+      - nextjs_node_modules:/app/node_modules
 
     # Dependencies: Wait for backend and DB to be running
     depends_on:
@@ -141,6 +142,7 @@ services:
 volumes:
   pgdata:
      external: true    # External volume for database persistence
+  nextjs_node_modules:
   media_volume:
      external: true    # External volume for uploaded media files
 

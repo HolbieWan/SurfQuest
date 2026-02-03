@@ -18,12 +18,13 @@ from rest_framework.views import APIView   # Generic class-based API view
 from rest_framework.response import Response   # Used to return API responses
 from rest_framework.permissions import IsAuthenticated, AllowAny   # Access control
 from rest_framework.generics import RetrieveAPIView   # Add at the top with DRF imports
+from rest_framework import status   # HTTP status codes
 
 # ============================
 # Local Application Imports
 # ============================
 from .models import User, Review
-from .serializers import UserSerializer, ReviewSerializer
+from .serializers import UserSerializer, ReviewSerializer, ReviewReadLiteSerializer, ReviewWriteSerializer
 
 
 # ============================
@@ -75,42 +76,58 @@ class ProtectedView(APIView):
         return Response({"message": "This is a protected view"})
 
 
-class ReviewViewSet(viewsets.ModelViewSet):
-    """
-    ViewSet for the Review model.
+class ReviewViewSet(viewsets.ReadOnlyModelViewSet):
+    permission_classes = [AllowAny]
+    serializer_class = ReviewReadLiteSerializer
 
-    Allows authenticated users to read and create reviews.
-    """
-    queryset = Review.objects.all()
-    serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticated]
-    http_method_names = ['get', 'post']   # Restrict to GET and POST only
+    queryset = Review.objects.select_related("user", "surf_zone", "surf_spot").order_by("-created_at")
 
-    def perform_create(self, serializer):
-        """
-        Automatically assign the authenticated user when creating a review.
-        """
-        serializer.save(user=self.request.user)
+    def get_queryset(self):
+        qs = super().get_queryset()
+        p = self.request.query_params
+
+        surf_zone_id = p.get("surf_zone_id")
+        if surf_zone_id:
+            qs = qs.filter(surf_zone_id=surf_zone_id)
+
+        surf_spot_id = p.get("surf_spot_id")
+        if surf_spot_id:
+            qs = qs.filter(surf_spot_id=surf_spot_id)
+
+        return qs
 
 
 class UserReviewsViewSet(viewsets.ModelViewSet):
-    """
-    ViewSet for accessing and managing the authenticated user's own reviews.
-
-    Allows retrieval, update, and deletion of reviews made by the current user.
-    """
-    serializer_class = ReviewSerializer 
     permission_classes = [IsAuthenticated]
-    http_method_names = ['get', 'post', 'put', 'delete']   # Restrict to GET, PUT, DELETE only
-    
+    serializer_class = ReviewReadLiteSerializer
+    http_method_names = ["get", "post", "put", "patch", "delete"]
+
     def get_queryset(self):
-        """
-        Filter the queryset to only include reviews by the current authenticated user.
-        """
-        return Review.objects.filter(user=self.request.user)
+        return (
+            Review.objects
+            .filter(user=self.request.user)
+            .select_related("user", "surf_zone", "surf_spot")
+            .order_by("-created_at")
+        )
+
+    def get_serializer_class(self):
+        if self.request.method in ["POST", "PUT", "PATCH"]:
+            return ReviewWriteSerializer
+        return ReviewReadLiteSerializer
     
-    def perform_create(self, serializer):
-        """
-        Ensure the created review is tied to the authenticated user.
-        """
-        serializer.save(user=self.request.user)
+    def create(self, request, *args, **kwargs):
+        write_serializer = self.get_serializer(data=request.data)
+        write_serializer.is_valid(raise_exception=True)
+        review = write_serializer.save()
+
+        read_serializer = ReviewReadLiteSerializer(review, context={"request": request})
+        return Response(read_serializer.data, status=status.HTTP_201_CREATED)
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        write_serializer = self.get_serializer(instance, data=request.data)
+        write_serializer.is_valid(raise_exception=True)
+        review = write_serializer.save()
+
+        read_serializer = ReviewReadLiteSerializer(review, context={"request": request})
+        return Response(read_serializer.data, status=status.HTTP_200_OK)

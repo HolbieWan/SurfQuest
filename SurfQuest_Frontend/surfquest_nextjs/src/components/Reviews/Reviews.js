@@ -1,137 +1,170 @@
 "use client";
 
 /**
- * Reviews Component
- * -----------------
- * Fetches and displays reviews for a given surf zone or surf spot.
- * Allows the logged-in user to submit a new review if they haven't already.
- * Delegates API calls to reviewService and filtering logic to reviewUtils.
+ * Reviews Component (clean refactor)
+ * ---------------------------------
+ * Displays reviews for a SurfZone or SurfSpot:
+ * - Public list: GET /reviews?surf_zone_id=... or surf_spot_id=...
+ * - If logged in:
+ *   - Checks if user already reviewed via GET /user-reviews/
+ *   - Allows POST /user-reviews/ if not reviewed yet
  *
- * @param {Object} props
- * @param {string} [props.selectedSurfZone] - Name of the selected surf zone.
- * @param {string} [props.selectedSurfSpot] - Name of the selected surf spot.
- * @param {string} [props.surfZoneId] - UUID of the selected surf zone.
- * @param {string} [props.surfSpotId] - UUID of the selected surf spot.
+ * Props:
+ * - selectedSurfZone (string) optional (for title only)
+ * - selectedSurfSpot (string) optional (for title only)
+ * - surfZoneId (uuid) optional
+ * - surfSpotId (uuid) optional
  */
 
-// ============================
-// External Dependencies
-// ============================
-import React, { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
+import React, { useEffect, useMemo, useState } from "react";
+import Cookies from "js-cookie";
 
-// ============================
-// Local Dependencies
-// ============================
-import ReviewCard from '@/components/Reviews/ReviewCard';
-import ReviewForm from '@/components/Reviews/ReviewForm';
-import { fetchAllReviews, postNewReview } from '@/services/reviewService';
-import { filterReviewsByContext, findUserReview } from '@/utils/reviewUtils';
+import ReviewCard from "@/components/Reviews/ReviewCard";
+import ReviewForm from "@/components/Reviews/ReviewForm";
 
-export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId, surfSpotId }) {
-  // ============================
-  // State Management
-  // ============================
+import { fetchReviews } from "@/services/reviewService";
+import { fetchUserReviews, postNewReview } from "@/services/userReviewService";
+import { findUserReviewForTarget } from "@/utils/reviewUtils";
+
+function getLocalUserId() {
+  if (typeof window === "undefined") return null;
+  return localStorage.getItem("userId");
+}
+
+export default function Reviews({
+  selectedSurfZone,
+  selectedSurfSpot,
+  surfZoneId,
+  surfSpotId,
+}) {
+  const [token, setToken] = useState("");
+  const isAuthenticated = Boolean(token);
+
   const [reviews, setReviews] = useState([]);
-  const [userReview, setUserReview] = useState(null);
-  const [newReview, setNewReview] = useState({ rating: '', comment: '' });
-  const [userId, setUserId] = useState(null);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [myReview, setMyReview] = useState(null);
 
-  // ============================
-  // Read userId from localStorage (client-side only)
-  // ============================
+  const [newReview, setNewReview] = useState({ rating: "", comment: "" });
+  const [userId, setUserId] = useState(null);
+
+  const [error, setError] = useState("");
+  const [loadingList, setLoadingList] = useState(false);
+  const [loadingPost, setLoadingPost] = useState(false);
+
+  const title = selectedSurfZone || selectedSurfSpot || "Reviews";
+
+  // target guard: must have at least one id
+  const hasTarget = Boolean(surfZoneId || surfSpotId);
+
+  // Load token from cookies (client)
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedId = localStorage.getItem("userId");
-      setUserId(storedId);
-    }
+    setToken(Cookies.get("access_token") || "");
   }, []);
 
-  // ============================
-  // Fetch and filter reviews when context or userId changes
-  // ============================
+  // 1) read userId once (client)
   useEffect(() => {
-    // Only fetch if either a surf zone or surf spot is selected, and userId is known
-    if ((!selectedSurfZone && !selectedSurfSpot) || userId === null) return;
+    setUserId(getLocalUserId());
+  }, []);
 
-    const fetchReviews = async () => {
-      setLoading(true);
-      setError('');
+  // 2) fetch PUBLIC reviews list for this target
+  useEffect(() => {
+    if (!hasTarget) return;
+
+    const getReviews = async () => {
+      setLoadingList(true);
+      setError("");
+
       try {
-        const token = Cookies.get('access_token');
-        const allReviews = await fetchAllReviews(token);
-
-        // Filter by selected surf zone or surf spot
-        const filtered = filterReviewsByContext(allReviews, selectedSurfZone, selectedSurfSpot);
-        setReviews(filtered);
-
-        // Find this user’s review (if any)
-        const existingReview = findUserReview(filtered, userId);
-        setUserReview(existingReview);
+        const data = await fetchReviews({ surfZoneId, surfSpotId });
+        setReviews(Array.isArray(data) ? data : []);
       } catch (err) {
-        setError(`Request failed: ${err.message}`);
+        setError(err?.message || "Failed to load reviews.");
+        setReviews([]);
       } finally {
-        setLoading(false);
+        setLoadingList(false);
       }
     };
 
-    fetchReviews();
-  }, [selectedSurfZone, selectedSurfSpot, userId]);
+    getReviews();
+  }, [surfZoneId, surfSpotId, hasTarget]);
 
-  // ============================
-  // Handle form field changes
-  // ============================
+  // 3) fetch MY reviews (only if authenticated) to know if I already reviewed this target
+  useEffect(() => {
+    if (!hasTarget) return;
+    if (!isAuthenticated) {
+      setMyReview(null);
+      return;
+    }
+
+    const getReviews = async () => {
+      setError("");
+
+      try {
+        const mine = await fetchUserReviews(token);
+        const found = findUserReviewForTarget(mine, { surfZoneId, surfSpotId });
+        setMyReview(found || null);
+      } catch (err) {
+        // If token invalid/expired, don't break the public list.
+        setMyReview(null);
+      }
+    };
+
+    getReviews();
+  }, [surfZoneId, surfSpotId, hasTarget, isAuthenticated, token]);
+
+  // Form handlers
   const handleInputChange = (e) => {
-    setNewReview({ ...newReview, [e.target.name]: e.target.value });
+    setNewReview((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // ============================
-  // Submit a new review
-  // ============================
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    if (!isAuthenticated) {
+      setError("You must be logged in to post a review.");
+      return;
+    }
+    if (!hasTarget) {
+      setError("Missing surf zone/spot target.");
+      return;
+    }
+
+    setLoadingPost(true);
+    setError("");
+
     try {
-      const token = Cookies.get('access_token');
       const created = await postNewReview(token, {
-        surfZoneId: surfZoneId || '',
-        surfSpotId: surfSpotId || '',
+        surfZoneId: surfZoneId || null,
+        surfSpotId: surfSpotId || null,
         rating: newReview.rating,
         comment: newReview.comment,
       });
 
-      // Append the new review and mark that user as having reviewed
-      setReviews((prev) => [...prev, created]);
-      setUserReview(created);
+      // Update UI:
+      setMyReview(created);
+      setReviews((prev) => [created, ...(Array.isArray(prev) ? prev : [])]);
+      setNewReview({ rating: "", comment: "" });
     } catch (err) {
-      setError(err.message);
+      setError(err?.message || "Failed to post review.");
     } finally {
-      setLoading(false);
+      setLoadingPost(false);
     }
   };
 
-  // ============================
-  // Determine whether the user has already posted
-  // ============================
-  const userAlreadyReviewed = userReview !== null;
+  const userAlreadyReviewed = Boolean(myReview);
 
-  // ============================
   // Render
-  // ============================
   return (
-    <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center">
-      {(selectedSurfZone || selectedSurfSpot) && (
+    <div className="grid grid-cols-1 p-4 gap-8 rounded-md items-center justify-center w-full">
+      <h2 className="text-4xl font-bold text-center text-white p-2 w-full">
+        <span className="text-pink-400">{title}</span> Reviews
+      </h2>
+
+      {error && <p className="text-red-500">{error}</p>}
+
+      {loadingList && <p className="text-blue-400">Loading reviews...</p>}
+
+      {/* List */}
+      {!loadingList && (
         <>
-          <h2 className="text-4xl font-bold text-center text-white p-2 w-full"
-            ><span className="text-pink-400">{selectedSurfZone}</span> Reviews
-          </h2>
-
-          {error && <p className="text-red-500">{error}</p>}
-          {loading && <p className="text-blue-400">Loading...</p>}
-
-          {/* Display All Reviews */}
           {reviews.length > 0 ? (
             reviews.map((review) => (
               <ReviewCard key={review.id} review={review} />
@@ -139,16 +172,25 @@ export default function Reviews({ selectedSurfZone, selectedSurfSpot, surfZoneId
           ) : (
             <p className="text-gray-400">No reviews yet.</p>
           )}
-
-          {/* Only show the form if the user hasn’t posted yet */}
-          {!userAlreadyReviewed && (
-            <ReviewForm
-              newReview={newReview}
-              handleInputChange={handleInputChange}
-              handleReviewSubmit={handleReviewSubmit}
-            />
-          )}
         </>
+      )}
+
+      {/* Form */}
+      {isAuthenticated ? (
+        userAlreadyReviewed ? (
+          <p className="text-gray-400 text-center">
+            ✅ You already posted a review for this place.
+          </p>
+        ) : (
+          <ReviewForm
+            newReview={newReview}
+            handleInputChange={handleInputChange}
+            handleReviewSubmit={handleReviewSubmit}
+            loading={loadingPost}
+          />
+        )
+      ) : (
+        <p className="text-gray-500 text-center">Log in to post a review.</p>
       )}
     </div>
   );

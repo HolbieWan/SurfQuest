@@ -10,8 +10,8 @@
 // ============================
 // External Dependencies
 // ============================
-import API_BASE_URLS from '@/config/api';  // Configuration file for API base URLs
-import { getAuthHeader } from '@/utils/authService';  // Library to manage cookies in the browser
+// import API_BASE_URLS from '@/config/api';  // Configuration file for API base URLs
+// import { getAuthHeader } from '@/utils/authService';  // Library to manage cookies in the browser
 
 // ============================
 // Public Service Functions
@@ -26,23 +26,25 @@ import { getAuthHeader } from '@/utils/authService';  // Library to manage cooki
  * @returns {Promise<Object[]>} A promise that resolves to an array of surf zone objects
  * @throws {Error} If the request fails or returns an error response
  */
-export async function fetchSurfZones() {
-  const response = await fetch(`${API_BASE_URLS.SURFZONES}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json', // Expect JSON data format
-      ...getAuthHeader(), // Include authorization header with JWT token
-    },
-    mode: 'cors', // Ensure CORS policy is respected for external requests
-    credentials: 'include', // Ensure cookies (e.g. session info) are sent
+export async function fetchSurfZones(apiUrl, { cache = "no-store" } = {}) {
+  const res = await fetch(apiUrl, {
+    method: "GET",
+    cache, // Next SSR: "no-store" ou "force-cache" selon ton besoin
+    headers: { Accept: "application/json" },
   });
 
-  // If backend responds with error, throw detailed message
-  if (!response.ok) {
-    const errorData = await response.json();
-    throw new Error(errorData.detail || 'Failed to fetch surf zones');
+  if (!res.ok) {
+    let message = "Failed to fetch surf zones.";
+    try {
+      const errorData = await res.json();
+      message = errorData?.detail || errorData?.message || message;
+    } catch {
+      const text = await res.text().catch(() => "");
+      if (text) message = text.slice(0, 200);
+    }
+    throw new Error(message);
   }
 
-  // Return JSON data if request is successful
-  return await response.json();
+  return res.json();
 }
+
