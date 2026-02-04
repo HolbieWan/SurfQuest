@@ -21,7 +21,7 @@ export default function SurfZoneCard({ surfzone }) {
     null;
 
   return (
-    <div className="bg-black rounded-lg relative overflow-hidden group flex items-center justify-center max-w-lg h-64">
+    <div className="bg-black rounded-lg relative overflow-hidden group flex items-center justify-center w-full h-64">
       {/* Link overlay */}
       <Link href={`/surfzones/${surfzone.id}`} legacyBehavior>
         <a

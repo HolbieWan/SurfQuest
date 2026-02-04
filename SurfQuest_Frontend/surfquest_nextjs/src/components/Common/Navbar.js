@@ -71,7 +71,7 @@ export default function Navbar() {
       </Head>
 
       {/* Fixed Navigation Bar */}
-      <nav className="fixed top-0 w-full z-50 flex justify-between items-center bg-black text-white px-4 py-2 md:px-8 md:py-4 shadow-md">
+      <nav className="fixed top-0 w-full z-50 flex justify-between items-center bg-black text-white px-4 py-1 md:px-8 md:py shadow-md border-b border-gray-800">
         {/* Brand Logo */}
         <Link href="/" className="text-sm md:text-md lg:text-lg xl:text-xl font-bold hover:text-gray-300">
           <span className="text-white">Surf</span>
@@ -160,12 +160,12 @@ export default function Navbar() {
       {/* Hero Banner */}
       <div className="relative w-full">
         <img
-          src="/banner.jpg"
+          src="/banner-34.jpg"
           alt="Banner"
           className="w-full object-cover"
-          style={{ height: "300px" }}
+          style={{ height: "35rem" }}
         />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+        {/* <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
           <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl grechen-fuemen-regular text-shadow-2xl">
             <span className="text-white">Surf</span>
             <span className="text-blue-500">Q</span>
@@ -173,6 +173,27 @@ export default function Navbar() {
           </h1>
           <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl permanent-marker-regular text-shadow-2xl">
             SURF TRIP PLANNER
+          </p>
+        </div> */}
+
+        <div className="absolute inset-0 flex flex-col items-start px-20 justify-center text-white">
+          <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-7xl font-bold rubik-bold text-shadow-2xl">
+            <span className="text-blue-500">Plan </span>
+            <span className="text-white">& </span>
+            <span className="text-blue-500">Book </span>
+            <span className="text-white">your next</span>
+            <br></br>
+            <span className="text-blue-500"></span>
+            <span className="text-white">SURF </span>
+            <span className="text-blue-500"></span>
+            <span className="text-white">TRIP</span>
+          </h1>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-shadow-2xl pt-8">
+            <span>- Find the </span>
+            <span className="text-blue-400">perfect </span>
+            <span>destination for </span>
+            <span className="text-blue-400">YOU </span>
+            <span>-</span>
           </p>
         </div>
       </div>
