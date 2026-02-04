@@ -300,9 +300,11 @@ export default function SearchSurfZoneClient({
       {/* Results */}
       <div
         ref={resultsRef}
-        className="flex flex-col items-center justify-start pt-16 w-full"
+        className="bg-black flex flex-col items-center pt-16 w-full"
       >
-        <div className={`grid ${gridColsClass} p-4 gap-4 rounded-md mb-20`}>
+        <div
+          className={`grid ${gridColsClass} bg-black p-4 gap-4 rounded-md mb-20 w-full max-w-7xl mx-auto`}
+        >
           {surfZones.map((surfzone, index) => (
             <SurfZoneCard key={index} surfzone={surfzone} />
           ))}
