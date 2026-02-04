@@ -115,7 +115,6 @@ def build_image_urls(queryset, request=None, limit=None):
             urls.append(url)  # /media/...   -->A utiliser pour les conteneurs productions sinon les images ne s'affichent pas
     return urls
 
-
 # ======================================================================
 # SurfZone - Lite Serializer (list/cards)
 # ======================================================================
