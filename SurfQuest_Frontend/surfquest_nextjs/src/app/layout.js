@@ -25,14 +25,14 @@ import Footer from "@/components/Common/Footer";
 // ============================
 export const metadata = {
   title: 'SurfQuest',
-  description: 'Plan your dream surf-trip',
+  description: 'Plan and book your dream surf-trip',
 };
 
 // ============================
 // Root Layout Component
 // ============================
 export default function RootLayout({ children }) {
-  const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
+  // const environment = process.env.NEXT_PUBLIC_ENVIRONMENT;
 
   return (
     <html lang="en">

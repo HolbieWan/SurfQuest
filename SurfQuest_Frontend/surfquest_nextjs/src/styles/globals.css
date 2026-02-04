@@ -4,6 +4,8 @@
 
 /* Import Google Fonts for various decorative typefaces */
 @import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&family=Montez&family=Ms+Madi&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 
 /* Tailwind base, components, and utilities layers */
 @tailwind base;
@@ -33,7 +35,7 @@
 body {
   color: var(--foreground);                   /* Use light color in dark mode */
   background: var(--background);               /* Use dark background in dark mode */
-  font-family: Arial, Helvetica, sans-serif;   /* Fallback sans-serif stack */
+  font-family: "Rubik", Arial, Helvetica, sans-serif;   /* Fallback sans-serif stack */
 }
 
 /* ==========================================================================
@@ -49,6 +51,12 @@ body {
  */
 .grechen-fuemen-regular {
   font-family: "Grechen Fuemen", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-regular {
+  font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-style: normal;
 }

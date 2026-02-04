@@ -58,7 +58,7 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col items-center justify-start min-h-screen">
-      <div className="flex flex-col items-center mt-8 justify-start bg-black text-white w-full">
+      <div className="flex flex-col items-center mt-8 justify-start bg-red-300 text-white w-full">
         <MonthBestDestinations
           currentMonth={currentMonth}
           initialZones={monthlyZones}
